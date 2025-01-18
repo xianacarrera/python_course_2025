@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/solarized.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
@@ -16,38 +16,112 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<!-- Each section corresponds to a slide -->
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-				<section data-background-color="cornflowerblue">
-					<h2>This section has a background color</h2>
-				</section>
-				<section data-background-color="cornflowerblue">
-					<!-- To automatically play the video, the attribute data-autoplay autoplay must be included -->
-					<video
-					data-autoplay
-					autoplay
-					src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
-				    ></video>
+                <section>
+                    <h1>1. Introducción e instalación</h1>
+                </section>
+				
+				<section data-background-iframe="https://survey.stackoverflow.co/2023/#most-popular-technologies-language" data-background-interactive data-preload></section>
+
+				<section>
+					<h2> TIOBE index</h2>
+					<p>Calculado según el número de resultados al buscar<br>
+						+"&lt language &gt programming" en varios motores de búsqueda (Google, Bing...).</p>
+					<div class="r-stack r-stretch">
+						<img class="fragment" src="/media/Tiobeindex.png" alt="Tiobe index">
+						<img class="fragment" src="/media/Tiobeindex2.png" alt="Tiobe index Python">
+					</div>
 				</section>
 
 				<section>
-					<pre>
-					<code data-line-numbers="3,8-10">
-						<table>
-							<tr>
-								<td>laptop</td>
-							<td>$1000</td>
-							<td>10</td>
-						</tr>
-						<tr>
-							<td>Developers</td>
-							<td>$10,000</td>
-							<td>40</td>
-						</tr>
-						</table>
-					</code>
+					<div style="display: flex; height: 100%; align-items: center; text-align: center;">
+						<div style="flex: 1; border-right: 2px solid #ccc; padding: 20px;">
+							<h2>Principales usos:</h2>
+							<ul>
+								<li>Análisis de datos y visualización de datos</li>
+								<li>Machine Learning, IA, Deep Learning</li>
+								<li>Investigación científica</li>
+								<li>Desarrollo de software</li>
+								<li>Desarrollo web (backend)</li>
+								<li>Recuperación de información</li>
+								<li>Automatización (e.g. bots)</li>
+							</ul>
+						</div>
+						<div style="flex: 1; padding: 20px;">
+						  <h2>Razones de su popularidad</h2>
+						  <ul>
+							<li>Legibilidad</li>
+							<!-- It’s easy to read. Python code uses English keywords rather than punctuation, and its line breaks help define the code blocks. In practice, this means you can identify what the code is designed to do simply by looking at it. -->
+							<li>Menor tiempo de desarrollo (a costa de un mayor tiempo de ejecución)</li>
+							<li>Facilidad de aprendizaje</li>
+							<li>Portabilidad</li>
+							<!-- Multiplataforma. It’s portable. Some languages require you to modify code to run on different platforms, but Python is a cross-platform language, which means you can run the same code on any operating system with a Python interpreter. -->
+							<li>Flexibilidad</li>
+							<!-- Lenguaje de propósito general, que soporta diversos paradigmas de programación y se puede adaptar a multitud de propósitos -->
+							<li>Librerías y frameworks</li>
+							<li>Comunidad y documentación</li>
+						  </ul>
+						</div>
+					  </div>
+				</section>
+				<section>
+					<h2>(Breve) historia</h2>
+
+				</section>
+				<section>
+					<h2>Características</h2>
+					<pre><code data-line-numbers="2-6|17-21" class="python" style="max-height: 250px;">
+						x = "hola"     # x es de tipo string
+						x = 5          # x pasa a ser de tipo entero (int)
+
+						y = 32.4	   # y es de tipo float
+						y = 3 + 5j     # y es de tipo complejo
+						y = True       # y es de tipo booleano
+
+
+
+
+
+
+
+						if x == 5:
+							print("x es igual a 5")
+						else:
+							print("x no es igual a 5")
+
+
+
+
+
+						if 3 < x and x < 10:
+							print("x está entre 3 y 10")
+						
+						mi_lista = [1, 2, 3, 4, 5]
+						if 2 in mi_lista or len(mi_lista) > 5:
+							print("2 está en la lista o la lista tiene más de 5 elementos")
+
+
+
+
+						print("Buenassss")
+						x = 5; print(x)	
+
+
+
+						una_lista = ["hey", 4, 1.2]
+						una_tupla = ("hey", 4, 1.2)       # Inmutable (no se puede modificar)
+						un_diccionario = {"asignatura": "estructuras", "numero de suspensos": "elevado"}
+						un_conjunto = {"a", "a", "b"}     # Mismo resultado que {"a", "b"}
+						</code>
 					</pre>
+				    <ol>
+						<li>Tipado dinámico y no declarativo</li>
+						<li>Interpretado, no compilado</li>
+						<li>Indentación/sangría</li>
+						<li>Sintaxis intuitiva con numerosas palabras clave en inglés</li>
+						<li>No necesita ;</li>
+						<li>Estructuras de datos integradas</li>
+						<li>Facilidad para manejar cadenas</li> # TODO: Añadir más
+					</ol>
 				</section>
 			</div>
 		</div>
