@@ -4,142 +4,128 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Class Topics Menu</title>
 
+		<link rel="stylesheet" href="menu.css">
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/solarized.css">
-
-		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<style>
+			.reveal .slides > section > div {
+				display: flex;
+				height: 100%;
+				width: 100%;
+			}
+			.course-info {
+				flex: 2;
+				padding: 1rem;
+				overflow: auto;
+			}
+			.course-code {
+				flex: 1;
+				background-color: #272822;
+				color: #f8f8f2;
+				padding: 1rem;
+				overflow: hidden;
+			}
+			.course-code pre {
+				margin: 0;
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+			.course-code code {
+				height: 100%;
+				width: 100%;
+				overflow: auto;
+				white-space: pre-wrap;
+				word-wrap: break-word;
+				font-size: 1.2rem;
+				padding: 0;
+			}
+			#cursor {
+				animation: blink 0.7s infinite;
+			}
+			@keyframes blink {
+				0%, 100% { opacity: 1; }
+				50% { opacity: 0; }
+			}
+			.course-links a {
+				display: block;
+				text-decoration: none;
+				color: #333;
+			}
+		</style>
 	</head>
 	<body>
-		<div class="reveal">
-			<div class="slides">
+        <div class="reveal">
+            <div class="slides">
                 <section>
-                    <h1>1. Introducción e instalación</h1>
+                    <div>
+                        <div class="course-info">
+                            <div style="font-family: monospace; font-size: 3rem; text-align: left; margin-bottom: 2rem;">
+                                <span id="title">if __name__ == "__main__"</span><span id="cursor">:</span>
+                            </div>
+                            <div class="course-links" style="text-align: left; font-family: monospace; font-size: 1.5rem; line-height: 2;">
+                                <div>
+                                    <h3>Parte 1: Introducción a Python y su ecosistema</h3>
+                                    <a id="link1" href="classes/1/index.html" target="_blank"><b>🐍1:</b> Instalación y conceptos básicos</a>
+                                    <a id="link2" href="classes/2/index.html" target="_blank"><b>🔄2:</b> Control de flujo, funciones y tipos de datos básicos</a>
+                                    <a id="link3" href="classes/3/index.html" target="_blank"><b>📂3:</b> I/O por consola y por archivos</a>
+                                    <a id="link4" href="classes/4/index.html" target="_blank"><b>📦4:</b> Instalación de paquetes y ejecución en notebooks</a>
+                                </div>
+                                <div style="margin-top:2rem;">
+                                    <h3>Parte 2: Python para estadística y ciencia de datos</h3>
+                                    <a id="link5" href="classes/5/index.html" target="_blank"><b>📊5:</b> Operaciones vectorizadas con NumPy</a>
+                                    <a id="link6" href="classes/6/index.html" target="_blank"><b>🗂️6:</b> Uso de datasets de pandas para representar bases de datos tabulares</a>
+                                    <a id="link7" href="classes/7/index.html" target="_blank"><b>🤖7:</b> Entrenamiento y evaluación de modelos de regresión y clasificación básicos con scikit-learn</a>
+                                    <a id="link8" href="classes/8/index.html" target="_blank"><b>📈8:</b> Representación de resultados con matplotlib y seaborn</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-code">
+                            <pre><code class="python">
+# Example Python Script
+import numpy as np
+import pandas as pd
+
+def main():
+    # Create a sample DataFrame
+    data = {
+        "Name": ["Alice", "Bob", "Charlie"],
+        "Age": [25, 30, 35],
+        "Score": [85, 90, 95]
+    }
+    
+    df = pd.DataFrame(data)
+    print(df)
+
+if __name__ == "__main__":
+    main()
+                            </code></pre>
+                        </div>
+                    </div>
                 </section>
-				
-				<section data-background-iframe="https://survey.stackoverflow.co/2023/#most-popular-technologies-language" data-background-interactive data-preload></section>
-
-				<section>
-					<h2> TIOBE index</h2>
-					<p>Calculado según el número de resultados al buscar<br>
-						+"&lt language &gt programming" en varios motores de búsqueda (Google, Bing...).</p>
-					<div class="r-stack r-stretch">
-						<img class="fragment" src="/media/Tiobeindex.png" alt="Tiobe index">
-						<img class="fragment" src="/media/Tiobeindex2.png" alt="Tiobe index Python">
-					</div>
-				</section>
-
-				<section>
-					<div style="display: flex; height: 100%; align-items: center; text-align: center;">
-						<div style="flex: 1; border-right: 2px solid #ccc; padding: 20px;">
-							<h2>Principales usos:</h2>
-							<ul>
-								<li>Análisis de datos y visualización de datos</li>
-								<li>Machine Learning, IA, Deep Learning</li>
-								<li>Investigación científica</li>
-								<li>Desarrollo de software</li>
-								<li>Desarrollo web (backend)</li>
-								<li>Recuperación de información</li>
-								<li>Automatización (e.g. bots)</li>
-							</ul>
-						</div>
-						<div style="flex: 1; padding: 20px;">
-						  <h2>Razones de su popularidad</h2>
-						  <ul>
-							<li>Legibilidad</li>
-							<!-- It’s easy to read. Python code uses English keywords rather than punctuation, and its line breaks help define the code blocks. In practice, this means you can identify what the code is designed to do simply by looking at it. -->
-							<li>Menor tiempo de desarrollo (a costa de un mayor tiempo de ejecución)</li>
-							<li>Facilidad de aprendizaje</li>
-							<li>Portabilidad</li>
-							<!-- Multiplataforma. It’s portable. Some languages require you to modify code to run on different platforms, but Python is a cross-platform language, which means you can run the same code on any operating system with a Python interpreter. -->
-							<li>Flexibilidad</li>
-							<!-- Lenguaje de propósito general, que soporta diversos paradigmas de programación y se puede adaptar a multitud de propósitos -->
-							<li>Librerías y frameworks</li>
-							<li>Comunidad y documentación</li>
-						  </ul>
-						</div>
-					  </div>
-				</section>
-				<section>
-					<h2>(Breve) historia</h2>
-
-				</section>
-				<section>
-					<h2>Características</h2>
-					<pre><code data-line-numbers="2-6|17-21" class="python" style="max-height: 250px;">
-						x = "hola"     # x es de tipo string
-						x = 5          # x pasa a ser de tipo entero (int)
-
-						y = 32.4	   # y es de tipo float
-						y = 3 + 5j     # y es de tipo complejo
-						y = True       # y es de tipo booleano
-
-
-
-
-
-
-
-						if x == 5:
-							print("x es igual a 5")
-						else:
-							print("x no es igual a 5")
-
-
-
-
-
-						if 3 < x and x < 10:
-							print("x está entre 3 y 10")
-						
-						mi_lista = [1, 2, 3, 4, 5]
-						if 2 in mi_lista or len(mi_lista) > 5:
-							print("2 está en la lista o la lista tiene más de 5 elementos")
-
-
-
-
-						print("Buenassss")
-						x = 5; print(x)	
-
-
-
-						una_lista = ["hey", 4, 1.2]
-						una_tupla = ("hey", 4, 1.2)       # Inmutable (no se puede modificar)
-						un_diccionario = {"asignatura": "estructuras", "numero de suspensos": "elevado"}
-						un_conjunto = {"a", "a", "b"}     # Mismo resultado que {"a", "b"}
-						</code>
-					</pre>
-				    <ol>
-						<li>Tipado dinámico y no declarativo</li>
-						<li>Interpretado, no compilado</li>
-						<li>Indentación/sangría</li>
-						<li>Sintaxis intuitiva con numerosas palabras clave en inglés</li>
-						<li>No necesita ;</li>
-						<li>Estructuras de datos integradas</li>
-						<li>Facilidad para manejar cadenas</li> # TODO: Añadir más
-					</ol>
-				</section>
-			</div>
-		</div>
+            </div>
+        </div>
 
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
+        
+        <script>
+            const cursor = document.getElementById('cursor');
+            setInterval(() => {
+                cursor.style.visibility = cursor.style.visibility === 'hidden' ? 'visible' : 'hidden';
+            }, 1000);
+        </script>
 	</body>
 </html>
