@@ -96,6 +96,77 @@
                 </section>
 
                 <section>
+                    <h1>Excepciones</h1>
+                    <!-- Lo vemos antes que I/O con archivos porque nos será útil -->
+                </section>
+
+                <section>
+                    <p>Si durante la ejecución ocurre un error, el programa finalizará abruptamente.</p>
+                    <p>El manejo de excepciones nos permite indicar al programa cómo afrontar un error de manera controlada para que pueda continuar ejecutándose.</p>
+                    <p>Los bloques de manejo de excepciones utilizan 4 keywords (ninguna obligatoria): <span style="font-family:monospace;">try</span>, <span style="font-family:monospace;">except</span>, <span style="font-family:monospace;">else</span> y <span style="font-family:monospace;">finally</span>.</p>
+                    <pre><code data-line-numbers="2-14" class="python">
+                        try:
+                            # Código que puede producir un error
+                            pass
+                        except:
+                            # Se ejecuta si se produce un error
+                            # El resto de secuencias de try no se ejecutan
+                            pass
+                        else:
+                            # Se ejecuta después de todo el código de try si no se produce un error
+                            pass
+                        finally:
+                            # Se ejecuta en último lugar, independientemente de si se ha producido un error o no
+                            pass
+                    </code></pre>
+                    Nota: el orden es importante. try-else-except no es válido.
+                    Quitar los pass y preguntar por qué el código daría un error?
+                    else es útil para lo que dependa de que el bloque de try tenga éxito
+                    else y finally son anecdóticos
+                    Puede haber else sin except, finally sin ... pero todos dependen de try
+                </section>
+
+                <section>
+                    <pre><code data-line-numbers="2-14" class="python">
+                        def dividir(a, b):
+                            try:
+                                res = a / b
+                            except ZeroDivisionError as e:
+                                print("Error. b no puede ser 0:", e)
+                            else:
+                                print(res)
+                            finally:
+                                print("Terminado!")
+
+                        dividir(3, 0)
+
+                        dividir(3, 1)
+
+                    </code></pre>
+                    <pre><code data-line-numbers="2-11" class="python">
+                        def dividir(a, b):
+                            try:
+                                res = a / b
+                                print(res)
+                            except:
+                                print("Error. b no puede ser 0")
+
+                        dividir(3, 0)
+
+                        dividir(3, 1)
+
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p><span style="font-family:monospace;">except</span> permite recoger varios tipos de errores en una sola sentencia:</p>
+                </section>
+
+                <section>
+                    except puede recoger varios tipos de errores... prioridades...
+                </section>
+
+                <section>
                     I/O por archivo
                 </section>
 
@@ -113,7 +184,7 @@
 
                 <section>
                     <p>Hay diferentes formas de leer el contenido:</p>
-                    <pre><code data-line-numbers="3-6|13-17|23-28" class="python" style="max-height: 250px;">
+                    <pre><code data-line-numbers="3-6|13-18|24-27|33-38|43-48" class="python" style="max-height: 250px;">
                         
                         archivo = open("archivo.txt", "r")
                         contenido = archivo.read()     # Todo el contenido como una única cadena
@@ -128,22 +199,90 @@
                         archivo2 = open("archivo.txt", "r")
                         lineas = archivo2.readlines()
                         for linea in lineas:
-                            print(linea.strip())
+                            print(linea.rstrip())   
+                            # Sin rstrip(), se introducirían 2 saltos de línea
                         archivo2.close()
 
 
 
 
-
+                        
                         archivo3 = open("archivo.txt", "r")
-                        linea = archivo3.readline()
-                        while linea:
-                            print(linea.strip())
-                            linea = archivo3.readline()
+                        for linea in archivo3:
+                            print(linea.rstrip()) 
                         archivo3.close()
+                        
 
 
 
+                        
+                        archivo4 = open("archivo.txt", "r")
+                        lineas = archivo4.read().splitlines()
+                        for linea in archivo4:
+                            print(linea)
+                            # No hace falta rstrip()
+                        archivo4.close()
+
+
+
+
+                        archivo5 = open("archivo.txt", "r")
+                        linea = archivo5.readline()
+                        while linea:
+                            print(linea.rstrip())
+                            linea = archivo5.readline()
+                        archivo5.close()
+
+
+
+
+                    </code></pre>
+                    TODO: meter tabla resumen
+                </section>
+                <section>
+                    <p>Es preferible abrir archivos usando <span style="font-family:monospace;">with</span>:</p>
+                    <ul>
+                        <li>Cierra los recursos automáticamente.</li>
+                        <li>Maneja los errores</li>
+                        <li>Código más limpio y compacto</li>
+                    </ul>
+                    <pre><code data-line-numbers="2-7" class="python">
+                        with open("archivo.txt", "r") as archivo:      # archivo = open("archivo.txt", "r")
+                            for linea in archivo:
+                                print(linea.rstrip())
+
+                        # archivo se cierra automáticamente, sin necesidad de llamar explícitamente a archivo.close()
+                        # No es necesario incluir archivo.close()
+
+
+                    </code></pre>
+                    <p>La sintaxis de <span style="font-family:monospace;">with</span> es equivalente al siguiente bloque de código:</p>
+                    <pre><code data-line-numbers="2-14" class="python">
+                        try:
+                            archivo = open("archivo.txt", "r")
+                            try:
+                                datos = archivo.read()
+                                print(datos)
+                            finally:
+                                archivo.close()
+
+                    </code></pre>
+                    TODO: with para input y output a la vez
+                    Nota: no es necesario hacer close en el bloque externo porque el archivo no se ha llegado a abrir (de hecho, daría un error)
+                </section>
+
+                <section>
+                    <pre><code data-line-numbers="2-14" class="python">
+                        try:
+                            with open("archivo.txt", "r") as archivo:      # archivo = open("archivo.txt", "r")
+                                for linea in archivo:
+                                    print(linea.rstrip())
+                        except FileNotFoundError:
+                            print("El archivo no existe")
+                        except IOError as e:
+                            print(f"Error al acceder al archivo: {e}")
+                        except:
+                            print("Error desconocido")
 
                     </code></pre>
                 </section>

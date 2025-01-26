@@ -1,13 +1,10 @@
-menu = "Introduce una opción:\n"
-menu += "\t a. Buscar en la base de datos.\n"
-menu += "\t b. Añadir entrada a la base de datos.\n"
-menu += "\t c. Salir.\n"
+def dividir(a, b):
+    try:
+        res = a / b
+        print(res)
+    except:
+        print("Error. b no puede ser 0")
 
-msg = ""
-while (msg != "c"):
-    msg = input(menu).lower()
+dividir(3, 0)
 
-    if msg == "a": buscar()
-    elif msg == "b": añadir()
-    elif msg == "c": print("¡Adiós!")
-    else: print("Opción incorrecta.")
+dividir(3, 1)
