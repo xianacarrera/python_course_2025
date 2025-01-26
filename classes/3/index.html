@@ -12,6 +12,13 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+
+        <style>
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+        </style>
 	</head>
 	<body>
 		<div class="reveal">
@@ -159,24 +166,18 @@
                 </section>
 
                 <section>
-                    <p><span style="font-family:monospace;">except</span> permite recoger varios tipos de errores en una sola sentencia:</p>
-                </section>
-
-                <section>
-                    except puede recoger varios tipos de errores... prioridades...
-                </section>
-
-                <section>
+                    <p><span style="font-family:monospace;">except</span> permite recoger varios tipos de errores.</p>
                     <p>También podemos generar nuestras propias excepciones.</p>
-
+                    <p>Volveremos a esto (necesitamos el concepto de clase).</p>
+                    <!-- Varios tipos de errores en una sentencia, orden de los errores-->
                 </section>
 
                 <section>
-                    I/O por archivo
+                    <h1>I/O por archivo</h1>
                 </section>
 
                 <section>
-                    <h2>Lectura de archivos</h2>
+                    <h2>Lectura de archivos (input)</h2>
                     <!-- Esto será útil en la segunda parte del curso -->
                     <p>Función básica: open()</p>
                     <pre><code>
@@ -290,6 +291,80 @@
                             print("Error desconocido")
 
                     </code></pre>
+                </section>
+
+                <section>
+                    <h2>Escritura de archivos (output)</h2>
+                    <p>La función open() tiene varios modos para abrir ficheros:</p>
+                    <ul>
+                        <li>r -> Read mode. Lee el archivo desde el inicio. Si el archivo no existe, se genera un error.</li>
+                        <li>w -> Write mode. <b>Borra el contenido</b> del archivo y permite escribir nuevo texto sobre él. Si el archivo no existe, lo crea.</li>
+                        <li>a -> Append mode. Añade nuevo texto desde el final del archivo. Si el archivo no existe, lo crea.</li>
+                        <li>x -> Create mode. Crea el archivo y permite escribir en él. Si ya existe, genera un error.</li>
+                    </ul>
+                    <p>"r" es la opción por defecto: open("fichero.txt", "r") y open("fichero.txt") hacen lo mismo.</p>
+                    <p>A cada uno de estos modos se le puede añadir "b", para manejar los archivos en binario, o "t", para manejarlos como archivos de texto.</p>
+                    <p>"t" es la opción por defecto, así que no es necesario indicarla.</p>
+                </section>
+                <section>
+                    <p>Si queremos leer y escribir a la vez, podemos usar "r+", "w+", "a+" o "x+" (¡que no son iguales!).</p>
+                    <table cellspacing="0" cellpadding="0" style="width: 110%; border-collapse: collapse;">
+                        <tr>
+                            <th>Modo</th>
+                            <th>Uso</th>
+                            <th>Posición del cursor</th>
+                            <th>¿Crea el archivo si no existe?</th>
+                            <th>¿Sobreescribe el contenido?</th>
+                        </tr>
+                        <tr>
+                            <td>r</td>
+                            <td>Lectura</td>
+                            <td>Inicio</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>r+</td>
+                            <td>Lectura y escritura</td>
+                            <td>Inicio</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>w</td>
+                            <td>Escritura</td>
+                            <td>Inicio</td>
+                            <td>Sí</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td>w+</td>
+                            <td>Lectura y escritura</td>
+                            <td>Inicio</td>
+                            <td>Sí</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td>a</td>
+                            <td>Escritura (append)</td>
+                            <td>Final</td>
+                            <td>Sí</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>a+</td>
+                            <td>Lectura y escritura (append)</td>
+                            <td>Final</td>
+                            <td>Sí</td>
+                            <td>No</td>
+                        </tr>
+                      </table>
+
+                </section>
+
+                <section>
+                    <img src="../../media/3/io_modes.png" alt="Diagrama de modos de la funcióno open()">
+                    https://stackoverflow.com/questions/6648493/how-to-open-a-file-for-both-reading-and-writing
                 </section>
 			</div>
 		</div>
