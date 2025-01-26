@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="/dist/reset.css">
+		<link rel="stylesheet" href="/dist/reveal.css">
+		<link rel="stylesheet" href="/dist/theme/solarized.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Each section corresponds to a slide -->
+                <section>
+                    <h1>3. I/O, lambdas y programación con OOP</h1>
+                </section>
+
+                <section>
+                    <p>Ya hemos visto cómo imprimir datos por consola:</p>
+                    <pre><code data-line-numbers="2-6" class="python">
+                        print("Damn")
+                        x = 4
+                        print(f"2+2 = {x}")
+                    </code></pre>
+
+                    <p>Veamos el proceso inverso: la introducción de datos por consola.</p>
+                </section>
+
+                <section>
+                    <p>Podemos pedir al usuario que introduzca datos:</p>
+                    <pre><code data-line-numbers="2-6" class="python">
+                        mensaje_del_usuario = input("Dime tu nombre: ")
+                        print(mensaje_del_usuario)
+                    </code></pre>
+                    <!-- "Dime tu nombre: " es la prompt -->
+                    <!-- Lo que el usuario introduce se guarda en la variable mensaje_del_usuario -->
+                    <!-- Es recomendable dejar un espacio después de : para mejor legibilidad --> 
+                    <p>Si el prompt es largo, es recomendable escribirlo por separado de antemano:</p>
+                    <pre><code data-line-numbers="2-6" class="python">
+                        prompt = "Buenos días! Este es el servicio de atención al usuario.\n"
+                        prompt += "Por favor, escribe tu nombre: "
+
+                        nombre = input(prompt)
+                        print(f"Hola, {nombre}.")
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p>Por defecto, input() devuelve strings.</p>
+                    <pre><code data-line-numbers="2-6" class="python">
+                        edad = input("¿Cuántos años tienes? ")
+                        if edad >= 18:       # TypeError: '>=' not supported between instances of 'str' and 'int'
+                            print("Adulto")
+                        else:
+                            print("Menor")
+
+                    </code></pre>
+                    <p>Si queremos usar el resultado como otro tipo de dato, podemos convertirlo explícitamente.</p>
+                    <pre><code data-line-numbers="2-4,6-9" class="python">
+                        edad = input("¿Cuántos años tienes? ")
+                        edad = int(edad)
+                        print(edad >= 18)     # True o False
+
+                        precio = input("¿Cuánto cuesta una barra de pan?")
+                        precio = float(precio)
+                        if precio > 1.85:
+                            print("Caro, si me preguntan")
+
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p>La idea de pedir input no es solo una curiosidad. Se utiliza en la práctica, por ejemplo para construir menús</p>
+                    <pre><code data-line-numbers="2-5,7-14" class="python">
+                        menu = "Introduce una opción:\n"
+                        menu += "\t a. Buscar en la base de datos.\n"
+                        menu += "\t b. Añadir entrada a la base de datos.\n"
+                        menu += "\t c. Salir.\n"
+                        
+                        msg = ""
+                        while (msg != "c"):
+                            msg = input(menu).lower()
+                        
+                            if msg == "a": buscar()
+                            elif msg == "b": añadir()
+                            elif msg == "c": print("¡Adiós!")
+                            else: print("Opción incorrecta.")
+
+                    </code></pre>
+                </section>
+
+                <section>
+                    I/O por archivo
+                </section>
+
+                <section>
+                    <h2>Lectura de archivos</h2>
+                    <!-- Esto será útil en la segunda parte del curso -->
+                    <p>Función básica: open()</p>
+                    <pre><code>
+                        archivo = open("archivo.txt", "r")    # Ruta relativa
+                        archivo2 = open("C:\\Users\\Xiana\\Desktop\\archivo.txt", "r")    # Ruta absoluta (estilo Windows, \ escapado)
+                    
+                        bin = open("archivo_binario.txt", "rb")
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p>Hay diferentes formas de leer el contenido:</p>
+                    <pre><code data-line-numbers="3-6|13-17|23-28" class="python" style="max-height: 250px;">
+                        
+                        archivo = open("archivo.txt", "r")
+                        contenido = archivo.read()     # Todo el contenido como una única cadena
+                        print(contenido)
+                        archivo.close()
+
+
+
+
+
+
+                        archivo2 = open("archivo.txt", "r")
+                        lineas = archivo2.readlines()
+                        for linea in lineas:
+                            print(linea.strip())
+                        archivo2.close()
+
+
+
+
+
+                        archivo3 = open("archivo.txt", "r")
+                        linea = archivo3.readline()
+                        while linea:
+                            print(linea.strip())
+                            linea = archivo3.readline()
+                        archivo3.close()
+
+
+
+
+                    </code></pre>
+                </section>
+			</div>
+		</div>
+
+		<script src="/dist/reveal.js"></script>
+		<script src="/plugin/notes/notes.js"></script>
+		<script src="/plugin/markdown/markdown.js"></script>
+		<script src="/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
