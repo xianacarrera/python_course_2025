@@ -6,9 +6,9 @@
 
 		<title>reveal.js</title>
 
-		<link rel="stylesheet" href="/dist/reset.css">
-		<link rel="stylesheet" href="/dist/reveal.css">
-		<link rel="stylesheet" href="/dist/theme/solarized.css">
+		<link rel="stylesheet" href="../../dist/reset.css">
+		<link rel="stylesheet" href="../../dist/reveal.css">
+		<link rel="stylesheet" href="../../dist/theme/solarized.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="/plugin/highlight/monokai.css">
@@ -119,19 +119,55 @@
 	x = 5
 	x += 1					# x ahora es 6
 	y = 10**4				# 10000
+							</code></pre>
 						</div>
 					</div>
 				</section>
+				
+				<section style="display: flex; flex-direction: column; justify-content: space-between;">
+					<div style="display: flex; gap: 2rem; align-items: flex-start;">
+					  <h2>"Strings"</h2>
+					  <span style="text-align: left;">
+						Una <span style="font-family: monospace;">string</span> no es mas que una secuencia de carácteres, por ejemplo,
+						una palabra, frase, o línea de un archivo de texto.
+					  </span>
+					</div>
+					<div style="display: flex; flex-direction: column; align-items: flex-start; margin-top: 2rem;">
+					  <span>Existen varias formas de definir strings:</span>
+					  <pre><code>
+	x = "Matemáticas " 	# Comillas simples
+	y = 'USC'						# Comillas dobles
+	
+	# Si queremos poner comillas dentro de un string, podemos usar el otro tipo
+	quotes_str = 'Se nos acabó el "chollo"'
+	
+	# Comillas triples para strings multilínea
+	z = """wow I really love
+	studying here at the
+	USC"""
 
+	# f-strings, podemos usar variables y expresiones dentro de ellas, usando corchetes
+	x = 1, y = 2
+	print(f"La suma de {x} y {y} es {x + y}")
+					  </code></pre>
+					</div>
+				</section>
+				<section>
+					<h3>Más sobre f-strings</h3>
+					Las f-strings son la forma más cómoda de realizar muchas tareas como imprimir tablas de contenido, formatear fecha y hora,
+					e incluso debuggear un programa. Por ello, vamos a profundizar un poco más...
+
+				</section>
+				  
 				
 			</div>
 		</div>
 
-		<script src="/dist/reveal.js"></script>
-		<script src="/plugin/notes/notes.js"></script>
-		<script src="/plugin/math/math.js"></script>
-		<script src="/plugin/markdown/markdown.js"></script>
-		<script src="/plugin/highlight/highlight.js"></script>
+		<script src="../../dist/reveal.js"></script>
+		<script src="../../plugin/notes/notes.js"></script>
+		<script src="../../plugin/math/math.js"></script>
+		<script src="../../plugin/markdown/markdown.js"></script>
+		<script src="../../plugin/highlight/highlight.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
