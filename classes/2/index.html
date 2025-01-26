@@ -23,117 +23,113 @@
 				<section style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
 					<h3>En la clase de hoy veremos...</h3>
 					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
-					  <div style="flex: 1; max-width: 300px; text-align: center;">
-						<p>Qué tipos de variables básicas están disponibles y qué podemos hacer con ellas</p>
-						<img src="/media/meme_2_1.jpg" alt="Meme 1" style="width: 100%; max-width: 150px; height: auto;">
+					  <div class="fragment" style="flex: 1; text-align: center;">
+						<p>¿Qué <b>tipos de variables básicas</b> están disponibles y qué podemos hacer con ellas?</p>
+						<img src="/media/2/variables_meme.jpg" alt="Meme 1">
 					  </div>
-					  <div style="flex: 1; max-width: 300px; text-align: center;">
-						<p>Cómo organizar el código en funciones y estructuras de control de flujo</p>
-						<img src="" alt="Meme 2" style="width: 100%; max-width: 150px; height: auto;">
+					  <div class="fragment" style="flex: 1; text-align: center;">
+						<p>¿Cómo organizar el código en <b>funciones</b> y estructuras de <b>control de flujo</b>?</p>
+						<img src="/media/2/control_flow.png" alt="Meme 2">
 					  </div>
-					  <div style="flex: 1; max-width: 300px; text-align: center;">
-						<p>De qué estructuras de datos dispone Python</p>
-						<img src="" alt="Meme 3" style="width: 100%; max-width: 150px; height: auto;">
+					  <div class="fragment" style="flex: 1;  text-align: center;">
+						<p>¿De qué <b>estructuras de datos</b> dispone Python?</p>
+						<img src="/media/2/data_struct.png" alt="Meme 3">
 					  </div>
 					</div>
-				  </section>
+				</section>
 
-				<section>
-					<div style="display: flex; height: 100%; align-items: center; text-align: center;">
-						<div style="flex: 1; border-right: 2px solid #ccc; padding: 20px;">
-							<h2>Principales usos:</h2>
+				<section style="display: flex; flex-direction: column; align-items: left; gap: 20px;">
+					<h3>Variables en Python</h3>
+					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
+						<div style="flex: 2; text-align: left;">
 							<ul>
-								<li>Análisis de datos y visualización de datos</li>
-								<li>Machine Learning, IA, Deep Learning</li>
-								<li>Investigación científica</li>
-								<li>Desarrollo de software</li>
-								<li>Desarrollo web (backend)</li>
-								<li>Recuperación de información</li>
-								<li>Automatización (e.g. bots)</li>
+								<li>No hace falta declarar variables antes de usarlas, ni especificar su tipo</li>
+								<li><b>Tipado dinámico</b></li>
+								<li>Podemos usar <span style="font-family: monospace;">type()</span> para ver qué tipo tenemos en cada variable</li>
+								<li>Formato específico: los nombres de variables no pueden contener espacios y no pueden empezar con números ni con <span style="font-family: monospace;">__</span></li>
+								<li>No hay constantes como tal, el convenio para escribir variables que no deberían cambiar es en mayúsculas</li>
 							</ul>
 						</div>
-						<div style="flex: 1; padding: 20px;">
-						  <h2>Razones de su popularidad</h2>
-						  <ul>
-							<li>Legibilidad</li>
-							<!-- It’s easy to read. Python code uses English keywords rather than punctuation, and its line breaks help define the code blocks. In practice, this means you can identify what the code is designed to do simply by looking at it. -->
-							<li>Menor tiempo de desarrollo (a costa de un mayor tiempo de ejecución)</li>
-							<li>Facilidad de aprendizaje</li>
-							<li>Portabilidad</li>
-							<!-- Multiplataforma. It’s portable. Some languages require you to modify code to run on different platforms, but Python is a cross-platform language, which means you can run the same code on any operating system with a Python interpreter. -->
-							<li>Flexibilidad</li>
-							<!-- Lenguaje de propósito general, que soporta diversos paradigmas de programación y se puede adaptar a multitud de propósitos -->
-							<li>Librerías y frameworks</li>
-							<li>Comunidad y documentación</li>
-						  </ul>
+						<div  style="flex: 2; text-align: left;">
+							<pre><code class="python">
+	int x = 5	    				# Error!
+	x = 5		    
+	x = "test"						# Podemos cambiar el tipo de x
+	type(x)								# &lt;class 'str'&gt;
+	
+	numero pi = 3.1415  	# Error!
+	numero_pi = 3.1415
+
+	1numero = 5						# Error!
+	numero1 = 5
+
+	LIGHT_SPEED = 299_792_458	# Constante
+	
+							</code></pre>
 						</div>
-					  </div>
+					</div>
 				</section>
-				<section>
-					<h2>(Breve) historia</h2>
-
+				<section style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+					<h3>Tipos de datos numéricos</h3>
+					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
+						<div style="flex: 2; text-align: left;">
+							Python es muy flexible con los tipos de datos numéricos:
+							<br>
+							<ul>
+								<li>$a \in \mathbb{Z} \rightarrow $ <span style="font-family:monospace;">int</span></li>
+								Al contrario que en otros lenguajes, no hay ningún límite en el tamaño de los enters, pero fuera de $[-2^{63}, 2^{63}]$
+								las operaciones serán mucho más lentas. Para números grandes podemos usar: <span style="font-family:monospace;">x = 10_000_000_000</span>
+								<li>$a \in \mathbb{R} \rightarrow $ <span style="font-family:monospace;">float</span></li> 
+								La representación es en punto flotante de doble precisión (números máquina $\neq \mathbb{R}$).
+								<li>$a \in \mathbb{C} \rightarrow $ <span style="font-family:monospace;">complex</span></li>
+								Se comportan igual que un par de floats, pero podemos usar operaciones de números complejos, Python
+								usa la unidad imaginaria j en vez de i, por ejemplo $a = 3 + 5j$.
+							</ul>
+							<br>
+							<br>
+							Las interacciones entre <span style="font-family:monospace;">int</span> y <span style="font-family:monospace;">float</span> son automáticas, 
+							por ejemplo al sumar un <span style="font-family:monospace;">int</span> y un <span style="font-family:monospace;">float</span> el resultado será un <span style="font-family:monospace;">float</span>.	
+						</div>
+					</div>
 				</section>
-				<section>
-					<h2>Características</h2>
-					<pre><code data-line-numbers="2-6|17-21" class="python" style="max-height: 250px;">
-						x = "hola"     # x es de tipo string
-						x = 5          # x pasa a ser de tipo entero (int)
+				
+				<section style="display: flex; flex-direction: column; align-items: left; gap: 20px;">
+					<h3>Operadores aritméticos</h3>
+					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
+						<div style="flex: 2; text-align: left;">
+							<ul>
+								<li><span style="font-family:monospace;">{+, -, *, /}</span> operaciones usuales</li>
+								<li><span style="font-family:monospace;">{//, %}</span> implementan la división entera y el resto</li>
+								<li><span style="font-family:monospace;">**</span> es la exponenciación. También podemos usar la función <span style="font-family:monospace;">pow(x, y)</span></li>
+								<li> Todos estos operadores pueden ser combinados con <span style="font-family:monospace;">==</span> para operar sobre la variable</li>
+							</ul>
+							Las reglas de precedencia entre operadores son las mismas que en matemáticas, pero podemos usar paréntesis para forzar el orden de las operaciones.
+							(Mucha) más información en: <a href="https://docs.python.org/3/reference/expressions.html#operator-precedence" target="_blank">docs.python.org</a>
+						</div>
+						<div  style="flex: 2; text-align: left;">
+							<pre><code class="python">
+	x, y, z = 5, 3, 2
 
-						y = 32.4	   # y es de tipo float
-						y = 3 + 5j     # y es de tipo complejo
-						y = True       # y es de tipo booleano
-
-
-
-
-
-
-
-						if x == 5:
-							print("x es igual a 5")
-						else:
-							print("x no es igual a 5")
-
-
-
-
-
-						if 3 < x and x < 10:
-							print("x está entre 3 y 10")
-						
-						mi_lista = [1, 2, 3, 4, 5]
-						if 2 in mi_lista or len(mi_lista) > 5:
-							print("2 está en la lista o la lista tiene más de 5 elementos")
-
-
-
-
-						print("Buenassss")
-						x = 5; print(x)	
-
-
-
-						una_lista = ["hey", 4, 1.2]
-						una_tupla = ("hey", 4, 1.2)       # Inmutable (no se puede modificar)
-						un_diccionario = {"asignatura": "estructuras", "numero de suspensos": "elevado"}
-						un_conjunto = {"a", "a", "b"}     # Mismo resultado que {"a", "b"}
-						</code>
-					</pre>
-				    <ol>
-						<li>Tipado dinámico y no declarativo</li>
-						<li>Interpretado, no compilado</li>
-						<li>Indentación/sangría</li>
-						<li>Sintaxis intuitiva con numerosas palabras clave en inglés</li>
-						<li>No necesita ;</li>
-						<li>Estructuras de datos integradas</li>
-						<li>Facilidad para manejar cadenas</li> # TODO: Añadir más
-					</ol>
+	print((x + y) * z / 4)			# 4.0 type(int/int) = float
+	print(x // y)								# 1 type(int // int) = int
+	print(x % y)								# 2
+	print(x ** y)								# 125
+	print(pow(1j, 2))						# (-1+0j)
+	
+	x = 5
+	x += 1					# x ahora es 6
+	y = 10**4				# 10000
+						</div>
+					</div>
 				</section>
+
+				
 			</div>
 		</div>
 
 		<script src="/dist/reveal.js"></script>
 		<script src="/plugin/notes/notes.js"></script>
+		<script src="/plugin/math/math.js"></script>
 		<script src="/plugin/markdown/markdown.js"></script>
 		<script src="/plugin/highlight/highlight.js"></script>
 		<script>
@@ -142,9 +138,18 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
+				katex: {
+					version: 'latest',
+					delimiters: [
+					{ left: '$$', right: '$$', display: true },
+					{ left: '$', right: '$', display: false },
+					{ left: '\\(', right: '\\)', display: false },
+					{ left: '\\[', right: '\\]', display: true },
+					],
+					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+				},
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
 			});
 		</script>
 	</body>
