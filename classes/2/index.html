@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Clase 2</title>
 
 		<link rel="stylesheet" href="../../dist/reset.css">
 		<link rel="stylesheet" href="../../dist/reveal.css">
@@ -342,7 +342,7 @@
 					</div>
 				</section>
 				<section>
-					<h1>Estructuras de datos</h1>
+					<h1 >Estructuras de datos</h1>
 				</section>
 				<section>
 					<div style="display: flex; flex-direction: row; gap: 30px; align-items: flex-start;"> 
@@ -544,8 +544,27 @@
 	}
 
 						</code></pre>
-						<small>Nota: en la siguiente clase veremos una forma más adecuada para representar datos estructurados, aunque esta representación es muy útil al leer o escribir ficheros</small>
+						<small>Nota: en la siguiente clase veremos una forma más adecuada de representar datos estructurados, aunque esta representación es muy útil al leer o escribir ficheros</small>
 					</div>
+				</section>
+				<section>
+					<h1>Control de flujo</h1>
+				</section>
+				<section>
+					<h2>Condicionales</h2>
+					<p>Los condicionales en Python son muy sencillos, y siguen la estructura <span class="monospace">if ... elif ... else</span></p>
+					<pre><code class="python" data-line-numbers>
+	tiempo = consultar_tiempo()
+	if tiempo == "lluvia":
+		print("No sé si ir a Estructuras Algebraicas")
+	elif tiempo == "sol":
+		print("Voy a clase")
+	elif tiempo == "tormenta":
+		print("Va a ir a Estructuras Algebraicas su padre")
+	else:
+		print("No sé qué tiempo hace")
+	
+					</code></pre>
 				</section>
 			</div>
 		</div>

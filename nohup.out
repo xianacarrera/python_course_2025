@@ -1,0 +1,20 @@
+
+> reveal.js@5.1.0 start
+> gulp serve
+
+[18:22:55] Using gulpfile ~/python_course_2025/gulpfile.js
+[18:22:55] Starting 'serve'...
+[18:22:55] [32mStarting server...[39m
+[18:22:55] [32mServer started http://localhost:8000[39m
+[18:22:55] [32mLiveReload started on port 35729[39m
+[18:22:55] [32mRunning server[39m
+[18:23:22] Starting 'reload'...
+[18:23:22] Finished 'reload' after 34 ms
+[18:38:57] Starting 'reload'...
+[18:38:57] Finished 'reload' after 22 ms
+[18:38:58] Starting 'reload'...
+[18:38:58] Finished 'reload' after 15 ms
+[18:39:02] Starting 'reload'...
+[18:39:02] Finished 'reload' after 5.83 ms
+[18:39:23] Starting 'reload'...
+[18:39:24] Finished 'reload' after 11 ms
