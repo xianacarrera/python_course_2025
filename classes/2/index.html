@@ -145,10 +145,6 @@
 	z = """wow I really love
 	studying here at the
 	USC"""
-
-	# f-strings, podemos usar variables y expresiones dentro de ellas, usando corchetes
-	x = 1, y = 2
-	print(f"La suma de {x} y {y} es {x + y}")
 					  </code></pre>
 					</div>
 				</section>
@@ -238,54 +234,85 @@
 						
 				</section>
 				<section>
-					<h3>Strings: fun facts</h3>
+					<h3>Strings: "fun" facts</h3>
 					<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+						
+						<!-- Escape Characters -->
 						<div style="text-align: left;" class="fragment">
 							<span>Algunos carácteres tienen un significado especial en Python: los podemos escapar con "\":</span>
 							<pre><code class="python">
-	print("instagram\nreels")	# instagram
-														# reels
-	print("value:\t10")				# value:	10
-	print("hello\"world\"")		# hello "world"
-	print("C:\\Users\\pablo")	# C:\Users\pablo
+	print("instagram\nreels")		# instagram
+															# reels
+	print("value:\t10")        	# value:    10
+	print("hello\"world\"")     # hello "world"
+	print("C:\\Users\\pablo")   # C:\Users\pablo
 							</code></pre>
-
-							Podemos usar los operadores aritméticos $+, *$ con strings:
-							<pre><code class="python">
-	print("Hola" + " mundo")	# Hola mundo
-	print("Hola" * 3)					# HolaHolaHola
-							</code></pre>
-
 						</div>
+				
+						<!-- Unicode & Emojis -->
 						<div style="text-align: left;" class="fragment">
-							Podemos imprimir carácteres individuales de un string con <span style="font-family:monospace;">[]</span> y un índice:
-							<pre style="margin-top: 10px;"><code class="python">
-			print("Hola"[0])		# H
-							</code></pre>
-							Pero las strings son <b>inmutables</b>!
-							<pre style="margin-top: 10px;"><code class="python">
-			x = "Hola"
-			x[0] = "h"				# Error!
-
-			# Cuando ""modificamos""" una variable con una string, 
-			# solo estamos reasignandola a una string nueva
-			x = x + " mundo"
+							<p>Se pueden usar carácteres de todo tipo en strings!</p>
+							<pre><code class="python">
+	epic_string = "🐉 传说中的龙在烈焰中飞翔，守护着远古的宝藏 🔥🏮✨"  
+	print(epic_string)
 							</code></pre>
 						</div>
-						
+				
+						<!-- String Operators -->
+						<div style="text-align: left;" class="fragment">
+							<span>Podemos usar los operadores aritméticos <code>+</code> y <code>*</code> con strings:</span>
+							<pre><code class="python">
+	print("Hola" + " mundo")  # Hola mundo
+	print("Hola" * 3)         # HolaHolaHola
+							</code></pre>
+						</div>
+				
+						<!-- String Immutability -->
+						<div style="text-align: left;" class="fragment">
+							Las strings son <b>inmutables</b>!<br> 
+							<small>(Por razones de eficiencia, seguridad, etc.)</small>
+							<pre><code class="python">
+	x = "Hola"
+	x[0] = "h"  # Error!
+	
+	# Cuando "modificamos" una variable con una string, 
+	# solo estamos copiandola y reasignandola a una nueva string
+	x = x + " mundo"
+							</code></pre>
+						</div>
+				
 					</div>
 				</section>
+				
 				<!--TODO: al final de lo demás podemos poner más detalles sobre f-strings-->
 				<section>
-					<h3>Más sobre f-strings</h3>
-					Las f-strings son la forma más cómoda de realizar muchas tareas como imprimir tablas de contenido, formatear fecha y hora,
-					e incluso debuggear un programa. Por ello, vamos a profundizar un poco más...
-					<h2>TODO: no sé si esto hace falta pero podría ser útil</h2>
-					e.g. lo de imprimir un cierto número de carácteres por campo, :.2f para redondear a 2 decimales, etc.
+					<h3>f-strings</h3>
+					<ul>
+						<li>Úitles para imprimir tablas de contenido, formatear fecha y hora</li>
+						<li>También hacen más sencillo encontrar bugs!</li>
+						<li>Sintaxis muy sencilla:  <span style="font-family: monospace;"> <b>  f</b>"texto normal {expresión} ..."</span></li>
+						<li>Muchos indicadores de formato adicionales: <a href="https://fstring.help/cheat/" target="_blank" >cheat sheet</a></li>
+					</ul>
+					<div class="fragment">
+						<pre><code class="python">
+	# Uso básico
+	x, y, cheese = 2, 3, "we ❤️ cheese"
+	print(f"La suma de {x} y {y} es {x + y}")
+	print(f"La longitud de la string es {len(cheese)}") 
+
+	# Indicadores de formato (hay muchos más, consultar el link de arriba)
+	print(f"El número pi con 3 decimales es {3.141592653589793:.3f}")   # 3.142 (usa redondeo)
+	print(f"La constante de gravitación universal es {6.67430e-11:.2e}") # 6.67e-11
+	print(f"Hexadecimal: {255:x}, Octal: {255:o}, Binario: {255:b}")    # ff, 377, 11111111
+
+	# Alinear texto: útil para imprimir tablas
+	print(f"{'Nombre':&lt;10} {'Edad':&lt;10} {'Altura':&lt;10}") # Nombre     Edad       Altura    
+						</code></pre>
+					</div>
 				</section>
-				  
-				
-			</div>
+				<section>
+
+				</section>
 		</div>
 
 		<script src="../../dist/reveal.js"></script>
