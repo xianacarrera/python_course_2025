@@ -53,7 +53,7 @@
 							</ul>
 						</div>
 						<div  style="flex: 2; text-align: left;">
-							<pre><code class="python">
+							<pre><code class="python" data-line-numbers>
 	int x = 5	    				# Error!
 	x = 5		    
 	x = "test"						# Podemos cambiar el tipo de x
@@ -119,7 +119,7 @@
 							(Mucha) más información en: <a href="https://docs.python.org/3/reference/expressions.html#operator-precedence" target="_blank">docs.python.org</a>
 						</div>
 						<div  style="flex: 2; text-align: left;">
-							<pre><code class="python">
+							<pre><code class="python" data-line-numbers>
 	x, y, z = 5, 3, 2
 
 	print((x + y) * z / 4)			# 4.0 type(int/int) = float
@@ -131,6 +131,7 @@
 	x = 5
 	x += 1					# x ahora es 6
 	y = 10**4				# 10000
+
 							</code></pre>
 						</div>
 					</div>
@@ -149,7 +150,7 @@
 						<span>Existen varias formas de definir strings:</span>
 
 						<div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-						<pre><code>
+						<pre><code class="python" data-line-numbers>
 		x = "Matemáticas " 	# Comillas simples
 		y = 'USC'						# Comillas dobles
 		
@@ -160,6 +161,7 @@
 		z = """wow I really love
 		studying here at the
 		USC"""
+
 						</code></pre>
 						<img src="/media/2/string_rust_vs_python.png" width="300px">
 						</div>
@@ -171,24 +173,27 @@
 						Podemos acceder a subcadenas (y a los elementos de muchas otras estructuras de datos) de una string con el operador <span style="font-family:monospace;">[]</span>. 
 						Los índices de strings (y de arrays, listas, ...) están en el rango $[0, len(s)-1]$ <span style="font-size: 1rem;">(Python >> MATLAB)</span>
 					</p>
-					<pre><code class="python">
+					<pre><code class="python" data-line-numbers>
 	x = "Hola"
 	print(x[0])		# H
 	print(x[1])		# o
 	print(x[0], x[1], x[2], x[3]) 	# H o l a	
+
 					</code></pre>
 					<p style="text-align: left;">También podemos usar [:] para especificar un rango de índices</p>
-					<pre><code class="python">
+					<pre><code class="python" data-line-numbers>
 	print(x[1:3])		# ol
 	print(x[:2])		# Ho
 	print(x[2:])		# la
+
 					</code></pre>
 					<p style="text-align: left;">El slicing en Python es muy flexible, podemos usar <b>índices negativos</b> que empiezan a contar desde el final de la string:</p>
-					<pre><code class="python">
+					<pre><code class="python" data-line-numbers>
 	x = "índices negativos"
 	print(x[-1])			# s    (último carácter)	
 	print(x[-2:])			# os   (desde el penúltimo hasta el final)
 	print(x[1:-1])		# ndices negativo (desde el segundo hasta el penúltimo)
+
 				</code></pre>
 				</section>
 				
@@ -204,7 +209,7 @@
 				<section style="height: 100%;">
 					<h3>Strings: métodos estándar</h3>
 					<p>Aquí se ve uno de los puntos fuertes de Python: los nombres de las cosas tienen sentido.</p>
-					<pre><code class="python" data-line-numbers="2-7|9-15|17-24|27-33|35-40">
+					<pre><code class="python" data-line-numbers data-line-numbers="2-7|9-15|17-24|27-33|35-40">
 						ada = "ada lovelace"
 						# Métodos para cambiar capitalización
 						print(ada.capitalize())		# Ada lovelace
@@ -243,11 +248,13 @@
 						print("abc".isalpha())		# True
 						print("😶‍🌫️".isalnum())		# False
 						print("ABC".islower())		# False
+
 					</code></pre>
 
 					Los métodos se pueden encadenar y se ejecutan en el orden en el que se escriben, por ejemplo:
-					<pre><code class="python">
+					<pre><code class="python" data-line-numbers>
 	print("   hola   ".strip().capitalize())	# Hola
+
 					</code></pre>
 						
 				</section>
@@ -258,30 +265,33 @@
 						<!-- Escape Characters -->
 						<div style="text-align: left;" class="fragment">
 							<span>Algunos carácteres tienen un significado especial en Python: los podemos escapar con "\":</span>
-							<pre><code class="python">
+							<pre><code class="python" data-line-numbers>
 	print("instagram\nreels")		# instagram
 															# reels
 	print("value:\t10")        	# value:    10
 	print("hello\"world\"")     # hello "world"
 	print("C:\\Users\\pablo")   # C:\Users\pablo
+
 							</code></pre>
 						</div>
 				
 						<!-- Unicode & Emojis -->
 						<div style="text-align: left;" class="fragment">
 							<p>Se pueden usar carácteres de todo tipo en strings!</p>
-							<pre><code class="python">
+							<pre><code class="python" data-line-numbers>
 	epic_string = "🐉 传说中的龙在烈焰中飞翔，守护着远古的宝藏 🔥🏮✨"  
 	print(epic_string)
+
 							</code></pre>
 						</div>
 				
 						<!-- String Operators -->
 						<div style="text-align: left;" class="fragment">
 							<span>Podemos usar los operadores aritméticos <code>+</code> y <code>*</code> con strings:</span>
-							<pre><code class="python">
+							<pre><code class="python" data-line-numbers>
 	print("Hola" + " mundo")  # Hola mundo
 	print("Hola" * 3)         # HolaHolaHola
+
 							</code></pre>
 						</div>
 				
@@ -289,13 +299,14 @@
 						<div style="text-align: left;" class="fragment">
 							Las strings son <b>inmutables</b>!<br> 
 							<small>(Por razones de eficiencia, seguridad, etc.)</small>
-							<pre><code class="python">
+							<pre><code class="python" data-line-numbers>
 	x = "Hola"
 	x[0] = "h"  # Error!
 	
 	# Cuando "modificamos" una variable con una string, 
 	# solo estamos copiandola y reasignandola a una nueva string
 	x = x + " mundo"
+
 							</code></pre>
 						</div>
 				
@@ -312,7 +323,7 @@
 						<li>Muchos indicadores de formato adicionales: <a href="https://fstring.help/cheat/" target="_blank" >cheat sheet</a></li>
 					</ul>
 					<div class="fragment">
-						<pre><code class="python">
+						<pre><code class="python" data-line-numbers>
 	x, y, cheese = 2, 3, "we ❤️ cheese"
 	print(f"La suma de {x} y {y} es {x + y}")
 	print(f"La longitud de la string es {len(cheese)}") 
@@ -326,6 +337,7 @@
 	print(f"{'OK Computer':&lt;20} {'1997':&lt;10} {'Alternative Rock':&lt;15}") 	# OK Computer         1997      Alternative Rock
 	print(f"{'Kid A':&lt;20} {'2000':&lt;10} {'Art Rock':&lt;15}") 								# Kid A               2000      Art Rock        
 	print(f"{'In Rainbows':&lt;20} {'2007':&lt;10} {'Alternative Rock':&lt;15}") 	# In Rainbows         2007      Alternative Rock     
+
 						</code></pre>
 					</div>
 				</section>
@@ -337,12 +349,13 @@
 						<h2>Listas</h2>
 						<p style="text-align: left; margin: 0;">Las listas son una de las estructuras más simples y flexibles del lenguaje, y actúan de forma similar a los arrays de otros lenguajes: <span class="monospace">lista = [1, "python", [1,3]]</span></p>
 					</div>
+					<div>Son aplicaciones entre los naturales y un conjunto de elementos, $f: \{0, 1, \dots, N-1\} \to X$</div>
 					<ul>
 						<li>Colección de elementos <b>ordenada</b></li>
 						<li>Los elementos pueden ser <b>cualquier</b> cosa (incluso otras listas o estructuras)</li>
 						<li>Se definen con corchetes y se accede a sus elementos de forma similar a los arrays o vectores de otros lenguajes</li>
 					</ul>
-					<pre><code class="python">
+					<pre><code class="python" data-line-numbers>
 	# Crear una lista
 	lista = [1, 1, 2, 3]
 	# Añadir elementos
@@ -353,6 +366,7 @@
 
 	# Slicing
 	print(lista[1:3])	# [1, 2]
+
 				</code></pre>
 				</section>
 				<section>
@@ -360,27 +374,30 @@
 					<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
 						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;" class="fragment">
 							<p style="margin: 0;">Se pueden añadir elementos con <span class="monospace">.append()</span> y <span class="monospace">.insert()</span></p>
-							<pre style="margin: 0"><code class="python" >
+							<pre style="margin: 0"><code class="python" data-line-numbers>
 	# Append añade un elemento al final
 	lista = ["mira", "wassap"]
 	lista.append("bro")		# ["mira", "wassap", "bro"]
 	# Insert se usa para añadir un elemento en una posición concreta
 	lista.insert(1, "ahora")	# ["mira", "ahora", "wassap", "bro"]
+
 							</code></pre>
 							<p style="margin: 0;">Y borrar con <span class="monospace">del</span> y <span class="monospace"> .pop() </span></p>
-							<pre style="margin: 0"><code class="python" >
+							<pre style="margin: 0"><code class="python" data-line-numbers>
 	lista = ["audi", "bmw", "mercedes"]
 	del lista[1]
 	print(lista)	# ["audi", "mercedes"]
+
 							</code></pre>
 						</div>
 						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem;" class="fragment">
 							<p style="margin: 0">Se pueden inicializar de muchas formas:</p>
-							<pre style="margin: 0"><code class="python" >
+							<pre style="margin: 0"><code class="python" data-line-numbers>
 	lista = list(1, 2, 3)   # [1, 2, 3]
 	lista = list(range(10)) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 	lista = list("hola")    # ['h', 'o', 'l', 'a']
 	lista = [0] * 10				# [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
 						</code></pre>
 						<br>
 						<em>Una pequeña nota: El auténtico poder de las listas y otras estructuras de datos se ve cuando las combinamos con bucles y funciones, algo que veremos más adelante.</em>
@@ -390,7 +407,7 @@
 				<section>
 					<h3>Listas</h3>
 					<p style="text-align: left;">Por supuesto, podemos ordenar los elementos:</p>
-					<pre><code class="python">
+					<pre><code class="python" data-line-numbers>
 	lista = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
 	lista.sort() 
 	print(lista) 	# [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
@@ -402,13 +419,15 @@
 	# Pero cuidado con ordenar listas heterogéneas!
 	sms = ["USC Notas", "Lenguaje matemático", 4.9, "Suspenso"]
 	sms.sort()	# Error!
+
 					</code></pre>
 					<br>
 					<p style="text-align: left;">Y también podemos hacer otras operaciones como invertir el orden:</p>
-					<pre><code class="python">
+					<pre><code class="python" data-line-numbers>
 	lista = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
 	lista.reverse()
 	print(lista)	# [5, 3, 5, 6, 2, 9, 5, 1, 4, 1, 3]
+
 					</code></pre>
 				</section>
 				<section>
@@ -416,12 +435,13 @@
 						<h2>Tuplas</h2>
 						<p style="text-align: left; margin: 0;">Las tuplas son una estructura curiosa, se comportan de forma similar a las listas pero son <b>inmutables</b>: <span class="monospace">tupla = (1, "python", [1,3])</span></p>
 					</div>
+					<div>Se podría decir que una tupla funciona como un producto cartesiano (inmutable) $X_1 \times X_2 \times \dots \times X_n$.</div>
 					<ul>
 						<li>Se pueden definir con o sin paréntesis</li>
 						<li>Su uso principal: poder declarar varias variables en una sola línea</li>
 						<li>También se usan para poder devolver varias variables en una función (más adelante...)</li>
 					</ul>
-					<pre><code class="python">
+					<pre><code class="python" data-line-numbers>
 	tupla = (1, 1, 2, 3)
 	print(tupla[0])
 	print(tupla[-1])
@@ -433,11 +453,12 @@
 	x, y = 1, 2
 	x, y = y, x
 	print(x, y)		# 2 1
+
 					</code></pre>
 				</section>
 				<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
                     <h2>Sets</h2>
-					<p>Implementa conjuntos de elementos no repetidos sin ordenar (o sea, un conjunto como los de toda la vida)</p>
+					<p>Implementa conjuntos de elementos no repetidos sin ordenar (o sea, un conjunto $X$ como los de toda la vida)</p>
 					<p>La sintaxis para declararlos es <span class="monospace">conj = {'a', 1, 'b'}</span></p>
                     <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
                         <div style="flex: 2.5; text-align: left;">
@@ -452,7 +473,7 @@
 							También podemos añadir elementos con <span class="monospace">.add()</span> y borrarlos con <span class="monospace">.remove()</span>. La sintaxis es igual que para listas.
                         </div>
                         <div  style="flex: 2; text-align: left;">
-                            <pre><code class="python">
+                            <pre><code class="python" data-line-numbers>
 	primes = {2, 3, 5, 7, 11}
 	odds = {1, 3, 5, 7, 9, 11}
 	
@@ -460,13 +481,74 @@
 	print(primes & odds)		# {3, 5, 7, 11}
 	print(primes - odds)		# {2}
 	print(primes ^ odds)		# {1, 2, 9}
+
                             </code></pre>
                         </div>
                     </div>
                 </section>
-				<section></section>
-		</div>
+				<section>
+					<div style="display:flex; flex-direction: column; text-align: left;">
+						<div style="display: flex; align-items: flex-start; gap:2rem;">
+							<h2>Diccionarios</h2>
+							<div style="display: flex; flex-direction: column; align-items: flex-start; align-items: start;">
+								<small>a.k.a. arrays asociativos, HashMaps, ... en otros lenguajes</small>
+								Es una estructura de datos muy útil, que nos permite almacenar pares clave (key) + valor.
+							</div>
+						</div>
+						<p style="margin:0;">Un diccionario $d$ implementa una aplicación (mutable) entre un conjunto de keys $K$ y uno de valores $V$, <br>$d: K \to V$.</p>
+						<p style="margin:0;"> Son mutables, ordenados y no permiten tener varios valores para una misma <em>key</em></p>
+                        <div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+							<pre style="height: 450px;"><code class="python" data-line-numbers style="height: 100%;">
+	# Crear un diccionario
+	datos = {"nombre": "Evariste", "apellido": "Galois", "edad": 20}
 
+	# Acceder a elementos
+	print(datos["nombre"])	# Pablo
+
+	# Añadir y modificar elementos es muy sencillo
+	datos["edad"] = 22
+	datos["email"] = "evariste.galois@rai.usc.es"
+
+	# Podemos eliminar con del al igual que en listas
+	del datos["email"]
+
+	# O eliminar todo el diccionario con .clear() (esto también funciona para listas y demás)
+	datos.clear()
+
+							</code></pre>
+							<img src="../../media/2/python-dict2.png" width="600px">
+					</div>
+				</section>
+				<section>
+					<div style="display: flex; flex-direction: column; align-items: left; text-align: left;">
+						<h3>Diccionarios</h3>
+						<p>Es muy común usar diccionarios junto a listas para representar listas de información estructurada:</p>
+						<pre><code class="python" data-line-numbers>
+	# Lista de estudiantes con sus datos
+	estudiantes = [
+		{"nombre": "Pablo", "apellido": "Diaz", "edad": 23},	
+		{"nombre": "Evariste", "apellido": "Galois", "edad": 20},
+		{"nombre": "Ada", "apellido": "Byron", "edad": 30}
+	]
+	# Podemos indexar la lista y el diccionario a la vez
+	print(estudiantes[0]["nombre"]) # Pablo
+
+						</code></pre>
+						<p>O usar diccionarios encadenados para representar estructuras más complejas (siguiendo la misma sintaxis que el formato <a href="https://es.wikipedia.org/wiki/JSON">JSON</a>):
+						<pre><code class="python" data-line-numbers>
+	# Estructura de información más complicada
+	lenguajes = {
+		"C++": {"creador": "Bjarne Stroustrup", "año": 1985, "caracteristicas": ["rápido", "complicado"]},
+		"Python": {"creador": "Guido van Rossum", "año": 1991, "caracteristicas": ["fácil", "versátil"]},
+		"Rust": {"creador": "Graydon Hoare", "año": 2010, "caracteristicas": ["seguro", "rápido"]}
+	}
+
+						</code></pre>
+						<small>Nota: en la siguiente clase veremos una forma más adecuada para representar datos estructurados, aunque esta representación es muy útil al leer o escribir ficheros</small>
+					</div>
+				</section>
+			</div>
+		</div>
 		<script src="../../dist/reveal.js"></script>
 		<script src="../../plugin/notes/notes.js"></script>
 		<script src="../../plugin/math/math.js"></script>
