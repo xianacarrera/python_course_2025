@@ -74,22 +74,32 @@
 					<h3>Tipos de datos numéricos</h3>
 					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;">
 						<div style="flex: 2; text-align: left;">
-							Python es muy flexible con los tipos de datos numéricos:
+							Existen varios tipos:
 							<br>
 							<ul>
-								<li>$a \in \mathbb{Z} \rightarrow $ <span style="font-family:monospace;">int</span></li>
-								Al contrario que en otros lenguajes, no hay ningún límite en el tamaño de los enters, pero fuera de $[-2^{63}, 2^{63}]$
-								las operaciones serán mucho más lentas. Para números grandes podemos usar: <span style="font-family:monospace;">x = 10_000_000_000</span>
-								<li>$a \in \mathbb{R} \rightarrow $ <span style="font-family:monospace;">float</span></li> 
-								La representación es en punto flotante de doble precisión (números máquina $\neq \mathbb{R}$).
-								<li>$a \in \mathbb{C} \rightarrow $ <span style="font-family:monospace;">complex</span></li>
-								Se comportan igual que un par de floats, pero podemos usar operaciones de números complejos, Python
-								usa la unidad imaginaria j en vez de i, por ejemplo $a = 3 + 5j$.
+								<div class="fragment">
+									<li>$a \in \mathbb{Z} \rightarrow $ <span style="font-family:monospace;">int</span></li>
+									Al contrario que en otros lenguajes, no hay ningún límite en el tamaño de los enters, pero fuera de $[-2^{63}, 2^{63}]$
+									las operaciones serán mucho más lentas. Para números grandes podemos usar: <span style="font-family:monospace;">x = 10_000_000_000</span>
+								</div>
+								<div class="fragment">
+									<li>$a \in \mathbb{R} \rightarrow $ <span style="font-family:monospace;">float</span></li> 
+									La representación es en punto flotante de doble precisión (números máquina $\neq \mathbb{R}$).
+								</div>
+
+								<div class="fragment">
+									<li>$a \in \mathbb{C} \rightarrow $ <span style="font-family:monospace;">complex</span></li>
+									Se comportan igual que un par de floats, pero podemos usar operaciones de números complejos, Python
+									usa la unidad imaginaria j en vez de i, por ejemplo $a = 3 + 5j$.
+								</div>
 							</ul>
 							<br>
 							<br>
-							Las interacciones entre <span style="font-family:monospace;">int</span> y <span style="font-family:monospace;">float</span> son automáticas, 
-							por ejemplo al sumar un <span style="font-family:monospace;">int</span> y un <span style="font-family:monospace;">float</span> el resultado será un <span style="font-family:monospace;">float</span>.	
+							<div class="fragment">
+								Las interacciones entre <span style="font-family:monospace;">int</span> y <span style="font-family:monospace;">float</span> son automáticas, 
+								por ejemplo al sumar un <span style="font-family:monospace;">int</span> y un <span style="font-family:monospace;">float</span> el resultado será un <span style="font-family:monospace;">float</span>.	
+							</div>
+
 						</div>
 					</div>
 				</section>

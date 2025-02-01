@@ -45,7 +45,7 @@
 				padding: 0;
 			}
 			#cursor {
-				animation: blink 0.7s infinite;
+				animation: blink 1.5s infinite;
 			}
 			@keyframes blink {
 				0%, 100% { opacity: 1; }
@@ -120,12 +120,5 @@ if __name__ == "__main__":
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
-        
-        <script>
-            const cursor = document.getElementById('cursor');
-            setInterval(() => {
-                cursor.style.visibility = cursor.style.visibility === 'hidden' ? 'visible' : 'hidden';
-            }, 1000);
-        </script>
 	</body>
 </html>
