@@ -13,6 +13,8 @@
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
 
+        <link rel="stylesheet" href="../../common.css">
+
         <style>
             table, th, td {
               border: 1px solid black;
@@ -44,6 +46,7 @@
                     <pre><code data-line-numbers="2-6" class="python">
                         mensaje_del_usuario = input("Dime tu nombre: ")
                         print(mensaje_del_usuario)
+
                     </code></pre>
                     <!-- "Dime tu nombre: " es la prompt -->
                     <!-- Lo que el usuario introduce se guarda en la variable mensaje_del_usuario -->
@@ -55,6 +58,7 @@
 
                         nombre = input(prompt)
                         print(f"Hola, {nombre}.")
+
                     </code></pre>
                 </section>
 
@@ -364,7 +368,190 @@
 
                 <section>
                     <img src="../../media/3/io_modes.png" alt="Diagrama de modos de la funcióno open()">
+                    
                     https://stackoverflow.com/questions/6648493/how-to-open-a-file-for-both-reading-and-writing
+                </section>
+
+                <section>
+                    <h1>Funciones lambda <span style="font-family:monospace;">lambda</span> </h1>
+                    <img src="../../media/3/lambdas.jpg" alt="Lambdas meme">
+                </section>
+
+                <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+                    <h3>Funciones lambda</h3>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+                        <div style="flex: 2; text-align: left;">
+                            <ul>
+                                <li>Son funciones anónimas (i.e., sin nombre) útiles para tareas pequeñas y sencillas.</li>
+                                <li>Su origen está en la investigación sobre el concepto de función que dio origen al cálculo lambda de Alonzo Church (1930s).</li>
+                                <li>El estilo funcional del cálculo lambda y las funciones lambda busca actuar sin tener en cuenta el estado actual del sistema y evitar los efectos secundarios.</li>
+                                <li>Python no es un lenguaje funcional, pero adoptó conceptos de lenguajes funcionales.</li>
+                                <li>Las funciones lambda solo pueden tener expresiones puras: no puede haber expresiones con asignaciones (=), <span class="monospace">while</span>, <span class="monospace">try</span>, etc.</li>
+                            </ul>
+                        </div>
+                        <div  style="flex: 2; text-align: left;">
+                            <blockquote cite="https://docs.python.org/3/faq/design.html#why-can-t-lambda-expressions-contain-statements">
+                                Unlike lambda forms in other languages, where they add functionality, Python lambdas are only a shorthand notation if you’re too lazy to define a function.
+                                Añadir fuente
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    <aside class="notes">
+                        Lambda calculus es Turing completo (cualquier tipo de cálculo, equiv a Máquina de Turing).
+                        Los lenguajes funcionales utilizan la filosofía del cálculo lambda. 
+                        Lenguajes funcionales: Haskell, Lisp, Erlang...
+                        Yes, son sintactic sugar.
+                    </aside>
+                </section>
+
+                <section style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div style="display: flex; gap: 2rem; align-items: center;">
+                    <h2 style="margin: 0;">Sintaxis</h2>
+                    <span style="text-align: left; align-items: center;">
+                        <span class="monospace" style="align-items: center;">lambda argumentos: expresión</span>
+                    </span>
+
+                    </div>
+                    <div style="display:flex; flex-direction: column; text-align: left;">
+                        <ul>
+                            <li><span class="monospace">lambda</span> indica que se trata de una función lambda</li>
+                            <li><span class="monospace">argumentos</span>: Los parámetros (0, 1 o varios). Estas variables solo pueden ser usadas dentro de la lambda en la que se declaran.</li>
+                            <li><span class="monospace">expresión</span>: El cuerpo de la función, que indica qué devuelve. Debe ser una única expresión.</li>
+                        </ul>
+
+                        <p>Ejemplos:</p>
+                        <div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                        <pre><code class="python">
+                            lambda x: x + 1
+
+                            lambda: True
+
+                            cuadrado = lambda x: x * x
+                            print(cuadrado(3))     # 9
+                        </code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Más ejemplos</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                        
+                        <!-- Escape Characters -->
+                        <div style="text-align: left;" class="fragment">
+                            <pre style="width: 42em;"><code class="python">
+    def sumar(x, y):
+        return x + y
+                            </code></pre>
+                        </div>
+                
+                        <div style="text-align: left;" class="fragment">
+                            <pre style="width: 42em;"><code class="python">
+    lambda x, y: x + y
+
+                            </code></pre>
+                        </div>
+                
+                        <div style="text-align: left;" class="fragment">
+                            <pre style="width: 42em;"><code class="python">
+    def nombre_completo(nombre, apellido):
+        return f"{nombre.title()} {apellidos.title()}"
+                            </code></pre>
+                        </div>
+                
+                        <!-- String Immutability -->
+                        <div style="text-align: left;" class="fragment">
+                            <pre style="width: 42em;"><code class="python">
+    lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"    
+                            
+                        </code></pre>
+                        </div>
+                
+                    </div>
+                </section>
+
+                
+                <!-- TEXTO ARRIBA, CÓDIGO ABAJO, CON IMAGEN -->
+                <section style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                        <h2>Casos de uso columnes</h2>
+                        <span style="text-align: left;">
+                            Las funciones lambda son especialmente útiles cuando se usan junto a iterables y funciones como <span class="monospace">filter</span>, <span class="monospace">map</span>, <span class="monospace">sorted</span>, etc.
+                        </span>
+                    </div>
+                    <div>
+                        <span><span class="monospace">map</span> aplica una función a cada elemento de un iterable. Sintaxis: <span class="monospace">map(function, iterables)</span></span>
+                        <div style="display: flex; gap: 2rem; flex-direction: row; align-items: flex-start;">
+                            <div style="flex: 1;">
+                                <pre><code class="python">
+    def doblar(x):
+        return 2 * x
+    
+    lista = [1, 2, 3, 4]
+    dobles = map(dobles, lista)
+    print(dobles)      # [2, 4, 6, 8]
+                                </code></pre>
+                            </div>
+
+                            <div style="flex: 1;">
+                                <pre><code class="python">
+    lista = [1, 2, 3, 4]
+    dobles = list(map(lambda x: 2 * x, lista))
+    print(dobles)      # [2, 4, 6, 8]
+                                </code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <span><span class="monospace">filter</span> mantiene solo aquellos elementos del iterable que cumplen la condición indicada. Sintaxis: <span class="monospace">filter(function, iterables)</span></span>
+                    <div style="display: flex; gap: 2rem; flex-direction: row; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <pre><code class="python">
+    def ker_mod_2(x):
+        return x % 2 == 0
+
+    lista = range(2, 7)
+    res = list(filter(ker_mod_2, lista))
+    print(res)      # [2, 4, 6]
+                            </code></pre>
+                        </div>
+
+                        <div style="flex: 1;">
+                            <pre><code class="python">
+    lista = range(2, 7)
+    res = list(filter(lambda x: x % 2 == 0, lista))
+    print(res)      # [2, 4, 6]
+                            </code></pre>
+                        </div>
+                    </div>
+                    <span><span class="monospace">sorted</span> devuelve una lista ordenada a partir de un iterable. Sintaxis: <span class="monospace">sorted(iterable, key=key, reverse=reverse)</span></span>
+                    <div style="display: flex; gap: 2rem; flex-direction: row; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <pre><code class="python">
+    lista = list('vwerfa')
+    ordenada = sorted(lista)
+    print(ordenada)      # ['a', 'e', 'f', 'r', 'v', 'w']
+
+    nums = [15, 11, 4, -5, 0, -1, 9]
+    def dist_10(n):
+        return abs(10-n)
+    print(sorted(nums, key=dist_10))    # [11, 9, 15, 4, 0, -1, -5]
+    TODO: caso empate??
+                            </code></pre>
+                        </div>
+
+                        <div style="flex: 1;">
+                            <pre><code class="python">
+    nums = [15, 11, 4, -5, 0, -1, 9]
+    print(sorted(nums, key=lambda n: abs(10-n), reverse=True))    # [-5, -1, 0, 4, 15, 11, 9]
+                            </code></pre>
+                        </div>
+                    </div>
+                <aside class="notes">
+                    filter y map devuelven un iterator
+                    en el ejemplo de filter se ve que se puede hacer sobre un iterable cualquiera (range en vez de list)
+                    Por defecto, en sorted, key = None, reverse = False (ascending).
+                </aside>
                 </section>
 			</div>
 		</div>
