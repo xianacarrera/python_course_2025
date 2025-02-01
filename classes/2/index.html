@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="../../dist/reset.css">
 		<link rel="stylesheet" href="../../dist/reveal.css">
 		<link rel="stylesheet" href="../../dist/theme/solarized.css">
+		<link rel="stylesheet" href="../../common.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
@@ -46,8 +47,8 @@
 							<ul>
 								<li>No hace falta declarar variables antes de usarlas, ni especificar su tipo</li>
 								<li><b>Tipado dinámico</b></li>
-								<li>Podemos usar <span style="font-family: monospace;">type()</span> para ver qué tipo tenemos en cada variable</li>
-								<li>Formato específico: los nombres de variables no pueden contener espacios y no pueden empezar con números ni con <span style="font-family: monospace;">__</span></li>
+								<li>Podemos usar <span class="monospace">type()</span> para ver qué tipo tenemos en cada variable</li>
+								<li>Formato específico: los nombres de variables no pueden contener espacios y no pueden empezar con números ni con <span class="monospace">__</span></li>
 								<li>No hay constantes como tal, el convenio para escribir variables que no deberían cambiar es en mayúsculas</li>
 							</ul>
 						</div>
@@ -139,7 +140,7 @@
 					<div style="display: flex; gap: 2rem; align-items: flex-start;">
 					  <h2>"Strings"</h2>
 					  <span style="text-align: left;">
-						Una <span style="font-family: monospace;">string</span> (o cadena) no es más que una secuencia de carácteres, por ejemplo,
+						Una <span class="monospace">string</span> (o cadena) no es más que una secuencia de carácteres, por ejemplo,
 						una palabra, frase, o línea de un archivo de texto.
 					  </span>
 
@@ -147,7 +148,7 @@
 					<div style="display:flex; flex-direction: column; text-align: left;">
 						<span>Existen varias formas de definir strings:</span>
 
-						<div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:50px; justify-content: space-between;">
+						<div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
 						<pre><code>
 		x = "Matemáticas " 	# Comillas simples
 		y = 'USC'						# Comillas dobles
@@ -307,7 +308,7 @@
 					<ul>
 						<li>Úitles para imprimir tablas de contenido, formatear fecha y hora</li>
 						<li>También hacen más sencillo encontrar bugs!</li>
-						<li>Sintaxis muy sencilla:  <span style="font-family: monospace;"> <b>  f</b>"texto normal {expresión} ..."</span></li>
+						<li>Sintaxis muy sencilla:  <span class="monospace"> <b>  f</b>"texto normal {expresión} ..."</span></li>
 						<li>Muchos indicadores de formato adicionales: <a href="https://fstring.help/cheat/" target="_blank" >cheat sheet</a></li>
 					</ul>
 					<div class="fragment">
@@ -334,7 +335,7 @@
 				<section>
 					<div style="display: flex; flex-direction: row; gap: 30px; align-items: flex-start;"> 
 						<h2>Listas</h2>
-						<p style="text-align: left; margin: 0;">Las listas son una de las estructuras más simples y flexibles del lenguaje, y actúan de forma similar a los arrays de otros lenguajes: <span style="font-family: monospace;">lista = [1, "python", [1,3]]</span></p>
+						<p style="text-align: left; margin: 0;">Las listas son una de las estructuras más simples y flexibles del lenguaje, y actúan de forma similar a los arrays de otros lenguajes: <span class="monospace">lista = [1, "python", [1,3]]</span></p>
 					</div>
 					<ul>
 						<li>Colección de elementos <b>ordenada</b></li>
@@ -349,27 +350,28 @@
 	# Acceder a elementos, mismas reglas que con strings
 	print(lista[0])		# 1
 	print(lista[-1])	# 5
+
 	# Slicing
 	print(lista[1:3])	# [1, 2]
-	# Modificar elementos
-	lista[0] = 0
-	# Eliminar elementos
-	del lista[1]
 				</code></pre>
 				</section>
 				<section>
 					<h3>Listas</h3>
 					<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
 						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;" class="fragment">
-							<p style="margin: 0;">Hay muchas formas de usarlas, por ejemplo pueden comportarse como pilas, <em>Last In, First out</em>:</p>
+							<p style="margin: 0;">Se pueden añadir elementos con <span class="monospace">.append()</span> y <span class="monospace">.insert()</span></p>
 							<pre style="margin: 0"><code class="python" >
-	stack = []
-	stack.append(1)
-	stack.append(2)
-	stack.append(3)
-	print(stack.pop())	# 3
-	print(stack.pop())	# 2
-	print(stack.pop())	# 1
+	# Append añade un elemento al final
+	lista = ["mira", "wassap"]
+	lista.append("bro")		# ["mira", "wassap", "bro"]
+	# Insert se usa para añadir un elemento en una posición concreta
+	lista.insert(1, "ahora")	# ["mira", "ahora", "wassap", "bro"]
+							</code></pre>
+							<p style="margin: 0;">Y borrar con <span class="monospace">del</span> y <span class="monospace"> .pop() </span></p>
+							<pre style="margin: 0"><code class="python" >
+	lista = ["audi", "bmw", "mercedes"]
+	del lista[1]
+	print(lista)	# ["audi", "mercedes"]
 							</code></pre>
 						</div>
 						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem;" class="fragment">
@@ -412,7 +414,7 @@
 				<section>
 					<div style="display: flex; flex-direction: row; gap: 30px; align-items: flex-start;"> 
 						<h2>Tuplas</h2>
-						<p style="text-align: left; margin: 0;">Las tuplas son una estructura curiosa, se comportan de forma similar a las listas pero son <b>inmutables</b>: <span style="font-family: monospace;">tupla = (1, "python", [1,3])</span></p>
+						<p style="text-align: left; margin: 0;">Las tuplas son una estructura curiosa, se comportan de forma similar a las listas pero son <b>inmutables</b>: <span class="monospace">tupla = (1, "python", [1,3])</span></p>
 					</div>
 					<ul>
 						<li>Se pueden definir con o sin paréntesis</li>
@@ -432,12 +434,37 @@
 	x, y = y, x
 	print(x, y)		# 2 1
 					</code></pre>
-				</code></pre>
 				</section>
-				<section>
-					<h3>Sets</h3>
-					<p></p>
-				</section>
+				<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+                    <h2>Sets</h2>
+					<p>Implementa conjuntos de elementos no repetidos sin ordenar (o sea, un conjunto como los de toda la vida)</p>
+					<p>La sintaxis para declararlos es <span class="monospace">conj = {'a', 1, 'b'}</span></p>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+                        <div style="flex: 2.5; text-align: left;">
+							Sean $A$ y $B$ dos conjuntos (que en Python son <span class="monospace">a, b</span>), entonces tenemos las siguientes operaciones:
+                            <ul>
+                                <li>Unión: $ A \cup B \longleftrightarrow$ <span class="monospace"> a | b</span></li>
+                                <li>Intersección: $ A \cap B \longleftrightarrow$ <span class="monospace"> a & b</span></li>
+                                <li>Diferencia: $ A \setminus B \longleftrightarrow$ <span class="monospace"> a \ b</span></li>
+                                <li>Diferencia simétrica: $ (A \setminus B) \cup (B \setminus A) \longleftrightarrow$ <span class="monospace"> a ^ b</span></li>
+                            </ul>
+							<br>
+							También podemos añadir elementos con <span class="monospace">.add()</span> y borrarlos con <span class="monospace">.remove()</span>. La sintaxis es igual que para listas.
+                        </div>
+                        <div  style="flex: 2; text-align: left;">
+                            <pre><code class="python">
+	primes = {2, 3, 5, 7, 11}
+	odds = {1, 3, 5, 7, 9, 11}
+	
+	print(primes | odds)		# {1, 2, 3, 5, 7, 9, 11}
+	print(primes & odds)		# {3, 5, 7, 11}
+	print(primes - odds)		# {2}
+	print(primes ^ odds)		# {1, 2, 9}
+                            </code></pre>
+                        </div>
+                    </div>
+                </section>
+				<section></section>
 		</div>
 
 		<script src="../../dist/reveal.js"></script>
