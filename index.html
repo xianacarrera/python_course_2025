@@ -8,8 +8,12 @@
 
 		<link rel="stylesheet" href="menu.css">
 		<link rel="stylesheet" href="dist/reset.css">
+		<!-- Reveal.js core theme -->
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/solarized.css">
+		<!-- Solarized theme -->
+		<link id="solarized-theme" rel="stylesheet" href="dist/theme/solarized.css">
+		<!-- Moon theme -->
+		<link id="moon-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
 		<style>
 			.reveal .slides > section > div {
@@ -24,8 +28,6 @@
 			}
 			.course-code {
 				flex: 1;
-				background-color: #272822;
-				color: #f8f8f2;
 				padding: 1rem;
 				overflow: hidden;
 			}
@@ -54,7 +56,6 @@
 			.course-links a {
 				display: block;
 				text-decoration: none;
-				color: #333;
 			}
 		</style>
 	</head>
@@ -67,6 +68,7 @@
                             <div style="font-family: monospace; font-size: 3rem; text-align: left; margin-bottom: 2rem;">
                                 <span id="title">if __name__ == "__main__"</span><span id="cursor">:</span>
                             </div>
+							<button id="theme-toggle">Change Theme</button>
                             <div class="course-links" style="text-align: left; font-family: monospace; font-size: 1.5rem; line-height: 2;">
                                 <div>
                                     <h3>Parte 1: Introducción a Python y su ecosistema</h3>
@@ -120,5 +122,21 @@ if __name__ == "__main__":
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
+		<script>
+			const button = document.getElementById('theme-toggle');
+			const solarizedTheme = document.getElementById('solarized-theme');
+			const moonTheme = document.getElementById('moon-theme');
+		  
+			button.addEventListener('click', () => {
+			  // If moon theme is currently active, switch to reveal theme
+			  if (moonTheme.disabled) {
+				moonTheme.disabled = false;  // Enable the moon theme
+				solarizedTheme.disabled = true; // Disable the reveal theme
+			  } else {
+				moonTheme.disabled = true;   // Disable the moon theme
+				solarizedTheme.disabled = false; // Enable the reveal theme
+			  }
+			});
+		  </script>
 	</body>
 </html>
