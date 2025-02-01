@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/solarized.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+            <div class="slides">
+                <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
+                <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+                    <h3>Texto izquierda, código derecha</h3>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+                        <div style="flex: 2; text-align: left;">
+                            <ul>
+                                <li>No hace falta declarar variables antes de usarlas, ni especificar su tipo</li>
+                                <li><b>Tipado dinámico</b></li>
+                                <li>Podemos usar <span style="font-family: monospace;">type()</span> para ver qué tipo tenemos en cada variable</li>
+                                <li>Formato específico: los nombres de variables no pueden contener espacios y no pueden empezar con números ni con <span style="font-family: monospace;">__</span></li>
+                                <li>No hay constantes como tal, el convenio para escribir variables que no deberían cambiar es en mayúsculas</li>
+                            </ul>
+                        </div>
+                        <div  style="flex: 2; text-align: left;">
+                            <pre><code class="python">
+    lol = 5
+                            </code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SIDE BY SIDE CON CODIGO -->
+                <section>
+					<h3>Side by side con código</h3>
+					<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;" class="fragment">
+							<p style="margin: 0;">Hay muchas formas de usarlas, por ejemplo pueden comportarse como pilas, <em>Last In, First out</em>:</p>
+							<pre style="margin: 0"><code class="python" >
+    Frozone
+							</code></pre>
+						</div>
+						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem;" class="fragment">
+							<p style="margin: 0">Se pueden inicializar de muchas formas:</p>
+							<pre style="margin: 0"><code class="python" >
+    Frozone
+						</code></pre>
+						<br>
+						<em>Una pequeña nota: El auténtico poder de las listas y otras estructuras de datos se ve cuando las combinamos con bucles y funciones, algo que veremos más adelante.</em>
+						</div>
+					</div>
+				</section>
+
+                <!-- TEXTO ARRIBA, CÓDIGO ABAJO, CON IMAGEN -->
+                <section style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                    <h2>Texto arriba, código abajo con imagen</h2>
+                    <span style="text-align: left;">
+                        Una <span style="font-family: monospace;">string</span> (o cadena) no es más que una secuencia de carácteres, por ejemplo,
+                        una palabra, frase, o línea de un archivo de texto.
+                    </span>
+
+                    </div>
+                    <div style="display:flex; flex-direction: column; text-align: left;">
+                        <span>Existen varias formas de definir strings:</span>
+
+                        <div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                        <pre><code>
+    tetitas
+                        </code></pre>
+                        <img src="media/2/string_rust_vs_python.png" width="300px">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2X2 GRID con código en cada cell -->
+                <section>
+                    <h3>2x2 grid con código en cada cell</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                        
+                        <!-- Escape Characters -->
+                        <div style="text-align: left;" class="fragment">
+                            <p>Lorem ipsum</p>
+                            <pre><code class="python">
+        Lorem codium
+                            </code></pre>
+                        </div>
+                
+                        <!-- Unicode & Emojis -->
+                        <div style="text-align: left;" class="fragment">
+                            <p>Lorem ipsum</p>
+                            <pre><code class="python">
+        Lorem codium
+                            </code></pre>
+                        </div>
+                
+                        <!-- String Operators -->
+                        <div style="text-align: left;" class="fragment">
+                            <p>Lorem ipsum</p>
+                            <pre><code class="python">
+        Lorem codium
+                            </code></pre>
+                        </div>
+                
+                        <!-- String Immutability -->
+                        <div style="text-align: left;" class="fragment">
+                            <p>Lorem ipsum</p>
+                            <pre><code class="python">
+        Lorem codium
+                            </code></pre>
+                        </div>
+                
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				katex: {
+					version: 'latest',
+					delimiters: [
+					{ left: '$$', right: '$$', display: true },
+					{ left: '$', right: '$', display: false },
+					{ left: '\\(', right: '\\)', display: false },
+					{ left: '\\[', right: '\\]', display: true },
+					],
+					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+				},
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+    </body>
+</html>
