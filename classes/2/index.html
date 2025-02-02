@@ -352,8 +352,7 @@
 					<p>Se usan principalmente en estructuras de control de flujo y en comparaciones</p>
 					<br>
 					<div>
-						<p>Comparaciones: devuelven un Booleano</p>
-						<div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+						<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap:20px;">
 							<div><span class="monospace">a == b</span></div>
 							<div><span class="monospace">a != b</span></div>
 							<div><span class="monospace">a &gt; b</span></div>
@@ -361,34 +360,48 @@
 							<div><span class="monospace">a &gt;= b</span></div>
 							<div><span class="monospace">a &lt;= b</span></div>
 						</div>
+						<br>
+						<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap:20px;" class="fragment">
+							<div><span class="monospace">cond1 and cond2</span></div>
+							<div><span class="monospace">cond1 or cond2</span></div>
+							<div><span class="monospace">not cond</span></div>
+						</div>
+						<br>
+						<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap:20px;" class="fragment">
+							<div><span class="monospace">in</span></div>
+							<div><span class="monospace">not in</span></div>
+							<div><span class="monospace">is</span></div>
+							<div><span class="monospace">is not</span></div>
+						</div>
 					</div>
-					<br>
-					<pre class="fragment"><code class="python" data-line-numbers>
-	pi, approximate_pi = 3.14, 3
-	print(pi == approximate_pi)		# False
-	print(pi &gt; approximate_pi)		# True
-	
-					</code></pre>
 				</section>
 				<section>
 					<h3>Booleanos y comparaciones</h3>
 					<p>Por supuesto, podemos comparar strings y otros tipos de datos</p>
 					<p>Para negar un booleano, usamos <span class="monospace">not</span></p>
 					<div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-						<pre><code class="python" data-line-numbers style="height: 100%;">
+						<pre><code class="python" data-line-numbers="1-7|9-14|17-23" style="height: 100%;">
+	# Operadores lógicos
+	print(3.14 != 3.1415)			# True
+	print(not True)						# False
+	print(0 &lt 1 and 1 &lt 2)		# True
+	print(0 &lt 1 &lt 2)					# True
+
+
+
 	# Comparaciones con strings
 	print("hola" == "hola")		# True
 	print("hola" == "adiós")	# False
 	print("hola" &gt; "adiós")		# True (orden alfabético)
+
+
+
 
 	# Hay algunos valores especiales que se pueden interpretar como Verdadero/Falso
 	print(True == 1)					# True
 	print(False == 0)					# True
 	print(bool(""))						# False
 	print(bool("hola"))				# True
-
-	# Negación
-	print(not True)						# False
 					
 						</code></pre>
 						<img src="../../media/2/boolean_troll.webp" width="600px">
@@ -451,9 +464,18 @@
 	lista = list("hola")    # ['h', 'o', 'l', 'a']
 	lista = [0] * 10				# [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-						</code></pre>
-						<br>
-						<em>Una pequeña nota: El auténtico poder de las listas y otras estructuras de datos se ve cuando las combinamos con bucles y funciones, algo que veremos más adelante.</em>
+							</code></pre>
+							<p style="margin: 0">Y podemos usar los condicionales <span class="monospace">in</span> y <span class="monospace">not in</span>:</p>
+							<pre style="margin: 0"><code class="python" data-line-numbers>
+	frutas = ["manzana", "banana", "cereza", "uva"]
+
+	if "banana" in frutas:
+		print("Genial! La banana está en la lista de frutas.")
+
+	if "kiwi" not in frutas:
+		print("Cáspita! El kiwi no está en la lista de frutas.")
+	
+							</code></pre>			
 						</div>
 					</div>
 				</section>
@@ -687,6 +709,27 @@
 					</code></pre>
 				</section>
 				<section>
+					<div style="display:flex; flex-direction: column; align-items: flex-start;">
+						<h3>El operador ternario</h3>
+						<ul>
+							<li>En Python podemos simplificar condicionales sencillos usando el operador ternario: <span class="monospace">valor_si_cierto if condicion else valor_si_falso</span>:</li>
+							<li>No suele ser buena idea abusar de ellos para cosas complicadas, ya que dificultan la lectura del programa</li>
+						</ul>
+					</div>
+					<br>
+					<div style="display:flex; flex-direction: row; gap:2rem; align-items: flex-start;">
+						<pre style="flex:1;"><code class="python" data-line-numbers>
+	# Sintaxis: valor_si_cierto if condición else valor_si_falso
+	edad = 20
+	print("Puedes beber" if edad >= 18 else "No puedes beber")
+	n = 2903
+	print("par" if n % 2 == 0 else "impar")
+
+						</code></pre>
+						<p style="text-align: right; flex:1;">Una aclaración importante: <span class="monospace">=</span> es para asignar un valor a una variable, mientras que <span class="monospace">==</span> es para hacer comparaciones!</p>
+					</div>
+				</section>
+				<section>
 					<h2>Indentación</h2>
 					<p>En Python, la indentación es <b>obligatoria</b> y se usa para delimitar bloques de código. 
 					<pre><code class="python">
@@ -703,6 +746,134 @@
 	else:
 	print("at least one non-positive") # de cuál if es este else?
 					</code></pre>
+				</section>
+				<section>
+					<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+						<h2>Bucles</h2>
+						<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+							<div style="flex: 2; text-align: left;">
+								<ul>
+									<li>En Python existen dos tipos de bucles: <span class="monospace">for</span> y <span class="monospace">while</span></li>
+									<li><b>Los búcles <span class="monospace">for</span> funcionan distinto a otros lenguajes, solo iteran sobre estructuras de datos</b></li>
+									<li>Con la estructura <span class="monospace">range(start, end, skip)</span> podemos implementar bucles for como los de otros lenguajes</li>
+									<li>Podemos usar <span class="monospace">break</span> para salir de un bucle</li>
+									<li>Podemos usar <span class="monospace">continue</span> para saltar a la siguiente iteración</li>
+								</ul>
+							</div>
+							<div  style="flex: 2; text-align: left;">
+								<pre><code class="python" data-line-numbers="1-10|13-19">
+	# Bucles sobre una lista
+	frutas = ["manzana", "platano", "naranja", "limón", "kiwi"]
+	for fruta in frutas:
+		if fruta == "platano":
+			continue
+		print(fruta)
+		if fruta == "limón":
+			break
+	
+
+
+	
+	# Bucles con range
+	for i in range(5):
+		print(i)
+	for i in range(1, 11, 2):
+		print(i)
+	
+								</code></pre>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<h3>Bucles for</h3>
+					<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;" class="fragment">
+							<p style="margin: 0;">Hay 2 formas de iterar sobre listas, depende de si necesitamos los índices o no:</p>
+							<pre style="margin: 0"><code class="python" data-line-numbers>
+	cats = ["sebastian", "supreme cat", "frozone"]
+	for cat in cats:
+		print(f"{cat.title()} es mi gato favorito")
+	
+	# Si necesitamos los índices de la lista, usamos enumerate()
+	for i, cat in enumerate(cats):
+		print(f"{cat.title()} es el gato número {i+1}")
+
+							</code></pre>
+						</div>
+						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem;" class="fragment">
+							<p style="margin: 0">También podemos iterar sobre otras estructuras de datos</p>
+							<pre style="margin: 0"><code class="python" data-line-numbers="1-11|17-22">
+	# Sobre diccionarios
+	datos = {"nombre": "Evariste", "apellido": "Galois", "edad": 20}
+	for key, value in datos.items():
+		print(f"{key}: {value}")
+	
+	for key in datos.keys():
+		print(key)
+	
+	for value in datos.values():
+		print(value)
+	
+
+
+
+
+	# Sobre sets
+	primes = {2, 3, 5, 7, 11}
+	for i, p in enumerate(primes):
+		print(p, "es el primero número #", i)
+	
+							</code></pre>
+						</code></pre>
+						</div>
+					</div>
+				</section>
+				<section style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                        <h2>Bucles while</h2>
+						<p style="margin:0">Los bucles <span class="monospace">while</span> se ejecutan mientras una condición sea verdadera</p>
+                    </div>
+                    <div style="display:flex; flex-direction: column; text-align: left;">
+                        <div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+							<pre><code class="python" data-line-numbers>
+		# Bucle infinito
+		while True:
+			pass # La palabra "pass" se usa para indicar no hacer nada, pero manteniendo la indentación de Python
+		
+		# Bucle con condición
+		x = 0
+		while x &lt 10:
+			print(x)
+			x += 1           
+		    
+							</code></pre>
+                        	<img src="../../media/2/infinite_loops.jpg" width="450px">
+                        </div>
+                    </div>
+                </section>
+				<section data-transition="convex" data-transition-speed="slow">
+					<h2>Ejercicios (we are sorry)</h2>
+					<ol>
+						<li>Usa <em>f-strings</em> para imprimir el siguiente diccionario con el formato dado:</li>
+						<pre><code class="python" data-line-numbers="">
+	estudiante = {"nombre": "Lucía", "edad": 21, "carrera": "Matemáticas", "promedio": 8.75}
+	# IMPRIMIR COMO: Lucía tiene 21 años, estudia Matemáticas y tiene un promedio de 8.75.
+
+						</code></pre>
+						<li>Crea un diccionario que contenga la asignación $n \to n^2$ para los $100$ primeros números naturales. Encuentra la suma de los cuadrados de los $100$ primeros números naturales usando este diccionario.</li>
+						<li>Imprime la <a href="https://es.wikipedia.org/wiki/Conjetura_de_Collatz"><em>Secuencia de Collatz</em></a> para el número $n=127$.</li>
+						<li>Encuentra si el número $n = 53239$ es primo, para ello, puedes usar un bucle y ver si es divisible para alguno de los números $\left[2, \dots, \sqrt{n}\right]$.</li>
+						<li>Crea una lista cuyos elementos sean el conjunto $P_{10001}$ de todos los números primos entre $2$ y $10001$ e imprimela.</li>
+						<li>Dadas 2 matrices cuadradas $A, B \in \mathcal{M}(n\times n)$, implementa la multiplicación de matrices usando 3 bucles anidados. Puedes comprobar si funciona usando las siguientes matrices:</li>
+						<pre><code class="python" data-line-numbers>
+	A = [[1, 2], [3, 4]]
+	B = [[5, 6], [7, 8]]
+	# Deberías obtener [[19, 22], [43, 50]]
+
+						</code></pre>
+					</ol>
 				</section>
 			</div>
 		</div>
