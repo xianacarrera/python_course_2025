@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Clase 4</title>
+
+		<link rel="stylesheet" href="../../dist/reset.css">
+		<link rel="stylesheet" href="../../dist/reveal.css">
+		<link rel="stylesheet" href="../../dist/theme/solarized.css">
+        <link rel="stylesheet" href="../../common.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+            <div class="slides">
+                <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
+                <section>
+                    <h1>Gestores de paquetes, entornos y notebooks</h1>
+                    <div class="fragment">
+                        <p>La clase de hoy se hará en dos apartados</p>
+                        <div style="display:flex; flex-direction: row; justify-content: space-around;">
+                            <div style="flex: 1;">1º parte $\rightarrow$ 📽️</div>
+                            <div style="flex: 1;">2º parte $\rightarrow$ 🖥️</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="fragment">
+                        <p>El objetivo es aprender <b>cómo se desarrolla un programa complejo en Python</b>, utlizando los bloques de construcción que nos dan los paquetes de terceros.</p>
+                        <p>También veremos un entorno de desarrollo muy visual que nos facilita crear un proyecto desde cero.</p>
+                    </div>
+                </section>
+                <section>
+                    <h2>Módulos</h2>
+                    <ul>
+                        <li>Cuando un programa crece, se hace exponencialmente más difícil trabajar con un solo fichero con todas nuestras funciones y lógica del programa</li>
+                        <li>A veces nuestro objetivo es desarrollar un programa que haga $X$ sin tener que implementar el algoritmo $Y$ que lo hace posible desde 0.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Un ejemplo sencillo: imaginemos que queremos hacer un programa para calcular las raíces de un polinomio $\sum_{i=1}^n a_ix^i = 0$. Podríamos modularizar cada parte del programa y organizar el proyecto como:</p>
+                    <pre class="fragment"><code class="python">
+    poly_calc/
+        main.py                 # El programa principal, que importa los módulos necesarios y enseña un menú
+        entrada.py              # Módulo para pedir los coeficientes al usuario
+        metodos_exactos.py      # Módulo con los métodos exactos (para polinomios de grado 1-4)
+        metodos_numericos.py    # Módulo con los métodos aproximados (para polinomios de grado 5+)
+
+                    </code></pre>
+                    <div class="fragment">
+                        Ahora imaginémonos que queremos extender el programa a polinomios trigonométricos $\sum_{i=1}^n a_i\sin(x)^i + b_i\cos(x)^i = 0$. Podríamos añadir un módulo nuevo <span class="monospace">trig.py</span>. ¿Pero también tenemos que implementar las funciones seno y coseno? <b>No, podemos importarlas de la librería estándar de Python.</b>
+                    </div>
+                    <pre class="fragment"><code class="pyhton"  data-line-numbers>
+        from math import pi, sin, cos
+        print(sin(0), cos(pi/2))
+
+                    </code></pre>
+                </section>
+                <section>
+                    La sintaxis para importar y exportar módulos en Python es muy sencilla:
+                    <pre style="height: 700px;"><code class="python" data-line-numbers="1-16|17-32">
+    # (Asumiendo la estructura de archivos de la diapositiva anterior)
+    # main.py
+    import entrada                                  # Importar un módulo
+    import metodos_exactos as me                    # Importar un módulo con un alias
+    from metodos_numericos import newton_raphson    # Importar una función específica
+
+    # Usemos las funciones de los módulos importados
+    pol = entrada.pedir_coeficientes()
+
+    if len(pol) == 3:
+        me.resolver_grado_3(pol)
+    elif len(pol) > 4:
+        newton_raphson(pol)
+    ...
+
+
+
+    # Los archivos de módulo simplemente definen las funciones
+    # entrada.py
+    def pedir_coeficientes():
+        ...
+    
+    # metodos_exactos.py
+    def resolver_grado_3(pol):
+        ...
+    
+    # metodos_numericos.py
+    def newton_raphson(pol):
+        ...
+    
+                    </code></pre>
+
+                </section>
+                <section style="display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; text-align: left;">
+                    <h3>La librería estándar de Python</h3>
+                    <p>La instalación de Python cuenta, además de con el intérprete del lenguaje, con una <a href="https://docs.python.org/3/library/index.html">librería estándar</a> con funcionalidades esenciales</p>
+                    <p>Algunos ejemplos de módulos de la librería estándar son:</p>
+                    <div style="display: flex; flex-direction: row; gap:2rem;">
+                    <ul style="text-align: left; flex:1;">
+                        <li><span class="monospace">math</span>: funciones matemáticas</li>
+                        <li><span class="monospace">random</span>: números pseudo-aleatorios y distribuciones</li>
+                        <li><span class="monospace">time</span> y <span class="monospace">datetime</span>: Fecha y hora</li>
+                        <li><span class="monospace">shutil</span> y <span class="monospace">pathlib</span>: Manejo de archivos y directorios</li>
+                        <li><span class="monospace">os</span>: funciones para interactuar con el sistema operativo</li>
+                        <li><span class="monospace">re</span>: expresiones regulares</li>
+                        <li><span class="monospace">csv</span>: archivos CSV</li>
+                        $\dots$
+                    </ul>
+                    <div style="flex: 1;">
+                        <img src="../../media/4/std_lib_usage.webp">
+                        <a href="https://medium.com/@tobias.talaj/decoding-python-which-standard-library-components-do-you-really-need-to-know-3ae3541bb2be">Un artículo interesante con las funciones y módulos más usadas de la librería estándar</a>
+                    </div>
+                    </div>
+                    <br><br>
+                </section>
+                <section data-auto-animate>
+                    <h3>Paquetes</h3>
+                    <div>
+                        <p style="font-size: 3rem;">¿Qué hacemos si necesitamos una funcionalidad que no está en la librería estándar?</p>
+                        <p style="font-size: 3rem;" data-id="paq">🤓Dejamos de ser vagos y desarrollamos código🤓</p>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <h3>Paquetes</h3>
+                    <div>
+                        <p style="font-size: 3rem;">¿Qué hacemos si necesitamos una funcionalidad que no está en la librería estándar?</p>
+                        <p style="font-size: 3rem;" data-id="paq"><s>🤓Dejamos de ser vagos y desarrollamos código🤓</s> <b>🗿Usamos paquetes🗿</b></p>
+                        <ul class="fragment">
+                            <li>En Python, una gran comunidad de desarrolladores ha creado infinidad de paquetes con los que se pueden construir todo tipo de programas con facilidad, incluso sin ser un experto en la materia.</li>
+                            <li>Estos paquetes incluyen módulos que podemos importar de la misma forma que los desarrollados por nosotros.</li>
+                            <li>Los gestores de paquetes facilitan enormemente su instalación, veremos como funcionan <span class="monospace">pip</span> y <span class="monospace">conda</span></li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- SIDE BY SIDE CON CODIGO -->
+                <section>
+					<h2>Gestores de paquetes</h2>
+                    
+				</section>
+            </div>
+        </div>
+        
+        <script src="../../dist/reveal.js"></script>
+		<script src="../../plugin/notes/notes.js"></script>
+		<script src="../../plugin/math/math.js"></script>
+		<script src="../../plugin/markdown/markdown.js"></script>
+		<script src="../../plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				katex: {
+					version: 'latest',
+					delimiters: [
+					{ left: '$$', right: '$$', display: true },
+					{ left: '$', right: '$', display: false },
+					{ left: '\\(', right: '\\)', display: false },
+					{ left: '\\[', right: '\\]', display: true },
+					],
+					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+				},
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+    </body>
+</html>
