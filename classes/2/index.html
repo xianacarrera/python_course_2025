@@ -341,6 +341,59 @@
 						</code></pre>
 					</div>
 				</section>
+				<section data-auto-animate>
+					<h2>Un último tipo de datos básico: Booleanos</h2>
+					<p>Los booleanos son un tipo de datos que solo puede tener dos valores: <span class="monospace">True</span> o <span class="monospace">False</span></p>
+					<p>Se usan principalmente en estructuras de control de flujo y en comparaciones</p>
+				</section>
+				<section data-auto-animate>
+					<h2>Un último tipo de datos básico: Booleanos</h2>
+					<p>Los booleanos son un tipo de datos que solo puede tener dos valores: <span class="monospace">True</span> o <span class="monospace">False</span></p>
+					<p>Se usan principalmente en estructuras de control de flujo y en comparaciones</p>
+					<br>
+					<div>
+						<p>Comparaciones: devuelven un Booleano</p>
+						<div style="display: grid; grid-template-columns: repeat(3, 1fr);">
+							<div><span class="monospace">a == b</span></div>
+							<div><span class="monospace">a != b</span></div>
+							<div><span class="monospace">a &gt; b</span></div>
+							<div><span class="monospace">a &lt; b</span></div>
+							<div><span class="monospace">a &gt;= b</span></div>
+							<div><span class="monospace">a &lt;= b</span></div>
+						</div>
+					</div>
+					<br>
+					<pre class="fragment"><code class="python" data-line-numbers>
+	pi, approximate_pi = 3.14, 3
+	print(pi == approximate_pi)		# False
+	print(pi &gt; approximate_pi)		# True
+	
+					</code></pre>
+				</section>
+				<section>
+					<h3>Booleanos y comparaciones</h3>
+					<p>Por supuesto, podemos comparar strings y otros tipos de datos</p>
+					<p>Para negar un booleano, usamos <span class="monospace">not</span></p>
+					<div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+						<pre><code class="python" data-line-numbers style="height: 100%;">
+	# Comparaciones con strings
+	print("hola" == "hola")		# True
+	print("hola" == "adiós")	# False
+	print("hola" &gt; "adiós")		# True (orden alfabético)
+
+	# Hay algunos valores especiales que se pueden interpretar como Verdadero/Falso
+	print(True == 1)					# True
+	print(False == 0)					# True
+	print(bool(""))						# False
+	print(bool("hola"))				# True
+
+	# Negación
+	print(not True)						# False
+					
+						</code></pre>
+						<img src="../../media/2/boolean_troll.webp" width="600px">
+					</div>
+				</section>
 				<section>
 					<h1 >Estructuras de datos</h1>
 				</section>
@@ -548,22 +601,107 @@
 					</div>
 				</section>
 				<section>
-					<h1>Control de flujo</h1>
+					<h3>Estructuras de datos</h3>
+					En todas estas estructuras de datos podemos ver si un elemento está dentro o no usando <span class="monospace">in</span> y <span class="monospace">not in</span>.
+					<pre><code class="python" data-line-numbers>
+	# Listas
+	lista = [1, 2, 3, 4, 5]
+	print(3 in lista)		# True
+	print(6 not in lista)	# True
+
+	# Sets
+	conjunto = {1, 2, 3, 4, 5}
+	print(3 in conjunto)		# True
+	
+	# Diccionarios
+	datos = {"nombre": "Evariste", "apellido": "Galois", "edad": 20}
+	print("nombre" in datos)	# True
+
+					</code></pre>
 				</section>
 				<section>
+					<h1>Control de flujo</h1>
+				</section>
+				<section data-auto-animate>
 					<h2>Condicionales</h2>
-					<p>Los condicionales en Python son muy sencillos, y siguen la estructura <span class="monospace">if ... elif ... else</span></p>
-					<pre><code class="python" data-line-numbers>
-	tiempo = consultar_tiempo()
+					<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span></p>
+					<pre data-id="code-animation"><code class="python" data-line-numbers="2-4">
+	tiempo = "lluvia"
 	if tiempo == "lluvia":
-		print("No sé si ir a Estructuras Algebraicas")
+		print("No sé si ir a Supertopo")
 	elif tiempo == "sol":
 		print("Voy a clase")
 	elif tiempo == "tormenta":
-		print("Va a ir a Estructuras Algebraicas su padre")
+		print("Va a ir a Supertopo su padre")
 	else:
 		print("No sé qué tiempo hace")
-	
+		
+					</code></pre>
+				</section>
+				<section data-auto-animate>
+					<h2>Condicionales</h2>
+					<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span></p>
+					<pre data-id="code-animation"><code class="python" data-line-numbers="2,5-6">
+	tiempo = "sol"
+	if tiempo == "lluvia":
+		print("No sé si ir a Supertopo")
+	elif tiempo == "sol":
+		print("Voy a clase")
+	elif tiempo == "tormenta":
+		print("Va a ir a Supertopo su padre")
+	else:
+		print("No sé qué tiempo hace")
+		
+					</code></pre>
+				</section>
+				<section data-auto-animate>
+					<h2>Condicionales</h2>
+					<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span></p>
+					<pre data-id="code-animation"><code class="python" data-line-numbers="2,7-8">
+	tiempo = "tormenta"
+	if tiempo == "lluvia":
+		print("No sé si ir a Supertopo")
+	elif tiempo == "sol":
+		print("Voy a clase")
+	elif tiempo == "tormenta":
+		print("Va a ir a Supertopo su padre")
+	else:
+		print("No sé qué tiempo hace")
+		
+					</code></pre>
+				</section>
+				<section data-auto-animate>
+					<h2>Condicionales</h2>
+					<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span></p>
+					<pre data-id="code-animation"><code class="python" data-line-numbers="2,9-10">
+	tiempo = "tornado"
+	if tiempo == "lluvia":
+		print("No sé si ir a Supertopo")
+	elif tiempo == "sol":
+		print("Voy a clase")
+	elif tiempo == "tormenta":
+		print("Va a ir a Supertopo su padre")
+	else:
+		print("No sé qué tiempo hace")
+		
+					</code></pre>
+				</section>
+				<section>
+					<h2>Indentación</h2>
+					<p>En Python, la indentación es <b>obligatoria</b> y se usa para delimitar bloques de código. 
+					<pre><code class="python">
+	if x == 1:
+	print("x es 1")  # Error de indentación
+					</code></pre>
+					<p>Puede parecer una tontería pero el programa no compila si no pones las tabulaciones bien</p>
+					<p>Si esto es buena decisión de diseño o son mejores los <em>curly braces</em> { } es un debate milenario</p>
+					<p>Por supuesto tiene que haber alguna forma de indicar jerarquía entre bloques de códigos una vez introduces condicionales, para evitar ambigüedad (problema del <a href="https://en.wikipedia.org/wiki/Dangling_else">dangling else</a>)</p>
+					<pre><code class="python">
+	if x > 0:
+	if y > 0:
+	print("both positive")
+	else:
+	print("at least one non-positive") # de cuál if es este else?
 					</code></pre>
 				</section>
 			</div>
