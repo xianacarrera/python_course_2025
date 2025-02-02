@@ -1,2 +1,3 @@
-nums = [15, 11, 4, -5, 0, -1, 9]
-print(sorted(nums, key=lambda n: abs(10-n), reverse=True))
+datos = range(5, 50, 5)
+mayores_20 = filter(lambda x: x > 20, datos)
+print(list(mayores_20))
