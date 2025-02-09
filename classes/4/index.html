@@ -52,7 +52,7 @@
                     <div class="fragment">
                         Ahora imaginémonos que queremos extender el programa a polinomios trigonométricos $\sum_{i=1}^n a_i\sin(x)^i + b_i\cos(x)^i = 0$. Podríamos añadir un módulo nuevo <span class="monospace">trig.py</span>. ¿Pero también tenemos que implementar las funciones seno y coseno? <b>No, podemos importarlas de la librería estándar de Python.</b>
                     </div>
-                    <pre class="fragment"><code class="pyhton"  data-line-numbers>
+                    <pre class="fragment"><code class="pyhton" data-line-numbers>
         from math import pi, sin, cos
         print(sin(0), cos(pi/2))
 
@@ -138,8 +138,123 @@
                 <!-- SIDE BY SIDE CON CODIGO -->
                 <section>
 					<h2>Gestores de paquetes</h2>
-                    
 				</section>
+                <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+                    <h2>pip</h2>
+                    <h4><a target="_blank" href="https://pypi.org/project/pip/">https://pypi.org/project/pip/</a></h4>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+                        <div style="flex: 2; text-align: left;">
+                            <ul>
+                                <li class="fragment">Es el gestor por defecto de paquetes de Python</li>
+                                <li class="fragment">Permite instalar, actualizar y manejar dependencias entre paquetes</li>
+                                <li class="fragment">Se pueden guardar configuraciones en archivos <span class="monospace">requirements.txt</span>
+                            </ul>
+                        </div>
+                        <div style="flex: 3; text-align: left;" class="fragment" data-line-numbers>
+                            <pre><code class="bash">
+    # Estos comandos se ejecutan en una terminal!
+    # NOTA: Si tienes varias versiones de Python instaladas, 
+    # usar python -m pip en vez de pip
+    pip --version         # Comprobar versión instalada
+    
+    # Gestionar paquetes
+    pip install manim # Instalar el paquete manim
+    pip install --upgrade manim # Actualizar el paquete manim
+    pip install --uninstall manim # Desinstalar el paquete manim
+
+                            </code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>pip</h3>
+                    <p>Una tarea importante suele ser compartir nuestra lista de paquetes con otros desarrolladores</p>
+                    <div style="display: flex; flex-direction: row; gap: 2rem;">
+                        <div class="fragment" data-fragment-index="1">
+                            <img src="../../media/4/pip list.png" height="50%">
+                            <p>1. Listamos los paquetes<div class="monospace">pip list</div></p>
+                        </div>
+                        <div style="margin-top: 10rem;" class="fragment" data-fragment-index="2">
+                            $\rightarrow$
+                        </div>
+                        <div class="fragment" data-fragment-index="2">
+                            <img src="../../media/4/pip freeze.png" height="50%">
+                            <p>2. Guardamos los paquetes<div class="monospace">pip freeze > requirements.txt</div></p>
+                        </div>
+                        <div style="margin-top: 10rem;" class="fragment" data-fragment-index="3">
+                            $\rightarrow$
+                        </div>
+                        <div class="fragment" data-fragment-index="3">
+                            <img src="../../media/4/pip install.png" height="50%">
+                            <p>3. Instalamos los paquetes<div class="monospace">pip install -r requirements.txt</div></p>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>(mini)conda</h2>
+                    <p>Similar a <span class="monospace">pip</span>, pero tiene más funcionalidades y es más utilizado con paquetes matemático/científicos</p>
+                    <h4><a target="_blank" href="https://repo.anaconda.com/miniconda/">Descargar instalador</a></h4>
+                    <h4><a target="_blank" href="https://anaconda.org/search?q=tensorflow">Buscar paquetes</a></h4>
+                    <div style="text-align: left; display:flex; flex-direction: row; gap:2rem;">
+                        <div style="flex: 1;">
+                            <p>Algunas diferencias con pip:</p>
+                            <ul>
+                                <li class="fragment">Los paquetes de conda están pre-compilados, así que su instalación es más rápida</li>
+                                <li class="fragment">Resuelve dependencias automáticamente: evita tener conflictos entre versiones</li>
+                                <li class="fragment">Incluye entornos virtuales que facilitan cambiar entre proyectos</li>
+                            </ul>
+                        </div>
+                        <div style="flex: 1;" class="fragment">
+                            <img src="../../media/4/conda vs pip.png">
+                        </div>
+                    </div>
+                </section>
+                <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+                    <h2>conda</h2>
+                    <p>La instalación de paquetes es tan sencilla como con pip:</p>
+                    <pre><code class="bash">
+    conda install numpy  # Instalar el paquete numpy
+    conda update numpy   # Actualizar el paquete numpy
+    conda remove numpy   # Desinstalar el paquete numpy
+
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Entornos virtuales</h3>
+                    <p>Los entornos virtuales son una forma de aislar los paquetes de Python para que no interfieran entre sí</p>
+                    <p>Esto es útil cuando trabajamos en varios proyectos que requieren versiones diferentes de los mismos paquetes</p>
+                    
+                    <div style="display: flex; flex-direction: row; gap: 2rem;">
+                        <div style="flex: 2;">
+                            <pre><code class="bash">
+    conda create -n mi_env python=3.10  # Crear un nuevo entorno
+    conda activate mi_env  # Activar el entorno
+    conda deactivate  # Salir del entorno
+    conda env remove -n mi_env  # Eliminar el entorno
+
+    # Guardar el entorno en un archivo
+    conda env export > env.yml
+
+    # Cargar el entorno desde un archivo
+    conda env create -f env.yml
+                            </code></pre>
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">Se puede mezclar <span class="monospace">pip</span> y <span class="monospace">conda</span> en los entornos, pero no es muy recomendable <span style="font-size: 1rem;">(de todas formas, a veces es necesario porque en pip hay más paquetes)</span></li>
+                            <li class="fragment" data-fragment-index="2">No queremos acabar con situaciones como las de la imagen</li>
+                            <li class="fragment" data-fragment-index="3">Si nos pasa algo así, lo mejor es quemar el ordenador</li>
+                        </ul>
+                        </div>
+                        <div style="flex: 1" class="fragment" data-fragment-index="2">
+                            <img src="../../media/4/env_nightmare.jpg">
+                        </div>
+                    </div>                    
+                </section>
+
+                <section>
+                    <h3>Jupyter Notebooks</h3>
+                    <p class="fragment">En la siguiente parte de la clase, abriremos <span class="monospace">vscode</span> y nos pondremos a jugar con paquetes, veremos que podemos hacer con ellos</p>
+                    <p class="fragment">Pero primero, hace falta explicar que son los <em>Jupyter Notebooks</em> (esto es mucho más ligero que lo anterior, we promise)</p>
+                </section>
             </div>
         </div>
         
