@@ -202,6 +202,7 @@
                                 <li class="fragment">Los paquetes de conda están pre-compilados, así que su instalación es más rápida</li>
                                 <li class="fragment">Resuelve dependencias automáticamente: evita tener conflictos entre versiones</li>
                                 <li class="fragment">Incluye entornos virtuales que facilitan cambiar entre proyectos</li>
+                                <li class="fragment">Existen muchos más paquetes adicionales en <a href="https://conda-forge.org/packages"> conda-forge</a></li>
                             </ul>
                         </div>
                         <div style="flex: 1;" class="fragment">
@@ -217,6 +218,7 @@
     conda update numpy   # Actualizar el paquete numpy
     conda remove numpy   # Desinstalar el paquete numpy
 
+    conda install conda-forge::openai  # Instalar el paquete openai desde conda-forge
                     </code></pre>
                 </section>
                 <section>
@@ -227,6 +229,7 @@
                     <div style="display: flex; flex-direction: row; gap: 2rem;">
                         <div style="flex: 2;">
                             <pre><code class="bash">
+    conda env list   # Ver la lista de entornos
     conda create -n mi_env python=3.10  # Crear un nuevo entorno
     conda activate mi_env  # Activar el entorno
     conda deactivate  # Salir del entorno
@@ -254,6 +257,43 @@
                     <h3>Jupyter Notebooks</h3>
                     <p class="fragment">En la siguiente parte de la clase, abriremos <span class="monospace">vscode</span> y nos pondremos a jugar con paquetes, veremos que podemos hacer con ellos</p>
                     <p class="fragment">Pero primero, hace falta explicar que son los <em>Jupyter Notebooks</em> (esto es mucho más ligero que lo anterior, we promise)</p>
+                </section>
+                <section>
+                    <h4>Uso de notebooks en vscode</h4>
+                    <ol>
+                        <div style="display: flex; flex-direction: row; gap: 2rem;">
+                            <div class="fragment" data-fragment-index="1">
+                                <img src="../../media/4/extensiones.png" height="65%">
+                                <p>1. Instalamos las extensiones de vscode de Jupyter y Python</p>
+                            </div>
+                            <div style="margin-top: 10rem;" class="fragment" data-fragment-index="2">
+                                $\rightarrow$
+                            </div>
+                            <div class="fragment" data-fragment-index="2"> 
+                                <img src="../../media/4/ipynb.png">
+                                <p>2. Creamos un nuevo fichero <span class="monospace">.ipynb</span> dónde trabajaremos</p>
+                            </div>
+                            <div style="margin-top: 10rem;" class="fragment" data-fragment-index="3">
+                                $\rightarrow$
+                            </div>
+                            <div class="fragment" data-fragment-index="3">
+                                <img src="../../media/4/kernel.png">
+                                <p>3. Configuramos el <em>kernel</em> de nuestro nuevo entorno de conda</p>
+                            </div>
+                        </div>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Descarga de Notebooks</h3>
+                    <p>Ahora pasaremos a una clase interactiva, trabajaremos con los siguientes ficheros que podéis descargar aquí mismo:</p>
+                    <div style="border: 2px solid gray; padding: 1rem; border-radius: 10px;">
+                        <p>
+                            <a href="../../notebooks/test.ipynb">Introducción a Jupyter Notebook</a>
+                        </p>
+                        <p>
+                            <a href="../../notebooks/test.ipynb">Un ejemplo completo: animaciones matemáticas con Manim</a>
+                        </p>
+                    </div>
                 </section>
             </div>
         </div>
