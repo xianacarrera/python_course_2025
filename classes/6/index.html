@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Clase 6</title>
+
+		<link rel="stylesheet" href="../../dist/reset.css">
+		<link rel="stylesheet" href="../../dist/reveal.css">
+		<link rel="stylesheet" href="../../dist/theme/solarized.css">
+        <link rel="stylesheet" href="../../common.css">
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+            <div class="slides">
+                <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
+                <section>
+                    <h1>Uso de datasets en <img src="/media/6/pandas.svg" style="vertical-align: middle; height: 1.5em;"></h1>
+                    <p class="fragment">
+                        En esta clase, veremos como representar datos tabulares de forma eficiente, lo cuál es esencial en muchos proyectos de análisis de datos.
+                    </p>
+                    <p class="fragment">Pandas es una herramienta compleja, así que solo veremos algunas de sus funcionalidades. Hay mucha más información en los siguientes enlaces</p>
+                    <ul class="fragment">
+                        <li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/">Tutorial oficial de Pandas</a></li>
+                        <li><a href="https://pandas.pydata.org/docs/">Documentación completa</a></li>
+                        <li><a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Cheatsheet de comandos. Muy recomendable descargarla!</a></li>
+                        <li class="fragment"><a href="https://chatgpt.com/">ChatGPT 👍</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Pandas</h2>
+                    <ul>
+                        <li class="fragment"> Se puede instalar con <span class="monospace">pip install pandas</span> o con <span class="monospace">conda install -c conda-forge pandas</span>. En nuestro entorno de la clase 4 ya lo tenemos instalado :) </li>
+                        <li class="fragment">Sirve para manejar <b>datos tabulares</b>. Por ejemplo, archivos en formato <span class="monospace">.csv</span>, hojas de Excel, o bases de datos.</li>
+                        <li class="fragment">Para esto, se utiliza la abstracción principal del <b>Dataframe</b>, en el que cada fila representa a un individuo y cada columna uno de los atributos que posee. <div style="display: flex; justify-content: space-around;"><img src="/media/6/dataframe.svg"><img src="/media/6/dataframe_source.svg"></div></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Creación de Dataframes</h3>
+                    <div style="display: flex; gap: 2rem;">
+                        <div style="text-align: left;">
+                            <p>Hay varias formas de crear un dataframe en Pandas:</p>
+                            <ul>
+                                <li>Desde estructuras de Python (listas, diccionarios, ...)</li>
+                                <li>Desde un archivo CSV, Excel, SQL, parquet, etc.</li>
+                            </ul>
+                        </div>
+                    <pre style="height: 800px;"><code class="python" data-line-numbers>
+    # Creación de datasets en pandas
+    import pandas as pd
+
+    # Desde un diccionario de listas
+    data_manual = {
+        'Nombre': ['Ana', 'Luis', 'Carlos'],
+        'Edad': [23, 34, 45],
+        'Ciudad': ['Madrid', 'Barcelona', 'Valencia']
+    }
+    df_manual = pd.DataFrame(data_manual)
+    print(df_manual)
+    
+    # Desde una lista de diccionarios
+    data_list = [
+        {'Nombre': 'Ana', 'Edad': 23, 'Ciudad': 'Madrid'},
+        {'Nombre': 'Luis', 'Edad': 34, 'Ciudad': 'Barcelona'},
+        {'Nombre': 'Carlos', 'Edad': 45, 'Ciudad': 'Valencia'}
+    ]
+    df_list = pd.DataFrame(data_list)
+    print(df_list)
+    
+    # Desde un archivo csv
+    df_csv = pd.read_csv('ruta/al/archivo.csv')
+    print(df_csv)
+    
+    # Desde un archivo Excel
+    df_excel = pd.read_excel('ruta/al/archivo.xlsx')
+    print(df_excel)
+
+                    </code></pre>
+                </div>
+                </section>
+                <section>
+                    <p>Un ejemplo sencillo: imaginemos que queremos hacer un programa para calcular las raíces de un polinomio $\sum_{i=1}^n a_ix^i = 0$. Podríamos modularizar cada parte del programa y organizar el proyecto como:</p>
+                    <pre class="fragment"><code class="python">
+    poly_calc/
+        main.py                 # El programa principal, que importa los módulos necesarios y enseña un menú
+        entrada.py              # Módulo para pedir los coeficientes al usuario
+        metodos_exactos.py      # Módulo con los métodos exactos (para polinomios de grado 1-4)
+        metodos_numericos.py    # Módulo con los métodos aproximados (para polinomios de grado 5+)
+
+                    </code></pre>
+                    <div class="fragment">
+                        Ahora imaginémonos que queremos extender el programa a polinomios trigonométricos $\sum_{i=1}^n a_i\sin(x)^i + b_i\cos(x)^i = 0$. Podríamos añadir un módulo nuevo <span class="monospace">trig.py</span>. ¿Pero también tenemos que implementar las funciones seno y coseno? <b>No, podemos importarlas de la librería estándar de Python.</b>
+                    </div>
+                    <pre class="fragment"><code class="pyhton" data-line-numbers>
+        from math import pi, sin, cos
+        print(sin(0), cos(pi/2))
+
+                    </code></pre>
+                </section>
+                <section>
+                    La sintaxis para importar y exportar módulos en Python es muy sencilla:
+                    <pre style="height: 700px;"><code class="python" data-line-numbers="1-16|17-32">
+    # (Asumiendo la estructura de archivos de la diapositiva anterior)
+    # main.py
+    import entrada                                  # Importar un módulo
+    import metodos_exactos as me                    # Importar un módulo con un alias
+    from metodos_numericos import newton_raphson    # Importar una función específica
+
+    # Usemos las funciones de los módulos importados
+    pol = entrada.pedir_coeficientes()
+
+    if len(pol) == 3:
+        me.resolver_grado_3(pol)
+    elif len(pol) > 4:
+        newton_raphson(pol)
+    ...
+
+
+
+    # Los archivos de módulo simplemente definen las funciones
+    # entrada.py
+    def pedir_coeficientes():
+        ...
+    
+    # metodos_exactos.py
+    def resolver_grado_3(pol):
+        ...
+    
+    # metodos_numericos.py
+    def newton_raphson(pol):
+        ...
+    
+                    </code></pre>
+
+                </section>
+                <section style="display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; text-align: left;">
+                    <h3>La librería estándar de Python</h3>
+                    <p>La instalación de Python cuenta, además de con el intérprete del lenguaje, con una <a href="https://docs.python.org/3/library/index.html">librería estándar</a> con funcionalidades esenciales</p>
+                    <p>Algunos ejemplos de módulos de la librería estándar son:</p>
+                    <div style="display: flex; flex-direction: row; gap:2rem;">
+                    <ul style="text-align: left; flex:1;">
+                        <li><span class="monospace">math</span>: funciones matemáticas</li>
+                        <li><span class="monospace">random</span>: números pseudo-aleatorios y distribuciones</li>
+                        <li><span class="monospace">time</span> y <span class="monospace">datetime</span>: Fecha y hora</li>
+                        <li><span class="monospace">shutil</span> y <span class="monospace">pathlib</span>: Manejo de archivos y directorios</li>
+                        <li><span class="monospace">os</span>: funciones para interactuar con el sistema operativo</li>
+                        <li><span class="monospace">re</span>: expresiones regulares</li>
+                        <li><span class="monospace">csv</span>: archivos CSV</li>
+                        $\dots$
+                    </ul>
+                    <div style="flex: 1;">
+                        <img src="../../media/4/std_lib_usage.webp">
+                        <a href="https://medium.com/@tobias.talaj/decoding-python-which-standard-library-components-do-you-really-need-to-know-3ae3541bb2be">Un artículo interesante con las funciones y módulos más usadas de la librería estándar</a>
+                    </div>
+                    </div>
+                    <br><br>
+                </section>
+                <section data-auto-animate>
+                    <h3>Paquetes</h3>
+                    <div>
+                        <p style="font-size: 3rem;">¿Qué hacemos si necesitamos una funcionalidad que no está en la librería estándar?</p>
+                        <p style="font-size: 3rem;" data-id="paq">🤓Dejamos de ser vagos y desarrollamos código🤓</p>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <h3>Paquetes</h3>
+                    <div>
+                        <p style="font-size: 3rem;">¿Qué hacemos si necesitamos una funcionalidad que no está en la librería estándar?</p>
+                        <p style="font-size: 3rem;" data-id="paq"><s>🤓Dejamos de ser vagos y desarrollamos código🤓</s> <b>🗿Usamos paquetes🗿</b></p>
+                        <ul class="fragment">
+                            <li>En Python, una gran comunidad de desarrolladores ha creado infinidad de paquetes con los que se pueden construir todo tipo de programas con facilidad, incluso sin ser un experto en la materia.</li>
+                            <li>Estos paquetes incluyen módulos que podemos importar de la misma forma que los desarrollados por nosotros.</li>
+                            <li>Los gestores de paquetes facilitan enormemente su instalación, veremos como funcionan <span class="monospace">pip</span> y <span class="monospace">conda</span></li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- SIDE BY SIDE CON CODIGO -->
+                <section>
+					<h2>Gestores de paquetes</h2>
+				</section>
+                <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+                    <h2>pip</h2>
+                    <h4><a target="_blank" href="https://pypi.org/project/pip/">https://pypi.org/project/pip/</a></h4>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+                        <div style="flex: 2; text-align: left;">
+                            <ul>
+                                <li class="fragment">Es el gestor por defecto de paquetes de Python</li>
+                                <li class="fragment">Permite instalar, actualizar y manejar dependencias entre paquetes</li>
+                                <li class="fragment">Se pueden guardar configuraciones en archivos <span class="monospace">requirements.txt</span>
+                            </ul>
+                        </div>
+                        <div style="flex: 3; text-align: left;" class="fragment" data-line-numbers>
+                            <pre><code class="bash">
+    # Estos comandos se ejecutan en una terminal!
+    # NOTA: Si tienes varias versiones de Python instaladas, 
+    # usar python -m pip en vez de pip
+    pip --version         # Comprobar versión instalada
+    
+    # Gestionar paquetes
+    pip install manim # Instalar el paquete manim
+    pip install --upgrade manim # Actualizar el paquete manim
+    pip install --uninstall manim # Desinstalar el paquete manim
+
+                            </code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>pip</h3>
+                    <p>Una tarea importante suele ser compartir nuestra lista de paquetes con otros desarrolladores</p>
+                    <div style="display: flex; flex-direction: row; gap: 2rem;">
+                        <div class="fragment" data-fragment-index="1">
+                            <img src="../../media/4/pip list.png" height="50%">
+                            <p>1. Listamos los paquetes<div class="monospace">pip list</div></p>
+                        </div>
+                        <div style="margin-top: 10rem;" class="fragment" data-fragment-index="2">
+                            $\rightarrow$
+                        </div>
+                        <div class="fragment" data-fragment-index="2">
+                            <img src="../../media/4/pip freeze.png" height="50%">
+                            <p>2. Guardamos los paquetes<div class="monospace">pip freeze > requirements.txt</div></p>
+                        </div>
+                        <div style="margin-top: 10rem;" class="fragment" data-fragment-index="3">
+                            $\rightarrow$
+                        </div>
+                        <div class="fragment" data-fragment-index="3">
+                            <img src="../../media/4/pip install.png" height="50%">
+                            <p>3. Instalamos los paquetes<div class="monospace">pip install -r requirements.txt</div></p>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h2>(mini)conda</h2>
+                    <p>Similar a <span class="monospace">pip</span>, pero tiene más funcionalidades y es más utilizado con paquetes matemático/científicos</p>
+                    <h4><a target="_blank" href="https://repo.anaconda.com/miniconda/">Descargar instalador</a></h4>
+                    <h4><a target="_blank" href="https://anaconda.org/search?q=tensorflow">Buscar paquetes</a></h4>
+                    <div style="text-align: left; display:flex; flex-direction: row; gap:2rem;">
+                        <div style="flex: 1;">
+                            <p>Algunas diferencias con pip:</p>
+                            <ul>
+                                <li class="fragment">Los paquetes de conda están pre-compilados, así que su instalación es más rápida</li>
+                                <li class="fragment">Resuelve dependencias automáticamente: evita tener conflictos entre versiones</li>
+                                <li class="fragment">Incluye entornos virtuales que facilitan cambiar entre proyectos</li>
+                                <li class="fragment">Existen muchos más paquetes adicionales en <a href="https://conda-forge.org/packages"> conda-forge</a></li>
+                            </ul>
+                        </div>
+                        <div style="flex: 1;" class="fragment">
+                            <img src="../../media/4/conda vs pip.png">
+                        </div>
+                    </div>
+                </section>
+                <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+                    <h2>conda</h2>
+                    <p>La instalación de paquetes es tan sencilla como con pip:</p>
+                    <pre><code class="bash">
+    conda install numpy  # Instalar el paquete numpy
+    conda update numpy   # Actualizar el paquete numpy
+    conda remove numpy   # Desinstalar el paquete numpy
+
+    conda install conda-forge::openai  # Instalar el paquete openai desde conda-forge
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Entornos virtuales</h3>
+                    <p>Los entornos virtuales son una forma de aislar los paquetes de Python para que no interfieran entre sí</p>
+                    <p>Esto es útil cuando trabajamos en varios proyectos que requieren versiones diferentes de los mismos paquetes</p>
+                    
+                    <div style="display: flex; flex-direction: row; gap: 2rem;">
+                        <div style="flex: 2;">
+                            <pre><code class="bash">
+    conda env list   # Ver la lista de entornos
+    conda create -n mi_env python=3.10  # Crear un nuevo entorno
+    conda activate mi_env  # Activar el entorno
+    conda deactivate  # Salir del entorno
+    conda env remove -n mi_env  # Eliminar el entorno
+
+    # Guardar el entorno en un archivo
+    conda env export > env.yml
+
+    # Cargar el entorno desde un archivo
+    conda env create -f env.yml
+                            </code></pre>
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">Se puede mezclar <span class="monospace">pip</span> y <span class="monospace">conda</span> en los entornos, pero no es muy recomendable <span style="font-size: 1rem;">(de todas formas, a veces es necesario porque en pip hay más paquetes)</span></li>
+                            <li class="fragment" data-fragment-index="2">No queremos acabar con situaciones como las de la imagen</li>
+                            <li class="fragment" data-fragment-index="3">Si nos pasa algo así, lo mejor es quemar el ordenador</li>
+                        </ul>
+                        </div>
+                        <div style="flex: 1" class="fragment" data-fragment-index="2">
+                            <img src="../../media/4/env_nightmare.jpg">
+                        </div>
+                    </div>                    
+                </section>
+
+                <section>
+                    <h3>Jupyter Notebooks</h3>
+                    <p class="fragment">En la siguiente parte de la clase, abriremos <span class="monospace">vscode</span> y nos pondremos a jugar con paquetes, veremos que podemos hacer con ellos</p>
+                    <p class="fragment">Pero primero, hace falta explicar que son los <em>Jupyter Notebooks</em> (esto es mucho más ligero que lo anterior, we promise)</p>
+                </section>
+                <section>
+                    <h4>Uso de notebooks en vscode</h4>
+                    <ol>
+                        <div style="display: flex; flex-direction: row; gap: 2rem;">
+                            <div class="fragment" data-fragment-index="1">
+                                <img src="../../media/4/extensiones.png" height="65%">
+                                <p>1. Instalamos las extensiones de vscode de Jupyter y Python</p>
+                            </div>
+                            <div style="margin-top: 10rem;" class="fragment" data-fragment-index="2">
+                                $\rightarrow$
+                            </div>
+                            <div class="fragment" data-fragment-index="2"> 
+                                <img src="../../media/4/ipynb.png">
+                                <p>2. Creamos un nuevo fichero <span class="monospace">.ipynb</span> dónde trabajaremos</p>
+                            </div>
+                            <div style="margin-top: 10rem;" class="fragment" data-fragment-index="3">
+                                $\rightarrow$
+                            </div>
+                            <div class="fragment" data-fragment-index="3">
+                                <img src="../../media/4/kernel.png">
+                                <p>3. Configuramos el <em>kernel</em> de nuestro nuevo entorno de conda</p>
+                            </div>
+                        </div>
+                    </ol>
+                </section>
+                <section>
+                    <h3>Descarga de Notebooks</h3>
+                    <p>Ahora pasaremos a una clase interactiva, trabajaremos con los siguientes ficheros que podéis descargar aquí mismo:</p>
+                    <div style="border: 2px solid gray; padding: 1rem; border-radius: 10px;">
+                        <p>
+                            <a href="../../notebooks/notebook_intro.ipynb" download>Introducción a Jupyter Notebook</a>
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <script src="../../dist/reveal.js"></script>
+		<script src="../../plugin/notes/notes.js"></script>
+		<script src="../../plugin/math/math.js"></script>
+		<script src="../../plugin/markdown/markdown.js"></script>
+		<script src="../../plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				katex: {
+					version: 'latest',
+					delimiters: [
+					{ left: '$$', right: '$$', display: true },
+					{ left: '$', right: '$', display: false },
+					{ left: '\\(', right: '\\)', display: false },
+					{ left: '\\[', right: '\\]', display: true },
+					],
+					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+				},
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+    </body>
+</html>
