@@ -1,3 +1,9 @@
-datos = range(5, 50, 5)
-mayores_20 = filter(lambda x: x > 20, datos)
-print(list(mayores_20))
+x = 4
+print(f"2+2 = {x}")
+
+print("Damn")
+print("LaTeX no soportado por defecto: " + "$x^2 = 2$")
+print("123", "456", "789", sep="-")
+
+print("Hola", end=" ")
+print("mundo!")

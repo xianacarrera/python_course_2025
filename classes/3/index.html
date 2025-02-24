@@ -33,37 +33,76 @@
             <section>
                 <h1>3. I/O, lambdas y programación con OOP</h1>
             </section>
-
             <section>
-                <p>Ya hemos visto cómo imprimir datos por consola:</p>
-                <pre><code data-line-numbers="2-6" class="python">
-                        print("Damn")
-                        x = 4
-                        print(f"2+2 = {x}")
-                    </code></pre>
-
-                <p>Veamos el proceso inverso: la introducción de datos por consola.</p>
+                <h2>Índice:</h2>
+                <ul
+                    style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;">
+                    <li class="fragment" style="text-align: center;">
+                        <p>1. Input - Output (I/O)</p>
+                        <img src="../../media/3/input_output.png" alt="Input-output"
+                            style="max-width: 550px; height: auto;">
+                    </li>
+                    <li class="fragment" style="text-align: center;">
+                        <p>2. Lambdas</p>
+                        <img src="../../media/3/lambdas.png" alt="Lambda syntax"
+                            style="max-width: 550px; height: auto;">
+                    </li>
+                    <li class="fragment" style="text-align: center;">
+                        <p>3. Programación orientada a objetos</p>
+                        <img src="../../media/3/oop.svg" alt="OOP" style="max-width: 550px; height: auto;">
+                    </li>
+                </ul>
             </section>
 
             <section>
-                <p>Podemos pedir al usuario que introduzca datos:</p>
-                <pre><code data-line-numbers="2-6" class="python">
-                        mensaje_del_usuario = input("Dime tu nombre: ")
-                        print(mensaje_del_usuario)
+                <h2>I/O</h2>
+                <p>Sabemos cómo imprimir datos por consola:</p>
+                <pre><code data-line-numbers="2-10" class="python">
+                    x = 4
+                    print(f"2+2 = {x}")
+                    
+                    print("Damn")
+                    print("LaTeX no soportado por defecto: " + "x^2 = 2$")
+                    print("123", "456", "789", sep="-")
+
+                    print("Hola", end=" ")
+                    print("mundo!")
 
                     </code></pre>
-                <!-- "Dime tu nombre: " es la prompt -->
-                <!-- Lo que el usuario introduce se guarda en la variable mensaje_del_usuario -->
-                <!-- Es recomendable dejar un espacio después de : para mejor legibilidad -->
-                <p>Si el prompt es largo, es recomendable escribirlo por separado de antemano:</p>
-                <pre><code data-line-numbers="2-6" class="python">
-                        prompt = "Buenos días! Este es el servicio de atención al usuario.\n"
-                        prompt += "Por favor, escribe tu nombre: "
 
-                        nombre = input(prompt)
-                        print(f"Hola, {nombre}.")
+                <p class="fragment">Veamos el proceso inverso: la introducción de datos por consola.</p>
+            </section>
 
-                    </code></pre>
+            <section>
+                <div style="display: flex; flex-direction: row; gap: 2rem;">
+                    <div style="flex: 2; text-align: left;">
+                        <p>Podemos pedir al usuario que introduzca datos:</p>
+                        <pre><code data-line-numbers="2-6" class="python">
+    mensaje_del_usuario = input("Dime tu nombre: ")
+    print(mensaje_del_usuario)
+    
+                        </code></pre>
+
+                    </div>
+
+                    <div style="flex: 3; text-align: left;" class="fragment">
+                        <p>Si el prompt es largo, es recomendable escribirlo por separado de antemano:</p>
+                        <pre><code data-line-numbers="2-6" class="python">
+    prompt = "Buenos días! Este es el servicio de atención al usuario.\n"
+    prompt += "Por favor, escribe tu nombre: "
+
+    nombre = input(prompt)
+    print(f"Hola, {nombre}.")
+
+                        </code></pre>
+                    </div>
+                </div>
+
+                <aside class="notes">
+                    "Dime tu nombre: " es la prompt
+                    Lo que el usuario introduce se guarda en la variable mensaje_del_usuario
+                    Es recomendable dejar un espacio después de : para mejor legibilidad
+                </aside>
             </section>
 
             <section>
@@ -257,7 +296,12 @@
 
 
                     </code></pre>
-                TODO: meter tabla resumen
+                <p>Importante: <b>cerrar</b> los ficheros!</p>
+                <ul>
+                    <li>Evita la corrupción de los datos.</li>
+                    <li>Asegura que los últimos cambios se guarden correctamente.</li>
+                    <li>Libera memoria RAM que se estaba usando como <i>buffer</i>.</li>
+                </ul>
             </section>
             <section>
                 <p>Es preferible abrir archivos usando <span style="font-family:monospace;">with</span>:</p>
@@ -407,7 +451,8 @@
                             <li>Python no es un lenguaje funcional, pero adoptó conceptos de lenguajes funcionales.</li>
                             <li>Las funciones lambda solo pueden tener expresiones puras: no puede haber expresiones con
                                 asignaciones (=), <span class="monospace">while</span>, <span
-                                    class="monospace">try</span>, etc.</li>
+                                    class="monospace">try</span>,
+                                etc.</li>
                         </ul>
                     </div>
                     <div style="flex: 2; text-align: left;">
@@ -600,7 +645,7 @@
             <section>
                 <h3>Más ejemplos</h3>
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-                    
+
                     <!-- Escape Characters -->
                     <div style="text-align: left;" class="fragment">
                         <pre><code class="python">
@@ -609,7 +654,7 @@
     print(list(mayores_20))       # [25, 30, 35, 40, 45]
                         </code></pre>
                     </div>
-            
+
                     <!-- Unicode & Emojis -->
                     <div style="text-align: left;" class="fragment">
                         <pre><code class="python">
@@ -618,7 +663,7 @@
     print(datos_ordenados)       # Output: [(2, 10), (3, 20), (1, 30)]
                         </code></pre>
                     </div>
-            
+
                     <!-- String Operators -->
                     <div style="text-align: left;" class="fragment">
                         <p>Lorem ipsum</p>
@@ -626,7 +671,7 @@
     Lorem codium
                         </code></pre>
                     </div>
-            
+
                     <!-- String Immutability -->
                     <div style="text-align: left;" class="fragment">
                         <p>Lorem ipsum</p>
@@ -637,42 +682,121 @@
 
                     Quizás mejor dejar esto como ejercicios...
                     Also: TODO ver reduce (hay que importarla)
-            
+
                 </div>
             </section>
 
             <section>
                 <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
-                  <div style="width: 45%; padding: 20px; text-align: left;">
-                    <h3>✅ Ventajas</h3>
-                    <ul>
-                      <li>Concisas, compactas</li>
-                      <li>Útiles en casos sencillos</li>
-                      <li>Pueden ser combinadas con conceptos de lenguaje funcional (map, filter, etc.)</li>
-                      <li>No tienen nombre $\implies$ menos variables, código más limpio</li>
-                    </ul>
-                  </div>
-                  <div style="width: 10%; text-align: center; font-size: 2em;">|</div>
-                  <div style="width: 45%; padding: 20px; text-align: left;">
-                    <h3>❌ Desventajas</h3>
-                    <ul>
-                      <li>No pueden ser reutilizadas (a menos que se asignen a una variable...)</li>
-                      <li>Pueden reducir la legibilidad y ser sobreusadas</li>
-                      <li>En caso de error, es más difícil seguir el stack trace</li>
-                      <li>Peor documentación, no se pueden manejar excepciones con <span class="monospace">try</span></li>
-                    </ul>
-                  </div>
+                    <div style="width: 45%; padding: 20px; text-align: left;">
+                        <h3>✅ Ventajas</h3>
+                        <ul>
+                            <li>Concisas, compactas</li>
+                            <li>Útiles en casos sencillos</li>
+                            <li>Pueden ser combinadas con conceptos de lenguaje funcional (map, filter, etc.)</li>
+                            <li>No tienen nombre $\implies$ menos variables, código más limpio</li>
+                        </ul>
+                    </div>
+                    <div style="width: 10%; text-align: center; font-size: 2em;">|</div>
+                    <div style="width: 45%; padding: 20px; text-align: left;">
+                        <h3>❌ Desventajas</h3>
+                        <ul>
+                            <li>No pueden ser reutilizadas (a menos que se asignen a una variable...)</li>
+                            <li>Pueden reducir la legibilidad y ser sobreusadas</li>
+                            <li>En caso de error, es más difícil seguir el stack trace</li>
+                            <li>Peor documentación, no se pueden manejar excepciones con <span
+                                    class="monospace">try</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <aside class="notes">
                     Lo de asignar una lambda a una variable está desaconsejado según PEP (guía de estilo)
                     Lo del stacktrace es porque todas las funciones lambda se llaman igual: "lambda"
                     Las lambdas no tienen docstrings
                 </aside>
-              </section>        
-              
-              <section>
+            </section>
+
+            <section>
                 <h1>Python Object Oriented Programming<br>aka<br>Python OOP<br>aka<br>POOP 💩</h1>
-              </section>
+            </section>
+
+
+            <section style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                    <h2>Programación Orientada a Objetos: una breve introducción</h2>
+                    <span style="text-align: left;">
+                        Es un <b>paradigma de programación</b> basado en el concepto de <b>objetos</b>.
+                    </span>
+
+                </div>
+                <div style="display:flex; flex-direction: column; text-align: left;">
+                    <ul>
+                        <li>Un <b>objeto</b> tiene un <b>estado</b> y un <b>comportamiento</b>.</li>
+                        <li><b>Estado</b>: atributos = propiedades -> variables que almacenan datos de un objeto.</li>
+                        <li><b>Comportamiento</b>: métodos = funciones -> definen qué puede hacer el objeto.</li>
+                        <li>Los objetos se abstraen en forma de <b>clases</b>. Un objeto es una <b>instancia</b> de una
+                            clase.</li>
+                    </ul>
+
+                    <div
+                        style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                        <img src="../../media/3/clase_person.png" width="700px">
+                        <img src="../../media/3/clase_perro.jpg" width="700px">
+                    </div>
+                </div>
+                <aside class="notes">
+                    Una clase es una plantilla de cómo construir un objeto.
+                </aside>
+            </section>
+
+            <section>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;">
+                    <div>
+                        <img src="../../media/3/clase_person.png" alt="Clase person" style="border-radius: 5px;" ,
+                            width="800px">
+                    </div>
+                    <div>
+                        HACER QUE EL CÓDIGO OCUPE MÁS ESPACIO VERTICAL
+                        <pre style="background: #222; padding: 10px; border-radius: 5px; color: white;">
+                            <code class="python">
+    class Person:
+        def __init__(self, name, age, gender, occupation):
+            self.name = name
+            self.age = age
+            self.gender = gender
+            self.occupation = occupation
+
+        def walk(self):
+            print(f"{self.name} está caminando")
+        
+        def eat(self, comida):
+            print(f"{self.name} está comiendo {comida}")
+
+        def sleep(self):
+            print("No hace nada...")
+
+        def work():
+            print("Qué currante")
+
+    
+    # Creamos un objeto de la clase persona
+    marta = Person("Marta", 20, "F", "estudiante")
+    artai = Person("Artai", 23, "NB", "dibujante")
+
+    print("artai: {}".format(artai))
+    artai.work()
+    marta.eat("croquetas")
+
+</code></pre>
+                    </div>
+
+                </div>
+                <aside class="notes">
+                    Mencionar lo de que los atributos se suelen denominar igual que los argumentos, pero que son
+                    distintos.
+                </aside>
+            </section>
         </div>
     </div>
 
@@ -686,20 +810,20 @@
         // - https://revealjs.com/initialization/
         // - https://revealjs.com/config/
         Reveal.initialize({
-				hash: true,
-				katex: {
-					version: 'latest',
-					delimiters: [
-					{ left: '$$', right: '$$', display: true },
-					{ left: '$', right: '$', display: false },
-					{ left: '\\(', right: '\\)', display: false },
-					{ left: '\\[', right: '\\]', display: true },
-					],
-					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-				},
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
-			});
+            hash: true,
+            katex: {
+                version: 'latest',
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\(', right: '\\)', display: false },
+                    { left: '\\[', right: '\\]', display: true },
+                ],
+                ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            },
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+        });
 
     </script>
 </body>
