@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Clase 4</title>
+		<title>Clase 6</title>
 
 		<link rel="stylesheet" href="../../dist/reset.css">
 		<link rel="stylesheet" href="../../dist/reveal.css">
@@ -18,26 +18,68 @@
             <div class="slides">
                 <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
                 <section>
-                    <h1>Gestores de paquetes, entornos y notebooks</h1>
-                    <div class="fragment">
-                        <p>La clase de hoy se hará en dos apartados</p>
-                        <div style="display:flex; flex-direction: row; justify-content: space-around;">
-                            <div style="flex: 1;">1º parte $\rightarrow$ 📽️</div>
-                            <div style="flex: 1;">2º parte $\rightarrow$ 🖥️</div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="fragment">
-                        <p>El objetivo es aprender <b>cómo se desarrolla un programa complejo en Python</b>, utlizando los bloques de construcción que nos dan los paquetes de terceros.</p>
-                        <p>También veremos un entorno de desarrollo muy visual que nos facilita crear un proyecto desde cero.</p>
-                    </div>
+                    <h1>Uso de datasets en <img src="/media/6/pandas.svg" style="vertical-align: middle; height: 1.5em;"></h1>
+                    <p class="fragment">
+                        En esta clase, veremos como representar datos tabulares de forma eficiente, lo cuál es esencial en muchos proyectos de análisis de datos.
+                    </p>
+                    <p class="fragment">Pandas es una herramienta compleja, así que solo veremos algunas de sus funcionalidades. Hay mucha más información en los siguientes enlaces</p>
+                    <ul class="fragment">
+                        <li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/">Tutorial oficial de Pandas</a></li>
+                        <li><a href="https://pandas.pydata.org/docs/">Documentación completa</a></li>
+                        <li><a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Cheatsheet de comandos. Muy recomendable descargarla!</a></li>
+                        <li class="fragment"><a href="https://chatgpt.com/">ChatGPT 👍</a></li>
+                    </ul>
                 </section>
                 <section>
-                    <h2>Módulos</h2>
+                    <h2>Pandas</h2>
                     <ul>
-                        <li>Cuando un programa crece, se hace exponencialmente más difícil trabajar con un solo fichero con todas nuestras funciones y lógica del programa</li>
-                        <li>A veces nuestro objetivo es desarrollar un programa que haga $X$ sin tener que implementar el algoritmo $Y$ que lo hace posible desde 0.</li>
+                        <li class="fragment"> Se puede instalar con <span class="monospace">pip install pandas</span> o con <span class="monospace">conda install -c conda-forge pandas</span>. En nuestro entorno de la clase 4 ya lo tenemos instalado :) </li>
+                        <li class="fragment">Sirve para manejar <b>datos tabulares</b>. Por ejemplo, archivos en formato <span class="monospace">.csv</span>, hojas de Excel, o bases de datos.</li>
+                        <li class="fragment">Para esto, se utiliza la abstracción principal del <b>Dataframe</b>, en el que cada fila representa a un individuo y cada columna uno de los atributos que posee. <div style="display: flex; justify-content: space-around;"><img src="/media/6/dataframe.svg"><img src="/media/6/dataframe_source.svg"></div></li>
                     </ul>
+                </section>
+                <section>
+                    <h3>Creación de Dataframes</h3>
+                    <div style="display: flex; gap: 2rem;">
+                        <div style="text-align: left;">
+                            <p>Hay varias formas de crear un dataframe en Pandas:</p>
+                            <ul>
+                                <li>Desde estructuras de Python (listas, diccionarios, ...)</li>
+                                <li>Desde un archivo CSV, Excel, SQL, parquet, etc.</li>
+                            </ul>
+                        </div>
+                    <pre style="height: 800px;"><code class="python" data-line-numbers>
+    # Creación de datasets en pandas
+    import pandas as pd
+
+    # Desde un diccionario de listas
+    data_manual = {
+        'Nombre': ['Ana', 'Luis', 'Carlos'],
+        'Edad': [23, 34, 45],
+        'Ciudad': ['Madrid', 'Barcelona', 'Valencia']
+    }
+    df_manual = pd.DataFrame(data_manual)
+    print(df_manual)
+    
+    # Desde una lista de diccionarios
+    data_list = [
+        {'Nombre': 'Ana', 'Edad': 23, 'Ciudad': 'Madrid'},
+        {'Nombre': 'Luis', 'Edad': 34, 'Ciudad': 'Barcelona'},
+        {'Nombre': 'Carlos', 'Edad': 45, 'Ciudad': 'Valencia'}
+    ]
+    df_list = pd.DataFrame(data_list)
+    print(df_list)
+    
+    # Desde un archivo csv
+    df_csv = pd.read_csv('ruta/al/archivo.csv')
+    print(df_csv)
+    
+    # Desde un archivo Excel
+    df_excel = pd.read_excel('ruta/al/archivo.xlsx')
+    print(df_excel)
+
+                    </code></pre>
+                </div>
                 </section>
                 <section>
                     <p>Un ejemplo sencillo: imaginemos que queremos hacer un programa para calcular las raíces de un polinomio $\sum_{i=1}^n a_ix^i = 0$. Podríamos modularizar cada parte del programa y organizar el proyecto como:</p>
