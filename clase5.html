@@ -83,7 +83,7 @@
                 </ul>
             </div>
             <div style="flex: 2; text-align: left;">
-                <pre><code class="python">
+                <pre><code class="python" data-line-numbers>
 import numpy as np
 a = np.arange(16).reshape(4,4)
 print(a)  # array([[ 0,  1,  2,  3],
@@ -108,21 +108,116 @@ print(a.dtype)  # int64
         </div>
     </section>
     <section>
-      <h3>ndarray: orden de los ejes</h3>
-      <p>Al haber varias dimensiones, tenemos que tener en cuenta el orden de acceso e impresión de elementos. Para arrays en 2 dimensiones, el primer eje <span>axis = 0</span> son las filas, y el segundo <span>axis = 1</span> las columnas</p>
-      <pre><code class="python">
-a = np.array([[2., 3., 5.],
-              [7., 8., 9.]])
-      </code></pre>
-      el primer eje es de tamaño $2$ y el segundo de tamaño $3$.
-      <p>Para $n > 2$, ya no se pueden visualizar los ndarrays como matrices, pero podemos seguir consultando el tamaño de cada eje con <span class="monospace">np.shape</span>.</p>
-      <img src="media/5/anatomy_array.png">
-    </section>
-    <section>
+      <div>
+        <h3>ndarray: orden de los ejes</h3>
+        <p>Al haber varias dimensiones, tenemos que tener en cuenta el orden de acceso e impresión de elementos. Para arrays en 2 dimensiones, el primer eje <span>axis = 0</span> son las filas, y el segundo <span>axis = 1</span> las columnas</p>
+        <pre><code class="python" data-line-numbers>
+  a = np.array([[2., 3., 5.],
+                [7., 8., 9.]])
+        </code></pre>
+        el primer eje es de tamaño $2$ y el segundo de tamaño $3$.
+        <p>Para $n > 2$, ya no se pueden visualizar los ndarrays como matrices, pero podemos seguir consultando el tamaño de cada eje con <span class="monospace">np.shape</span>.</p>
+        <img src="media/5/anatomy_array.png">
+      </section>
+      <section data-auto-animate> 
+        <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around; gap: 2rem;">
+          <div>
+            <h3>Creación de arrays</h3>
+            <p>Hay muchos mecanismos de creación de arrays n-dimensionales</p>
+          </div>
+            <div style="text-align: left;">
+                <p>A partir de otras estructuras (listas y tuplas)</p>
+                <pre><code class="python" data-line-numbers>
+    import numpy as np
+    # se puede especificar el tipo de dato
+    a = np.array([1, 2, 3], dtype=float64)
+    a3D = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
 
+                </code></pre>
+            </div>
+        </div>
+      </section>
+    <section data-auto-animate>
+      <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around; gap: 2rem;">
+        <div>
+          <h3>Creación de arrays</h3>
+          <p>Hay muchos mecanismos de creación de arrays n-dimensionales</p>
+        </div>
+        <div style="text-align: left;">
+            <p>Utilizando <span class="monospace">np.arrange</span> y <span class="monospace">np.linspace</span> para crear listas de rangos separados</p>
+            <li><span class="monospace">np.arrange(start, stop, step)</span> crea un array del tipo $[start, start+step, start+2step, \dots]$.</li>
+            <li>Si step es decimal, es mejor usar <span class="monospace">np.linspace(start, stop, num)</span>, que crea una rejilla regular con $num$ puntos en total.</li>
+            <pre><code class="python" data-line-numbers>
+  import numpy as np
+
+  # Crear un array de 0 a 10, con salto de 2
+  a = np.arange(0, 10, 2) # array([0, 2, 4, 6, 8])
+
+  # Crear un array de 0 a pi, con 10000 elementos
+  b = np.linspace(0, np.pi, 10000) # array([0.00000000e+00, 3.14190684e-04, 6.28381369e-04, ...,
+                                  #        3.14096427e+00, 3.14127846e+00, 3.14159265e+00])
+              </code></pre>
+          </div>
+        </div>
     </section>
+    <section data-auto-animate>
+      <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around; gap: 2rem;">
+        <div>
+          <h3>Creación de arrays</h3>
+          <p>Hay muchos mecanismos de creación de arrays n-dimensionales</p>
+        </div>
+        <div style="text-align: left;">
+          <p>Mediante funciones de creación:</p>
+            <li><span class="monospace">np.zeros()</span> y <span class="monospace">np.ones()</span> para arrays de 0s y 1s</li>
+            <li><span class="monospace">np.eye()</span> para la matriz identidad</li>
+            <li><span class="monospace">np.random()</span> para datos aleatorios</li>
+            <pre><code class="python" data-line-numbers>
+  import numpy as np
+
+  # Array de ceros con shape (3,3)
+  zeros = np.zeros((3, 3))
+  
+  # Array de unos con shape (2,4)
+  ones = np.ones((2, 4))
+  
+  # Matriz identidad de 4x4
+  id = np.eye(4)
+  
+  # Array aleatorio de tamaño (2,3) con valores en [0,1)
+  rand_arr = np.random.rand(2, 3)
+</code></pre>
+</div>
+</section>
+<section data-auto-animate>
+  <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around; gap: 2rem;">
+    <div>
+      <h3>Creación de arrays</h3>
+      <p>Hay muchos mecanismos de creación de arrays n-dimensionales</p>
     </div>
+    <div style="text-align: left;">
+      <li>Juntando varios arrays a través de uno de los ejes</li>
+      <pre><code class="python" data-line-numbers>
+import numpy as np
+
+a = np.array([[1, 2], [3, 4]])
+b = np.array([[5, 6], [7, 8]])
+
+# Usando vstack (equivalente a np.concatenate con axis=0)
+vstacked = np.vstack((a, b))  # array([[1, 2],
+                              #        [3, 4],
+                              #        [5, 6],
+                              #        [7, 8]])
+
+# Usando hstack (equivalente a np.concatenate con axis=1)
+hstacked = np.hstack((a, b)) # array([[1, 2, 5, 6],
+                             #        [3, 4, 7, 8]])
+      </code></pre>
+    </div>
+    <p>Ya hemos visto varias formas de crear arrays, pero también es importante saber que (casi) todas las operaciones que explicaremos más adelante también crean arrays nuevos.</p>
+    <small style="max-width: 800px; text-align: left;">Hay alguna otra forma más de crear arrays, por ejemplo a partir de ficheros. En la siguiente clase leeremos ficheros con Pandas, así que nos saltamos esto de momento, consultar: <a href="https://numpy.org/doc/stable/user/basics.creation.html">Array Creation guide</a></small>
   </div>
+</section>
+
 
   <script src="dist/reveal.js"></script>
   <script src="plugin/notes/notes.js"></script>
