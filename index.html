@@ -6,15 +6,17 @@
 
 		<title>Curso Python</title>
 
-		<link rel="stylesheet" href="menu.css">
 		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="common.css">
 		<!-- Reveal.js core theme -->
 		<link rel="stylesheet" href="dist/reveal.css">
 		<!-- Solarized theme -->
-		<link id="solarized-theme" rel="stylesheet" href="dist/theme/solarized.css">
+		<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
 		<!-- Moon theme -->
-		<link id="moon-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+
+		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+		<!-- Theme toggle script -->
 		<style>
 			.reveal .slides > section > div {
 				display: flex;
@@ -59,7 +61,23 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body data-theme="light">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
         <div class="reveal">
             <div class="slides">
                 <section>
@@ -68,21 +86,20 @@
                             <div style="font-family: monospace; font-size: 3rem; text-align: left; margin-bottom: 2rem;">
                                 <span id="title">if __name__ == "__main__"</span><span id="cursor">:</span>
                             </div>
-							<button id="theme-toggle">Change Theme</button>
                             <div class="course-links" style="text-align: left; font-family: monospace; font-size: 1.5rem; line-height: 2;">
                                 <div>
                                     <h3>Parte 1: Introducción a Python y su ecosistema</h3>
-                                    <a id="link1" href="classes/1/index.html" target="_blank"><b>🐍1:</b> Instalación y conceptos básicos</a>
-                                    <a id="link2" href="classes/2/index.html" target="_blank"><b>🔄2:</b> Control de flujo, funciones y tipos de datos básicos</a>
-                                    <a id="link3" href="classes/3/index.html" target="_blank"><b>📂3:</b> I/O por consola y por archivos</a>
-                                    <a id="link4" href="classes/4/index.html" target="_blank"><b>📦4:</b> Instalación de paquetes y ejecución en notebooks</a>
+                                    <a id="link1" href="clase1.html"><b>🐍1:</b> Instalación y conceptos básicos</a>
+                                    <a id="link2" href="clase2.html"><b>🔄2:</b> Control de flujo, funciones y tipos de datos básicos</a>
+                                    <a id="link3" href="clase3.html"><b>📂3:</b> I/O por consola y por archivos</a>
+                                    <a id="link4" href="clase4.html"><b>📦4:</b> Instalación de paquetes y ejecución en notebooks</a>
                                 </div>
                                 <div style="margin-top:2rem;">
                                     <h3>Parte 2: Python para estadística y ciencia de datos</h3>
-                                    <a id="link5" href="classes/5/index.html" target="_blank"><b>📊5:</b> Operaciones vectorizadas con NumPy</a>
-                                    <a id="link6" href="classes/6/index.html" target="_blank"><b>🗂️6:</b> Uso de datasets de pandas para representar bases de datos tabulares</a>
-                                    <a id="link7" href="classes/7/index.html" target="_blank"><b>🤖7:</b> Entrenamiento y evaluación de modelos de regresión y clasificación básicos con scikit-learn</a>
-                                    <a id="link8" href="classes/8/index.html" target="_blank"><b>📈8:</b> Representación de resultados con matplotlib y seaborn</a>
+                                    <a id="link5" href="clase5.html"><b>📊5:</b> Operaciones vectorizadas con NumPy</a>
+                                    <a id="link6" href="clase6.html"><b>🗂️6:</b> Uso de datasets de pandas para representar bases de datos tabulares</a>
+                                    <a id="link7" href="clase7.html"><b>🤖7:</b> Entrenamiento y evaluación de modelos de regresión y clasificación básicos con scikit-learn</a>
+                                    <a id="link8" href="clase8.html"><b>📈8:</b> Representación de resultados con matplotlib y seaborn</a>
                                 </div>
                             </div>
                         </div>
@@ -122,21 +139,6 @@ if __name__ == "__main__":
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
-		<script>
-			const button = document.getElementById('theme-toggle');
-			const solarizedTheme = document.getElementById('solarized-theme');
-			const moonTheme = document.getElementById('moon-theme');
-		  
-			button.addEventListener('click', () => {
-			  // If moon theme is currently active, switch to reveal theme
-			  if (moonTheme.disabled) {
-				moonTheme.disabled = false;  // Enable the moon theme
-				solarizedTheme.disabled = true; // Disable the reveal theme
-			  } else {
-				moonTheme.disabled = true;   // Disable the moon theme
-				solarizedTheme.disabled = false; // Enable the reveal theme
-			  }
-			});
-		  </script>
+		<script src="theme-toggle.js"></script>
 	</body>
 </html>

@@ -1,3 +1,111 @@
 .monospace {
     font-family: monospace;
 }
+
+.pre .code {
+    border-radius: 10px;
+}
+
+/* Back link styles */
+.back-link {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background-color: #657b83;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+.back-link:hover {
+    background-color: rgb(77.5161290323, 162.8774193548, 222.8838709677);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+/* Dark theme styling for back link */
+body[data-theme="dark"] .back-link {
+    background-color: #93a1a1;
+}
+body[data-theme="dark"] .back-link:hover {
+    background-color: rgb(77.5161290323, 162.8774193548, 222.8838709677);
+}
+
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    overflow: hidden;
+    transition: transform 0.3s, background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .theme-toggle:hover {
+    transform: scale(1.1);
+  }
+  
+  .theme-toggle:active {
+    transform: scale(0.95);
+  }
+  
+  .theme-toggle .icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  
+  .theme-toggle .sun-icon {
+    color: #657b83;
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+  }
+  
+  .theme-toggle .moon-icon {
+    color: #34495e;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+  }
+  
+  /* Dark theme styling */
+  body[data-theme="dark"] .theme-toggle {
+    background: #6f9ac6;
+  }
+  
+  /* When theme is light */
+  body[data-theme="light"] .sun-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+  
+  body[data-theme="light"] .moon-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+  }
+  
+  /* When theme is dark */
+  body[data-theme="dark"] .sun-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+  }
+  
+  body[data-theme="dark"] .moon-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }

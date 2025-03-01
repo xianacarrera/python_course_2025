@@ -6,15 +6,34 @@
 
 		<title>Clase 2</title>
 
-		<link rel="stylesheet" href="../../dist/reset.css">
-		<link rel="stylesheet" href="../../dist/reveal.css">
-		<link rel="stylesheet" href="../../dist/theme/solarized.css">
-		<link rel="stylesheet" href="../../common.css">
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="common.css">
+		<!-- Solarized theme -->
+		<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+		<!-- Moon theme -->
+		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
 	</head>
-	<body>
+	<body data-theme="light">
+		<a href="index.html" class="back-link">Volver</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
 		<div class="reveal">
 			<div class="slides">
                 <section>
@@ -27,15 +46,15 @@
 					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
 					  <div class="fragment" style="flex: 1; text-align: center;">
 						<p>¿Qué <b>tipos de variables básicas</b> están disponibles y qué podemos hacer con ellas?</p>
-						<img src="../../media/2/variables_meme.jpg" alt="Meme 1">
+						<img src="media/2/variables_meme.jpg" alt="Meme 1">
 					  </div>
 					  <div class="fragment" style="flex: 1; text-align: center;">
 						<p>¿Cómo organizar el código en <b>funciones</b> y estructuras de <b>control de flujo</b>?</p>
-						<img src="../../media/2/control_flow.png" alt="Meme 2">
+						<img src="media/2/control_flow.png" alt="Meme 2">
 					  </div>
 					  <div class="fragment" style="flex: 1;  text-align: center;">
 						<p>¿De qué <b>estructuras de datos</b> dispone Python?</p>
-						<img src="../../media/2/data_struct.png" alt="Meme 3">
+						<img src="media/2/data_struct.png" alt="Meme 3">
 					  </div>
 					</div>
 				</section>
@@ -200,7 +219,7 @@
 				<section>
 					<h3>Strings: métodos estándar</h3>
 					<p>La librería estándar de Python provee muchos métodos útiles para trabajar con strings:</p>
-					<img src="../../media/2/string-methods.jpg" alt="Métodos de strings">
+					<img src="media/2/string-methods.jpg" alt="Métodos de strings">
 					<p>
 						Esta imagen ni siquiera está completa, por lo que solo veremos algunos de los métodos más útiles, por supuesto la referencia completa está en: 
 						<a href="https://docs.python.org/3/library/stdtypes.html#string-methods" target="_blank">docs.python.org</a>
@@ -404,7 +423,7 @@
 	print(bool("hola"))				# True
 					
 						</code></pre>
-						<img src="../../media/2/boolean_troll.webp" width="600px">
+						<img src="media/2/boolean_troll.webp" width="600px">
 					</div>
 				</section>
 				<section>
@@ -591,7 +610,7 @@
 	datos.clear()
 
 							</code></pre>
-							<img src="../../media/2/python-dict2.png" width="600px">
+							<img src="media/2/python-dict2.png" width="600px">
 					</div>
 				</section>
 				<section>
@@ -849,7 +868,7 @@
 			x += 1           
 		    
 							</code></pre>
-                        	<img src="../../media/2/infinite_loops.jpg" width="450px">
+                        	<img src="media/2/infinite_loops.jpg" width="450px">
                         </div>
                     </div>
                 </section>
@@ -877,11 +896,11 @@
 				</section>
 			</div>
 		</div>
-		<script src="../../dist/reveal.js"></script>
-		<script src="../../plugin/notes/notes.js"></script>
-		<script src="../../plugin/math/math.js"></script>
-		<script src="../../plugin/markdown/markdown.js"></script>
-		<script src="../../plugin/highlight/highlight.js"></script>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -902,5 +921,6 @@
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
 			});
 		</script>
+		<script src="theme-toggle.js"></script>
 	</body>
 </html>

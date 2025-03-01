@@ -6,14 +6,34 @@
 
 		<title>Clase 1</title>
 
-		<link rel="stylesheet" href="../../dist/reset.css">
-		<link rel="stylesheet" href="../../dist/reveal.css">
-		<link rel="stylesheet" href="../../dist/theme/solarized.css">
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="common.css">
+		<!-- Solarized theme -->
+		<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+		<!-- Moon theme -->
+		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
 	</head>
-	<body>
+	<body data-theme="light">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+		<a href="index.html" class="back-link">Volver</a>
 		<div class="reveal">
 			<div class="slides">
                 <section>
@@ -27,8 +47,8 @@
 					<p>Calculado según el número de resultados al buscar<br>
 						+"&lt language &gt programming" en varios motores de búsqueda (Google, Bing...).</p>
 					<div class="r-stack r-stretch">
-						<img class="fragment" src="../../media/Tiobeindex.png" alt="Tiobe index">
-						<img class="fragment" src="../../media/Tiobeindex2.png" alt="Tiobe index Python">
+						<img class="fragment" src="media/Tiobeindex.png" alt="Tiobe index">
+						<img class="fragment" src="media/Tiobeindex2.png" alt="Tiobe index Python">
 					</div>
 				</section>
 
@@ -126,10 +146,10 @@
 			</div>
 		</div>
 
-		<script src="../../dist/reveal.js"></script>
-		<script src="../../plugin/notes/notes.js"></script>
-		<script src="../../plugin/markdown/markdown.js"></script>
-		<script src="../../plugin/highlight/highlight.js"></script>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -141,5 +161,6 @@
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
+		<script src="theme-toggle.js"></script>
 	</body>
 </html>

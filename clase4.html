@@ -6,15 +6,35 @@
 
 		<title>Clase 4</title>
 
-		<link rel="stylesheet" href="../../dist/reset.css">
-		<link rel="stylesheet" href="../../dist/reveal.css">
-		<link rel="stylesheet" href="../../dist/theme/solarized.css">
-        <link rel="stylesheet" href="../../common.css">
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="common.css">
+		<!-- Solarized theme -->
+		<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+		<!-- Moon theme -->
+		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+
+		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
 	</head>
-	<body>
-		<div class="reveal">
+	<body data-theme="light">
+        <a href="index.html" class="back-link">Volver</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>		
+        <div class="reveal">
             <div class="slides">
                 <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
                 <section>
@@ -110,7 +130,7 @@
                         $\dots$
                     </ul>
                     <div style="flex: 1;">
-                        <img src="../../media/4/std_lib_usage.webp">
+                        <img src="media/4/std_lib_usage.webp">
                         <a href="https://medium.com/@tobias.talaj/decoding-python-which-standard-library-components-do-you-really-need-to-know-3ae3541bb2be">Un artículo interesante con las funciones y módulos más usadas de la librería estándar</a>
                     </div>
                     </div>
@@ -171,21 +191,21 @@
                     <p>Una tarea importante suele ser compartir nuestra lista de paquetes con otros desarrolladores</p>
                     <div style="display: flex; flex-direction: row; gap: 2rem;">
                         <div class="fragment" data-fragment-index="1">
-                            <img src="../../media/4/pip list.png" height="50%">
+                            <img src="media/4/pip list.png" height="50%">
                             <p>1. Listamos los paquetes<div class="monospace">pip list</div></p>
                         </div>
                         <div style="margin-top: 10rem;" class="fragment" data-fragment-index="2">
                             $\rightarrow$
                         </div>
                         <div class="fragment" data-fragment-index="2">
-                            <img src="../../media/4/pip freeze.png" height="50%">
+                            <img src="media/4/pip freeze.png" height="50%">
                             <p>2. Guardamos los paquetes<div class="monospace">pip freeze > requirements.txt</div></p>
                         </div>
                         <div style="margin-top: 10rem;" class="fragment" data-fragment-index="3">
                             $\rightarrow$
                         </div>
                         <div class="fragment" data-fragment-index="3">
-                            <img src="../../media/4/pip install.png" height="50%">
+                            <img src="media/4/pip install.png" height="50%">
                             <p>3. Instalamos los paquetes<div class="monospace">pip install -r requirements.txt</div></p>
                         </div>
                     </div>
@@ -206,7 +226,7 @@
                             </ul>
                         </div>
                         <div style="flex: 1;" class="fragment">
-                            <img src="../../media/4/conda vs pip.png">
+                            <img src="media/4/conda vs pip.png">
                         </div>
                     </div>
                 </section>
@@ -248,7 +268,7 @@
                         </ul>
                         </div>
                         <div style="flex: 1" class="fragment" data-fragment-index="2">
-                            <img src="../../media/4/env_nightmare.jpg">
+                            <img src="media/4/env_nightmare.jpg">
                         </div>
                     </div>                    
                 </section>
@@ -263,21 +283,21 @@
                     <ol>
                         <div style="display: flex; flex-direction: row; gap: 2rem;">
                             <div class="fragment" data-fragment-index="1">
-                                <img src="../../media/4/extensiones.png" height="65%">
+                                <img src="media/4/extensiones.png" height="65%">
                                 <p>1. Instalamos las extensiones de vscode de Jupyter y Python</p>
                             </div>
                             <div style="margin-top: 10rem;" class="fragment" data-fragment-index="2">
                                 $\rightarrow$
                             </div>
                             <div class="fragment" data-fragment-index="2"> 
-                                <img src="../../media/4/ipynb.png">
+                                <img src="media/4/ipynb.png">
                                 <p>2. Creamos un nuevo fichero <span class="monospace">.ipynb</span> dónde trabajaremos</p>
                             </div>
                             <div style="margin-top: 10rem;" class="fragment" data-fragment-index="3">
                                 $\rightarrow$
                             </div>
                             <div class="fragment" data-fragment-index="3">
-                                <img src="../../media/4/kernel.png">
+                                <img src="media/4/kernel.png">
                                 <p>3. Configuramos el <em>kernel</em> de nuestro nuevo entorno de conda</p>
                             </div>
                         </div>
@@ -288,18 +308,18 @@
                     <p>Ahora pasaremos a una clase interactiva, trabajaremos con los siguientes ficheros que podéis descargar aquí mismo:</p>
                     <div style="border: 2px solid gray; padding: 1rem; border-radius: 10px;">
                         <p>
-                            <a href="../../notebooks/notebook_intro.ipynb" download>Introducción a Jupyter Notebook</a>
+                            <a href="notebooks/notebook_intro.ipynb" download>Introducción a Jupyter Notebook</a>
                         </p>
                     </div>
                 </section>
             </div>
         </div>
         
-        <script src="../../dist/reveal.js"></script>
-		<script src="../../plugin/notes/notes.js"></script>
-		<script src="../../plugin/math/math.js"></script>
-		<script src="../../plugin/markdown/markdown.js"></script>
-		<script src="../../plugin/highlight/highlight.js"></script>
+        <script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
@@ -320,5 +340,6 @@
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
 			});
 		</script>
+        <script src="theme-toggle.js"></script>
     </body>
 </html>

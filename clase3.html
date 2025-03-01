@@ -7,15 +7,15 @@
 
     <title>reveal.js</title>
 
-    <link rel="stylesheet" href="../../dist/reset.css">
-    <link rel="stylesheet" href="../../dist/reveal.css">
-    <link rel="stylesheet" href="../../dist/theme/solarized.css">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="common.css">
+    <!-- Solarized theme -->
+    <link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+    <!-- Moon theme -->
+    <link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
 
-    <!-- Theme used for syntax highlighted code -->
-    <link rel="stylesheet" href="../../plugin/highlight/monokai.css">
-
-    <link rel="stylesheet" href="../../common.css">
-
+    <link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
     <style>
         table,
         th,
@@ -26,7 +26,24 @@
     </style>
 </head>
 
-<body>
+<body data-theme="light">
+    <a href="index.html" class="back-link">Volver</a>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>    
     <div class="reveal">
         <div class="slides">
             <!-- Each section corresponds to a slide -->
@@ -39,17 +56,17 @@
                     style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;">
                     <li class="fragment" style="text-align: center;">
                         <p>1. Input - Output (I/O)</p>
-                        <img src="../../media/3/input_output.png" alt="Input-output"
+                        <img src="media/3/input_output.png" alt="Input-output"
                             style="max-width: 550px; height: auto;">
                     </li>
                     <li class="fragment" style="text-align: center;">
                         <p>2. Lambdas</p>
-                        <img src="../../media/3/lambdas.png" alt="Lambda syntax"
+                        <img src="media/3/lambdas.png" alt="Lambda syntax"
                             style="max-width: 550px; height: auto;">
                     </li>
                     <li class="fragment" style="text-align: center;">
                         <p>3. Programación orientada a objetos</p>
-                        <img src="../../media/3/oop.svg" alt="OOP" style="max-width: 550px; height: auto;">
+                        <img src="media/3/oop.svg" alt="OOP" style="max-width: 550px; height: auto;">
                     </li>
                 </ul>
             </section>
@@ -428,14 +445,14 @@
             </section>
 
             <section>
-                <img src="../../media/3/io_modes.png" alt="Diagrama de modos de la funcióno open()">
+                <img src="media/3/io_modes.png" alt="Diagrama de modos de la funcióno open()">
 
                 https://stackoverflow.com/questions/6648493/how-to-open-a-file-for-both-reading-and-writing
             </section>
 
             <section>
                 <h1>Funciones lambda <span style="font-family:monospace;">lambda</span> </h1>
-                <img src="../../media/3/lambdas.jpg" alt="Lambdas meme">
+                <img src="media/3/lambdas.jpg" alt="Lambdas meme">
             </section>
 
             <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
@@ -741,8 +758,8 @@
 
                     <div
                         style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-                        <img src="../../media/3/clase_person.png" width="700px">
-                        <img src="../../media/3/clase_perro.jpg" width="700px">
+                        <img src="media/3/clase_person.png" width="700px">
+                        <img src="media/3/clase_perro.jpg" width="700px">
                     </div>
                 </div>
                 <aside class="notes">
@@ -753,7 +770,7 @@
             <section>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;">
                     <div>
-                        <img src="../../media/3/clase_person.png" alt="Clase person" style="border-radius: 5px;" ,
+                        <img src="media/3/clase_person.png" alt="Clase person" style="border-radius: 5px;" ,
                             width="800px">
                     </div>
                     <div>
@@ -800,11 +817,11 @@
         </div>
     </div>
 
-    <script src="../../dist/reveal.js"></script>
-    <script src="../../plugin/notes/notes.js"></script>
-    <script src="../../plugin/markdown/markdown.js"></script>
-    <script src="../../plugin/highlight/highlight.js"></script>
-    <script src="../../plugin/math/math.js"></script>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
     <script>
         // More info about initialization & config:
         // - https://revealjs.com/initialization/
@@ -826,6 +843,7 @@
         });
 
     </script>
+    <script src="theme-toggle.js"></script>
 </body>
 
 </html>
