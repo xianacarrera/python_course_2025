@@ -109,3 +109,7 @@ body[data-theme="dark"] .back-link:hover {
     opacity: 1;
     transform: rotate(0) scale(1);
   }
+
+  code {
+    border-radius: 10px;
+  }

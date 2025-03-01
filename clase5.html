@@ -1,345 +1,154 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Clase 4</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="common.css">
-		<!-- Solarized theme -->
-		<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
-		<!-- Moon theme -->
-		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+  <title>Clase 5</title>
 
-		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
-	</head>
-	<body data-theme="light">
-        <a href="index.html" class="back-link">Volver</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
-        <div class="reveal">
-            <div class="slides">
-                <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
-                <section>
-                    <h1>Gestores de paquetes, entornos y notebooks</h1>
-                    <div class="fragment">
-                        <p>La clase de hoy se hará en dos apartados</p>
-                        <div style="display:flex; flex-direction: row; justify-content: space-around;">
-                            <div style="flex: 1;">1º parte $\rightarrow$ 📽️</div>
-                            <div style="flex: 1;">2º parte $\rightarrow$ 🖥️</div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="fragment">
-                        <p>El objetivo es aprender <b>cómo se desarrolla un programa complejo en Python</b>, utlizando los bloques de construcción que nos dan los paquetes de terceros.</p>
-                        <p>También veremos un entorno de desarrollo muy visual que nos facilita crear un proyecto desde cero.</p>
-                    </div>
-                </section>
-                <section>
-                    <h2>Módulos</h2>
-                    <ul>
-                        <li>Cuando un programa crece, se hace exponencialmente más difícil trabajar con un solo fichero con todas nuestras funciones y lógica del programa</li>
-                        <li>A veces nuestro objetivo es desarrollar un programa que haga $X$ sin tener que implementar el algoritmo $Y$ que lo hace posible desde 0.</li>
-                    </ul>
-                </section>
-                <section>
-                    <p>Un ejemplo sencillo: imaginemos que queremos hacer un programa para calcular las raíces de un polinomio $\sum_{i=1}^n a_ix^i = 0$. Podríamos modularizar cada parte del programa y organizar el proyecto como:</p>
-                    <pre class="fragment"><code class="python">
-    poly_calc/
-        main.py                 # El programa principal, que importa los módulos necesarios y enseña un menú
-        entrada.py              # Módulo para pedir los coeficientes al usuario
-        metodos_exactos.py      # Módulo con los métodos exactos (para polinomios de grado 1-4)
-        metodos_numericos.py    # Módulo con los métodos aproximados (para polinomios de grado 5+)
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="common.css">
+  <!-- Solarized theme -->
+  <link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+  <!-- Moon theme -->
+  <link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
 
-                    </code></pre>
-                    <div class="fragment">
-                        Ahora imaginémonos que queremos extender el programa a polinomios trigonométricos $\sum_{i=1}^n a_i\sin(x)^i + b_i\cos(x)^i = 0$. Podríamos añadir un módulo nuevo <span class="monospace">trig.py</span>. ¿Pero también tenemos que implementar las funciones seno y coseno? <b>No, podemos importarlas de la librería estándar de Python.</b>
-                    </div>
-                    <pre class="fragment"><code class="pyhton" data-line-numbers>
-        from math import pi, sin, cos
-        print(sin(0), cos(pi/2))
+  <link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+</head>
 
-                    </code></pre>
-                </section>
-                <section>
-                    La sintaxis para importar y exportar módulos en Python es muy sencilla:
-                    <pre style="height: 700px;"><code class="python" data-line-numbers="1-16|17-32">
-    # (Asumiendo la estructura de archivos de la diapositiva anterior)
-    # main.py
-    import entrada                                  # Importar un módulo
-    import metodos_exactos as me                    # Importar un módulo con un alias
-    from metodos_numericos import newton_raphson    # Importar una función específica
-
-    # Usemos las funciones de los módulos importados
-    pol = entrada.pedir_coeficientes()
-
-    if len(pol) == 3:
-        me.resolver_grado_3(pol)
-    elif len(pol) > 4:
-        newton_raphson(pol)
-    ...
-
-
-
-    # Los archivos de módulo simplemente definen las funciones
-    # entrada.py
-    def pedir_coeficientes():
-        ...
-    
-    # metodos_exactos.py
-    def resolver_grado_3(pol):
-        ...
-    
-    # metodos_numericos.py
-    def newton_raphson(pol):
-        ...
-    
-                    </code></pre>
-
-                </section>
-                <section style="display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; text-align: left;">
-                    <h3>La librería estándar de Python</h3>
-                    <p>La instalación de Python cuenta, además de con el intérprete del lenguaje, con una <a href="https://docs.python.org/3/library/index.html">librería estándar</a> con funcionalidades esenciales</p>
-                    <p>Algunos ejemplos de módulos de la librería estándar son:</p>
-                    <div style="display: flex; flex-direction: row; gap:2rem;">
-                    <ul style="text-align: left; flex:1;">
-                        <li><span class="monospace">math</span>: funciones matemáticas</li>
-                        <li><span class="monospace">random</span>: números pseudo-aleatorios y distribuciones</li>
-                        <li><span class="monospace">time</span> y <span class="monospace">datetime</span>: Fecha y hora</li>
-                        <li><span class="monospace">shutil</span> y <span class="monospace">pathlib</span>: Manejo de archivos y directorios</li>
-                        <li><span class="monospace">os</span>: funciones para interactuar con el sistema operativo</li>
-                        <li><span class="monospace">re</span>: expresiones regulares</li>
-                        <li><span class="monospace">csv</span>: archivos CSV</li>
-                        $\dots$
-                    </ul>
-                    <div style="flex: 1;">
-                        <img src="media/4/std_lib_usage.webp">
-                        <a href="https://medium.com/@tobias.talaj/decoding-python-which-standard-library-components-do-you-really-need-to-know-3ae3541bb2be">Un artículo interesante con las funciones y módulos más usadas de la librería estándar</a>
-                    </div>
-                    </div>
-                    <br><br>
-                </section>
-                <section data-auto-animate>
-                    <h3>Paquetes</h3>
-                    <div>
-                        <p style="font-size: 3rem;">¿Qué hacemos si necesitamos una funcionalidad que no está en la librería estándar?</p>
-                        <p style="font-size: 3rem;" data-id="paq">🤓Dejamos de ser vagos y desarrollamos código🤓</p>
-                    </div>
-                </section>
-                <section data-auto-animate>
-                    <h3>Paquetes</h3>
-                    <div>
-                        <p style="font-size: 3rem;">¿Qué hacemos si necesitamos una funcionalidad que no está en la librería estándar?</p>
-                        <p style="font-size: 3rem;" data-id="paq"><s>🤓Dejamos de ser vagos y desarrollamos código🤓</s> <b>🗿Usamos paquetes🗿</b></p>
-                        <ul class="fragment">
-                            <li>En Python, una gran comunidad de desarrolladores ha creado infinidad de paquetes con los que se pueden construir todo tipo de programas con facilidad, incluso sin ser un experto en la materia.</li>
-                            <li>Estos paquetes incluyen módulos que podemos importar de la misma forma que los desarrollados por nosotros.</li>
-                            <li>Los gestores de paquetes facilitan enormemente su instalación, veremos como funcionan <span class="monospace">pip</span> y <span class="monospace">conda</span></li>
-                        </ul>
-                    </div>
-                </section>
-                <!-- SIDE BY SIDE CON CODIGO -->
-                <section>
-					<h2>Gestores de paquetes</h2>
-				</section>
-                <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
-                    <h2>pip</h2>
-                    <h4><a target="_blank" href="https://pypi.org/project/pip/">https://pypi.org/project/pip/</a></h4>
-                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-                        <div style="flex: 2; text-align: left;">
-                            <ul>
-                                <li class="fragment">Es el gestor por defecto de paquetes de Python</li>
-                                <li class="fragment">Permite instalar, actualizar y manejar dependencias entre paquetes</li>
-                                <li class="fragment">Se pueden guardar configuraciones en archivos <span class="monospace">requirements.txt</span>
-                            </ul>
-                        </div>
-                        <div style="flex: 3; text-align: left;" class="fragment" data-line-numbers>
-                            <pre><code class="bash">
-    # Estos comandos se ejecutan en una terminal!
-    # NOTA: Si tienes varias versiones de Python instaladas, 
-    # usar python -m pip en vez de pip
-    pip --version         # Comprobar versión instalada
-    
-    # Gestionar paquetes
-    pip install manim # Instalar el paquete manim
-    pip install --upgrade manim # Actualizar el paquete manim
-    pip install --uninstall manim # Desinstalar el paquete manim
-
-                            </code></pre>
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <h3>pip</h3>
-                    <p>Una tarea importante suele ser compartir nuestra lista de paquetes con otros desarrolladores</p>
-                    <div style="display: flex; flex-direction: row; gap: 2rem;">
-                        <div class="fragment" data-fragment-index="1">
-                            <img src="media/4/pip list.png" height="50%">
-                            <p>1. Listamos los paquetes<div class="monospace">pip list</div></p>
-                        </div>
-                        <div style="margin-top: 10rem;" class="fragment" data-fragment-index="2">
-                            $\rightarrow$
-                        </div>
-                        <div class="fragment" data-fragment-index="2">
-                            <img src="media/4/pip freeze.png" height="50%">
-                            <p>2. Guardamos los paquetes<div class="monospace">pip freeze > requirements.txt</div></p>
-                        </div>
-                        <div style="margin-top: 10rem;" class="fragment" data-fragment-index="3">
-                            $\rightarrow$
-                        </div>
-                        <div class="fragment" data-fragment-index="3">
-                            <img src="media/4/pip install.png" height="50%">
-                            <p>3. Instalamos los paquetes<div class="monospace">pip install -r requirements.txt</div></p>
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <h2>(mini)conda</h2>
-                    <p>Similar a <span class="monospace">pip</span>, pero tiene más funcionalidades y es más utilizado con paquetes matemático/científicos</p>
-                    <h4><a target="_blank" href="https://repo.anaconda.com/miniconda/">Descargar instalador</a></h4>
-                    <h4><a target="_blank" href="https://anaconda.org/search?q=tensorflow">Buscar paquetes</a></h4>
-                    <div style="text-align: left; display:flex; flex-direction: row; gap:2rem;">
-                        <div style="flex: 1;">
-                            <p>Algunas diferencias con pip:</p>
-                            <ul>
-                                <li class="fragment">Los paquetes de conda están pre-compilados, así que su instalación es más rápida</li>
-                                <li class="fragment">Resuelve dependencias automáticamente: evita tener conflictos entre versiones</li>
-                                <li class="fragment">Incluye entornos virtuales que facilitan cambiar entre proyectos</li>
-                                <li class="fragment">Existen muchos más paquetes adicionales en <a href="https://conda-forge.org/packages"> conda-forge</a></li>
-                            </ul>
-                        </div>
-                        <div style="flex: 1;" class="fragment">
-                            <img src="media/4/conda vs pip.png">
-                        </div>
-                    </div>
-                </section>
-                <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
-                    <h2>conda</h2>
-                    <p>La instalación de paquetes es tan sencilla como con pip:</p>
-                    <pre><code class="bash">
-    conda install numpy  # Instalar el paquete numpy
-    conda update numpy   # Actualizar el paquete numpy
-    conda remove numpy   # Desinstalar el paquete numpy
-
-    conda install conda-forge::openai  # Instalar el paquete openai desde conda-forge
-                    </code></pre>
-                </section>
-                <section>
-                    <h3>Entornos virtuales</h3>
-                    <p>Los entornos virtuales son una forma de aislar los paquetes de Python para que no interfieran entre sí</p>
-                    <p>Esto es útil cuando trabajamos en varios proyectos que requieren versiones diferentes de los mismos paquetes</p>
-                    
-                    <div style="display: flex; flex-direction: row; gap: 2rem;">
-                        <div style="flex: 2;">
-                            <pre><code class="bash">
-    conda env list   # Ver la lista de entornos
-    conda create -n mi_env python=3.10  # Crear un nuevo entorno
-    conda activate mi_env  # Activar el entorno
-    conda deactivate  # Salir del entorno
-    conda env remove -n mi_env  # Eliminar el entorno
-
-    # Guardar el entorno en un archivo
-    conda env export > env.yml
-
-    # Cargar el entorno desde un archivo
-    conda env create -f env.yml
-                            </code></pre>
-                        <ul>
-                            <li class="fragment" data-fragment-index="1">Se puede mezclar <span class="monospace">pip</span> y <span class="monospace">conda</span> en los entornos, pero no es muy recomendable <span style="font-size: 1rem;">(de todas formas, a veces es necesario porque en pip hay más paquetes)</span></li>
-                            <li class="fragment" data-fragment-index="2">No queremos acabar con situaciones como las de la imagen</li>
-                            <li class="fragment" data-fragment-index="3">Si nos pasa algo así, lo mejor es quemar el ordenador</li>
-                        </ul>
-                        </div>
-                        <div style="flex: 1" class="fragment" data-fragment-index="2">
-                            <img src="media/4/env_nightmare.jpg">
-                        </div>
-                    </div>                    
-                </section>
-
-                <section>
-                    <h3>Jupyter Notebooks</h3>
-                    <p class="fragment">En la siguiente parte de la clase, abriremos <span class="monospace">vscode</span> y nos pondremos a jugar con paquetes, veremos que podemos hacer con ellos</p>
-                    <p class="fragment">Pero primero, hace falta explicar que son los <em>Jupyter Notebooks</em> (esto es mucho más ligero que lo anterior, we promise)</p>
-                </section>
-                <section>
-                    <h4>Uso de notebooks en vscode</h4>
-                    <ol>
-                        <div style="display: flex; flex-direction: row; gap: 2rem;">
-                            <div class="fragment" data-fragment-index="1">
-                                <img src="media/4/extensiones.png" height="65%">
-                                <p>1. Instalamos las extensiones de vscode de Jupyter y Python</p>
-                            </div>
-                            <div style="margin-top: 10rem;" class="fragment" data-fragment-index="2">
-                                $\rightarrow$
-                            </div>
-                            <div class="fragment" data-fragment-index="2"> 
-                                <img src="media/4/ipynb.png">
-                                <p>2. Creamos un nuevo fichero <span class="monospace">.ipynb</span> dónde trabajaremos</p>
-                            </div>
-                            <div style="margin-top: 10rem;" class="fragment" data-fragment-index="3">
-                                $\rightarrow$
-                            </div>
-                            <div class="fragment" data-fragment-index="3">
-                                <img src="media/4/kernel.png">
-                                <p>3. Configuramos el <em>kernel</em> de nuestro nuevo entorno de conda</p>
-                            </div>
-                        </div>
-                    </ol>
-                </section>
-                <section>
-                    <h3>Descarga de Notebooks</h3>
-                    <p>Ahora pasaremos a una clase interactiva, trabajaremos con los siguientes ficheros que podéis descargar aquí mismo:</p>
-                    <div style="border: 2px solid gray; padding: 1rem; border-radius: 10px;">
-                        <p>
-                            <a href="notebooks/notebook_intro.ipynb" download>Introducción a Jupyter Notebook</a>
-                        </p>
-                    </div>
-                </section>
+<body data-theme="light">
+  <a href="index.html" class="back-link">Volver</a>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+  <div class="reveal">
+    <div class="slides">
+      <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
+      <section data-auto-animate>
+        <h1>Introducción a numpy</h1>
+      </section>
+      <section data-auto-animate>
+        <h1><span><u>Introducción</u></span> a numpy</h1>
+        <p>Solo veremos una parte muy pequeña de esta librería</p>
+        <p>La documentación completa está disponible <a href="https://numpy.org/doc/stable/">aquí</a></p>
+      </section>
+      <section>
+        <h2>Qué es numpy?</h2>
+        <div style="display: flex; flex-direction: row;">
+          <div style="flex: 1;">
+            <img src="/media/5/numpylogo.png" style="vertical-align: middle;">
+          </div>
+          <div style="flex: 2; text-align: left;">
+            <p class="fragment">Ya hemos hablado de las listas <span class="monospace">lista = [1, "python",
+                [1,3]]</span>, que son colecciones lineales de elementos</p>
+            </p>
+            <p class="fragment">También podemos crear matrices como listas anidadas:<br> <span class="monospace"> M =
+                [[0,1], [1,0]]</span> $\;\Longleftrightarrow \; M = \begin{pmatrix}0 \;1 \\ 1 \;0 \end{pmatrix}$</p>
+            <p class="fragment">Las listas son muy flexibles al admitir formas irregulares y tipos de datos heterogéneos, pero <b>esta
+                flexibilidad tiene un gran coste en eficiencia.</b></p>
+          </div>
+        </div>
+        <p class="fragment">Para remediar estos problemas, NumPy nos da una estructura de datos llamada <em>array n-dimensional (ndarray)</em></p>
+        <div class="fragment" style="display: flex;">
+          <div style="flex: 1; text-align: right; font-size: 2rem;">$\rightarrow$ NumPy está escrito en C y usa librerías de álgebra lineal de alto rendimiento como BLAS y LAPACK, lo cuál hace que los <span class="monospace">ndarrays</span> sean órdenes de magnitudes más rápidos que las listas</div>
+          <div style="flex: 1;"><img src="media/5/numpy-arch.png" height="300px"></div>
+        </div>
+      </section>
+      <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+        <h3>ndarrays</h3>
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+            <div style="flex: 2; text-align: left;">
+                <ul>
+                    <li>Tienen un tamaño fijo, fijado en su creación</li>
+                    <li>Todos sus elementos son del mismo tipo (normalmente numéricos)</li>
+                    <li>Se pueden indexar de muchas formas, y NumPy provee cientos de operaciones <b>vectorizadas</b> sobre ellos</li>
+                    <li>Son similares a los vectores de R y de MATLAB, aunque hay ciertas diferencias</li>
+                </ul>
+            </div>
+            <div style="flex: 2; text-align: left;">
+                <pre><code class="python">
+import numpy as np
+a = np.arange(16).reshape(4,4)
+print(a)  # array([[ 0,  1,  2,  3],
+          #        [ 4,  5,  6,  7],
+          #        [ 8,  9, 10, 11],
+          #        [12, 13, 14, 15]])
+print(a.ndim)   # 2
+print(a.shape)  # (4, 4)
+print(a.size)   # 16
+print(a.dtype)  # int64
+                </code></pre>
             </div>
         </div>
-        
-        <script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/math/math.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-				katex: {
-					version: 'latest',
-					delimiters: [
-					{ left: '$$', right: '$$', display: true },
-					{ left: '$', right: '$', display: false },
-					{ left: '\\(', right: '\\)', display: false },
-					{ left: '\\[', right: '\\]', display: true },
-					],
-					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-				},
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
-			});
-		</script>
-        <script src="theme-toggle.js"></script>
-    </body>
+        <div class="fragment">
+          <div style="margin:1rem; padding:1rem; border: 2px solid; border-radius:10px;">Hay 4 atributos fundamentales que describen la estructura del ndarray</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+              <div><span class="monospace">ndarray.ndim</span><br> Número de dimensiones</div>
+              <div><span class="monospace">ndarray.shape</span><br>Número de elementos en cada dimensión (tupla)</div>
+              <div><span class="monospace">ndarray.size</span><br>Número total de elementos</div>
+              <div><span class="monospace">ndarray.dtype</span><br>El tipo de dato de los elementos</div>
+          </div>
+        </div>
+    </section>
+    <section>
+      <h3>ndarray: orden de los ejes</h3>
+      <p>Al haber varias dimensiones, tenemos que tener en cuenta el orden de acceso e impresión de elementos. Para arrays en 2 dimensiones, el primer eje <span>axis = 0</span> son las filas, y el segundo <span>axis = 1</span> las columnas</p>
+      <pre><code class="python">
+a = np.array([[2., 3., 5.],
+              [7., 8., 9.]])
+      </code></pre>
+      el primer eje es de tamaño $2$ y el segundo de tamaño $3$.
+      <p>Para $n > 2$, ya no se pueden visualizar los ndarrays como matrices, pero podemos seguir consultando el tamaño de cada eje con <span class="monospace">np.shape</span>.</p>
+      <img src="media/5/anatomy_array.png">
+    </section>
+    <section>
+
+    </section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/math/math.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+      katex: {
+        version: 'latest',
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true },
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      },
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+    });
+  </script>
+  <script src="theme-toggle.js"></script>
+</body>
 </html>
