@@ -58,7 +58,6 @@
           <div style="flex: 2; text-align: left;">
             <p class="fragment">Ya hemos hablado de las listas <span class="monospace">lista = [1, "python",
                 [1,3]]</span>, que son colecciones lineales de elementos</p>
-            </p>
             <p class="fragment">También podemos crear matrices como listas anidadas:<br> <span class="monospace"> M =
                 [[0,1], [1,0]]</span> $\;\Longleftrightarrow \; M = \begin{pmatrix}0 \;1 \\ 1 \;0 \end{pmatrix}$</p>
             <p class="fragment">Las listas son muy flexibles al admitir formas irregulares y tipos de datos heterogéneos, pero <b>esta
@@ -185,18 +184,18 @@ print(a.dtype)  # int64
   
   # Array aleatorio de tamaño (2,3) con valores en [0,1)
   rand_arr = np.random.rand(2, 3)
-</code></pre>
-</div>
-</section>
-<section data-auto-animate>
-  <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around; gap: 2rem;">
-    <div>
-      <h3>Creación de arrays</h3>
-      <p>Hay muchos mecanismos de creación de arrays n-dimensionales</p>
-    </div>
-    <div style="text-align: left;">
-      <li>Juntando varios arrays a través de uno de los ejes</li>
-      <pre><code class="python" data-line-numbers>
+      </code></pre>
+      </div>
+    </section>
+    <section data-auto-animate>
+      <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around; gap: 2rem;">
+        <div>
+          <h3>Creación de arrays</h3>
+          <p>Hay muchos mecanismos de creación de arrays n-dimensionales</p>
+        </div>
+        <div style="text-align: left;">
+          <li>Juntando varios arrays a través de uno de los ejes</li>
+          <pre><code class="python" data-line-numbers>
 import numpy as np
 
 a = np.array([[1, 2], [3, 4]])
@@ -211,14 +210,203 @@ vstacked = np.vstack((a, b))  # array([[1, 2],
 # Usando hstack (equivalente a np.concatenate con axis=1)
 hstacked = np.hstack((a, b)) # array([[1, 2, 5, 6],
                              #        [3, 4, 7, 8]])
-      </code></pre>
+        </code></pre>
+        </div>
+      <p>Ya hemos visto varias formas de crear arrays, pero también es importante saber que (casi) todas las operaciones que explicaremos más adelante también crean arrays nuevos.</p>
+      <small style="max-width: 800px; text-align: left;">Hay alguna otra forma más de crear arrays, por ejemplo a partir de ficheros. En la siguiente clase leeremos ficheros con Pandas, así que nos saltamos esto de momento, consultar: <a href="https://numpy.org/doc/stable/user/basics.creation.html">Array Creation guide</a></small>
     </div>
-    <p>Ya hemos visto varias formas de crear arrays, pero también es importante saber que (casi) todas las operaciones que explicaremos más adelante también crean arrays nuevos.</p>
-    <small style="max-width: 800px; text-align: left;">Hay alguna otra forma más de crear arrays, por ejemplo a partir de ficheros. En la siguiente clase leeremos ficheros con Pandas, así que nos saltamos esto de momento, consultar: <a href="https://numpy.org/doc/stable/user/basics.creation.html">Array Creation guide</a></small>
-  </div>
-</section>
+  </section>
+  <section>
+    <h3>Indexación y slicing</h3>
+    <p>En un array de NumPy, el indexado es parecido al de una lista normal de Python, pero en varias dimensiones</p>
+    <div style="display:flex; gap: 1rem;">
+      <div style="flex: 1;">
+        <pre><code class="python" data-line-numbers>
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# Elementos específicos
+print(a[0, 0])  # 1
+print(a[1, 2])  # 6
+
+# Segunda fila
+print(a[1])     # [4, 5, 6]
+# Segunda columna
+print(a[:, 1])  # [2, 5, 8]
+
+# Slicing en varias dimensiones
+print(a[1:, 1:])  # array([[5, 6],
+                  #        [8, 9]])
+
+        </code></pre>
+        </div>
+        <div style="flex: 1;">
+          <img src="media/6/2d_index.png">
+        </div>
+      </div>
+    </section>
+    <section>
+      <h3>Indexación y slicing</h3>
+      <p>También podemos indexar a partir de otros arrays</p>
+      <pre><code class="python" data-line-numbers>
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# Filas 2 y 1
+b = np.array([1, 0])
+print(a[b]) # array([[4, 5, 6],
+            #        [1, 2, 3]])
+
+# Todas las filas, y luego columnas 1 y 2
+c = np.array([1,2])
+print(a[:, c]) # array([[2, 3],
+               #        [5, 6],
+               #        [8, 9]])
+    </code></pre>
+    O a partir de arrays de booleanos, útil para implementar filtros
+    <pre><code class="python" data-line-numbers>
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(a[a > 5]) # array([6, 7, 8, 9])
+    </code></pre>
+  </section>
+  <section>
+    <h3>Reshaping</h3>
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <p style="font-size: 120%;">Con <span class="monospace">arr.reshape()</span> podemos cambiar la forma de un array</p>
+      <div class="fragment">
+        <p>
+          Por ejemplo podemos pasar de un array $6 \times 2$ a uno $3 \times 4$:
+        </p>
+        <pre style="max-width: 1000px; max-height:200px;"><code class="python" data-line-numbers>
+import numpy as np
+a = np.arange(12).reshape(6, 2)
+print(a.shape)  # (6, 2)
+b = a.reshape(3, 4)
+print(b.shape)  # (3, 4)
+
+        </code></pre>
+      </div>
+      <div class="fragment">
+        <p>
+          Pro tip: Si no sabemos el tamaño de una de las dimensiones, podemos hacer que NumPy la calcule inmediatamente poniendo $-1$ en ella.
+        </p>
+        <pre style="max-width: 1000px; max-height:200px;"><code class="python" data-line-numbers>
+import numpy as np
+a = np.arrange(15000)
+b = a.reshape(-1, 3, 1000)
+print(b.shape)  # (5, 3, 1000)
+
+        </code></pre>
+      </div>
+        <div style="display: flex; gap: 1rem;">
+          <div class="fragment">
+            <p>Con <span class="monospace">np.ravel</span> podemos linealizar un array y con <span class="monospace">arr.T</span> hallar la traspuesta de una matriz!</p>
+            <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.array([[1, 2], [3, 4]])
+print(a.ravel())  # array([1, 2, 3, 4])
+print(a.T)        # array([[1, 3],
+                  #        [2, 4]])
+
+            </code></pre>
+          </div>
+          <div class="fragment">
+            <p>También podemos añadir nuevos ejes con <span class="monospace">np.newaxis</span> o <span class="monospace">np.expand_dims</span></p>
+            <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.array([1, 2, 3])
+print(a[:, np.newaxis])  # array([[1],
+                         #        [2],
+                         #        [3]])
+
+            </code></pre>
+          </div>
+        </div>
+    </div>
+  </section>
+  <section>
+    <h2>Operaciones sobre arrays</h2>
+    <ul>
+      <li class="fragment">Las operaciones sonre arrays de NumPy son <em>vectorizadas</em>, es decir, no tenemos que ir elemento por elemento aplicando los operadores.</li>
+      <li class="fragment">Esto reduce tanto el número de líneas que hay que escribir como el tiempo de ejecución <a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data">(ya que los procesadores modernos pueden realmente hacer muchas operaciones a la vez)</a></li>
+    </ul>
+    <div class="fragment" style="margin-top: 2rem;">
+      <p>De esta forma, podemos aplicar operaciones básicas simplemente como:</p>
+      <div style="display:flex; gap: 1rem; flex-direction: row;">
+        <div style="flex:1;">
+          <pre><code class="python" data-line-numbers>
+import numpy as np
+data = np.array([1, 2])
+ones = np.ones(2, dtype=int)
+
+# Operaciones aritméticas vectorizadas
+print(data + ones)  # array([2, 3])
+print(data - ones)  # array([0, 1])
+print(data * data)  # array([1, 4])
+print(data / data)  # array([1, 1])
+
+# NO HACER ESTO
+for i in range(len(data)):
+    data[i] += 1
+
+          </code></pre>
+        </div>
+        <div style="flex: 1; display:flex; flex-direction: column;">
+          <img src="media/6/operators1.png">
+          <img src="media/6/operators2.png">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Operaciones sobre arrays</h2>
+    <p>Además de las operaciones básicas, NumPy nos proporciona cientos de funciones matemáticas que aplicar sobre arrays. Algunas de ellas están en paquetes separados, por ejemplo:</p>
+    <ul class="fragment">
+      <hr>
+      <li><span class="monospace ">numpy.linalg</span>. Incluye funciones para álgebra lineal. Incluye resolución de sistemas lineales, cálculo de autovalores, descomposiciones SVD, de Cholesky, $\dots$ (es decir, ANM in a box)</li>
+      <li><span class="random">numpy.random</span>. Incluye funciones para crear arrays aleatorios, que sigan ciertas distribuciones estadísticas.</li>
+      <li><span class="monospace">numpy.fft</span>. Contiene funciones para transformadas de fourier rápidas en varias dimensiones.</li>
+      <hr>
+    </ul>
+    <p class="fragment">También existe la librería <a href="https://scipy.org/">SciPy</a>, que no cubriremos en este curso, pero expande NumPy incorporando muchas más funciones de computación científica.</p>
+  </section>
+  <section>
+    <h2>Operaciones sobre arrays</h2>
+    <div style="display: flex; gap: 1rem;">
+      <div style="flex: 1;">
+        <p style="font-size: 120%;">Además de operar sobre 2 arrays, podemos <em>agregar</em> los elementos de uno mediante operadores como la suma, el máximo o el mínimo, entre muchos otros.</p>
+        <img src="media/6/agg.png">
+        <p style="font-size: 120%;">En vez de ejecutar esto sobre todo un array, podemos reducir en cada eje</p>
+        <img src="media/6/agg_axis.png">
+      </div>
+      <div style="flex: 1;" data-line-numbers="1-5|7-9">
+        <pre><code class="python" data-line-numbers>
+import numpy as np
+data = np.array([[1, 2], [3, 4]])
+print(data.sum())  # 10
+print(data.max())  # 4
 
 
+print(data.sum(axis=0))  # array([4, 6])
+print(data.max(axis=1))  # array([2, 4])
+        </code></pre>
+        <div class="fragment">
+          <hr style="margin-top: 2rem;">
+          <p>También es importante el <em>broadcasting</em>, que permite operar un array grande con otro pequeño (incluso con un escalar) "copiando" el pequeño varias veces a lo largo de un eje.</p>
+          <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.array([1, 1, 1])
+print(a + 5)    # array([6, 6, 6])
+
+b = np.array([[1, 2, 3], [4, 5, 6]])
+print(b + a)    # array([[2, 3, 4],
+                #        [5, 6, 7]])
+
+          </code></pre>
+          <img src="media/6/broadcasting.png">
+          <p style="font-size: 80%;">Existen algunas normas sobre cuando podemos hacer esto, se pueden consultar <a href="https://numpy.org/doc/stable/user/basics.broadcasting.html">aquí</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
   <script src="dist/reveal.js"></script>
   <script src="plugin/notes/notes.js"></script>
   <script src="plugin/math/math.js"></script>
