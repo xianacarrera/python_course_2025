@@ -46,8 +46,18 @@
       </section>
       <section data-auto-animate>
         <h1><span><u>Introducción</u></span> a numpy</h1>
-        <p>Solo veremos una parte muy pequeña de esta librería</p>
-        <p>La documentación completa está disponible <a href="https://numpy.org/doc/stable/">aquí</a></p>
+        <p style="font-size: 120%;">Solo veremos una parte muy pequeña de esta librería</p>
+        <p style="margin-top:4rem;">La documentación completa está disponible <a href="https://numpy.org/doc/stable/">aquí</a></p>
+        <p>Y la página oficial también incluye muchos tutoriales de alta calidad! (pero en inglés)<br><small>(Las imágenes usadas en estas diapositivas están principalmente sacadas de estos tutoriales)</small>
+        </p>
+        <p style="align-content: baseline;">
+          <ul>
+            <li><a href="https://numpy.org/doc/stable/user/absolute_beginners.html">Absolute basics for beginners</a></li>
+            <li><a href="https://numpy.org/doc/stable/user/basics.html">NumPy fundamentals</a></li>
+            <li><a href="https://numpy.org/doc/stable/user/howtos_index.html">NumPy how-tos</a></li>
+            <li><a href="https://numpy.org/numpy-tutorials/">NumPy tutorials (más basados en proyectos)</a></li>
+          </ul>
+        </p>
       </section>
       <section>
         <h2>Qué es numpy?</h2>
@@ -56,18 +66,20 @@
             <img src="/media/5/numpylogo.png" style="vertical-align: middle;">
           </div>
           <div style="flex: 2; text-align: left;">
-            <p class="fragment">Ya hemos hablado de las listas <span class="monospace">lista = [1, "python",
+            <p>Ya hemos hablado de las listas <span class="monospace">lista = [1, "python",
                 [1,3]]</span>, que son colecciones lineales de elementos</p>
-            <p class="fragment">También podemos crear matrices como listas anidadas:<br> <span class="monospace"> M =
+            <p>También podemos crear matrices como listas anidadas:<br> <span class="monospace"> M =
                 [[0,1], [1,0]]</span> $\;\Longleftrightarrow \; M = \begin{pmatrix}0 \;1 \\ 1 \;0 \end{pmatrix}$</p>
-            <p class="fragment">Las listas son muy flexibles al admitir formas irregulares y tipos de datos heterogéneos, pero <b>esta
+            <p>Las listas son muy flexibles al admitir formas irregulares y tipos de datos heterogéneos, pero <b>esta
                 flexibilidad tiene un gran coste en eficiencia.</b></p>
           </div>
         </div>
-        <p class="fragment">Para remediar estos problemas, NumPy nos da una estructura de datos llamada <em>array n-dimensional (ndarray)</em></p>
-        <div class="fragment" style="display: flex;">
-          <div style="flex: 1; text-align: right; font-size: 2rem;">$\rightarrow$ NumPy está escrito en C y usa librerías de álgebra lineal de alto rendimiento como BLAS y LAPACK, lo cuál hace que los <span class="monospace">ndarrays</span> sean órdenes de magnitudes más rápidos que las listas</div>
-          <div style="flex: 1;"><img src="media/5/numpy-arch.png" height="300px"></div>
+        <div class="fragment">
+          <p>Para remediar estos problemas, NumPy nos da una estructura de datos llamada <em>array n-dimensional (ndarray)</em></p>
+          <div style="display: flex;">
+            <div style="flex: 1; text-align: right; font-size: 2rem;">$\rightarrow$ NumPy está escrito en C y usa librerías de álgebra lineal de alto rendimiento como BLAS y LAPACK, lo cuál hace que los <span class="monospace">ndarrays</span> sean órdenes de magnitudes más rápidos que las listas</div>
+            <div style="flex: 1;"><img src="media/5/numpy-arch.png" height="300px"></div>
+          </div>
         </div>
       </section>
       <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
@@ -89,6 +101,7 @@ print(a)  # array([[ 0,  1,  2,  3],
           #        [ 4,  5,  6,  7],
           #        [ 8,  9, 10, 11],
           #        [12, 13, 14, 15]])
+
 print(a.ndim)   # 2
 print(a.shape)  # (4, 4)
 print(a.size)   # 16
@@ -294,36 +307,38 @@ print(b.shape)  # (5, 3, 1000)
 
         </code></pre>
       </div>
-        <div style="display: flex; gap: 1rem;">
-          <div class="fragment">
-            <p>Con <span class="monospace">np.ravel</span> podemos linealizar un array y con <span class="monospace">arr.T</span> hallar la traspuesta de una matriz!</p>
-            <pre><code class="python" data-line-numbers>
+    </section>
+    <section>
+      <h3>Reshaping</h3>
+      <div style="display: flex; gap: 1rem;">
+        <div>
+          <p>Con <span class="monospace">np.ravel</span> podemos linealizar un array y con <span class="monospace">arr.T</span> hallar la traspuesta de una matriz!</p>
+          <pre><code class="python" data-line-numbers>
 import numpy as np
 a = np.array([[1, 2], [3, 4]])
 print(a.ravel())  # array([1, 2, 3, 4])
 print(a.T)        # array([[1, 3],
                   #        [2, 4]])
 
-            </code></pre>
-          </div>
-          <div class="fragment">
-            <p>También podemos añadir nuevos ejes con <span class="monospace">np.newaxis</span> o <span class="monospace">np.expand_dims</span></p>
-            <pre><code class="python" data-line-numbers>
+        </code></pre>
+      </div>
+      <div>
+        <p>También podemos añadir nuevos ejes con <span class="monospace">np.newaxis</span> o <span class="monospace">np.expand_dims</span></p>
+        <pre><code class="python" data-line-numbers>
 import numpy as np
 a = np.array([1, 2, 3])
 print(a[:, np.newaxis])  # array([[1],
                          #        [2],
                          #        [3]])
 
-            </code></pre>
-          </div>
-        </div>
+        </code></pre>
+      </div>
     </div>
   </section>
   <section>
     <h2>Operaciones sobre arrays</h2>
     <ul>
-      <li class="fragment">Las operaciones sonre arrays de NumPy son <em>vectorizadas</em>, es decir, no tenemos que ir elemento por elemento aplicando los operadores.</li>
+      <li class="fragment">Las operaciones sobre arrays de NumPy son <em>vectorizadas</em>, es decir, no tenemos que ir elemento por elemento aplicando los operadores.</li>
       <li class="fragment">Esto reduce tanto el número de líneas que hay que escribir como el tiempo de ejecución <a href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data">(ya que los procesadores modernos pueden realmente hacer muchas operaciones a la vez)</a></li>
     </ul>
     <div class="fragment" style="margin-top: 2rem;">
@@ -359,9 +374,9 @@ for i in range(len(data)):
     <p>Además de las operaciones básicas, NumPy nos proporciona cientos de funciones matemáticas que aplicar sobre arrays. Algunas de ellas están en paquetes separados, por ejemplo:</p>
     <ul class="fragment">
       <hr>
-      <li><span class="monospace ">numpy.linalg</span>. Incluye funciones para álgebra lineal. Incluye resolución de sistemas lineales, cálculo de autovalores, descomposiciones SVD, de Cholesky, $\dots$ (es decir, ANM in a box)</li>
+      <li><span class="monospace ">numpy.linalg</span>. Incluye funciones para álgebra lineal. Incluye resolución de sistemas lineales, cálculo de autovalores, descomposiciones SVD, de Cholesky, $\dots$ (es decir, ANM in a box).</li>
       <li><span class="random">numpy.random</span>. Incluye funciones para crear arrays aleatorios, que sigan ciertas distribuciones estadísticas.</li>
-      <li><span class="monospace">numpy.fft</span>. Contiene funciones para transformadas de fourier rápidas en varias dimensiones.</li>
+      <li><span class="monospace">numpy.fft</span>. Contiene funciones para calcular transformadas de Fourier en varias dimensiones.</li>
       <hr>
     </ul>
     <p class="fragment">También existe la librería <a href="https://scipy.org/">SciPy</a>, que no cubriremos en este curso, pero expande NumPy incorporando muchas más funciones de computación científica.</p>
