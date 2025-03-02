@@ -17,12 +17,13 @@
 
     <link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
     <style>
-        table,
-        th,
-        td {
+        table:not(code table),
+        th:not(code th),
+        td:not(code td) {
             border: 1px solid black;
             border-collapse: collapse;
         }
+
     </style>
 </head>
 
@@ -52,7 +53,7 @@
                 <h1>3. I/O, lambdas y programación con OOP</h1>
             </section>
             <section>
-                <h2>Índice:</h2>
+                <h2>Hoy veremos</h2>
                 <ul
                     style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;">
                     <li class="fragment" style="text-align: center;">
@@ -76,28 +77,30 @@
                 <h2>I/O</h2>
                 <p>Sabemos cómo imprimir datos por consola:</p>
                 <pre><code data-line-numbers="2-10" class="python">
-                    x = 4
-                    print(f"2+2 = {x}")
-                    
-                    print("Damn")
-                    print("LaTeX no soportado por defecto: " + "x^2 = 2$")
-                    print("123", "456", "789", sep="-")
+x = 4
+print(f"2+2 = {x}")
 
-                    print("Hola", end=" ")
-                    print("mundo!")
+print("Damn")
+print("LaTeX no soportado por defecto: " + "x^2 = 2$")
+print("123", "456", "789", sep="-")
+
+print("Hola", end=" ")
+print("mundo!")
 
                     </code></pre>
 
-                <p class="fragment">Veamos el proceso inverso: la introducción de datos por consola.</p>
+                <p class="fragment" style="margin-top:2rem;">Veamos el proceso inverso: la introducción de datos por consola.</p>
             </section>
 
             <section>
-                <div style="display: flex; flex-direction: row; gap: 2rem;">
+                <h3>I/O</h3>
+                <div style="display: flex; flex-direction: row; gap: 1rem;">
+                <div style="flex: 2; display: flex; flex-direction: column; gap: 2rem;">
                     <div style="flex: 2; text-align: left;">
-                        <p>Podemos pedir al usuario que introduzca datos:</p>
+                        <p>Podemos pedir al usuario que introduzca datos usando <span class="monospace">input("mensaje")</span></p>
                         <pre><code data-line-numbers="2-6" class="python">
-    mensaje_del_usuario = input("Dime tu nombre: ")
-    print(mensaje_del_usuario)
+    username = input("Dime tu nombre: ")
+    print(username)
     
                         </code></pre>
 
@@ -115,7 +118,10 @@
                         </code></pre>
                     </div>
                 </div>
-
+                <div style="flex:1;" class="fragment">
+                    <img src="media/3/meme_input.webp">
+                </div>
+                </div>
                 <aside class="notes">
                     "Dime tu nombre: " es la prompt
                     Lo que el usuario introduce se guarda en la variable mensaje_del_usuario
@@ -124,7 +130,8 @@
             </section>
 
             <section>
-                <p>Por defecto, input() devuelve strings.</p>
+                <h3>I/O</h3>
+                <p>Por defecto, <span class="monospace">input()</span> devuelve strings.</p>
                 <pre><code data-line-numbers="2-6" class="python">
                         edad = input("¿Cuántos años tienes? ")
                         if edad >= 18:       # TypeError: '>=' not supported between instances of 'str' and 'int'
@@ -133,37 +140,37 @@
                             print("Menor")
 
                     </code></pre>
-                <p>Si queremos usar el resultado como otro tipo de dato, podemos convertirlo explícitamente.</p>
+                <p style="margin-top:3rem;">Si queremos usar el resultado como otro tipo de dato, podemos convertirlo explícitamente.</p>
                 <pre><code data-line-numbers="2-4,6-9" class="python">
-                        edad = input("¿Cuántos años tienes? ")
-                        edad = int(edad)
-                        print(edad >= 18)     # True o False
+    edad = input("¿Cuántos años tienes? ")
+    edad = int(edad)
+    print(edad >= 18)     # True o False
 
-                        precio = input("¿Cuánto cuesta una barra de pan?")
-                        precio = float(precio)
-                        if precio > 1.85:
-                            print("Caro, si me preguntan")
+    precio = input("¿Cuánto cuesta una barra de pan?")
+    precio = float(precio)
+    if precio > 1.85:
+        print("Caro, si me preguntan")
 
                     </code></pre>
             </section>
 
             <section>
-                <p>La idea de pedir input no es solo una curiosidad. Se utiliza en la práctica, por ejemplo para
-                    construir menús</p>
+                <h3>I/O</h3>
+                <p>La idea de pedir input por consola no es solo una curiosidad! <br>Se utiliza en la práctica, por ejemplo para <b>construir menús</b></p>
                 <pre><code data-line-numbers="2-5,7-14" class="python">
-                        menu = "Introduce una opción:\n"
-                        menu += "\t a. Buscar en la base de datos.\n"
-                        menu += "\t b. Añadir entrada a la base de datos.\n"
-                        menu += "\t c. Salir.\n"
-                        
-                        msg = ""
-                        while (msg != "c"):
-                            msg = input(menu).lower()
-                        
-                            if msg == "a": buscar()
-                            elif msg == "b": añadir()
-                            elif msg == "c": print("¡Adiós!")
-                            else: print("Opción incorrecta.")
+    menu = "Introduce una opción:\n"
+    menu += "\t a. Buscar en la base de datos.\n"
+    menu += "\t b. Añadir entrada a la base de datos.\n"
+    menu += "\t c. Salir.\n"
+
+    msg = ""
+    while (msg != "c"):
+        msg = input(menu).lower()
+
+        if msg == "a": buscar()
+        elif msg == "b": añadir()
+        elif msg == "c": print("¡Adiós!")
+        else: print("Opción incorrecta.")
 
                     </code></pre>
             </section>
@@ -174,37 +181,43 @@
             </section>
 
             <section>
-                <p>Si durante la ejecución ocurre un error, el programa finalizará abruptamente.</p>
-                <p>El manejo de excepciones nos permite indicar al programa cómo afrontar un error de manera controlada
+                <h3>Excepciones</h3>
+                <p style="text-align: center;">Si durante la ejecución ocurre un error, el programa finalizará abruptamente.</p>
+                <p style="text-align: center;">El manejo de excepciones nos permite indicar al programa cómo afrontar un error de manera controlada
                     para que pueda continuar ejecutándose.</p>
-                <p>Los bloques de manejo de excepciones utilizan 4 keywords (ninguna obligatoria): <span
-                        style="font-family:monospace;">try</span>, <span style="font-family:monospace;">except</span>,
-                    <span style="font-family:monospace;">else</span> y <span
-                        style="font-family:monospace;">finally</span>.
-                </p>
-                <pre><code data-line-numbers="2-14" class="python">
-                        try:
-                            # Código que puede producir un error
-                            pass
-                        except:
-                            # Se ejecuta si se produce un error
-                            # El resto de secuencias de try no se ejecutan
-                            pass
-                        else:
-                            # Se ejecuta después de todo el código de try si no se produce un error
-                            pass
-                        finally:
-                            # Se ejecuta en último lugar, independientemente de si se ha producido un error o no
-                            pass
+                <div style="text-align: left;" class="fragment">
+                    <p>Los bloques de manejo de excepciones utilizan 4 keywords (ninguna obligatoria):</p> 
+                    <ul style="text-align: left;">
+                        <li><span style="font-family:monospace;">try</span>: intenta hacer esto, a ver si no falla $\dots$</li>
+                        <li><span style="font-family:monospace;">except</span>: si falla algo dentro del try, haz esto $\dots$</li>
+                        <li><span style="font-family:monospace;">else</span>: si todo va bien dentro del try, haz esto $\dots$ </li>
+                        <li><span style="font-family:monospace;">finally</span>: pase lo que que pase, haz esto $\dots$</li>
+                    </ul>
+                </div>
+                <pre class="fragment"><code data-line-numbers="2-14" class="python">
+    try:
+        # Código que puede producir un error
+        pass
+    except:
+        # Se ejecuta si se produce un error
+        # El resto de secuencias de try no se ejecutan
+        pass
+    else:
+        # Se ejecuta después de todo el código de try si no se produce un error
+        pass
+    finally:
+        # Se ejecuta en último lugar, independientemente de si se ha producido un error o no
+        pass
                     </code></pre>
-                Nota: el orden es importante. try-else-except no es válido.
+                <p class="fragment">Nota: el orden es importante. try-else-except no es válido.
                 Quitar los pass y preguntar por qué el código daría un error?
                 else es útil para lo que dependa de que el bloque de try tenga éxito
                 else y finally son anecdóticos
-                Puede haber else sin except, finally sin ... pero todos dependen de try
+                Puede haber else sin except, finally sin ... pero todos dependen de try</p>
             </section>
 
             <section>
+                <h3>Algunos ejemplos</h3>
                 <pre><code data-line-numbers="2-14" class="python">
                         def dividir(a, b):
                             try:
@@ -237,6 +250,7 @@
             </section>
 
             <section>
+                <h3>Excepciones</h3>
                 <p><span style="font-family:monospace;">except</span> permite recoger varios tipos de errores.</p>
                 <p>También podemos generar nuestras propias excepciones.</p>
                 <p>Volveremos a esto (necesitamos el concepto de clase).</p>
@@ -250,16 +264,21 @@
             <section>
                 <h2>Lectura de archivos (input)</h2>
                 <!-- Esto será útil en la segunda parte del curso -->
-                <p>Función básica: open()</p>
-                <pre><code>
-                        archivo = open("archivo.txt", "r")    # Ruta relativa
-                        archivo2 = open("C:\\Users\\Xiana\\Desktop\\archivo.txt", "r")    # Ruta absoluta (estilo Windows, \ escapado)
-                    
-                        bin = open("archivo_binario.txt", "rb")
-                    </code></pre>
+                <p>Función básica: <span class="monospace">open(path, modo)</span></p>
+                <pre><code class="python" data-line-numbers>
+    # Ruta relativa (i.e. desde el mismo directorio que el script)
+    archivo = open("archivo.txt", "r")  
+
+    # Ruta absoluta (i.e. desde el directorio raíz)
+    archivo2 = open("C:\\Users\\Xiana\\Desktop\\archivo.txt", "r")
+
+    bin = open("archivo_binario.txt", "rb")
+
+                </code></pre>
             </section>
 
             <section>
+                <h3>Lectura de archivos (input)</h3>
                 <p>Hay diferentes formas de leer el contenido:</p>
                 <pre><code data-line-numbers="3-6|13-18|24-27|33-38|43-48" class="python" style="max-height: 250px;">
                         
@@ -322,40 +341,49 @@
                 </ul>
             </section>
             <section>
-                <p>Es preferible abrir archivos usando <span style="font-family:monospace;">with</span>:</p>
-                <ul>
-                    <li>Cierra los recursos automáticamente.</li>
-                    <li>Maneja los errores</li>
-                    <li>Código más limpio y compacto</li>
-                </ul>
-                <pre><code data-line-numbers="2-7" class="python">
-                        with open("archivo.txt", "r") as archivo:      # archivo = open("archivo.txt", "r")
-                            for linea in archivo:
-                                print(linea.rstrip())
+                <h3>Lectura de archivos (input)</h3>
+                <div style="text-align:left; display:flex; gap:2rem;">
+                    <div style="flex: 1;">
+                        <p>Es preferible abrir archivos usando <span style="font-family:monospace;">with</span>:</p>
+                        <ul>
+                            <li>Cierra los recursos automáticamente.</li>
+                            <li>Maneja los errores</li>
+                            <li>Código más limpio y compacto</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1;">
+                        <pre><code data-line-numbers class="python">
+    # El archivo se cierra automáticamente,
+    # no es necesario incluir archivo.close()
+    with open("archivo.txt", "r") as archivo:
+        for linea in archivo:
+            print(linea.rstrip())
 
-                        # archivo se cierra automáticamente, sin necesidad de llamar explícitamente a archivo.close()
-                        # No es necesario incluir archivo.close()
+                        </code></pre>
+                    </div>
+                </div>
+                <div class="fragment" style="margin-top:2rem;">
+                    <p>La sintaxis de <span style="font-family:monospace;">with</span> es equivalente al siguiente bloque de
+                        código:</p>
+                    <pre><code class="python" data-line-numbers>
+    try:
+        archivo = open("archivo.txt", "r")
+        try:
+            datos = archivo.read()
+            print(datos)
+        finally:
+            archivo.close()
 
-
-                    </code></pre>
-                <p>La sintaxis de <span style="font-family:monospace;">with</span> es equivalente al siguiente bloque de
-                    código:</p>
-                <pre><code data-line-numbers="2-14" class="python">
-                        try:
-                            archivo = open("archivo.txt", "r")
-                            try:
-                                datos = archivo.read()
-                                print(datos)
-                            finally:
-                                archivo.close()
-
-                    </code></pre>
-                TODO: with para input y output a la vez
-                Nota: no es necesario hacer close en el bloque externo porque el archivo no se ha llegado a abrir (de
-                hecho, daría un error)
+                        </code></pre>
+                    TODO: with para input y output a la vez
+                    Nota: no es necesario hacer close en el bloque externo porque el archivo no se ha llegado a abrir (de
+                    hecho, daría un error)
+                </div>
             </section>
 
             <section>
+                <h3>Lectura de archivos (input)</h3>
+                <p>Por supuesto, pueden seguir occuriendo varios errores al abrir archivos $\dots$</p>
                 <pre><code data-line-numbers="2-14" class="python">
                         try:
                             with open("archivo.txt", "r") as archivo:      # archivo = open("archivo.txt", "r")
@@ -373,23 +401,27 @@
 
             <section>
                 <h2>Escritura de archivos (output)</h2>
-                <p>La función open() tiene varios modos para abrir ficheros:</p>
-                <ul>
-                    <li>r -> Read mode. Lee el archivo desde el inicio. Si el archivo no existe, se genera un error.
-                    </li>
-                    <li>w -> Write mode. <b>Borra el contenido</b> del archivo y permite escribir nuevo texto sobre él.
-                        Si el archivo no existe, lo crea.</li>
-                    <li>a -> Append mode. Añade nuevo texto desde el final del archivo. Si el archivo no existe, lo
-                        crea.</li>
-                    <li>x -> Create mode. Crea el archivo y permite escribir en él. Si ya existe, genera un error.</li>
-                </ul>
-                <p>"r" es la opción por defecto: open("fichero.txt", "r") y open("fichero.txt") hacen lo mismo.</p>
-                <p>A cada uno de estos modos se le puede añadir "b", para manejar los archivos en binario, o "t", para
-                    manejarlos como archivos de texto.</p>
-                <p>"t" es la opción por defecto, así que no es necesario indicarla.</p>
+                <div style="text-align: left;">
+                    <p style="font-size: 120%;">La función <span class="monospace">open("archivo.txt", <b>modo</b>)</span> tiene varios modos para abrir ficheros:</p>
+                    <ul>
+                        <li><b class="monospace">r</b> $\rightarrow$ Read mode. Lee el archivo desde el inicio. Si el archivo no existe, se genera un error.
+                        </li>
+                        <li><b class="monospace">w</b> $\rightarrow$ Write mode. <b>Borra el contenido</b> del archivo y permite escribir nuevo texto sobre él.
+                            Si el archivo no existe, lo crea.</li>
+                        <li><b class="monospace">a</b> $\rightarrow$ Append mode. Añade nuevo texto desde el final del archivo. Si el archivo no existe, lo
+                            crea.</li>
+                        <li><b class="monospace">x</b> $\rightarrow$ Create mode. Crea el archivo y permite escribir en él. Si ya existe, genera un error.</li>
+                    </ul>
+                    <div style="margin-top:4rem;">
+                        <p><b class="monospace">r</b> es la opción por defecto: <span class="monospace">open("fichero.txt", "r")</span> y <span class="monospace"></span>open("fichero.txt")</span> hacen lo mismo.</p>
+                        <p>A cada uno de estos modos se le puede añadir <b class="monospace">b</b>, para manejar los archivos en binario, o <b class="monospace">t</b>, para
+                        manejarlos como archivos de texto (por defecto).</p>
+                        <p>Si queremos leer y escribir a la vez, podemos añadir <b class="monospace">+</b>.</p>
+                    </div>
+                </div>
             </section>
             <section>
-                <p>Si queremos leer y escribir a la vez, podemos usar "r+", "w+", "a+" o "x+" (¡que no son iguales!).
+                <h3>Escritura de archivos (output)</h3>
                 </p>
                 <table cellspacing="0" cellpadding="0" style="width: 110%; border-collapse: collapse;">
                     <tr>
@@ -400,42 +432,42 @@
                         <th>¿Sobreescribe el contenido?</th>
                     </tr>
                     <tr>
-                        <td>r</td>
+                        <td><b class="monospace">r</b></td>
                         <td>Lectura</td>
                         <td>Inicio</td>
                         <td>No</td>
                         <td>No</td>
                     </tr>
                     <tr>
-                        <td>r+</td>
+                        <td><b class="monospace">r+</b></td>
                         <td>Lectura y escritura</td>
                         <td>Inicio</td>
                         <td>No</td>
                         <td>No</td>
                     </tr>
                     <tr>
-                        <td>w</td>
+                        <td><b class="monospace">w</b></td>
                         <td>Escritura</td>
                         <td>Inicio</td>
                         <td>Sí</td>
                         <td>Sí</td>
                     </tr>
                     <tr>
-                        <td>w+</td>
+                        <td><b class="monospace">w+</b></td>
                         <td>Lectura y escritura</td>
                         <td>Inicio</td>
                         <td>Sí</td>
                         <td>Sí</td>
                     </tr>
                     <tr>
-                        <td>a</td>
+                        <td><b class="monospace">a</b></td>
                         <td>Escritura (append)</td>
                         <td>Final</td>
                         <td>Sí</td>
                         <td>No</td>
                     </tr>
                     <tr>
-                        <td>a+</td>
+                        <td><b class="monospace">a+</b></td>
                         <td>Lectura y escritura (append)</td>
                         <td>Final</td>
                         <td>Sí</td>
@@ -446,14 +478,16 @@
             </section>
 
             <section>
-                <img src="media/3/io_modes.png" alt="Diagrama de modos de la funcióno open()">
-
-                https://stackoverflow.com/questions/6648493/how-to-open-a-file-for-both-reading-and-writing
+                <h3>Escritura de archivos (output)</h3>
+                <div>
+                    <img src="media/3/io_modes.png" alt="Diagrama de modos de la funcióno open()">
+                </div>
+                <em><a href="https://stackoverflow.com/questions/6648493/how-to-open-a-file-for-both-reading-and-writing" target="_blank">Más info</a></em>
             </section>
 
             <section>
-                <h1>Funciones lambda <span style="font-family:monospace;">lambda</span> </h1>
-                <img src="media/3/lambdas.jpg" alt="Lambdas meme">
+                <h1>Funciones lambda </h1>
+                <img src="media/3/lambdas.jpg" alt="Lambdas meme" style="margin-top: 5rem; width:60%;">
             </section>
 
             <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
@@ -461,24 +495,18 @@
                 <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
                     <div style="flex: 2; text-align: left;">
                         <ul>
-                            <li>Son funciones anónimas (i.e., sin nombre) útiles para tareas pequeñas y sencillas.</li>
-                            <li>Su origen está en la investigación sobre el concepto de función que dio origen al
-                                cálculo lambda de Alonzo Church (1930s).</li>
-                            <li>El estilo funcional del cálculo lambda y las funciones lambda busca actuar sin tener en
-                                cuenta el estado actual del sistema y evitar los efectos secundarios.</li>
-                            <li>Python no es un lenguaje funcional, pero adoptó conceptos de lenguajes funcionales.</li>
-                            <li>Las funciones lambda solo pueden tener expresiones puras: no puede haber expresiones con
-                                asignaciones (=), <span class="monospace">while</span>, <span
-                                    class="monospace">try</span>,
-                                etc.</li>
+                            <li>Son <em>funciones anónimas</em> (i.e. sin nombre) útiles para tareas pequeñas y sencillas.</li>
+                            <li>Su origen está en la investigación sobre el concepto de función que dio origen al cálculo lambda de Alonzo Church (1930s).</li>
+                            <li>El estilo funcional del cálculo lambda y las funciones lambda busca actuar sin tener en cuenta el estado actual del sistema y evitar los <em>efectos secundarios</em>.</li>
+                            <li>Python no es un lenguaje funcional, pero adoptó algunos conceptos de lenguajes funcionales.</li>
+                            <li>Las funciones lambda solo pueden tener <em>expresiones puras</em>. No puede haber expresiones con asignaciones $=$, ni bloques <span class="monospace">while</span>, <span class="monospace">try</span>, etc.</li>
                         </ul>
                     </div>
                     <div style="flex: 2; text-align: left;">
-                        <blockquote
+                        <blockquote style="text-align:right;"
                             cite="https://docs.python.org/3/faq/design.html#why-can-t-lambda-expressions-contain-statements">
                             Unlike lambda forms in other languages, where they add functionality, Python lambdas are
-                            only a shorthand notation if you’re too lazy to define a function.
-                            Añadir fuente
+                            only a shorthand notation if you're too lazy to define a function.
                         </blockquote>
                     </div>
                 </div>
@@ -495,7 +523,7 @@
                 <div style="display: flex; gap: 2rem; align-items: center;">
                     <h2 style="margin: 0;">Sintaxis</h2>
                     <span style="text-align: left; align-items: center;">
-                        <span class="monospace" style="align-items: center;">lambda argumentos: expresión</span>
+                        <span class="monospace" style="align-items: center; position:relative; top:10px;">lambda argumentos: expresión</span>
                     </span>
 
                 </div>
@@ -508,16 +536,16 @@
                             Debe ser una única expresión.</li>
                     </ul>
 
-                    <p>Ejemplos:</p>
-                    <div
-                        style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-                        <pre><code class="python">
-                            lambda x: x + 1
+                    <div style="margin-top: 5rem;">
+                        <pre><code class="python" data-line-numbers>
+    # Algunos ejemplos de sintaxis
+    lambda x: x + 1
+    lambda: True
 
-                            lambda: True
+    # Podemos darle un nombre y ejecutarla luego
+    cuadrado = lambda x: x * x
+    print(cuadrado(3))     # 9
 
-                            cuadrado = lambda x: x * x
-                            print(cuadrado(3))     # 9
                         </code></pre>
                     </div>
                 </div>
@@ -525,42 +553,53 @@
 
             <section>
                 <h3>Más ejemplos</h3>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-
-                    <!-- Escape Characters -->
-                    <div style="text-align: left;" class="fragment">
-                        <pre style="width: 42em;"><code class="python">
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div style="display: flex; gap: 1rem; align-items: center;" class="fragment">
+                        <div>
+                            <p>Función normal de división</p>
+                            <pre  style="width: 900px;"><code class="python" data-line-numbers>
     def dividir(x, y):
         if y != 0:
             return x / y
         else:
             return "undefined"
                             </code></pre>
-                    </div>
-
-                    <div style="text-align: left;" class="fragment">
-                        <pre style="width: 42em;"><code class="python">
+                        </div>
+                        <p style="font-size: 120%; width:300px;">
+                            $\Longrightarrow$
+                        </p>
+                        <div>
+                            <p>Lambda de división</p>
+                            <pre style="width: 900px;"><code class="python" data-line-numbers>
     lambda x, y: x / y if y != 0 else "undefined"
 
+
+
+    
                             </code></pre>
+                        </div>
                     </div>
+                    <div style="display: flex; gap: 1rem; align-items: center;" class="fragment">
+                        <div>
+                            <p>Función de formato de nombre</p>
+                            <pre style="width: 900px;"><code class="python" data-line-numbers>
+def nombre_completo(nombre, apellido):
+    return f"{nombre.title()} {apellidos.title()}"
 
-                    <div style="text-align: left;" class="fragment">
-                        <pre style="width: 42em;"><code class="python">
-    def nombre_completo(nombre, apellido):
-        return f"{nombre.title()} {apellidos.title()}"
                             </code></pre>
-                    </div>
+                        </div>
+                        <p style="font-size: 120%; width:300px;">
+                            $\Longrightarrow$
+                        </p>
+                        <div>
+                            <p>Lambda de formato de nombre</p>
+                            <pre style="width: 900px;"><code class="python"  data-line-numbers>
+lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"    
+                    
 
-                    <!-- String Immutability -->
-                    <div style="text-align: left;" class="fragment">
-                        <pre style="width: 42em;"><code class="python">
-    lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"    
-                            
-                        </code></pre>
+                            </code></pre>
+                        </div>
                     </div>
-
-                </div>
             </section>
 
 
@@ -569,18 +608,17 @@
                 <div style="display: flex; gap: 2rem; align-items: flex-start;">
                     <h2>Casos de uso columnes</h2>
                     <span style="text-align: left;">
-                        Las funciones lambda son especialmente útiles cuando se usan junto a iterables y funciones como
-                        <span class="monospace">filter</span>, <span class="monospace">map</span>, <span
-                            class="monospace">sorted</span>, etc.
+                        Las funciones lambda son especialmente útiles cuando se usan junto a <em>iterables</em> y funciones como <span class="monospace">filter</span>, <span class="monospace">map</span>, <span class="monospace">sorted</span>, etc.
                     </span>
                 </div>
-                <div class="r-stack">
+                <div class="r-stack" style="margin-top:4rem;">
                     <div class="fragment current-visible">
-                        <span><span class="monospace">map</span> aplica una función a cada elemento de un iterable.
-                            Sintaxis: <span class="monospace">map(function, iterables)</span></span>
-                        <div style="display: flex; gap: 2rem; flex-direction: row; align-items: flex-start;">
-                            <div style="flex: 1;">
-                                <pre><code class="python">
+                        <span><span class="monospace">map(<b>func</b>, iter)</span> aplica una función a cada elemento de un iterable.
+                        
+                        <div style="display: flex; gap: 2rem; flex-direction: row; align-items: center;">
+                            <div>
+                                <p>Función + <span class="monospace">map</span></p>
+                                <pre style="width:600px;"><code class="python" data-line-numbers>
     def doblar(x):
         return 2 * x
     
@@ -589,24 +627,26 @@
     print(dobles)      # [2, 4, 6, 8]
                                 </code></pre>
                             </div>
-
+                            <p style="font-size: 120%;">$\Longrightarrow$</p>
                             <div style="flex: 1;">
-                                <pre><code class="python">
+                                <p>Lambda + <span class="monospace">map</span> (más conciso)</p>
+                                <pre style="width:900px;"><code class="python" data-line-numbers>
     lista = [1, 2, 3, 4]
     dobles = list(map(lambda x: 2 * x, lista))
     print(dobles)      # [2, 4, 6, 8]
+
+
+    
                                 </code></pre>
                             </div>
                         </div>
                     </div>
                     <div class="fragment current-visible">
-                        <span><span class="monospace">filter</span> mantiene solo aquellos elementos del iterable que
-                            cumplen la
-                            condición indicada. Sintaxis: <span class="monospace">filter(function,
-                                iterables)</span></span>
-                        <div style="display: flex; gap: 2rem; flex-direction: row; align-items: flex-start;">
+                        <span><span class="monospace">filter(<b>func</b>, iter)</span> mantiene solo aquellos elementos del iterable que cumplen <span class="monospace">func(elem)=True</span>.
+                        <div style="display: flex; gap: 2rem; flex-direction: row; align-items: center;">
                             <div style="flex: 1;">
-                                <pre><code class="python">
+                                <p>Función + <span class="monospace">filter</span></p>
+                                <pre style="width:600px;"><code class="python" data-line-numbers>
     def es_par(x):
         return x % 2 == 0
 
@@ -615,38 +655,51 @@
     print(res)      # [2, 4, 6]
                             </code></pre>
                             </div>
-
+                            <p style="font-size: 120%;">$\Longrightarrow$</p>
                             <div style="flex: 1;">
-                                <pre><code class="python">
+                                <p>Lambda + <span class="monospace">filter</span> (más conciso)</p>
+                                <pre style="width:900px;"><code class="python" data-line-numbers>
     lista = range(2, 7)
     res = list(filter(lambda x: x % 2 == 0, lista))
     print(res)      # [2, 4, 6]
+
+
+
                             </code></pre>
                             </div>
                         </div>
                     </div>
                     <div class="fragment">
-                        <span><span class="monospace">sorted</span> devuelve una lista ordenada a partir de un iterable.
-                            Sintaxis: <span class="monospace">sorted(iterable, key=key, reverse=reverse)</span></span>
-                        <div style="display: flex; gap: 2rem; flex-direction: row; align-items: flex-start;">
+                        <span><span class="monospace">sorted(iter, <b>key</b>, reverse)</span> devuelve una lista ordenada a partir de un iterable.
+                        <div style="display: flex; gap: 2rem; flex-direction: row; align-items: center;">
                             <div style="flex: 1;">
-                                <pre><code class="python">
+                                <pre style="width:800px;"><code class="python" data-line-numbers>
     lista = list('vwerfa')
     ordenada = sorted(lista)
-    print(ordenada)      # ['a', 'e', 'f', 'r', 'v', 'w']
+    print(ordenada) 
+    # >>> ['a', 'e', 'f', 'r', 'v', 'w']
 
+    # Ordenar números con una función especial (key)
     nums = [15, 11, 4, -5, 0, -1, 9]
     def dist_10(n):
         return abs(10-n)
-    print(sorted(nums, key=dist_10))    # [11, 9, 15, 4, 0, -1, -5]
-    TODO: caso empate??
-                            </code></pre>
+    print(sorted(nums, key=dist_10))
+    # >>> [11, 9, 15, 4, 0, -1, -5]
+                                </code></pre>
                             </div>
-
+                            <p style="font-size: 120%;">$\Longrightarrow$</p> 
                             <div style="flex: 1;">
-                                <pre><code class="python">
+                                <pre style="width:900px;"><code class="python" data-line-numbers>
+    # Ordenamos los números igual, pero ahora la key es un lambda
     nums = [15, 11, 4, -5, 0, -1, 9]
-    print(sorted(nums, key=lambda n: abs(10-n), reverse=True))    # [-5, -1, 0, 4, 15, 11, 9]
+    print(sorted(nums, key=lambda n: abs(10-n), reverse=True)) 
+    # >>> [-5, -1, 0, 4, 15, 11, 9]
+
+
+
+
+
+
                             </code></pre>
                             </div>
                         </div>
@@ -661,73 +714,84 @@
             </section>
 
             <section>
-                <h3>Más ejemplos</h3>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-
-                    <!-- Escape Characters -->
+                <h3>(Aún) más ejemplos</h3>
+                <div style="display: flex; gap: 6rem; flex-direction: row; align-items: center; margin-top: 5rem;">
                     <div style="text-align: left;" class="fragment">
-                        <pre><code class="python">
+                        <ul>
+                            <li>Filtrar elementos $> 20$</li>
+                        </ul>
+                        <pre style="width: 800px;"><code class="python" data-line-numbers>
     datos = range(5, 50, 5)
     mayores_20 = filter(lambda x: x > 20, datos)
-    print(list(mayores_20))       # [25, 30, 35, 40, 45]
+    print(list(mayores_20)) # [25, 30, 35, 40, 45]
+
                         </code></pre>
                     </div>
-
-                    <!-- Unicode & Emojis -->
+                    
                     <div style="text-align: left;" class="fragment">
-                        <pre><code class="python">
+                        <ul>
+                            <li>Ordenar una lista de tuplas por el segundo elemento</li>
+                        </ul>
+                        <pre style="width: 900px;"><code class="python" data-line-numbers>
     datos = [(4, 20), (1, 30), (2, 10)]
     datos_ordenados = sorted(data, key=lambda x: x[1])
-    print(datos_ordenados)       # Output: [(2, 10), (3, 20), (1, 30)]
+    print(datos_ordenados)  # [(2, 10), (3, 20), (1, 30)]
+
                         </code></pre>
                     </div>
-
-                    <!-- String Operators -->
-                    <div style="text-align: left;" class="fragment">
-                        <p>Lorem ipsum</p>
-                        <pre><code class="python">
-    Lorem codium
-                        </code></pre>
-                    </div>
-
-                    <!-- String Immutability -->
-                    <div style="text-align: left;" class="fragment">
-                        <p>Lorem ipsum</p>
-                        <pre><code class="python">
-    Lorem codium
-                        </code></pre>
-                    </div>
-
-                    Quizás mejor dejar esto como ejercicios...
-                    Also: TODO ver reduce (hay que importarla)
-
                 </div>
+                <div style="display: flex; gap: 6rem; flex-direction: row; align-items: center; margin-top: 5rem;">
+                    <div style="text-align: left;" class="fragment">
+                        <ul>
+                            <li></li>
+                        </ul>
+                        <pre style="width: 800px;"><code class="python" data-line-numbers>
+    Lorem codium
+
+                        </code></pre>
+                    </div>
+
+                    <div style="text-align: left;" class="fragment">
+                        <ul>
+                            <li></li>
+                        </ul>
+                    <pre style="width: 900px;"><code class="python" data-line-numbers>
+    Lorem codium
+
+                        </code></pre>
+                    </div>
+                </div>
+                <p style="margin-top: 5rem;">
+                Quizás mejor dejar esto como ejercicios...
+                Also: TODO ver reduce (hay que importarla)</p>
             </section>
 
             <section>
-                <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                <h3>Funciones lambda</h3>
+                <div style="display: flex; align-items: stretch; min-height: 250px; font-family: Arial, sans-serif; margin-top: 5rem;">
                     <div style="width: 45%; padding: 20px; text-align: left;">
-                        <h3>✅ Ventajas</h3>
-                        <ul>
+                        <h3 style="margin-top: 0;">✅ Ventajas</h3>
+                        <ul style="padding-left: 20px;">
                             <li>Concisas, compactas</li>
                             <li>Útiles en casos sencillos</li>
                             <li>Pueden ser combinadas con conceptos de lenguaje funcional (map, filter, etc.)</li>
-                            <li>No tienen nombre $\implies$ menos variables, código más limpio</li>
+                            <li>No tienen nombre ⟹ menos variables, código más limpio</li>
                         </ul>
                     </div>
-                    <div style="width: 10%; text-align: center; font-size: 2em;">|</div>
+                    
+                    <div style="width: 2px; background-color: black; margin: 20px 10px;"></div>
+                    
                     <div style="width: 45%; padding: 20px; text-align: left;">
-                        <h3>❌ Desventajas</h3>
-                        <ul>
+                        <h3 style="margin-top: 0;">❌ Desventajas</h3>
+                        <ul style="padding-left: 20px;">
                             <li>No pueden ser reutilizadas (a menos que se asignen a una variable...)</li>
                             <li>Pueden reducir la legibilidad y ser sobreusadas</li>
                             <li>En caso de error, es más difícil seguir el stack trace</li>
-                            <li>Peor documentación, no se pueden manejar excepciones con <span
-                                    class="monospace">try</span>
-                            </li>
+                            <li>Peor documentación, no se pueden manejar excepciones con <span style="font-family: monospace;">try</span></li>
                         </ul>
                     </div>
-                </div>
+                </div>                
+                
                 <aside class="notes">
                     Lo de asignar una lambda a una variable está desaconsejado según PEP (guía de estilo)
                     Lo del stacktrace es porque todas las funciones lambda se llaman igual: "lambda"
