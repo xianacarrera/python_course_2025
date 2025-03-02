@@ -405,6 +405,64 @@ print(b + a)    # array([[2, 3, 4],
       </div>
     </div>
   </section>
+  <section>
+    <h2>Operaciones sobre arrays</h2>
+    <p>Algunas otras cosas que podemos hacer sobre arrays:</p>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+      <div class="fragment">
+        <p>Comparaciones <br><small>(se usa mucho para indexar)</small></p>
+        <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.array([1, 2, 3])
+b = np.array([3, 2, 1])
+print(a == b)  # array([False,  True, False])
+
+        </code></pre>
+      </div>
+      <div class="fragment">
+        <p>Ordenar<br><small>(También existe np.argsort para obtener los índices de ordenamiento)</small></p>
+        <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.array([3, 1, 2])
+print(np.sort(a))  # array([1, 2, 3])
+
+        </code></pre>
+      </div>
+      <div class="fragment">
+        <p>Funciones universales <small>(es decir, otras funciones matemáticas que ya vienen implementadas)</small></p>
+        <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.array([1, 2, 3])
+print(np.exp(a))  # array([ 2.718,  7.389, 20.085])
+print(np.sqrt(a)) # array([1.000, 1.414, 1.732])
+print(np.mean(a)) # 2.0
+
+        </code></pre>
+      </div>
+      <div class="fragment">
+        <p>Producto de matrices <br><small>(la operación más útil de la historia)</small></p>
+        <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.array([[1, 2], [3, 4]])
+b = np.array([[5, 6], [7, 8]])
+print(a @ b)  # array([[19, 22],
+              #        [43, 50]])
+
+# También se pueden usar np.dot(a, b) o a.dot(b)
+        </code></pre>
+      </div>
+    </div>
+  </section>
+  <section>
+  <h2>En resumen...</h2>
+  <ul>
+    <li class="fragment">NumPy es una librería fundamental para el cálculo numérico en Python.</li>
+    <li class="fragment">Los <em>ndarrays</em> son más eficientes que las listas de Python.</li>
+    <li class="fragment">Los <em>ndarrays</em> tienen operaciones vectorizadas rápidas, que además simplifican código <br><small style="position:relative; left: 1050px;">(o lo complican, depende como las uses)</small></li>
+    <li class="fragment">Hay muchas librerías que usan NumPy para implementar todo tipo de estructuras a partir de <span class="monospace">ndarray</span><br><small style="position:relative; left:1170px;"> (por ejemplo Pandas, que veremos en la siguiente clase!)</small></li>
+    <li class="fragment" style="font-size: 110%;"><em>Puede que sea extremadamente aburrido aprender NumPy, pero también  es extremadamente útil.</em></li>
+  </ul>
+</section>
 </div>
 </div>
   <script src="dist/reveal.js"></script>
