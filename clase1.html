@@ -43,7 +43,7 @@
 				<section data-background-iframe="https://survey.stackoverflow.co/2023/#most-popular-technologies-language" data-background-interactive data-preload></section>
 
 				<section>
-					<h2> TIOBE index</h2>
+					<h2>TIOBE index</h2>
 					<p>Calculado según el número de resultados al buscar<br>
 						+"&lt language &gt programming" en varios motores de búsqueda (Google, Bing...).</p>
 					<div class="r-stack r-stretch">
@@ -84,8 +84,40 @@
 					  </div>
 				</section>
 				<section>
-					<h2>(Breve) historia</h2>
-
+					<div style="display: flex; align-items: center; justify-content: space-between;">
+						<h2>(Breve) historia</h2>
+						<div>
+							<img src="media/1/PythonPowered.gif" style="height:100px;">
+							<img src="media/1/python-logo-old.png" style="height:100px;">
+							<img src="media/1/python-logo.png" style="height:100px; margin-left: 4rem;">
+						</div>
+					</div>
+					<div>
+						<div>
+							<ul>
+								<li>Concebido en los años 80 por Guido Van Rossum</li>
+								<li>Su desarrollo comienza en 1989, cuando se implementaron las funcionalidades básicas y utilidades importantes como los <it>módulos</it>.</li>
+								<li class="fragment">1994 $\rightarrow$ Python 1.0, con nuevas funcionalidades como <it>funciones lambda</it></li>
+								<li class="fragment">2000 $\rightarrow$ Python 2.0, añadidas las <it>list comprehensions</it>, los assignment operators <span class="monospace">(+=, *=, /=, $\dots$)</span> y el soporte para Unicode.</li>
+								<li class="fragment">A lo largo de los 2000s se desarrollaron las siguientes versiones 2.x</li>
+								<li class="fragment">2008 $\rightarrow$ <b>Python 3.0</b>, que supuso un gran rediseño del lenguaje y eliminó mucha redundancia</li>
+								<li class="fragment">Python 2.x y 3.x se siguieron desarrollando por separado, hasta 2020, dónde se acabó el soporte para las versiones 2.x</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>(Breve) historia</h3>
+					<p>
+						Python está implementado sobre C (Cpython), pero también está inspirado por otros lenguaje como ABC, Lisp, Modula3, Perl, Smalltalk $\dots$
+					</p>
+					<p>El gran número de lenguajes en los que se inspiró se refleja en su modelo de programación <it>multiparadigma</it></p>
+				</section>
+				<section>
+					<h3>Python2 vs Python3</h3>
+					<p><b>Python 3.13 es la versión actual</b> y la recomendada para nuevos proyectos. Python2 dejó de recibir soporte el 1 de enero de 2020.</p>
+					<p class="fragment">A veces nos encontramos con paquetes que solo funcionan en versiones específicas como 3.10 o 3.12, no pasa nada si cambiamos a esas versiones ya que siguen siendo bastante recientes.</p>
+					<p class="fragment" style="margin-top: 4rem;">Hoy en día esto no es tan importante ya que los nuevos proyectos deberían comenzar en Python3, pero si tenéis que trabajar con código antiguo en Python2 (versiones 2.x), es importante saber que <b>no son compatibles</b></p>
 				</section>
 				<section>
 					<h2>Características</h2>
@@ -148,18 +180,28 @@
 
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/math/math.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
+		  // More info about initialization & config:
+		  // - https://revealjs.com/initialization/
+		  // - https://revealjs.com/config/
+		  Reveal.initialize({
+			hash: true,
+			katex: {
+			  version: 'latest',
+			  delimiters: [
+				{ left: '$$', right: '$$', display: true },
+				{ left: '$', right: '$', display: false },
+				{ left: '\\(', right: '\\)', display: false },
+				{ left: '\\[', right: '\\]', display: true },
+			  ],
+			  ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+			},
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+		  });
 		</script>
 		<script src="theme-toggle.js"></script>
 	</body>
