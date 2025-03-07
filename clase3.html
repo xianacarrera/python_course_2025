@@ -834,13 +834,61 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
 
             <section>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;">
+                    <div style="display: flex; align-items: center;">
+                        <img src="../../media/3/clase_person.png" alt="Clase person" style="border-radius: 5px;" ,
+                            width="800px">
+                    </div>
+                    <div>
+                        HACER QUE EL CÓDIGO OCUPE MÁS ESPACIO VERTICAL
+                        <pre style="background: #222; padding: 10px; border-radius: 5px; color: white; height: 800px;">
+                            <code class="python">
+    class Person:
+        def __init__(self, name, age, gender, occupation):
+            self.name = name
+            self.age = age
+            self.gender = gender
+            self.occupation = occupation
+
+        def walk(self):
+            print(f"{self.name} está caminando")
+        
+        def eat(self, comida):
+            print(f"{self.name} está comiendo {comida}")
+
+        def sleep(self):
+            print("No hace nada...")
+
+        def work():
+            print("Qué currante")
+
+    
+    # Creamos un objeto de la clase persona
+    marta = Person("Marta", 20, "F", "estudiante")
+    artai = Person("Artai", 23, "NB", "dibujante")
+
+    print("artai: {}".format(artai))
+    artai.work()
+    marta.eat("croquetas")
+
+</code></pre>
+                    </div>
+
+                </div>
+                <aside class="notes">
+                    Mencionar lo de que los atributos se suelen denominar igual que los argumentos, pero que son
+                    distintos.
+                </aside>
+            </section>
+
+            <section>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;">
                     <div>
                         <img src="media/3/clase_person.png" alt="Clase person" style="border-radius: 5px;" ,
                             width="800px">
                     </div>
                     <div>
                         HACER QUE EL CÓDIGO OCUPE MÁS ESPACIO VERTICAL
-                        <pre style="background: #222; padding: 10px; border-radius: 5px; color: white;">
+                        <pre style="background: #222; padding: 10px; border-radius: 5px; color: white; height: 1800px;">
                             <code class="python">
     class Person:
         def __init__(self, name, age, gender, occupation):
