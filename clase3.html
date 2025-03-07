@@ -14,6 +14,8 @@
     <link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
     <!-- Moon theme -->
     <link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 
     <link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
     <style>
@@ -23,7 +25,6 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
-
     </style>
 </head>
 
@@ -31,7 +32,8 @@
     <a href="index.html" class="back-link">Volver</a>
 
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-        <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -42,10 +44,11 @@
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
-        <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
-    </button>    
+    </button>
     <div class="reveal">
         <div class="slides">
             <!-- Each section corresponds to a slide -->
@@ -58,13 +61,11 @@
                     style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;">
                     <li class="fragment" style="text-align: center;">
                         <p>1. Input - Output (I/O)</p>
-                        <img src="media/3/input_output.png" alt="Input-output"
-                            style="max-width: 550px; height: auto;">
+                        <img src="media/3/input_output.png" alt="Input-output" style="max-width: 550px; height: auto;">
                     </li>
                     <li class="fragment" style="text-align: center;">
                         <p>2. Lambdas</p>
-                        <img src="media/3/lambdas.png" alt="Lambda syntax"
-                            style="max-width: 550px; height: auto;">
+                        <img src="media/3/lambdas.png" alt="Lambda syntax" style="max-width: 550px; height: auto;">
                     </li>
                     <li class="fragment" style="text-align: center;">
                         <p>3. Programación orientada a objetos</p>
@@ -89,26 +90,28 @@ print("mundo!")
 
                     </code></pre>
 
-                <p class="fragment" style="margin-top:2rem;">Veamos el proceso inverso: la introducción de datos por consola.</p>
+                <p class="fragment" style="margin-top:2rem;">Veamos el proceso inverso: la introducción de datos por
+                    consola.</p>
             </section>
 
             <section>
                 <h3>I/O</h3>
                 <div style="display: flex; flex-direction: row; gap: 1rem;">
-                <div style="flex: 2; display: flex; flex-direction: column; gap: 2rem;">
-                    <div style="flex: 2; text-align: left;">
-                        <p>Podemos pedir al usuario que introduzca datos usando <span class="monospace">input("mensaje")</span></p>
-                        <pre><code data-line-numbers="2-6" class="python">
+                    <div style="flex: 2; display: flex; flex-direction: column; gap: 2rem;">
+                        <div style="flex: 2; text-align: left;">
+                            <p>Podemos pedir al usuario que introduzca datos usando <span
+                                    class="monospace">input("mensaje")</span></p>
+                            <pre><code data-line-numbers="2-6" class="python">
     username = input("Dime tu nombre: ")
     print(username)
     
                         </code></pre>
 
-                    </div>
+                        </div>
 
-                    <div style="flex: 3; text-align: left;" class="fragment">
-                        <p>Si el prompt es largo, es recomendable escribirlo por separado de antemano:</p>
-                        <pre><code data-line-numbers="2-6" class="python">
+                        <div style="flex: 3; text-align: left;" class="fragment">
+                            <p>Si el prompt es largo, es recomendable escribirlo por separado de antemano:</p>
+                            <pre><code data-line-numbers="2-6" class="python">
     prompt = "Buenos días! Este es el servicio de atención al usuario.\n"
     prompt += "Por favor, escribe tu nombre: "
 
@@ -116,11 +119,11 @@ print("mundo!")
     print(f"Hola, {nombre}.")
 
                         </code></pre>
+                        </div>
                     </div>
-                </div>
-                <div style="flex:1;" class="fragment">
-                    <img src="media/3/meme_input.webp">
-                </div>
+                    <div style="flex:1;" class="fragment">
+                        <img src="media/3/meme_input.webp">
+                    </div>
                 </div>
                 <aside class="notes">
                     "Dime tu nombre: " es la prompt
@@ -140,7 +143,8 @@ print("mundo!")
                             print("Menor")
 
                     </code></pre>
-                <p style="margin-top:3rem;">Si queremos usar el resultado como otro tipo de dato, podemos convertirlo explícitamente.</p>
+                <p style="margin-top:3rem;">Si queremos usar el resultado como otro tipo de dato, podemos convertirlo
+                    explícitamente.</p>
                 <pre><code data-line-numbers="2-4,6-9" class="python">
     edad = input("¿Cuántos años tienes? ")
     edad = int(edad)
@@ -156,7 +160,8 @@ print("mundo!")
 
             <section>
                 <h3>I/O</h3>
-                <p>La idea de pedir input por consola no es solo una curiosidad! <br>Se utiliza en la práctica, por ejemplo para <b>construir menús</b></p>
+                <p>La idea de pedir input por consola no es solo una curiosidad! <br>Se utiliza en la práctica, por
+                    ejemplo para <b>construir menús</b></p>
                 <pre><code data-line-numbers="2-5,7-14" class="python">
     menu = "Introduce una opción:\n"
     menu += "\t a. Buscar en la base de datos.\n"
@@ -182,16 +187,22 @@ print("mundo!")
 
             <section>
                 <h3>Excepciones</h3>
-                <p style="text-align: center;">Si durante la ejecución ocurre un error, el programa finalizará abruptamente.</p>
-                <p style="text-align: center;">El manejo de excepciones nos permite indicar al programa cómo afrontar un error de manera controlada
+                <p style="text-align: center;">Si durante la ejecución ocurre un error, el programa finalizará
+                    abruptamente.</p>
+                <p style="text-align: center;">El manejo de excepciones nos permite indicar al programa cómo afrontar un
+                    error de manera controlada
                     para que pueda continuar ejecutándose.</p>
                 <div style="text-align: left;" class="fragment">
-                    <p>Los bloques de manejo de excepciones utilizan 4 keywords (ninguna obligatoria):</p> 
+                    <p>Los bloques de manejo de excepciones utilizan 4 keywords (ninguna obligatoria):</p>
                     <ul style="text-align: left;">
-                        <li><span style="font-family:monospace;">try</span>: intenta hacer esto, a ver si no falla $\dots$</li>
-                        <li><span style="font-family:monospace;">except</span>: si falla algo dentro del try, haz esto $\dots$</li>
-                        <li><span style="font-family:monospace;">else</span>: si todo va bien dentro del try, haz esto $\dots$ </li>
-                        <li><span style="font-family:monospace;">finally</span>: pase lo que que pase, haz esto $\dots$</li>
+                        <li><span style="font-family:monospace;">try</span>: intenta hacer esto, a ver si no falla
+                            $\dots$</li>
+                        <li><span style="font-family:monospace;">except</span>: si falla algo dentro del try, haz esto
+                            $\dots$</li>
+                        <li><span style="font-family:monospace;">else</span>: si todo va bien dentro del try, haz esto
+                            $\dots$ </li>
+                        <li><span style="font-family:monospace;">finally</span>: pase lo que que pase, haz esto $\dots$
+                        </li>
                     </ul>
                 </div>
                 <pre class="fragment"><code data-line-numbers="2-14" class="python">
@@ -210,10 +221,10 @@ print("mundo!")
         pass
                     </code></pre>
                 <p class="fragment">Nota: el orden es importante. try-else-except no es válido.
-                Quitar los pass y preguntar por qué el código daría un error?
-                else es útil para lo que dependa de que el bloque de try tenga éxito
-                else y finally son anecdóticos
-                Puede haber else sin except, finally sin ... pero todos dependen de try</p>
+                    Quitar los pass y preguntar por qué el código daría un error?
+                    else es útil para lo que dependa de que el bloque de try tenga éxito
+                    else y finally son anecdóticos
+                    Puede haber else sin except, finally sin ... pero todos dependen de try</p>
             </section>
 
             <section>
@@ -363,7 +374,8 @@ print("mundo!")
                     </div>
                 </div>
                 <div class="fragment" style="margin-top:2rem;">
-                    <p>La sintaxis de <span style="font-family:monospace;">with</span> es equivalente al siguiente bloque de
+                    <p>La sintaxis de <span style="font-family:monospace;">with</span> es equivalente al siguiente
+                        bloque de
                         código:</p>
                     <pre><code class="python" data-line-numbers>
     try:
@@ -376,7 +388,8 @@ print("mundo!")
 
                         </code></pre>
                     TODO: with para input y output a la vez
-                    Nota: no es necesario hacer close en el bloque externo porque el archivo no se ha llegado a abrir (de
+                    Nota: no es necesario hacer close en el bloque externo porque el archivo no se ha llegado a abrir
+                    (de
                     hecho, daría un error)
                 </div>
             </section>
@@ -402,20 +415,28 @@ print("mundo!")
             <section>
                 <h2>Escritura de archivos (output)</h2>
                 <div style="text-align: left;">
-                    <p style="font-size: 120%;">La función <span class="monospace">open("archivo.txt", <b>modo</b>)</span> tiene varios modos para abrir ficheros:</p>
+                    <p style="font-size: 120%;">La función <span class="monospace">open("archivo.txt",
+                            <b>modo</b>)</span> tiene varios modos para abrir ficheros:</p>
                     <ul>
-                        <li><b class="monospace">r</b> $\rightarrow$ Read mode. Lee el archivo desde el inicio. Si el archivo no existe, se genera un error.
+                        <li><b class="monospace">r</b> $\rightarrow$ Read mode. Lee el archivo desde el inicio. Si el
+                            archivo no existe, se genera un error.
                         </li>
-                        <li><b class="monospace">w</b> $\rightarrow$ Write mode. <b>Borra el contenido</b> del archivo y permite escribir nuevo texto sobre él.
+                        <li><b class="monospace">w</b> $\rightarrow$ Write mode. <b>Borra el contenido</b> del archivo y
+                            permite escribir nuevo texto sobre él.
                             Si el archivo no existe, lo crea.</li>
-                        <li><b class="monospace">a</b> $\rightarrow$ Append mode. Añade nuevo texto desde el final del archivo. Si el archivo no existe, lo
+                        <li><b class="monospace">a</b> $\rightarrow$ Append mode. Añade nuevo texto desde el final del
+                            archivo. Si el archivo no existe, lo
                             crea.</li>
-                        <li><b class="monospace">x</b> $\rightarrow$ Create mode. Crea el archivo y permite escribir en él. Si ya existe, genera un error.</li>
+                        <li><b class="monospace">x</b> $\rightarrow$ Create mode. Crea el archivo y permite escribir en
+                            él. Si ya existe, genera un error.</li>
                     </ul>
                     <div style="margin-top:4rem;">
-                        <p><b class="monospace">r</b> es la opción por defecto: <span class="monospace">open("fichero.txt", "r")</span> y <span class="monospace"></span>open("fichero.txt")</span> hacen lo mismo.</p>
-                        <p>A cada uno de estos modos se le puede añadir <b class="monospace">b</b>, para manejar los archivos en binario, o <b class="monospace">t</b>, para
-                        manejarlos como archivos de texto (por defecto).</p>
+                        <p><b class="monospace">r</b> es la opción por defecto: <span
+                                class="monospace">open("fichero.txt", "r")</span> y <span
+                                class="monospace"></span>open("fichero.txt")</span> hacen lo mismo.</p>
+                        <p>A cada uno de estos modos se le puede añadir <b class="monospace">b</b>, para manejar los
+                            archivos en binario, o <b class="monospace">t</b>, para
+                            manejarlos como archivos de texto (por defecto).</p>
                         <p>Si queremos leer y escribir a la vez, podemos añadir <b class="monospace">+</b>.</p>
                     </div>
                 </div>
@@ -423,56 +444,61 @@ print("mundo!")
             <section>
                 <h3>Escritura de archivos (output)</h3>
                 </p>
-                <table cellspacing="0" cellpadding="0" style="width: 110%; border-collapse: collapse;">
-                    <tr>
-                        <th>Modo</th>
-                        <th>Uso</th>
-                        <th>Posición del cursor</th>
-                        <th>¿Crea el archivo si no existe?</th>
-                        <th>¿Sobreescribe el contenido?</th>
-                    </tr>
-                    <tr>
-                        <td><b class="monospace">r</b></td>
-                        <td>Lectura</td>
-                        <td>Inicio</td>
-                        <td>No</td>
-                        <td>No</td>
-                    </tr>
-                    <tr>
-                        <td><b class="monospace">r+</b></td>
-                        <td>Lectura y escritura</td>
-                        <td>Inicio</td>
-                        <td>No</td>
-                        <td>No</td>
-                    </tr>
-                    <tr>
-                        <td><b class="monospace">w</b></td>
-                        <td>Escritura</td>
-                        <td>Inicio</td>
-                        <td>Sí</td>
-                        <td>Sí</td>
-                    </tr>
-                    <tr>
-                        <td><b class="monospace">w+</b></td>
-                        <td>Lectura y escritura</td>
-                        <td>Inicio</td>
-                        <td>Sí</td>
-                        <td>Sí</td>
-                    </tr>
-                    <tr>
-                        <td><b class="monospace">a</b></td>
-                        <td>Escritura (append)</td>
-                        <td>Final</td>
-                        <td>Sí</td>
-                        <td>No</td>
-                    </tr>
-                    <tr>
-                        <td><b class="monospace">a+</b></td>
-                        <td>Lectura y escritura (append)</td>
-                        <td>Final</td>
-                        <td>Sí</td>
-                        <td>No</td>
-                    </tr>
+                <table cellspacing="0" cellpadding="0" style="width: 110%; border-collapse: collapse; margin-bottom: 10px; padding-bottom: 10px;"
+                    class="pure-table pure-table-bordered">
+                    <thead style="background-color: antiquewhite;">
+                        <tr>
+                            <th>Modo</th>
+                            <th>Uso</th>
+                            <th>Posición del cursor</th>
+                            <th>¿Crea el archivo si no existe?</th>
+                            <th>¿Sobreescribe el contenido?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b class="monospace">r</b></td>
+                            <td>Lectura</td>
+                            <td>Inicio</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td><b class="monospace">r+</b></td>
+                            <td>Lectura y escritura</td>
+                            <td>Inicio</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td><b class="monospace">w</b></td>
+                            <td>Escritura</td>
+                            <td>Inicio</td>
+                            <td>Sí</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><b class="monospace">w+</b></td>
+                            <td>Lectura y escritura</td>
+                            <td>Inicio</td>
+                            <td>Sí</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><b class="monospace">a</b></td>
+                            <td>Escritura (append)</td>
+                            <td>Final</td>
+                            <td>Sí</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td><b class="monospace">a+</b></td>
+                            <td>Lectura y escritura (append)</td>
+                            <td>Final</td>
+                            <td>Sí</td>
+                            <td>No</td>
+                        </tr>
+                    </tbody>
                 </table>
 
             </section>
@@ -482,7 +508,8 @@ print("mundo!")
                 <div>
                     <img src="media/3/io_modes.png" alt="Diagrama de modos de la funcióno open()">
                 </div>
-                <em><a href="https://stackoverflow.com/questions/6648493/how-to-open-a-file-for-both-reading-and-writing" target="_blank">Más info</a></em>
+                <em><a href="https://stackoverflow.com/questions/6648493/how-to-open-a-file-for-both-reading-and-writing"
+                        target="_blank">Más info</a></em>
             </section>
 
             <section>
@@ -495,11 +522,17 @@ print("mundo!")
                 <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
                     <div style="flex: 2; text-align: left;">
                         <ul>
-                            <li>Son <em>funciones anónimas</em> (i.e. sin nombre) útiles para tareas pequeñas y sencillas.</li>
-                            <li>Su origen está en la investigación sobre el concepto de función que dio origen al cálculo lambda de Alonzo Church (1930s).</li>
-                            <li>El estilo funcional del cálculo lambda y las funciones lambda busca actuar sin tener en cuenta el estado actual del sistema y evitar los <em>efectos secundarios</em>.</li>
-                            <li>Python no es un lenguaje funcional, pero adoptó algunos conceptos de lenguajes funcionales.</li>
-                            <li>Las funciones lambda solo pueden tener <em>expresiones puras</em>. No puede haber expresiones con asignaciones $=$, ni bloques <span class="monospace">while</span>, <span class="monospace">try</span>, etc.</li>
+                            <li>Son <em>funciones anónimas</em> (i.e. sin nombre) útiles para tareas pequeñas y
+                                sencillas.</li>
+                            <li>Su origen está en la investigación sobre el concepto de función que dio origen al
+                                cálculo lambda de Alonzo Church (1930s).</li>
+                            <li>El estilo funcional del cálculo lambda y las funciones lambda busca actuar sin tener en
+                                cuenta el estado actual del sistema y evitar los <em>efectos secundarios</em>.</li>
+                            <li>Python no es un lenguaje funcional, pero adoptó algunos conceptos de lenguajes
+                                funcionales.</li>
+                            <li>Las funciones lambda solo pueden tener <em>expresiones puras</em>. No puede haber
+                                expresiones con asignaciones $=$, ni bloques <span class="monospace">while</span>, <span
+                                    class="monospace">try</span>, etc.</li>
                         </ul>
                     </div>
                     <div style="flex: 2; text-align: left;">
@@ -523,7 +556,8 @@ print("mundo!")
                 <div style="display: flex; gap: 2rem; align-items: center;">
                     <h2 style="margin: 0;">Sintaxis</h2>
                     <span style="text-align: left; align-items: center;">
-                        <span class="monospace" style="align-items: center; position:relative; top:10px;">lambda argumentos: expresión</span>
+                        <span class="monospace" style="align-items: center; position:relative; top:10px;">lambda
+                            argumentos: expresión</span>
                     </span>
 
                 </div>
@@ -557,7 +591,7 @@ print("mundo!")
                     <div style="display: flex; gap: 1rem; align-items: center;" class="fragment">
                         <div>
                             <p>Función normal de división</p>
-                            <pre  style="width: 900px;"><code class="python" data-line-numbers>
+                            <pre style="width: 900px;"><code class="python" data-line-numbers>
     def dividir(x, y):
         if y != 0:
             return x / y
@@ -608,17 +642,20 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                 <div style="display: flex; gap: 2rem; align-items: flex-start;">
                     <h2>Casos de uso columnes</h2>
                     <span style="text-align: left;">
-                        Las funciones lambda son especialmente útiles cuando se usan junto a <em>iterables</em> y funciones como <span class="monospace">filter</span>, <span class="monospace">map</span>, <span class="monospace">sorted</span>, etc.
+                        Las funciones lambda son especialmente útiles cuando se usan junto a <em>iterables</em> y
+                        funciones como <span class="monospace">filter</span>, <span class="monospace">map</span>, <span
+                            class="monospace">sorted</span>, etc.
                     </span>
                 </div>
                 <div class="r-stack" style="margin-top:4rem;">
                     <div class="fragment current-visible">
-                        <span><span class="monospace">map(<b>func</b>, iter)</span> aplica una función a cada elemento de un iterable.
-                        
-                        <div style="display: flex; gap: 2rem; flex-direction: row; align-items: center;">
-                            <div>
-                                <p>Función + <span class="monospace">map</span></p>
-                                <pre style="width:600px;"><code class="python" data-line-numbers>
+                        <span><span class="monospace">map(<b>func</b>, iter)</span> aplica una función a cada elemento
+                            de un iterable.
+
+                            <div style="display: flex; gap: 2rem; flex-direction: row; align-items: center;">
+                                <div>
+                                    <p>Función + <span class="monospace">map</span></p>
+                                    <pre style="width:600px;"><code class="python" data-line-numbers>
     def doblar(x):
         return 2 * x
     
@@ -626,11 +663,11 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
     dobles = map(dobles, lista)
     print(dobles)      # [2, 4, 6, 8]
                                 </code></pre>
-                            </div>
-                            <p style="font-size: 120%;">$\Longrightarrow$</p>
-                            <div style="flex: 1;">
-                                <p>Lambda + <span class="monospace">map</span> (más conciso)</p>
-                                <pre style="width:900px;"><code class="python" data-line-numbers>
+                                </div>
+                                <p style="font-size: 120%;">$\Longrightarrow$</p>
+                                <div style="flex: 1;">
+                                    <p>Lambda + <span class="monospace">map</span> (más conciso)</p>
+                                    <pre style="width:900px;"><code class="python" data-line-numbers>
     lista = [1, 2, 3, 4]
     dobles = list(map(lambda x: 2 * x, lista))
     print(dobles)      # [2, 4, 6, 8]
@@ -638,15 +675,16 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
 
     
                                 </code></pre>
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <div class="fragment current-visible">
-                        <span><span class="monospace">filter(<b>func</b>, iter)</span> mantiene solo aquellos elementos del iterable que cumplen <span class="monospace">func(elem)=True</span>.
-                        <div style="display: flex; gap: 2rem; flex-direction: row; align-items: center;">
-                            <div style="flex: 1;">
-                                <p>Función + <span class="monospace">filter</span></p>
-                                <pre style="width:600px;"><code class="python" data-line-numbers>
+                        <span><span class="monospace">filter(<b>func</b>, iter)</span> mantiene solo aquellos elementos
+                            del iterable que cumplen <span class="monospace">func(elem)=True</span>.
+                            <div style="display: flex; gap: 2rem; flex-direction: row; align-items: center;">
+                                <div style="flex: 1;">
+                                    <p>Función + <span class="monospace">filter</span></p>
+                                    <pre style="width:600px;"><code class="python" data-line-numbers>
     def es_par(x):
         return x % 2 == 0
 
@@ -654,11 +692,11 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
     res = list(filter(es_par, lista))
     print(res)      # [2, 4, 6]
                             </code></pre>
-                            </div>
-                            <p style="font-size: 120%;">$\Longrightarrow$</p>
-                            <div style="flex: 1;">
-                                <p>Lambda + <span class="monospace">filter</span> (más conciso)</p>
-                                <pre style="width:900px;"><code class="python" data-line-numbers>
+                                </div>
+                                <p style="font-size: 120%;">$\Longrightarrow$</p>
+                                <div style="flex: 1;">
+                                    <p>Lambda + <span class="monospace">filter</span> (más conciso)</p>
+                                    <pre style="width:900px;"><code class="python" data-line-numbers>
     lista = range(2, 7)
     res = list(filter(lambda x: x % 2 == 0, lista))
     print(res)      # [2, 4, 6]
@@ -666,14 +704,15 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
 
 
                             </code></pre>
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <div class="fragment">
-                        <span><span class="monospace">sorted(iter, <b>key</b>, reverse)</span> devuelve una lista ordenada a partir de un iterable.
-                        <div style="display: flex; gap: 2rem; flex-direction: row; align-items: center;">
-                            <div style="flex: 1;">
-                                <pre style="width:800px;"><code class="python" data-line-numbers>
+                        <span><span class="monospace">sorted(iter, <b>key</b>, reverse)</span> devuelve una lista
+                            ordenada a partir de un iterable.
+                            <div style="display: flex; gap: 2rem; flex-direction: row; align-items: center;">
+                                <div style="flex: 1;">
+                                    <pre style="width:800px;"><code class="python" data-line-numbers>
     lista = list('vwerfa')
     ordenada = sorted(lista)
     print(ordenada) 
@@ -686,10 +725,10 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
     print(sorted(nums, key=dist_10))
     # >>> [11, 9, 15, 4, 0, -1, -5]
                                 </code></pre>
-                            </div>
-                            <p style="font-size: 120%;">$\Longrightarrow$</p> 
-                            <div style="flex: 1;">
-                                <pre style="width:900px;"><code class="python" data-line-numbers>
+                                </div>
+                                <p style="font-size: 120%;">$\Longrightarrow$</p>
+                                <div style="flex: 1;">
+                                    <pre style="width:900px;"><code class="python" data-line-numbers>
     # Ordenamos los números igual, pero ahora la key es un lambda
     nums = [15, 11, 4, -5, 0, -1, 9]
     print(sorted(nums, key=lambda n: abs(10-n), reverse=True)) 
@@ -701,8 +740,8 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
 
 
                             </code></pre>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
                 <aside class="notes">
@@ -727,7 +766,7 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
 
                         </code></pre>
                     </div>
-                    
+
                     <div style="text-align: left;" class="fragment">
                         <ul>
                             <li>Ordenar una lista de tuplas por el segundo elemento</li>
@@ -755,20 +794,21 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                         <ul>
                             <li></li>
                         </ul>
-                    <pre style="width: 900px;"><code class="python" data-line-numbers>
+                        <pre style="width: 900px;"><code class="python" data-line-numbers>
     Lorem codium
 
                         </code></pre>
                     </div>
                 </div>
                 <p style="margin-top: 5rem;">
-                Quizás mejor dejar esto como ejercicios...
-                Also: TODO ver reduce (hay que importarla)</p>
+                    Quizás mejor dejar esto como ejercicios...
+                    Also: TODO ver reduce (hay que importarla)</p>
             </section>
 
             <section>
                 <h3>Funciones lambda</h3>
-                <div style="display: flex; align-items: stretch; min-height: 250px; font-family: Arial, sans-serif; margin-top: 5rem;">
+                <div
+                    style="display: flex; align-items: stretch; min-height: 250px; font-family: Arial, sans-serif; margin-top: 5rem;">
                     <div style="width: 45%; padding: 20px; text-align: left;">
                         <h3 style="margin-top: 0;">✅ Ventajas</h3>
                         <ul style="padding-left: 20px;">
@@ -778,20 +818,21 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                             <li>No tienen nombre ⟹ menos variables, código más limpio</li>
                         </ul>
                     </div>
-                    
+
                     <div style="width: 2px; background-color: black; margin: 20px 10px;"></div>
-                    
+
                     <div style="width: 45%; padding: 20px; text-align: left;">
                         <h3 style="margin-top: 0;">❌ Desventajas</h3>
                         <ul style="padding-left: 20px;">
                             <li>No pueden ser reutilizadas (a menos que se asignen a una variable...)</li>
                             <li>Pueden reducir la legibilidad y ser sobreusadas</li>
                             <li>En caso de error, es más difícil seguir el stack trace</li>
-                            <li>Peor documentación, no se pueden manejar excepciones con <span style="font-family: monospace;">try</span></li>
+                            <li>Peor documentación, no se pueden manejar excepciones con <span
+                                    style="font-family: monospace;">try</span></li>
                         </ul>
                     </div>
-                </div>                
-                
+                </div>
+
                 <aside class="notes">
                     Lo de asignar una lambda a una variable está desaconsejado según PEP (guía de estilo)
                     Lo del stacktrace es porque todas las funciones lambda se llaman igual: "lambda"
