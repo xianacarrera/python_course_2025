@@ -15,6 +15,58 @@
 		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
 
 		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picocss@1.5.3/dist/pico.min.css">
+
+		<style>
+			.calendar {
+			  display: grid;
+			  grid-template-columns: repeat(7, 1fr);
+			  grid-template-rows: auto repeat(7, 1fr);
+			  margin: 0 auto;
+			  padding: 1rem;
+			}
+		
+			.calendar-header {
+			  grid-column: span 7;
+			  text-align: center;
+			  font-weight: bold;
+			  padding: 10px;
+			}
+		
+			.day, .date {
+			  text-align: center;
+			  padding: 0.5rem;
+			  margin: 0.25rem;
+			  border-radius: 5px;
+			  font-size: 80%;
+			}
+		
+			.day {
+			  font-weight: bold;
+			}
+		
+			.date {
+			  cursor: pointer;
+			  transition: background-color 0.3s ease;
+			}
+		
+			body[data-theme="light"] .date:hover {
+			  background-color: #eee8d5;
+			}
+			body[data-theme="dark"] .date:hover {
+			  background-color: #073642	;
+			}
+			.marked {
+				font-weight: bold;
+			}
+			/* Dark theme styling for back link */
+			body[data-theme="light"] .marked {
+				border: 2px solid #34495e;
+			}
+			body[data-theme="dark"] .marked {
+				border: 2px solid rgb(38, 139, 210);
+			}
+		  </style>
 	</head>
 	<body data-theme="light">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -37,7 +89,7 @@
 		<div class="reveal">
 			<div class="slides">
                 <section>
-                    <h1>1. Introducción e instalación</h1>
+                    <h1>1. Introducción y conceptos básicos</h1>
                 </section>
 				
 				<section data-background-iframe="https://survey.stackoverflow.co/2023/#most-popular-technologies-language" data-background-interactive data-preload></section>
@@ -57,28 +109,21 @@
 						<div style="flex: 1; border-right: 2px solid #ccc; padding: 20px;">
 							<h2>Principales usos:</h2>
 							<ul>
-								<li>Análisis de datos y visualización de datos</li>
+								<li>Análisis y visualización de datos</li>
 								<li>Machine Learning, IA, Deep Learning</li>
 								<li>Investigación científica</li>
-								<li>Desarrollo de software</li>
-								<li>Desarrollo web (backend)</li>
-								<li>Recuperación de información</li>
-								<li>Automatización (e.g. bots)</li>
+								<li>Desarrollo de software (backends, bots)</li>
+								<li>Lenguaje de scripting</li>
 							</ul>
 						</div>
 						<div style="flex: 1; padding: 20px;">
 						  <h2>Razones de su popularidad</h2>
 						  <ul>
-							<li>Legibilidad</li>
-							<!-- It’s easy to read. Python code uses English keywords rather than punctuation, and its line breaks help define the code blocks. In practice, this means you can identify what the code is designed to do simply by looking at it. -->
-							<li>Menor tiempo de desarrollo (a costa de un mayor tiempo de ejecución)</li>
 							<li>Facilidad de aprendizaje</li>
-							<li>Portabilidad</li>
-							<!-- Multiplataforma. It’s portable. Some languages require you to modify code to run on different platforms, but Python is a cross-platform language, which means you can run the same code on any operating system with a Python interpreter. -->
-							<li>Flexibilidad</li>
-							<!-- Lenguaje de propósito general, que soporta diversos paradigmas de programación y se puede adaptar a multitud de propósitos -->
-							<li>Librerías y frameworks</li>
-							<li>Comunidad y documentación</li>
+							<li>Legibilidad, sintaxis sencilla</li>
+							<li>Miles de librerías y frameworks</li>
+							<li>Gran comunidad y buena documentación</li>
+							<li>Portabilidad y flexibilidad</li>
 						  </ul>
 						</div>
 					  </div>
@@ -86,19 +131,27 @@
 				<section>
 					<div style="display: flex; align-items: center; justify-content: space-between;">
 						<h2>(Breve) historia</h2>
-						<div>
-							<img src="media/1/PythonPowered.gif" style="height:100px;">
-							<img src="media/1/python-logo-old.png" style="height:100px;">
-							<img src="media/1/python-logo.png" style="height:100px; margin-left: 4rem;">
+						<div style="display:flex; gap: 4rem;">
+							<div style="flex:1; display:flex; flex-direction: column;">
+								<div style="display:flex; flex-direction: row;">
+									<img src="media/1/PythonPowered.gif" style="height:100px;">
+									<img src="media/1/python-logo-old.png" style="height:100px;">
+								</div>
+								<small>Logos (no oficiales) antiguos</small>
+							</div>
+							<div style="flex:1; display:flex; flex-direction: column;">
+								<img src="media/1/python-logo.png" style="height:120px; margin-left: 4rem;">
+								<small>Logo oficial de Python</small>
+							</div>
 						</div>
 					</div>
 					<div>
 						<div>
 							<ul>
 								<li>Concebido en los años 80 por Guido Van Rossum</li>
-								<li>Su desarrollo comienza en 1989, cuando se implementaron las funcionalidades básicas y utilidades importantes como los <it>módulos</it>.</li>
-								<li class="fragment">1994 $\rightarrow$ Python 1.0, con nuevas funcionalidades como <it>funciones lambda</it></li>
-								<li class="fragment">2000 $\rightarrow$ Python 2.0, añadidas las <it>list comprehensions</it>, los assignment operators <span class="monospace">(+=, *=, /=, $\dots$)</span> y el soporte para Unicode.</li>
+								<li>Su desarrollo comienza en 1989, cuando se implementaron las funcionalidades básicas y utilidades importantes como los <em>módulos</em>.</li>
+								<li class="fragment">1994 $\rightarrow$ Python 1.0, con nuevas funcionalidades como <em>funciones lambda</em></li>
+								<li class="fragment">2000 $\rightarrow$ Python 2.0, añadidas las <em>list comprehensions</em>, los assignment operators <span class="monospace">(+=, *=, /=, $\dots$)</span> y el soporte para Unicode.</li>
 								<li class="fragment">A lo largo de los 2000s se desarrollaron las siguientes versiones 2.x</li>
 								<li class="fragment">2008 $\rightarrow$ <b>Python 3.0</b>, que supuso un gran rediseño del lenguaje y eliminó mucha redundancia</li>
 								<li class="fragment">Python 2.x y 3.x se siguieron desarrollando por separado, hasta 2020, dónde se acabó el soporte para las versiones 2.x</li>
@@ -109,9 +162,9 @@
 				<section>
 					<h3>(Breve) historia</h3>
 					<p>
-						Python está implementado sobre C (Cpython), pero también está inspirado por otros lenguaje como ABC, Lisp, Modula3, Perl, Smalltalk $\dots$
+						Python está implementado sobre C (Cpython), pero también está inspirado por otros lenguaje como ABC (sintaxis base), Lisp (lambdas), Modula3 (módulos), Perl (scripting), Smalltalk (OOP) $\dots$
 					</p>
-					<p>El gran número de lenguajes en los que se inspiró se refleja en su modelo de programación <it>multiparadigma</it></p>
+					<p>El gran número de lenguajes en los que se inspiró se refleja en su <em>modelo de programación multiparadigma</em></p>
 				</section>
 				<section>
 					<h3>Python2 vs Python3</h3>
@@ -121,59 +174,162 @@
 				</section>
 				<section>
 					<h2>Características</h2>
-					<pre><code data-line-numbers="2-6|17-21" class="python" style="max-height: 250px;">
-						x = "hola"     # x es de tipo string
-						x = 5          # x pasa a ser de tipo entero (int)
+					<pre><code data-line-numbers="1-8|8-13|13-16|16-20|20-23|23-27" class="python" style="max-height: 250px;">
+	x = "hola"     # x es de tipo string
+	x = 5          # x pasa a ser de tipo entero (int)
 
-						y = 32.4	   # y es de tipo float
-						y = 3 + 5j     # y es de tipo complejo
-						y = True       # y es de tipo booleano
+	y = 32.4	     # y es de tipo float
+	y = 3 + 5j     # y es de tipo complejo
+	y = True       # y es de tipo booleano
 
+	if x == 5:
+		print("x es igual a 5")
+	else:
+		print("x no es igual a 5")
 
+	if 3 < x and x < 10:
+		print("x está entre 3 y 10")
+	
+	mi_lista = [1, 2, 3, 4, 5]
+	if 2 in mi_lista or len(mi_lista) > 5:
+		print("2 está en la lista o la lista tiene más de 5 elementos")
+	
+	print("Buenassss")
+	x = 5; print(x)	
 
-
-
-
-
-						if x == 5:
-							print("x es igual a 5")
-						else:
-							print("x no es igual a 5")
-
-
-
-
-
-						if 3 < x and x < 10:
-							print("x está entre 3 y 10")
-						
-						mi_lista = [1, 2, 3, 4, 5]
-						if 2 in mi_lista or len(mi_lista) > 5:
-							print("2 está en la lista o la lista tiene más de 5 elementos")
-
-
-
-
-						print("Buenassss")
-						x = 5; print(x)	
-
-
-
-						una_lista = ["hey", 4, 1.2]
-						una_tupla = ("hey", 4, 1.2)       # Inmutable (no se puede modificar)
-						un_diccionario = {"asignatura": "estructuras", "numero de suspensos": "elevado"}
-						un_conjunto = {"a", "a", "b"}     # Mismo resultado que {"a", "b"}
+	una_lista = ["hey", 4, 1.2]
+	una_tupla = ("hey", 4, 1.2)       # Inmutable (no se puede modificar)
+	un_diccionario = {"asignatura": "estructuras", "numero de suspensos": "elevado"}
+	un_conjunto = {"a", "a", "b"}     # Mismo resultado que {"a", "b"}
 						</code>
 					</pre>
-				    <ol>
+				    <ol style="margin-top: 2rem;">
 						<li>Tipado dinámico y no declarativo</li>
 						<li>Interpretado, no compilado</li>
-						<li>Indentación/sangría</li>
-						<li>Sintaxis intuitiva con numerosas palabras clave en inglés</li>
-						<li>No necesita ;</li>
-						<li>Estructuras de datos integradas</li>
-						<li>Facilidad para manejar cadenas</li> # TODO: Añadir más
+						<li>Indentación <b>obligatoria</b> (sangrías) $\rightarrow$ no necesita <span class="monospace">;</span></li>
+						<li>Sintaxis intuitiva con palabras clave en inglés</li>
+						<li>Estructuras de datos integradas y soporte para <span class="monospace">strings</span></li>
 					</ol>
+				</section>
+				<section>
+					<h2>Objetivos del curso</h2>
+					<div style="display:flex;">
+						<ul style="flex: 1; font-size: 125%;">
+							<li><b>Parte 1:</b> Familiarizarse con la sintaxis básica del lenguaje</li>
+							<li class="fragment" data-fragment-index="1"><b>Parte 2:</b> Revisar las principales librerías para análisis de datos y aprender cómo desarrollar un proyecto completo.</li>
+							<li class="fragment" data-fragment-index="2">Dar una visión práctica del lenguaje, pero asentada en principos sólidos</li>
+							<li class="fragment" data-fragment-index="3">Aprender como buscar información en internet (especialmente en páginas de documentación oficial)</li>
+						</ul>
+						<div style="flex: 1;" class="r-stack">
+							<img src="media/1/cheatsheet.png">
+							<img src="media/1/libraries.png" class="fragment" data-fragment-index="1">
+							<img src="media/1/zen_python.png" class="fragment" data-fragment-index="2">
+							<img src="media/1/presentermedia.png" class="fragment" data-fragment-index="3">
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Algunos aspectos prácticos</h3>
+					<div>
+						<p>Usaremos esta web a lo largo de las clases</p>
+						<p>(Si está caída por algún motivo, se puede descargar desde <span class="monospace"><a href="https://github.com/xianacarrera/python_course_2025">GitHub</a>)</span></p>
+					</div>
+					<div class="fragment">
+						<p>Hace falta venir al $80\%$ de las clases para conseguir 1 ECTS</p>
+						<p>(es decir, hace falta venir a 6 de las 8 clases)</p>
+						<p>Las clases serán de <span class="monospace">16:00</span> a <span class="monospace">18:00</span>, y habrá descanso!</p>
+					</div>
+					<div style="display: flex;">
+						<div class="calendar">
+							<div class="calendar-header">Marzo 2025</div>
+							<div class="day">L</div>
+							<div class="day">M</div>
+							<div class="day">X</div>
+							<div class="day">J</div>
+							<div class="day">V</div>
+							<div class="day">S</div>
+							<div class="day">D</div>
+						
+							<div class="empty"></div>
+							<div class="empty"></div>
+							<div class="empty"></div>
+							<div class="empty"></div>
+							<div class="empty"></div>
+							<div class="date">1</div>
+							<div class="date">2</div>
+							<div class="date">3</div>
+							<div class="date">4</div>
+							<div class="date">5</div>
+							<div class="date">6</div>
+							<div class="date">7</div>
+							<div class="date">8</div>
+							<div class="date">9</div>
+							<div class="date">10</div>
+							<div class="date">11</div>
+							<div class="date">12</div>
+							<div class="date">13</div>
+							<div class="date">14</div>
+							<div class="date">15</div>
+							<div class="date">16</div>
+							<div class="date marked">17</div>
+							<div class="date marked">18</div>
+							<div class="date">19</div>
+							<div class="date marked">20</div>
+							<div class="date">21</div>
+							<div class="date">22</div>
+							<div class="date">23</div>
+							<div class="date marked">24</div>
+							<div class="date marked">25</div>
+							<div class="date">26</div>
+							<div class="date marked">27</div>
+							<div class="date">28</div>
+							<div class="date">29</div>
+							<div class="date">30</div>
+							<div class="date marked">31</div>
+						</div>
+						<div class="calendar">
+							<div class="calendar-header">Abril 2025</div>
+							<div class="day">L</div>
+							<div class="day">M</div>
+							<div class="day">X</div>
+							<div class="day">J</div>
+							<div class="day">V</div>
+							<div class="day">S</div>
+							<div class="day">D</div>
+							
+							<div class="empty"></div>
+							<div class="date marked">1</div>
+							<div class="date">2</div>
+							<div class="date">3</div>
+							<div class="date">4</div>
+							<div class="date">5</div>
+							<div class="date">6</div>
+							<div class="date">7</div>
+							<div class="date">8</div>
+							<div class="date">9</div>
+							<div class="date">10</div>
+							<div class="date">11</div>
+							<div class="date">12</div>
+							<div class="date">13</div>
+							<div class="date">14</div>
+							<div class="date">15</div>
+							<div class="date">16</div>
+							<div class="date">17</div>
+							<div class="date">18</div>
+							<div class="date">19</div>
+							<div class="date">20</div>
+							<div class="date">21</div>
+							<div class="date">22</div>
+							<div class="date">23</div>
+							<div class="date">24</div>
+							<div class="date">25</div>
+							<div class="date">26</div>
+							<div class="date">27</div>
+							<div class="date">28</div>
+							<div class="date">29</div>
+							<div class="date">30</div>
+						</div>
+					</div>
 				</section>
 			</div>
 		</div>
