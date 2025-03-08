@@ -856,9 +856,9 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                 <div style="display:flex; flex-direction: column; text-align: left;">
                     <ul>
                         <li>Un <b>objeto</b> tiene un <b>estado</b> y un <b>comportamiento</b>.</li>
-                        <li><b>Estado</b>: atributos = propiedades -> variables que almacenan datos de un objeto.</li>
-                        <li><b>Comportamiento</b>: métodos = funciones -> definen qué puede hacer el objeto.</li>
-                        <li>Los objetos se abstraen en forma de <b>clases</b>. Un objeto es una <b>instancia</b> de una
+                        <li class="fragment"><b>Estado</b>: atributos = propiedades -> variables que almacenan datos de un objeto.</li>
+                        <li class="fragment"><b>Comportamiento</b>: métodos = funciones -> definen qué puede hacer el objeto.</li>
+                        <li class="fragment">Los objetos se abstraen en forma de <b>clases</b>. Un objeto es una <b>instancia</b> de una
                             clase.</li>
                     </ul>
 
@@ -874,15 +874,91 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
             </section>
 
             <section>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;">
-                    <div style="display: flex; align-items: center;">
-                        <img src="../../media/3/clase_person.png" alt="Clase person" style="border-radius: 5px;" ,
-                            width="800px">
+                <div style="display: flex; gap: 4rem;">
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-around;">
+                        <div style="text-align: left;">
+                            <h5 style="margin-top:2rem;">Python OOP</h5>
+                            <p>Veamos cómo implementar el ejemplo de la imagen</p>
+                            <ol style="font-size: 80%;">
+                                <li>Primero necesitamos crear la clase con <span class="monospace">class Person</span> y añadir la función <span class="monospace">__init__(self)</span>, llamada <it>Constructor</it>, que se encargará de crear los objetos</li>
+                                <li class="fragment" data-fragment-index="1">Ahora añadimos los atributos de cada persona, su nombre, edad, género y ocupación. Pasamos estos datos al constructor, que los guardará usando <span class="monospace">self.&ltatributo&gt</atributo></span></li>
+                                <li class="fragment" data-fragment-index="2">El resto de la funcionalidad usará <b>métodos</b>, que son funciones dentro de la clase que modifican al objeto. Su primer argumento es <span class="monospace">self</span>.</li>
+                                <li class="fragment" data-fragment-index="3">Finalmente, podemos añadir un atributo adicional de salud que tiene cada persona, <span class="monospace">health</span>. Lo inicializamos a $100$ en el constructor y modificamos en cada llamada a los métodos.</li>
+
+                            </ol>
+                        </div>
+                        <div style="display: flex;">
+                          <img src="../../media/3/clase_person.png" width="600px">
+                        </div>
                     </div>
-                    <div>
-                        HACER QUE EL CÓDIGO OCUPE MÁS ESPACIO VERTICAL
-                        <pre style="background: #222; padding: 10px; border-radius: 5px; color: white; height: 800px;">
-                            <code class="python">
+                      
+                    <div style="flex: 1;" class="r-stack">
+                        <pre style="height: 800px;">
+                            <code class="python" data-line-numbers>
+    class Person:
+        def __init__(self):
+            pass
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+
+
+
+
+
+
+
+
+
+                            </code></pre>
+                            <pre style="height: 800px;" class="fragment" data-fragment-index="1">
+                                <code class="python" data-line-numbers>
+    class Person:
+        def __init__(self, name, age, gender, occupation):
+            self.name = name
+            self.age = age
+            self.gender = gender
+            self.occupation = occupation
+    
+    # Ya podemos crear objetos de la clase Persona
+    marta = Person("Marta", 20, "F", "estudiante")
+    artai = Person("Artai", 23, "NB", "dibujante")
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+                                </code></pre>
+                                <pre style="height: 800px;" class="fragment" data-fragment-index="2">
+                                    <code class="python" data-line-numbers>
     class Person:
         def __init__(self, name, age, gender, occupation):
             self.name = name
@@ -895,71 +971,57 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
         
         def eat(self, comida):
             print(f"{self.name} está comiendo {comida}")
-
+            
         def sleep(self):
             print("No hace nada...")
-
+        
         def work():
             print("Qué currante")
 
-    
-    # Creamos un objeto de la clase persona
     marta = Person("Marta", 20, "F", "estudiante")
     artai = Person("Artai", 23, "NB", "dibujante")
 
-    print("artai: {}".format(artai))
-    artai.work()
-    marta.eat("croquetas")
 
-</code></pre>
-                    </div>
 
-                </div>
-                <aside class="notes">
-                    Mencionar lo de que los atributos se suelen denominar igual que los argumentos, pero que son
-                    distintos.
-                </aside>
-            </section>
 
-            <section>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch;">
-                    <div>
-                        <img src="media/3/clase_person.png" alt="Clase person" style="border-radius: 5px;" ,
-                            width="800px">
-                    </div>
-                    <div>
-                        HACER QUE EL CÓDIGO OCUPE MÁS ESPACIO VERTICAL
-                        <pre style="background: #222; padding: 10px; border-radius: 5px; color: white; height: 1800px;">
-                            <code class="python">
+
+            
+
+    
+                                    </code></pre>
+                                    <pre style="height: 800px;" class="fragment" data-fragment-index="3">
+                                        <code class="python" data-line-numbers>
     class Person:
         def __init__(self, name, age, gender, occupation):
             self.name = name
             self.age = age
             self.gender = gender
             self.occupation = occupation
-
+            self.health = 100 # Salud inicial
+    
         def walk(self):
             print(f"{self.name} está caminando")
+            self.health += 5 # Caminar es bueno para la salud
         
         def eat(self, comida):
             print(f"{self.name} está comiendo {comida}")
-
+            self.health += 10 # Recuperamos fuerzas
+            
         def sleep(self):
             print("No hace nada...")
-
+            self.health += 20 # A mimir zzzzz
+        
         def work():
             print("Qué currante")
-
+            self.health -= 10 # El trabajo es duro
     
-    # Creamos un objeto de la clase persona
     marta = Person("Marta", 20, "F", "estudiante")
     artai = Person("Artai", 23, "NB", "dibujante")
+    
 
-    print("artai: {}".format(artai))
-    artai.work()
-    marta.eat("croquetas")
 
-</code></pre>
+                                        </code></pre>
+
                     </div>
 
                 </div>
