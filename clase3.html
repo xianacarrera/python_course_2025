@@ -1071,7 +1071,7 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                     </code></pre>
                 </div>
                 <div class="fragment" data-fragment-index="1">
-                    <p>Los objetos de superclases pueden llamar a los métodos de su <em>clase base</em><br>Por ejemplo, un nuevo Doctor podría llamar a <span class="monospace">walk()</span></p>
+                    <p>Los objetos de subclaes pueden llamar a los métodos de su <em>clase base</em><br>Por ejemplo, un nuevo Doctor podría llamar a <span class="monospace">walk()</span></p>
                     <pre><code class="python" data-line-numbers>
     doc = Doctor("House", 45, "M", "médico de cabecera")
     doc.walk() # House está caminando
@@ -1079,6 +1079,19 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                     </code></pre>
                 </div>
                 <small class="fragment" data-fragment-index="1"><b>Nota obligatoria:</b> en la mayoría de los casos, <a href="https://python-patterns.guide/gang-of-four/composition-over-inheritance/">suele ser mejor idea usar composición en vez de herencia!</a></small>
+            </section>
+            <section>
+                <h3>Herencia: overriding</h3>
+                <div>
+                    <p>Si una subclase implementa un método que ya está en la superclase, esto se llama <em>overriding</em> (o sobreescritura)</p>
+                    <p>Por ejemplo, si queremos que un Doctor camine de forma diferente a una Persona normal, podemos hacerlo así:</p>
+                    <pre><code class="python" data-line-numbers>
+    class Doctor(Person):
+        def walk(self):
+            print(f"{self.name} está caminando... pero con bata")
+                    </code></pre>
+                    <p class="fragment"><b>Más avanzado:</b> Esto lleva al concepto de polimorfismo. Las clases que sobreescriben métodos se pueden comportar como instancias de su superclase, hasta que llaman a uno de los métodos sobreescritos. Entonces, se ejecuta la versión sobreescrita en vez de la original $\dots$</p>
+                </div>
             </section>
             <section>
                 <h4>Un ejemplo práctico: clases de excepciones personalizadas</h4>
@@ -1109,6 +1122,47 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                 print(f"Error al matricularse en la USC: {error}")
             
                     </code></pre>
+                </div>
+            </section>
+            <section>
+                <h4>Más sobre Python OOP</h4>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); font-size: 80%;">
+                    <div class="fragment">
+                        <p>Podemos implementar el método <span class="monospace">__str__(self)</span> para modificar como se imprime un objeto de una clase</p>
+                        <pre><code class="python" data-line-numbers>
+    class Person:
+        def __str__(self):
+            return f"{self.name} es un {self.occupation} de {self.age}"
+                        f"años y género {self.gender}"
+    
+    # Ahora podemos imprimir más fácilmente un objeto Person
+    marta = Person("Marta", 20, "F", "estudiante")
+    print(marta) # Marta es un estudiante de 20 años y género F
+    
+                        </code></pre>
+                    </div>
+                    <div  class="fragment">
+                        <p>Hay muchos más <em>métodos mágicos</em> de este estilo, por ejemplo <span class="monospace">__em__</span> para reimplementar la igualdad entre dos objetos de la misma clase, <span class="monospace">__add__</span> para la suma, $\dots$</p>
+                        <pre><code class="python" data-line-numbers>
+    class Vector:
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+        def __add__(self, other):
+            return Vector(self.x + other.x, self.y + other.y)
+        def __str__(self):
+            return f"({self.x}, {self.y})"
+    v1 = Vector(1, 2)
+    v2 = Vector(3, 4)
+    print(v1 + v2) # (4, 6)
+                        </code></pre>
+                    </div>
+                    <div  class="fragment">
+                        <p>La clase <span class="monospace">object</span> es la clase base de todas las demás, aunque no se especifique explícitamente. Los tipos y contenedores primitivos (int, str, list, dict, $\dots$) también son subclases de <span class="monospace">object</span></p>        
+                    </div>
+                    <div class="fragment">
+                        <p><b>Más avanzado:</b> Gracias a que todos los objetos sean subclases de object, funcionan los métodos mágicos! Todos estos métodos están definidos en object, y no hacemos más que overridearlos. El lenguaje interepreta cada uno de ellos de forma especial, y los asigna a los operadores. Por ejemplo <span class="monospace">v1 + v2</span> es lo mismo que <span class="monospace">v1.__add__(v2)</span></p>
+                    </div>
                 </div>
             </section>
         </div>
