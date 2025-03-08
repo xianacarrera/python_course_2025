@@ -1030,6 +1030,87 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                     distintos.
                 </aside>
             </section>
+            <section>
+                <h3>Métodos</h3>
+                <div>
+                    <p>Ahora podemos llamar a los métodos de cada objeto creados con la sintaxis <span class="monospace">objeto.metodo(args...)</span></p>
+                    <p>Con esto, ejecutamos una <em>acción</em> sobre el objeto, posiblemente alterando su estado.</p>
+                    <p><b>Importante:</b> Cuando llamamos un método, no hace falta pasar <span class="monospace">self</span></p>
+                </div>
+                <pre><code class="python" data-line-numbers>
+    marta = Person("Marta", 20, "F", "estudiante")
+    artai = Person("Artai", 23, "NB", "dibujante")
+
+    marta.walk()         # Marta está caminando	
+    marta.eat("pizza")   # Marta está comiendo pizza
+
+    # Podemos también acceder e imprimir los valores del objeto
+    print(marta.name)   # Marta
+    print(marta.health) # 115
+    marta.work()        # Qué currante
+    print(marta.health) # 105
+
+                </code></pre>
+            </section>
+            <section>
+                <h3>Herencia</h3>
+                <div>
+                    <ul>
+                        <li>La herencia es un mecanismo que contienen todos los lenguajes orientados a objetos en los que una clase <em>"expande"</em> a otra.</li>
+                        <li>Por ejemplo, podríamos tener una clase <span class="monospace">Doctor</span> que expandiera a <span class="monospace">Person</span></li>
+                        <li>Podemos llamar a los elementos de la <em>superclase</em> con <span class="monospace">super().&ltmetodo&gt()</span></li>
+                    </ul>
+                    <pre><code class="python" data-line-numbers>
+    class Doctor(Person):
+        def __init__(self, name, age, gender, specialty):
+            # Buena práctica: El constructor original de Person cubre campos comúnes
+            super().__init__(name, age, "M", "doctor")
+            # Ahora añadimos el resto del estado inicial
+            self.specialty = specialty
+
+                    </code></pre>
+                </div>
+                <div class="fragment" data-fragment-index="1">
+                    <p>Los objetos de superclases pueden llamar a los métodos de su <em>clase base</em><br>Por ejemplo, un nuevo Doctor podría llamar a <span class="monospace">walk()</span></p>
+                    <pre><code class="python" data-line-numbers>
+    doc = Doctor("House", 45, "M", "médico de cabecera")
+    doc.walk() # House está caminando
+
+                    </code></pre>
+                </div>
+                <small class="fragment" data-fragment-index="1"><b>Nota obligatoria:</b> en la mayoría de los casos, <a href="https://python-patterns.guide/gang-of-four/composition-over-inheritance/">suele ser mejor idea usar composición en vez de herencia!</a></small>
+            </section>
+            <section>
+                <h4>Un ejemplo práctico: clases de excepciones personalizadas</h4>
+                <div>
+                    <ul>
+                        <li>Python permite crear excepciones personalizadas heredando de la clase <span class="monospace">Exception</span> o sus subclases</li>
+                        <li>Las excepciones personalizadas mejoran la legibilidad y mantenibilidad del código</li>
+                        <li>Son útiles para manejar errores específicos de nuestra aplicación</li>
+                    </ul>
+                    <pre><code class="python" data-line-numbers>
+    class UXAError(Exception):
+        def __init__(self, message = "Tu matrícula es incorrecta"):
+            super().__init__(message)
+
+                    </code></pre>
+                </div>
+                <div class="fragment">
+                    <p>Uso de la excepción personalizada en código:</p>
+                    <pre><code class="python" data-line-numbers>
+            def matricularse_usc(str_matricula):
+                if str_matricula == "No quiero estudiar":
+                    raise UXAError()
+                return str_matricula + " aceptada"
+            
+            try:
+                resultado = matricularse_usc("No quiero estudiar")
+            except UXAErrror as error:
+                print(f"Error al matricularse en la USC: {error}")
+            
+                    </code></pre>
+                </div>
+            </section>
         </div>
     </div>
 
