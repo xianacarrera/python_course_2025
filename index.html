@@ -16,50 +16,9 @@
 		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
 
 		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
-		<!-- Theme toggle script -->
-		<style>
-			.reveal .slides > section > div {
-				display: flex;
-				height: 100%;
-				width: 100%;
-			}
-			.course-info {
-				flex: 2;
-				padding: 1rem;
-				overflow: auto;
-			}
-			.course-code {
-				flex: 1;
-				padding: 1rem;
-				overflow: hidden;
-			}
-			.course-code pre {
-				margin: 0;
-				height: 100%;
-				width: 100%;
-				overflow: hidden;
-			}
-			.course-code code {
-				height: 100%;
-				width: 100%;
-				overflow: auto;
-				white-space: pre-wrap;
-				word-wrap: break-word;
-				font-size: 1.2rem;
-				padding: 0;
-			}
-			#cursor {
-				animation: blink 1.5s infinite;
-			}
-			@keyframes blink {
-				0%, 100% { opacity: 1; }
-				50% { opacity: 0; }
-			}
-			.course-links a {
-				display: block;
-				text-decoration: none;
-			}
-		</style>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 	</head>
 	<body data-theme="light">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
@@ -81,50 +40,65 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <div>
-                        <div class="course-info">
-                            <div style="font-family: monospace; font-size: 3rem; text-align: left; margin-bottom: 2rem;">
-                                <span id="title">if __name__ == "__main__"</span><span id="cursor">:</span>
+                    <div style="display: flex; justify-content: space-around; gap: 4rem;">
+                        <div style="flex: 1;">
+                            <div style="font-family: 'Jetbrains Mono'; text-align: left; margin-bottom: 2rem;">
+                                <span style="font-size: 3rem;">Curso de Introducción a Python</span></br>
+                                <span style="font-size: 2rem; margin-left: 300px;">y su uso en análisis de datos</span>
                             </div>
-                            <div class="course-links" style="text-align: left; font-family: monospace; font-size: 1.5rem; line-height: 2;">
-								<a href="installfest.html"><b>🛠️0:</b> Installfest</a>
-                                <div style="margin-top:1rem;">
-                                    <h3>Parte 1: Introducción a Python y su ecosistema</h3>
-                                    <a href="clase1.html"><b>🐍1:</b> Instalación y conceptos básicos</a>
-                                    <a href="clase2.html"><b>🔄2:</b> Control de flujo, funciones y tipos de datos básicos</a>
-                                    <a href="clase3.html"><b>📂3:</b> I/O por consola y por archivos</a>
-                                    <a href="clase4.html"><b>📦4:</b> Instalación de paquetes y ejecución en notebooks</a>
-                                </div>
-                                <div style="margin-top:2rem;">
-                                    <h3>Parte 2: Python para estadística y ciencia de datos</h3>
-                                    <a href="clase5.html"><b>📊5:</b> Operaciones vectorizadas con NumPy</a>
-                                    <a href="clase6.html"><b>🗂️6:</b> Uso de datasets de pandas para representar bases de datos tabulares</a>
-                                    <a href="clase7.html"><b>📈7:</b> Representación de resultados con matplotlib y seaborn</a>
-                                    <a href="clase8.html"><b>🤖8:</b> Entrenamiento y evaluación de modelos de regresión y clasificación básicos con scikit-learn</a>
-                                </div>
-                            </div>
+                            <div class="menu" style="text-align: left; font-family: monospace; font-size: 1.5rem; line-height: 2;">
+								<a href="#" data-lines="1-3" class="hover-link"><b>🛠️0:</b> Installfest</a>
+								<div style="margin-top:1rem; display:flex; flex-direction: column;">
+									<h3>Parte 1: Introducción a Python y su ecosistema</h3>
+									<a href="#" data-lines="1-5" class="hover-link"><b>🐍1:</b> Instalación y conceptos básicos</a>
+									<a href="#" data-lines="5-8" class="hover-link"><b>🔄2:</b> Control de flujo, funciones y tipos de datos básicos</a>
+									<a href="#" data-lines="8-12" class="hover-link"><b>📂3:</b> I/O por consola y por archivos</a>
+									<a href="#" data-lines="12-15" class="hover-link"><b>📦4:</b> Instalación de paquetes y ejecución en notebooks</a>
+								</div>
+								<div style="margin-top:2rem; display:flex; flex-direction: column;">
+									<h3>Parte 2: Python para estadística y ciencia de datos</h3>
+									<a href="#" data-lines="15-19" class="hover-link"><b>📊5:</b> Operaciones vectorizadas con NumPy</a>
+									<a href="#" data-lines="19-26" class="hover-link"><b>🗂️6:</b> Uso de datasets de pandas para representar bases de datos tabulares</a>
+									<a href="#" data-lines="26-30" class="hover-link"><b>📈7:</b> Representación de resultados con matplotlib y seaborn</a>
+									<a href="#" data-lines="30-32" class="hover-link"><b>🤖8:</b> Entrenamiento y evaluación de modelos de regresión y clasificación básicos con scikit-learn</a>
+								</div>
+							</div>
                         </div>
-                        <div class="course-code">
-                            <pre><code class="python">
-# Example Python Script
-import numpy as np
-import pandas as pd
+						<div class="code-container" style="flex: 1;">
+							<pre style="height:100%;"><code class="python" id="code-display" data-line-numbers>
+	# Curso de Introducción a Python!
+	# Matemáticas USC, 2025
+	print("Hello, World!")
 
-def main():
-    # Create a sample DataFrame
-    data = {
-        "Name": ["Alice", "Bob", "Charlie"],
-        "Age": [25, 30, 35],
-        "Score": [85, 90, 95]
-    }
-    
-    df = pd.DataFrame(data)
-    print(df)
+	numero_pi = 3.1415
+	print(numero_pi**2, "es el área de un círculo de radio 1")
+	
+	nombre = input(prompt)
+	print(f"Hola, {nombre}.")
+	res = list(filter(lambda x: x % 2 == 0, lista))
+	
+	import subprocess
+	subprocess.run(["pip", "install", "numpy"], check=True)
 
-if __name__ == "__main__":
-    main()
-                            </code></pre>
-                        </div>
+	import numpy as np
+	A = np.array([[1, 2], [3, 4]])
+	print("A^2 = ", A @ A)
+	
+	import pandas as pd
+	staff = {
+		"teacher": ["Xiana", "Pablo"],
+		"python_level": [8, 6],
+		"swag": [True, True]
+	}
+
+	import matplotlib.pyplot as plt
+	plt.figure(figsize=(10, 6))
+	plt.plot(staff["teacher"], staff["python_level"])
+	
+	from sklearn.model_selection import train_test_split
+	train_test_split(staff["teacher"], staff["swag"])
+							</code></pre>
+						</div>
                     </div>
                 </section>
             </div>
@@ -141,5 +115,6 @@ if __name__ == "__main__":
 			});
 		</script>
 		<script src="theme-toggle.js"></script>
+		<script src="menu.highlight.js"></script>
 	</body>
 </html>
