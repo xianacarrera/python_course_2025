@@ -113,3 +113,8 @@ body[data-theme="dark"] .back-link:hover {
   code {
     border-radius: 10px;
   }
+
+ #tablaquellevotreshoras tr {
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+  }

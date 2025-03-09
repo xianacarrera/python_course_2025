@@ -1,180 +1,217 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Clase 1</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="common.css">
-		<!-- Solarized theme -->
-		<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
-		<!-- Moon theme -->
-		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+	<title>Clase 1</title>
 
-		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picocss@1.5.3/dist/pico.min.css">
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="common.css">
+	<!-- Solarized theme -->
+	<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+	<!-- Moon theme -->
+	<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
 
-		<style>
-			.calendar {
-			  display: grid;
-			  grid-template-columns: repeat(7, 1fr);
-			  grid-template-rows: auto repeat(7, 1fr);
-			  margin: 0 auto;
-			  padding: 1rem;
-			}
-		
-			.calendar-header {
-			  grid-column: span 7;
-			  text-align: center;
-			  font-weight: bold;
-			  padding: 10px;
-			}
-		
-			.day, .date {
-			  text-align: center;
-			  padding: 0.5rem;
-			  margin: 0.25rem;
-			  border-radius: 5px;
-			  font-size: 80%;
-			}
-		
-			.day {
-			  font-weight: bold;
-			}
-		
-			.date {
-			  cursor: pointer;
-			  transition: background-color 0.3s ease;
-			}
-		
-			body[data-theme="light"] .date:hover {
-			  background-color: #eee8d5;
-			}
-			body[data-theme="dark"] .date:hover {
-			  background-color: #073642	;
-			}
-			.marked {
-				font-weight: bold;
-			}
-			/* Dark theme styling for back link */
-			body[data-theme="light"] .marked {
-				border: 2px solid #34495e;
-			}
-			body[data-theme="dark"] .marked {
-				border: 2px solid rgb(38, 139, 210);
-			}
-		  </style>
-	</head>
-	<body data-theme="light">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
-		<a href="index.html" class="back-link">Volver</a>
-		<div class="reveal">
-			<div class="slides">
-                <section>
-                    <h1>1. Introducción y conceptos básicos</h1>
-                </section>
-				
-				<section data-background-iframe="https://survey.stackoverflow.co/2023/#most-popular-technologies-language" data-background-interactive data-preload></section>
+	<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picocss@1.5.3/dist/pico.min.css">
 
-				<section>
-					<h2>TIOBE index</h2>
-					<p>Calculado según el número de resultados al buscar<br>
-						+"&lt language &gt programming" en varios motores de búsqueda (Google, Bing...).</p>
-					<div class="r-stack r-stretch">
-						<img class="fragment" src="media/1/Tiobeindex.png" alt="Tiobe index">
-						<img class="fragment" src="media/1/Tiobeindex2.png" alt="Tiobe index Python">
+	<style>
+		.calendar {
+			display: grid;
+			grid-template-columns: repeat(7, 1fr);
+			grid-template-rows: auto repeat(7, 1fr);
+			margin: 0 auto;
+			padding: 1rem;
+		}
+
+		.calendar-header {
+			grid-column: span 7;
+			text-align: center;
+			font-weight: bold;
+			padding: 10px;
+		}
+
+		.day,
+		.date {
+			text-align: center;
+			padding: 0.5rem;
+			margin: 0.25rem;
+			border-radius: 5px;
+			font-size: 80%;
+		}
+
+		.day {
+			font-weight: bold;
+		}
+
+		.date {
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		body[data-theme="light"] .date:hover {
+			background-color: #eee8d5;
+		}
+
+		body[data-theme="dark"] .date:hover {
+			background-color: #073642;
+		}
+
+		.marked {
+			font-weight: bold;
+		}
+
+		/* Dark theme styling for back link */
+		body[data-theme="light"] .marked {
+			border: 2px solid #34495e;
+		}
+
+		body[data-theme="dark"] .marked {
+			border: 2px solid rgb(38, 139, 210);
+		}
+	</style>
+</head>
+
+<body data-theme="light">
+	<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+		<svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="12" cy="12" r="5"></circle>
+			<line x1="12" y1="1" x2="12" y2="3"></line>
+			<line x1="12" y1="21" x2="12" y2="23"></line>
+			<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+			<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+			<line x1="1" y1="12" x2="3" y2="12"></line>
+			<line x1="21" y1="12" x2="23" y2="12"></line>
+			<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+			<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+		</svg>
+		<svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+		</svg>
+	</button>
+	<a href="index.html" class="back-link">Volver</a>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>1. Introducción y conceptos básicos</h1>
+			</section>
+
+			<section data-background-iframe="https://survey.stackoverflow.co/2023/#most-popular-technologies-language"
+				data-background-interactive data-preload></section>
+
+			<section data-auto-animate>
+				<h2>TIOBE index</h2>
+				<p>Calculado según el número de resultados al buscar<br>
+					+"&lt language &gt programming" en varios motores de búsqueda (Google, Bing...).</p>
+				<div style="display: flex; gap: 1rem; align-items: center;">
+					<div style="flex: 1;">
+						<img  src="media/1/Tiobeindex.png" alt="Tiobe index">
 					</div>
-				</section>
+				</div>
+			</section>
+			<section data-auto-animate>
+				<h2>TIOBE index</h2>
+				<p>Calculado según el número de resultados al buscar<br>
+					+"&lt language &gt programming" en varios motores de búsqueda (Google, Bing...).</p>
+				<div style="display: flex; gap: 1rem; align-items: center;">
+					<div style="flex: 1;">
+						<img src="media/1/Tiobeindex.png" alt="Tiobe index">
+					</div>
+					<div style="flex: 1;">
+						<img  src="media/1/Tiobeindex2.png" alt="Tiobe index Python">
+					</div>
+				</div>
+			</section>
 
-				<section>
-					<div style="display: flex; height: 100%; align-items: center; text-align: center;">
-						<div style="flex: 1; border-right: 2px solid #ccc; padding: 20px;">
-							<h2>Principales usos:</h2>
-							<ul>
-								<li>Análisis y visualización de datos</li>
-								<li>Machine Learning, IA, Deep Learning</li>
-								<li>Investigación científica</li>
-								<li>Desarrollo de software (backends, bots)</li>
-								<li>Lenguaje de scripting</li>
-							</ul>
-						</div>
-						<div style="flex: 1; padding: 20px;">
-						  <h2>Razones de su popularidad</h2>
-						  <ul>
+			<section>
+				<div style="display: flex; height: 100%; align-items: center; text-align: center;">
+					<div style="flex: 1; border-right: 2px solid #ccc; padding: 20px;">
+						<h2>Principales usos</h2>
+						<ul>
+							<li>Análisis y visualización de datos</li>
+							<li>Machine Learning, IA, Deep Learning</li>
+							<li>Investigación científica</li>
+							<li>Desarrollo de software (backends, bots)</li>
+							<li>Lenguaje de scripting</li>
+						</ul>
+					</div>
+					<div style="flex: 1; padding: 20px;">
+						<h2>Razones de su popularidad</h2>
+						<ul>
 							<li>Facilidad de aprendizaje</li>
 							<li>Legibilidad, sintaxis sencilla</li>
 							<li>Miles de librerías y frameworks</li>
 							<li>Gran comunidad y buena documentación</li>
 							<li>Portabilidad y flexibilidad</li>
-						  </ul>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div style="display: flex; align-items: center; justify-content: space-between;">
+					<h2>(Breve) historia</h2>
+					<div style="display:flex; gap: 4rem;">
+						<div style="flex:1; display:flex; flex-direction: column;">
+							<div style="display:flex; flex-direction: row;">
+								<img src="media/1/PythonPowered.gif" style="height:100px;">
+								<img src="media/1/python-logo-old.png" style="height:100px;">
+							</div>
+							<small>Logos (no oficiales) antiguos</small>
 						</div>
-					  </div>
-				</section>
-				<section>
-					<div style="display: flex; align-items: center; justify-content: space-between;">
-						<h2>(Breve) historia</h2>
-						<div style="display:flex; gap: 4rem;">
-							<div style="flex:1; display:flex; flex-direction: column;">
-								<div style="display:flex; flex-direction: row;">
-									<img src="media/1/PythonPowered.gif" style="height:100px;">
-									<img src="media/1/python-logo-old.png" style="height:100px;">
-								</div>
-								<small>Logos (no oficiales) antiguos</small>
-							</div>
-							<div style="flex:1; display:flex; flex-direction: column;">
-								<img src="media/1/python-logo.png" style="height:120px; margin-left: 4rem;">
-								<small>Logo oficial de Python</small>
-							</div>
+						<div style="flex:1; display:flex; flex-direction: column;">
+							<img src="media/1/python-logo.png" style="height:120px; margin-left: 4rem;">
+							<small>Logo oficial de Python</small>
 						</div>
 					</div>
+				</div>
+				<div>
 					<div>
-						<div>
-							<ul>
-								<li>Concebido en los años 80 por Guido Van Rossum</li>
-								<li>Su desarrollo comienza en 1989, cuando se implementaron las funcionalidades básicas y utilidades importantes como los <em>módulos</em>.</li>
-								<li class="fragment">1994 $\rightarrow$ Python 1.0, con nuevas funcionalidades como <em>funciones lambda</em></li>
-								<li class="fragment">2000 $\rightarrow$ Python 2.0, añadidas las <em>list comprehensions</em>, los assignment operators <span class="monospace">(+=, *=, /=, $\dots$)</span> y el soporte para Unicode.</li>
-								<li class="fragment">A lo largo de los 2000s se desarrollaron las siguientes versiones 2.x</li>
-								<li class="fragment">2008 $\rightarrow$ <b>Python 3.0</b>, que supuso un gran rediseño del lenguaje y eliminó mucha redundancia</li>
-								<li class="fragment">Python 2.x y 3.x se siguieron desarrollando por separado, hasta 2020, dónde se acabó el soporte para las versiones 2.x</li>
-							</ul>
-						</div>
+						<ul>
+							<li>Concebido en los años 80 por Guido Van Rossum</li>
+							<li>Su desarrollo comienza en 1989, cuando se implementaron las funcionalidades básicas y
+								utilidades importantes como los <em>módulos</em>.</li>
+							<li class="fragment">1994 $\rightarrow$ Python 1.0, con nuevas funcionalidades como
+								<em>funciones lambda</em></li>
+							<li class="fragment">2000 $\rightarrow$ Python 2.0, añadidas las <em>list
+									comprehensions</em>, los assignment operators <span class="monospace">(+=, *=, /=,
+									$\dots$)</span> y el soporte para Unicode.</li>
+							<li class="fragment">A lo largo de los 2000s se desarrollaron las siguientes versiones 2.x
+							</li>
+							<li class="fragment">2008 $\rightarrow$ <b>Python 3.0</b>, que supuso un gran rediseño del
+								lenguaje y eliminó mucha redundancia</li>
+							<li class="fragment">Python 2.x y 3.x se siguieron desarrollando por separado, hasta 2020,
+								dónde se acabó el soporte para las versiones 2.x</li>
+						</ul>
 					</div>
-				</section>
-				<section>
-					<h3>(Breve) historia</h3>
-					<p>
-						Python está implementado sobre C (Cpython), pero también está inspirado por otros lenguaje como ABC (sintaxis base), Lisp (lambdas), Modula3 (módulos), Perl (scripting), Smalltalk (OOP) $\dots$
-					</p>
-					<p>El gran número de lenguajes en los que se inspiró se refleja en su <em>modelo de programación multiparadigma</em></p>
-				</section>
-				<section>
-					<h3>Python2 vs Python3</h3>
-					<p><b>Python 3.13 es la versión actual</b> y la recomendada para nuevos proyectos. Python2 dejó de recibir soporte el 1 de enero de 2020.</p>
-					<p class="fragment">A veces nos encontramos con paquetes que solo funcionan en versiones específicas como 3.10 o 3.12, no pasa nada si cambiamos a esas versiones ya que siguen siendo bastante recientes.</p>
-					<p class="fragment" style="margin-top: 4rem;">Hoy en día esto no es tan importante ya que los nuevos proyectos deberían comenzar en Python3, pero si tenéis que trabajar con código antiguo en Python2 (versiones 2.x), es importante saber que <b>no son compatibles</b></p>
-				</section>
-				<section>
-					<h2>Características</h2>
-					<pre><code data-line-numbers="1-8|8-13|13-16|16-20|20-23|23-27" class="python" style="max-height: 250px;">
+				</div>
+			</section>
+			<section>
+				<h3>(Breve) historia</h3>
+				<p>
+					Python está implementado sobre C (CPython), pero también está inspirado por otros lenguaje como ABC
+					(sintaxis base), Lisp (lambdas), Modula3 (módulos), Perl (scripting), Smalltalk (POO) $\dots$
+				</p>
+				<p>El gran número de lenguajes en los que se inspiró se refleja en su <em>modelo de programación
+						multiparadigma</em></p>
+			</section>
+			<section>
+				<h3>Python2 vs Python3</h3>
+				<p><b>Python 3.13 es la versión actual</b> y la recomendada para nuevos proyectos. Python2 dejó de
+					recibir soporte el 1 de enero de 2020.</p>
+				<p class="fragment">Existen paquetes que solo funcionan en versiones específicas
+					como 3.10 o 3.12, no pasa nada$^{*}$ si se usan esas versiones, ya que siguen siendo bastante
+					recientes.</p>
+				<p class="fragment" style="margin-top: 4rem;"><b>Python3 y Python2 no son compatibles entre sí</b>. 
+						Lo recomendable y más habitual hoy en día es trabajar sobre Python3.</p>
+			</section>
+			<section>
+				<h2>Características</h2>
+				<pre><code data-line-numbers="1-8|8-13|13-16|16-20|20-23|23-27" class="python" style="max-height: 250px;">
 	x = "hola"     # x es de tipo string
 	x = 5          # x pasa a ser de tipo entero (int)
 
@@ -203,162 +240,169 @@
 	un_conjunto = {"a", "a", "b"}     # Mismo resultado que {"a", "b"}
 						</code>
 					</pre>
-				    <ol style="margin-top: 2rem;">
-						<li>Tipado dinámico y no declarativo</li>
-						<li>Interpretado, no compilado</li>
-						<li>Indentación <b>obligatoria</b> (sangrías) $\rightarrow$ no necesita <span class="monospace">;</span></li>
-						<li>Sintaxis intuitiva con palabras clave en inglés</li>
-						<li>Estructuras de datos integradas y soporte para <span class="monospace">strings</span></li>
-					</ol>
-				</section>
-				<section>
-					<h2>Objetivos del curso</h2>
-					<div style="display:flex;">
-						<ul style="flex: 1; font-size: 125%;">
-							<li><b>Parte 1:</b> Familiarizarse con la sintaxis básica del lenguaje</li>
-							<li class="fragment" data-fragment-index="1"><b>Parte 2:</b> Revisar las principales librerías para análisis de datos y aprender cómo desarrollar un proyecto completo.</li>
-							<li class="fragment" data-fragment-index="2">Dar una visión práctica del lenguaje, pero asentada en principos sólidos</li>
-							<li class="fragment" data-fragment-index="3">Aprender como buscar información en internet (especialmente en páginas de documentación oficial)</li>
-						</ul>
-						<div style="flex: 1;" class="r-stack">
-							<img src="media/1/cheatsheet.png">
-							<img src="media/1/libraries.png" class="fragment" data-fragment-index="1">
-							<img src="media/1/zen_python.png" class="fragment" data-fragment-index="2">
-							<img src="media/1/presentermedia.png" class="fragment" data-fragment-index="3">
-						</div>
+				<ol style="margin-top: 2rem;">
+					<li>Tipado dinámico y no declarativo</li>
+					<li>Interpretado, no compilado</li>
+					<li>Indentación <b>obligatoria</b> (sangrías) $\rightarrow$ no necesita <span
+							class="monospace">;</span></li>
+					<li>Sintaxis intuitiva con palabras clave en inglés</li>
+					<li>Estructuras de datos integradas y soporte para <span class="monospace">strings</span></li>
+				</ol>
+			</section>
+			<section>
+				<h2>Objetivos del curso</h2>
+				<div style="display:flex;">
+					<ul style="flex: 1; font-size: 125%;">
+						<li><b>Parte 1:</b> Familiarizarse con la sintaxis básica del lenguaje</li>
+						<li class="fragment" data-fragment-index="1"><b>Parte 2:</b> Revisar las principales librerías
+							para análisis de datos y aprender cómo desarrollar un proyecto completo.</li>
+						<li class="fragment" data-fragment-index="2">Dar una visión práctica del lenguaje, pero asentada
+							en principos sólidos</li>
+						<li class="fragment" data-fragment-index="3">Aprender como buscar información en internet
+							(especialmente en páginas de documentación oficial)</li>
+					</ul>
+					<div style="flex: 1;" class="r-stack">
+						<img src="media/1/cheatsheet.png">
+						<img src="media/1/libraries.png" class="fragment" data-fragment-index="1">
+						<img src="media/1/zen_python.png" class="fragment" data-fragment-index="2">
+						<img src="media/1/presentermedia.png" class="fragment" data-fragment-index="3">
 					</div>
-				</section>
-				<section>
-					<h3>Algunos aspectos prácticos</h3>
-					<div>
-						<p>Usaremos esta web a lo largo de las clases</p>
-						<p>(Si está caída por algún motivo, se puede descargar desde <span class="monospace"><a href="https://github.com/xianacarrera/python_course_2025">GitHub</a>)</span></p>
-					</div>
-					<div class="fragment">
-						<p>Hace falta venir al $80\%$ de las clases para conseguir 1 ECTS</p>
-						<p>(es decir, hace falta venir a 6 de las 8 clases)</p>
-						<p>Las clases serán de <span class="monospace">16:00</span> a <span class="monospace">18:00</span>, y habrá descanso!</p>
-					</div>
-					<div style="display: flex;">
-						<div class="calendar">
-							<div class="calendar-header">Marzo 2025</div>
-							<div class="day">L</div>
-							<div class="day">M</div>
-							<div class="day">X</div>
-							<div class="day">J</div>
-							<div class="day">V</div>
-							<div class="day">S</div>
-							<div class="day">D</div>
-						
-							<div class="empty"></div>
-							<div class="empty"></div>
-							<div class="empty"></div>
-							<div class="empty"></div>
-							<div class="empty"></div>
-							<div class="date">1</div>
-							<div class="date">2</div>
-							<div class="date">3</div>
-							<div class="date">4</div>
-							<div class="date">5</div>
-							<div class="date">6</div>
-							<div class="date">7</div>
-							<div class="date">8</div>
-							<div class="date">9</div>
-							<div class="date">10</div>
-							<div class="date">11</div>
-							<div class="date">12</div>
-							<div class="date">13</div>
-							<div class="date">14</div>
-							<div class="date">15</div>
-							<div class="date">16</div>
-							<div class="date marked">17</div>
-							<div class="date marked">18</div>
-							<div class="date">19</div>
-							<div class="date marked">20</div>
-							<div class="date">21</div>
-							<div class="date">22</div>
-							<div class="date">23</div>
-							<div class="date marked">24</div>
-							<div class="date marked">25</div>
-							<div class="date">26</div>
-							<div class="date marked">27</div>
-							<div class="date">28</div>
-							<div class="date">29</div>
-							<div class="date">30</div>
-							<div class="date marked">31</div>
-						</div>
-						<div class="calendar">
-							<div class="calendar-header">Abril 2025</div>
-							<div class="day">L</div>
-							<div class="day">M</div>
-							<div class="day">X</div>
-							<div class="day">J</div>
-							<div class="day">V</div>
-							<div class="day">S</div>
-							<div class="day">D</div>
-							
-							<div class="empty"></div>
-							<div class="date marked">1</div>
-							<div class="date">2</div>
-							<div class="date">3</div>
-							<div class="date">4</div>
-							<div class="date">5</div>
-							<div class="date">6</div>
-							<div class="date">7</div>
-							<div class="date">8</div>
-							<div class="date">9</div>
-							<div class="date">10</div>
-							<div class="date">11</div>
-							<div class="date">12</div>
-							<div class="date">13</div>
-							<div class="date">14</div>
-							<div class="date">15</div>
-							<div class="date">16</div>
-							<div class="date">17</div>
-							<div class="date">18</div>
-							<div class="date">19</div>
-							<div class="date">20</div>
-							<div class="date">21</div>
-							<div class="date">22</div>
-							<div class="date">23</div>
-							<div class="date">24</div>
-							<div class="date">25</div>
-							<div class="date">26</div>
-							<div class="date">27</div>
-							<div class="date">28</div>
-							<div class="date">29</div>
-							<div class="date">30</div>
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
+				</div>
+			</section>
+			<section>
+				<h3>Algunos aspectos prácticos</h3>
+				<div>
+					<p>Usaremos esta web a lo largo de las clases</p>
+					<p>(Si está caída por algún motivo, se puede descargar desde <span class="monospace"><a
+								href="https://github.com/xianacarrera/python_course_2025">GitHub</a>)</span></p>
+				</div>
+				<div class="fragment">
+					<p>Hace falta venir al $80\%$ de las clases para conseguir 1 ECTS</p>
+					<p>(es decir, hace falta venir a 7 de las 8 clases)</p>
+					<p>Las clases serán de <span class="monospace">16:00</span> a <span class="monospace">18:00</span>,
+						y habrá descanso!</p>
+				</div>
+				<div style="display: flex;">
+					<div class="calendar">
+						<div class="calendar-header">Marzo 2025</div>
+						<div class="day">L</div>
+						<div class="day">M</div>
+						<div class="day">X</div>
+						<div class="day">J</div>
+						<div class="day">V</div>
+						<div class="day">S</div>
+						<div class="day">D</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/math/math.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-		  // More info about initialization & config:
-		  // - https://revealjs.com/initialization/
-		  // - https://revealjs.com/config/
-		  Reveal.initialize({
+						<div class="empty"></div>
+						<div class="empty"></div>
+						<div class="empty"></div>
+						<div class="empty"></div>
+						<div class="empty"></div>
+						<div class="date">1</div>
+						<div class="date">2</div>
+						<div class="date">3</div>
+						<div class="date">4</div>
+						<div class="date">5</div>
+						<div class="date">6</div>
+						<div class="date">7</div>
+						<div class="date">8</div>
+						<div class="date">9</div>
+						<div class="date">10</div>
+						<div class="date">11</div>
+						<div class="date">12</div>
+						<div class="date">13</div>
+						<div class="date">14</div>
+						<div class="date">15</div>
+						<div class="date">16</div>
+						<div class="date marked">17</div>
+						<div class="date marked">18</div>
+						<div class="date">19</div>
+						<div class="date marked">20</div>
+						<div class="date">21</div>
+						<div class="date">22</div>
+						<div class="date">23</div>
+						<div class="date marked">24</div>
+						<div class="date marked">25</div>
+						<div class="date">26</div>
+						<div class="date marked">27</div>
+						<div class="date">28</div>
+						<div class="date">29</div>
+						<div class="date">30</div>
+						<div class="date marked">31</div>
+					</div>
+					<div class="calendar">
+						<div class="calendar-header">Abril 2025</div>
+						<div class="day">L</div>
+						<div class="day">M</div>
+						<div class="day">X</div>
+						<div class="day">J</div>
+						<div class="day">V</div>
+						<div class="day">S</div>
+						<div class="day">D</div>
+
+						<div class="empty"></div>
+						<div class="date marked">1</div>
+						<div class="date">2</div>
+						<div class="date">3</div>
+						<div class="date">4</div>
+						<div class="date">5</div>
+						<div class="date">6</div>
+						<div class="date">7</div>
+						<div class="date">8</div>
+						<div class="date">9</div>
+						<div class="date">10</div>
+						<div class="date">11</div>
+						<div class="date">12</div>
+						<div class="date">13</div>
+						<div class="date">14</div>
+						<div class="date">15</div>
+						<div class="date">16</div>
+						<div class="date">17</div>
+						<div class="date">18</div>
+						<div class="date">19</div>
+						<div class="date">20</div>
+						<div class="date">21</div>
+						<div class="date">22</div>
+						<div class="date">23</div>
+						<div class="date">24</div>
+						<div class="date">25</div>
+						<div class="date">26</div>
+						<div class="date">27</div>
+						<div class="date">28</div>
+						<div class="date">29</div>
+						<div class="date">30</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
 			hash: true,
 			katex: {
-			  version: 'latest',
-			  delimiters: [
-				{ left: '$$', right: '$$', display: true },
-				{ left: '$', right: '$', display: false },
-				{ left: '\\(', right: '\\)', display: false },
-				{ left: '\\[', right: '\\]', display: true },
-			  ],
-			  ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+				version: 'latest',
+				delimiters: [
+					{ left: '$$', right: '$$', display: true },
+					{ left: '$', right: '$', display: false },
+					{ left: '\\(', right: '\\)', display: false },
+					{ left: '\\[', right: '\\]', display: true },
+				],
+				ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
 			},
 			// Learn about plugins: https://revealjs.com/plugins/
 			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
-		  });
-		</script>
-		<script src="theme-toggle.js"></script>
-	</body>
+		});
+	</script>
+	<script src="theme-toggle.js"></script>
+</body>
+
 </html>

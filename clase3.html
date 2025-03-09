@@ -136,11 +136,11 @@ print("mundo!")
                 <h3>I/O</h3>
                 <p>Por defecto, <span class="monospace">input()</span> devuelve strings.</p>
                 <pre><code data-line-numbers="2-6" class="python">
-                        edad = input("¿Cuántos años tienes? ")
-                        if edad >= 18:       # TypeError: '>=' not supported between instances of 'str' and 'int'
-                            print("Adulto")
-                        else:
-                            print("Menor")
+    edad = input("¿Cuántos años tienes? ")
+    if edad >= 18:       # TypeError: '>=' not supported between instances of 'str' and 'int'
+        print("Adulto")
+    else:
+        print("Menor")
 
                     </code></pre>
                 <p style="margin-top:3rem;">Si queremos usar el resultado como otro tipo de dato, podemos convertirlo
@@ -193,7 +193,7 @@ print("mundo!")
                     error de manera controlada
                     para que pueda continuar ejecutándose.</p>
                 <div style="text-align: left;" class="fragment">
-                    <p>Los bloques de manejo de excepciones utilizan 4 keywords (ninguna obligatoria):</p>
+                    <p>Los bloques de manejo de excepciones utilizan 4 keywords:</p>
                     <ul style="text-align: left;">
                         <li><span style="font-family:monospace;">try</span>: intenta hacer esto, a ver si no falla
                             $\dots$</li>
@@ -204,6 +204,9 @@ print("mundo!")
                         <li><span style="font-family:monospace;">finally</span>: pase lo que que pase, haz esto $\dots$
                         </li>
                     </ul>
+                    <p>Ni <span class="monospace">except</span>, ni <span class="monospace">else</span> ni
+                        <span class="monospace">finally</span> son obligatorios.
+                    </p>
                 </div>
                 <pre class="fragment"><code data-line-numbers="2-14" class="python">
     try:
@@ -230,32 +233,32 @@ print("mundo!")
             <section>
                 <h3>Algunos ejemplos</h3>
                 <pre><code data-line-numbers="2-14" class="python">
-                        def dividir(a, b):
-                            try:
-                                res = a / b
-                            except ZeroDivisionError as e:
-                                print("Error. b no puede ser 0:", e)
-                            else:
-                                print(res)
-                            finally:
-                                print("Terminado!")
+    def dividir(a, b):
+        try:
+            res = a / b
+        except ZeroDivisionError as e:
+            print("Error. b no puede ser 0:", e)
+        else:
+            print(res)
+        finally:
+            print("Terminado!")
 
-                        dividir(3, 0)
+    dividir(3, 0)
 
-                        dividir(3, 1)
+    dividir(3, 1)
 
                     </code></pre>
                 <pre><code data-line-numbers="2-11" class="python">
-                        def dividir(a, b):
-                            try:
-                                res = a / b
-                                print(res)
-                            except:
-                                print("Error. b no puede ser 0")
+    def dividir(a, b):
+        try:
+            res = a / b
+            print(res)
+        except:
+            print("Error. b no puede ser 0")
 
-                        dividir(3, 0)
+    dividir(3, 0)
 
-                        dividir(3, 1)
+    dividir(3, 1)
 
                     </code></pre>
             </section>
@@ -283,7 +286,7 @@ print("mundo!")
     # Ruta absoluta (i.e. desde el directorio raíz)
     archivo2 = open("C:\\Users\\Xiana\\Desktop\\archivo.txt", "r")
 
-    bin = open("archivo_binario.txt", "rb")
+    arch_bin = open("archivo_binario.txt", "rb")
 
                 </code></pre>
             </section>
@@ -292,63 +295,63 @@ print("mundo!")
                 <h3>Lectura de archivos (input)</h3>
                 <p>Hay diferentes formas de leer el contenido:</p>
                 <pre><code data-line-numbers="3-6|13-18|24-27|33-38|43-48" class="python" style="max-height: 250px;">
-                        
-                        archivo = open("archivo.txt", "r")
-                        contenido = archivo.read()     # Todo el contenido como una única cadena
-                        print(contenido)
-                        archivo.close()
+
+    archivo = open("archivo.txt", "r")
+    contenido = archivo.read()     # Todo el contenido como una única cadena
+    print(contenido)
+    archivo.close()
 
 
 
 
 
 
-                        archivo2 = open("archivo.txt", "r")
-                        lineas = archivo2.readlines()
-                        for linea in lineas:
-                            print(linea.rstrip())   
-                            # Sin rstrip(), se introducirían 2 saltos de línea
-                        archivo2.close()
+    archivo2 = open("archivo.txt", "r")
+    lineas = archivo2.readlines()
+    for linea in lineas:
+        print(linea.rstrip())   
+        # Sin rstrip(), se introducirían 2 saltos de línea
+    archivo2.close()
 
 
 
 
-                        
-                        archivo3 = open("archivo.txt", "r")
-                        for linea in archivo3:
-                            print(linea.rstrip()) 
-                        archivo3.close()
-                        
 
-
-
-                        
-                        archivo4 = open("archivo.txt", "r")
-                        lineas = archivo4.read().splitlines()
-                        for linea in archivo4:
-                            print(linea)
-                            # No hace falta rstrip()
-                        archivo4.close()
+    archivo3 = open("archivo.txt", "r")
+    for linea in archivo3:
+        print(linea.rstrip()) 
+    archivo3.close()
 
 
 
 
-                        archivo5 = open("archivo.txt", "r")
-                        linea = archivo5.readline()
-                        while linea:
-                            print(linea.rstrip())
-                            linea = archivo5.readline()
-                        archivo5.close()
+
+    archivo4 = open("archivo.txt", "r")
+    lineas = archivo4.read().splitlines()
+    for linea in archivo4:
+        print(linea)
+        # No hace falta rstrip()
+    archivo4.close()
+
+
+
+
+    archivo5 = open("archivo.txt", "r")
+    linea = archivo5.readline()
+    while linea:
+        print(linea.rstrip())
+        linea = archivo5.readline()
+    archivo5.close()
 
 
 
 
                     </code></pre>
-                <p>Importante: <b>cerrar</b> los ficheros!</p>
+                <p class="fragment">Importante: <b>cerrar</b> los ficheros!</p>
                 <ul>
-                    <li>Evita la corrupción de los datos.</li>
-                    <li>Asegura que los últimos cambios se guarden correctamente.</li>
-                    <li>Libera memoria RAM que se estaba usando como <i>buffer</i>.</li>
+                    <li class="fragment">Evita la corrupción de los datos.</li>
+                    <li class="fragment">Asegura que los últimos cambios se guarden correctamente.</li>
+                    <li class="fragment">Libera memoria RAM que se estaba usando como <i>buffer</i>.</li>
                 </ul>
             </section>
             <section>
@@ -398,16 +401,16 @@ print("mundo!")
                 <h3>Lectura de archivos (input)</h3>
                 <p>Por supuesto, pueden seguir occuriendo varios errores al abrir archivos $\dots$</p>
                 <pre><code data-line-numbers="2-14" class="python">
-                        try:
-                            with open("archivo.txt", "r") as archivo:      # archivo = open("archivo.txt", "r")
-                                for linea in archivo:
-                                    print(linea.rstrip())
-                        except FileNotFoundError:
-                            print("El archivo no existe")
-                        except IOError as e:
-                            print(f"Error al acceder al archivo: {e}")
-                        except:
-                            print("Error desconocido")
+    try:
+        with open("archivo.txt", "r") as archivo:      # archivo = open("archivo.txt", "r")
+            for linea in archivo:
+                print(linea.rstrip())
+    except FileNotFoundError:
+        print("El archivo no existe")
+    except IOError as e:
+        print(f"Error al acceder al archivo: {e}")
+    except:
+        print("Error desconocido")
 
                     </code></pre>
             </section>
@@ -444,8 +447,9 @@ print("mundo!")
             <section>
                 <h3>Escritura de archivos (output)</h3>
                 </p>
-                <table cellspacing="0" cellpadding="0" style="width: 110%; border-collapse: collapse; margin-bottom: 10px; padding-bottom: 10px;"
-                    class="pure-table pure-table-bordered">
+                <table cellspacing="0" cellpadding="0"
+                    style="width: 110%; border-collapse: collapse; border-style:solid; margin-bottom: 10px; padding-bottom: 10px; border-width: 1px;"
+                    class="pure-table pure-table-bordered" id="tablaquellevotreshoras">
                     <thead style="background-color: antiquewhite;">
                         <tr>
                             <th>Modo</th>
@@ -536,10 +540,11 @@ print("mundo!")
                         </ul>
                     </div>
                     <div style="flex: 2; text-align: left;">
-                        <blockquote style="text-align:right;"
+                        <blockquote style="text-align:right; border: 2px solid black; padding: 30px;"
                             cite="https://docs.python.org/3/faq/design.html#why-can-t-lambda-expressions-contain-statements">
                             Unlike lambda forms in other languages, where they add functionality, Python lambdas are
                             only a shorthand notation if you're too lazy to define a function.
+                            <br><small style="margin-top: 10px;">Documentación de Python</small>
                         </blockquote>
                     </div>
                 </div>
@@ -856,10 +861,14 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                 <div style="display:flex; flex-direction: column; text-align: left;">
                     <ul>
                         <li>Un <b>objeto</b> tiene un <b>estado</b> y un <b>comportamiento</b>.</li>
-                        <li class="fragment"><b>Estado</b>: atributos = propiedades -> variables que almacenan datos de un objeto.</li>
-                        <li class="fragment"><b>Comportamiento</b>: métodos = funciones -> definen qué puede hacer el objeto.</li>
-                        <li class="fragment">Los objetos se abstraen en forma de <b>clases</b>. Un objeto es una <b>instancia</b> de una
-                            clase.</li>
+                        <li class="fragment"><b>Estado</b>: atributos = propiedades -> variables que almacenan datos de
+                            un objeto.</li>
+                        <li class="fragment"><b>Comportamiento</b>: métodos = funciones -> definen qué puede hacer el
+                            objeto.</li>
+                        <li class="fragment">Los objetos se abstraen en forma de <b>clases</b>. Un objeto es una
+                            <b>instancia</b> de una
+                            clase.
+                        </li>
                     </ul>
 
                     <div
@@ -880,18 +889,29 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                             <h5 style="margin-top:2rem;">Python OOP</h5>
                             <p>Veamos cómo implementar el ejemplo de la imagen</p>
                             <ol style="font-size: 80%;">
-                                <li>Primero necesitamos crear la clase con <span class="monospace">class Person</span> y añadir la función <span class="monospace">__init__(self)</span>, llamada <it>Constructor</it>, que se encargará de crear los objetos</li>
-                                <li class="fragment" data-fragment-index="1">Ahora añadimos los atributos de cada persona, su nombre, edad, género y ocupación. Pasamos estos datos al constructor, que los guardará usando <span class="monospace">self.&ltatributo&gt</atributo></span></li>
-                                <li class="fragment" data-fragment-index="2">El resto de la funcionalidad usará <b>métodos</b>, que son funciones dentro de la clase que modifican al objeto. Su primer argumento es <span class="monospace">self</span>.</li>
-                                <li class="fragment" data-fragment-index="3">Finalmente, podemos añadir un atributo adicional de salud que tiene cada persona, <span class="monospace">health</span>. Lo inicializamos a $100$ en el constructor y modificamos en cada llamada a los métodos.</li>
+                                <li>Primero necesitamos crear la clase con <span class="monospace">class Person</span> y
+                                    añadir su <em>constructor</em>, esto es, el método que se encarga de crear los
+                                    objetos: <span class="monospace">__init__(self)</span></li>
+                                <li class="fragment" data-fragment-index="1">Ahora añadimos los atributos de cada
+                                    persona, su nombre, edad, género y ocupación. Pasamos estos datos al constructor,
+                                    que los guardará usando <span class="monospace">self.&ltatributo&gt</atributo>
+                                    </span></li>
+                                <li class="fragment" data-fragment-index="2">Los <b>métodos</b> son funciones dentro
+                                    de la clase que modifican al objeto. Su
+                                    primer argumento tiene que ser <span class="monospace">self</span>, que representa
+                                    el propio objeto.</li>
+                                <li class="fragment" data-fragment-index="3">Para este ejemplo, añadimos también un atributo
+                                    adicional de salud que tiene cada persona, <span class="monospace">health</span>. Lo
+                                    inicializamos a $100$ en el constructor y modificamos en cada llamada a los métodos.
+                                </li>
 
                             </ol>
                         </div>
                         <div style="display: flex;">
-                          <img src="media/3/clase_person.png" width="600px">
+                            <img src="media/3/clase_person.png" width="600px">
                         </div>
                     </div>
-                      
+
                     <div style="flex: 1;" class="r-stack">
                         <pre style="height: 800px;">
                             <code class="python" data-line-numbers>
@@ -925,7 +945,7 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
 
 
                             </code></pre>
-                            <pre style="height: 800px;" class="fragment" data-fragment-index="1">
+                        <pre style="height: 800px;" class="fragment" data-fragment-index="1">
                                 <code class="python" data-line-numbers>
     class Person:
         def __init__(self, name, age, gender, occupation):
@@ -957,7 +977,7 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
 
 
                                 </code></pre>
-                                <pre style="height: 800px;" class="fragment" data-fragment-index="2">
+                        <pre style="height: 800px;" class="fragment" data-fragment-index="2">
                                     <code class="python" data-line-numbers>
     class Person:
         def __init__(self, name, age, gender, occupation):
@@ -989,7 +1009,7 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
 
     
                                     </code></pre>
-                                    <pre style="height: 800px;" class="fragment" data-fragment-index="3">
+                        <pre style="height: 800px;" class="fragment" data-fragment-index="3">
                                         <code class="python" data-line-numbers>
     class Person:
         def __init__(self, name, age, gender, occupation):
@@ -1033,9 +1053,11 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
             <section>
                 <h3>Métodos</h3>
                 <div>
-                    <p>Ahora podemos llamar a los métodos de cada objeto creados con la sintaxis <span class="monospace">objeto.metodo(args...)</span></p>
+                    <p>Ahora podemos llamar a los métodos de cada objeto creados con la sintaxis <span
+                            class="monospace">objeto.metodo(args...)</span></p>
                     <p>Con esto, ejecutamos una <em>acción</em> sobre el objeto, posiblemente alterando su estado.</p>
-                    <p><b>Importante:</b> Cuando llamamos un método, no hace falta pasar <span class="monospace">self</span></p>
+                    <p><b>Importante:</b> Cuando llamamos a un método de un objeto, no hace falta pasar <span
+                            class="monospace">self</span></p>
                 </div>
                 <pre><code class="python" data-line-numbers>
     marta = Person("Marta", 20, "F", "estudiante")
@@ -1056,9 +1078,15 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                 <h3>Herencia</h3>
                 <div>
                     <ul>
-                        <li>La herencia es un mecanismo que contienen todos los lenguajes orientados a objetos en los que una clase <em>"expande"</em> a otra.</li>
-                        <li>Por ejemplo, podríamos tener una clase <span class="monospace">Doctor</span> que expandiera a <span class="monospace">Person</span></li>
-                        <li>Podemos llamar a los elementos de la <em>superclase</em> con <span class="monospace">super().&ltmetodo&gt()</span></li>
+                        <li>La herencia es un mecanismo que contienen todos los lenguajes orientados a objetos en los
+                            que una clase, la subclase, <em>"expande"</em> a otra, la superclase.</li>
+                        <li>Las subclases se caracterizan por ser un tipo particular de la superclase (''is a'').</li>
+                        <li>Por ejemplo, un doctor es un tipo particular de persona. Por tanto, podríamos tener
+                            una clase <span class="monospace">Doctor</span> que expandiera
+                            a <span class="monospace">Person</span></li>
+                        <li>Podemos llamar a los elementos de la <em>superclase</em> con <span
+                                class="monospace">super().&ltmetodo&gt()</span></li>
+                        <li>En el constructor de la subclase, podemos llamar o no al constructor de la superclase (pero es buena práctica hacerlo).</li>
                     </ul>
                     <pre><code class="python" data-line-numbers>
     class Doctor(Person):
@@ -1071,33 +1099,43 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                     </code></pre>
                 </div>
                 <div class="fragment" data-fragment-index="1">
-                    <p>Los objetos de subclaes pueden llamar a los métodos de su <em>clase base</em><br>Por ejemplo, un nuevo Doctor podría llamar a <span class="monospace">walk()</span></p>
+                    <p>Los objetos de subclase pueden acceder y llamar a los métodos de su <em>clase base</em>.
+                        <br>Por ejemplo, un nuevo Doctor podría llamar a <span class="monospace">walk()</span></p>
                     <pre><code class="python" data-line-numbers>
     doc = Doctor("House", 45, "M", "médico de cabecera")
     doc.walk() # House está caminando
 
                     </code></pre>
                 </div>
-                <small class="fragment" data-fragment-index="1"><b>Nota obligatoria:</b> en la mayoría de los casos, <a href="https://python-patterns.guide/gang-of-four/composition-over-inheritance/">suele ser mejor idea usar composición en vez de herencia!</a></small>
+                <small class="fragment" data-fragment-index="1"><b>Nota obligatoria:</b> en la mayoría de los casos, <a
+                        href="https://python-patterns.guide/gang-of-four/composition-over-inheritance/">suele ser mejor
+                        idea usar composición en vez de herencia!</a></small>
             </section>
             <section>
                 <h3>Herencia: overriding</h3>
                 <div>
-                    <p>Si una subclase implementa un método que ya está en la superclase, esto se llama <em>overriding</em> (o sobreescritura)</p>
-                    <p>Por ejemplo, si queremos que un Doctor camine de forma diferente a una Persona normal, podemos hacerlo así:</p>
+                    <p>Una subclase puede reimplementar un método que ya está en la superclase. Esto se conoce como
+                        <em>overriding</em> (o sobreescritura)
+                    </p>
+                    <p>Por ejemplo, si queremos que un Doctor camine de forma diferente a una Persona normal, podemos
+                        hacerlo así:</p>
                     <pre><code class="python" data-line-numbers>
     class Doctor(Person):
         def walk(self):
             print(f"{self.name} está caminando... pero con bata")
                     </code></pre>
-                    <p class="fragment"><b>Más avanzado:</b> Esto lleva al concepto de polimorfismo. Las clases que sobreescriben métodos se pueden comportar como instancias de su superclase, hasta que llaman a uno de los métodos sobreescritos. Entonces, se ejecuta la versión sobreescrita en vez de la original $\dots$</p>
+                    <p class="fragment"><b>Más avanzado:</b> Esto lleva al concepto de polimorfismo. Las clases que
+                        sobreescriben métodos se pueden comportar como instancias de su superclase, hasta que llaman a
+                        uno de los métodos sobreescritos. Entonces, se ejecuta la versión sobreescrita en vez de la
+                        original $\dots$</p>
                 </div>
             </section>
             <section>
                 <h4>Un ejemplo práctico: clases de excepciones personalizadas</h4>
                 <div>
                     <ul>
-                        <li>Python permite crear excepciones personalizadas heredando de la clase <span class="monospace">Exception</span> o sus subclases</li>
+                        <li>Python permite crear excepciones personalizadas heredando de la clase <span
+                                class="monospace">Exception</span> o sus subclases</li>
                         <li>Las excepciones personalizadas mejoran la legibilidad y mantenibilidad del código</li>
                         <li>Son útiles para manejar errores específicos de nuestra aplicación</li>
                     </ul>
@@ -1111,24 +1149,29 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                 <div class="fragment">
                     <p>Uso de la excepción personalizada en código:</p>
                     <pre><code class="python" data-line-numbers>
-            def matricularse_usc(str_matricula):
-                if str_matricula == "No quiero estudiar":
-                    raise UXAError()
-                return str_matricula + " aceptada"
-            
-            try:
-                resultado = matricularse_usc("No quiero estudiar")
-            except UXAErrror as error:
-                print(f"Error al matricularse en la USC: {error}")
-            
+    def matricularse_usc(str_matricula):
+        if str_matricula == "No quiero estudiar":
+            raise UXAError()
+        return str_matricula + " aceptada"
+    
+    try:
+        resultado = matricularse_usc("No quiero estudiar")
+    except UXAErrror as error:
+        print(f"Error al matricularse en la USC: {error}")
+    
                     </code></pre>
                 </div>
+                <aside class="notes">
+                    Si no se usa una subclase de Exception, no se pueden usar features como raise y except.
+                    Usando el concepto de polimorfismo, se pueden recoger excepciones concretas con superclases más generales.
+                </aside>
             </section>
             <section>
                 <h4>Más sobre Python OOP</h4>
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); font-size: 80%;">
                     <div class="fragment">
-                        <p>Podemos implementar el método <span class="monospace">__str__(self)</span> para modificar como se imprime un objeto de una clase</p>
+                        <p>Podemos implementar el método <span class="monospace">__str__(self)</span> para modificar
+                            como se imprime un objeto de una clase</p>
                         <pre><code class="python" data-line-numbers>
     class Person:
         def __str__(self):
@@ -1141,8 +1184,10 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
     
                         </code></pre>
                     </div>
-                    <div  class="fragment">
-                        <p>Hay muchos más <em>métodos mágicos</em> de este estilo, por ejemplo <span class="monospace">__em__</span> para reimplementar la igualdad entre dos objetos de la misma clase, <span class="monospace">__add__</span> para la suma, $\dots$</p>
+                    <div class="fragment">
+                        <p>Hay muchos más <em>métodos mágicos</em> de este estilo, por ejemplo <span
+                                class="monospace">__em__</span> para reimplementar la igualdad entre dos objetos de la
+                            misma clase, <span class="monospace">__add__</span> para la suma, $\dots$</p>
                         <pre><code class="python" data-line-numbers>
     class Vector:
         def __init__(self, x, y):
@@ -1157,11 +1202,17 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
     print(v1 + v2) # (4, 6)
                         </code></pre>
                     </div>
-                    <div  class="fragment">
-                        <p>La clase <span class="monospace">object</span> es la clase base de todas las demás, aunque no se especifique explícitamente. Los tipos y contenedores primitivos (int, str, list, dict, $\dots$) también son subclases de <span class="monospace">object</span></p>        
+                    <div class="fragment">
+                        <p>La clase <span class="monospace">object</span> es la clase base de todas las demás, aunque no
+                            se especifique explícitamente. Los tipos y contenedores primitivos (int, str, list, dict,
+                            $\dots$) también son subclases de <span class="monospace">object</span></p>
                     </div>
                     <div class="fragment">
-                        <p><b>Más avanzado:</b> Gracias a que todos los objetos sean subclases de object, funcionan los métodos mágicos! Todos estos métodos están definidos en object, y no hacemos más que overridearlos. El lenguaje interepreta cada uno de ellos de forma especial, y los asigna a los operadores. Por ejemplo <span class="monospace">v1 + v2</span> es lo mismo que <span class="monospace">v1.__add__(v2)</span></p>
+                        <p><b>Más avanzado:</b> Gracias a que todos los objetos sean subclases de object, funcionan los
+                            métodos mágicos! Todos estos métodos están definidos en object, y no hacemos más que
+                            overridearlos. El lenguaje interpreta cada uno de ellos de forma especial, y los asigna a
+                            los operadores. Por ejemplo <span class="monospace">v1 + v2</span> es lo mismo que <span
+                                class="monospace">v1.__add__(v2)</span></p>
                     </div>
                 </div>
             </section>
