@@ -67,9 +67,9 @@
                                 <ul>
                                     <li class="fragment">La importación y exportación de datos a diferentes formatos:
                                         CSV, Excel, JSON, HTML, Stata, SQL, etc.</li>
-                                    <li class="fragment">Manejar datos faltantes (NaNs)</li>
                                     <li class="fragment">Seleccionar y filtrar datos; agregar, modificar y eliminar
                                         filas y columnas a tablas</li>
+                                    <li class="fragment">Manejar datos faltantes (NaNs)</li>
                                     <li class="fragment">Agrupar datos (<span class="monospace">groupby()</span>) y
                                         fusionar o combinar datasets (<span class="monospace">join()</span>)</li>
                                     <li class="fragment">Realizar análisis estadísticos</li>
@@ -82,10 +82,12 @@
                         <ul>
                             <li>Recursos adicionales:
                                 <ul style="margin-top: 20px;">
-                                    <li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/">Tutorial oficial de
-                                        Pandas</a></li>
-                                <li><a href="https://pandas.pydata.org/docs/">Documentación completa</a></li>
-                                <li><a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Cheatsheet de comandos</a></li>
+                                    <li><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/">Tutorial
+                                            oficial de
+                                            Pandas</a></li>
+                                    <li><a href="https://pandas.pydata.org/docs/">Documentación completa</a></li>
+                                    <li><a href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Cheatsheet de
+                                            comandos</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -103,15 +105,21 @@
                 <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
                     <div style="flex: 2; text-align: left;">
                         <ul>
-                            <li>Una Serie es un array 1-dim cuya secuencia de valores está asociada a un <em>índice</em> de etiquetas.</li>
-                            <li class="fragment">Por defecto, el índice es numérico. Si la Serie tiene longitud $N$, el índice contendrá los enteros desde $0$ a $N - 1$.</li>
-                            <li class="fragment">El índice nos permite seleccionar uno o varios elementos a través de sus etiquetas.</li>
-                            <li class="fragment">¡Operar sobre la Serie a través de funciones de NumPy no cambia el índice!</li>
-                            <li class="fragment"><span class="monospace">isnull()</span> nos permite comprobar si hay datos faltantes.</li>
-                            <li class="fragment">¡Y las operaciones sobre varias series (e.g. sumas) se alinean con respecto a los índices!</li>
+                            <li>Una Serie es un array 1-dim cuya secuencia de valores está asociada a un <em>índice</em>
+                                de etiquetas.</li>
+                            <li class="fragment">Por defecto, el índice es numérico. Si la Serie tiene longitud $N$, el
+                                índice contendrá los enteros desde $0$ a $N - 1$.</li>
+                            <li class="fragment">El índice nos permite seleccionar uno o varios elementos a través de
+                                sus etiquetas.</li>
+                            <li class="fragment">¡Operar sobre la Serie a través de funciones de NumPy no cambia el
+                                índice!</li>
+                            <li class="fragment"><span class="monospace">isnull()</span> nos permite comprobar si hay
+                                datos faltantes.</li>
+                            <li class="fragment">¡Y las operaciones sobre varias series (e.g. sumas) se alinean con
+                                respecto a los índices!</li>
                         </ul>
                     </div>
-                    <div  style="flex: 2; text-align: left;">
+                    <div style="flex: 2; text-align: left;">
                         <pre><code class="python" data-line-numbers="2-25|17-36|42-58|64-83|71-95" style="max-height: 700px;">
 datos = [3, -2, 0, 42]                            
 obj = pd.Series(datos)
@@ -128,7 +136,7 @@ print(obj)
 
 
 
-
+# Creamos una serie especificanado un índice
 obj2 = pd.Series(datos, index=['a', 'd', 'g', 'w'])
 print(obj2)
 # a     3
@@ -140,7 +148,7 @@ print(obj2)
 
 
 
-
+# Selección de datos a través de etiquetas
 print(obj2['a'])    # 3
 obj2['w'] = 100 
 print(obj2[['a', 'w']])  
@@ -153,7 +161,7 @@ print(obj2[['a', 'w']])
 
 
 
-
+# El filtrado y las operaciones mantienen las etiquetas
 print(obj2[obj2 > 70])
 # w    100
 # dtype: int64
@@ -200,7 +208,7 @@ pd.isnull(ciudades)     # También existe notnull()
 
 
 nuevos_nacimientos = pd.Series({'Ourense': 5000, 'Vigo': 5000})
-print(ciudades + nuevos_nacimientos)
+print(ciudades + nuevos_nacimientos)   
 # Lugo             NaN
 # Ourense     109891.0
 # Santiago         NaN
@@ -210,6 +218,11 @@ print(ciudades + nuevos_nacimientos)
                         </code></pre>
                     </div>
                 </div>
+                <aside class="notes">
+                    Si sumas dos series que tienen distinto índice, el índice del resultado es la unión de los índices
+                    de los operandos.
+                    Si uno de los dos operandos no tiene una cierta etiqueta en su índice, el resultado será NaN.
+                </aside>
             </section>
             <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;" data-auto-animate>
                 <h2>DataFrames</h2>
@@ -233,12 +246,13 @@ print(ciudades + nuevos_nacimientos)
             <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
                 <h2>DataFrames</h2>
                 <ul>
-                    <li>Un DataFrame representa una tabla de datos y contiene una colección ordenada de columnas, que pueden tener distintos tipos de datos.</li>
+                    <li>Un DataFrame representa una tabla de datos y contiene una colección ordenada de columnas, que
+                        pueden tener distintos tipos de datos.</li>
                     <li class="fragment">Un DataFrame tiene dos índices: el de filas y el de columnas.</li>
                     <li class="fragment">Existen diferentes formas de crear un DataFrame.</li>
                 </ul>
                 <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 0.1rem;">
-                    <div  style="flex: 1; text-align: center; max-width: 33%;">
+                    <div style="flex: 1; text-align: center; max-width: 33%;">
                         <p>Desde un diccionario de listas/arrays de NumPy</p>
                         <pre><code class="python">
 datos = {
@@ -257,7 +271,7 @@ print(df)
 # 2    Xoel         True    NaN    23
                         </code></pre>
                     </div>
-                    <div  style="flex: 1; text-align: center; max-width: 33%;">
+                    <div style="flex: 1; text-align: center; max-width: 33%;">
                         <p>Desde una lista/array de diccionarios</p>
                         <pre><code class="python">
 datos2 = [
@@ -276,7 +290,7 @@ print(df2)
 # 2    Xoel    23         True
                         </code></pre>
                     </div>
-                    <div  style="flex: 1; text-align: center; max-width: 33%;">
+                    <div style="flex: 1; text-align: center; max-width: 33%;">
                         <p>Desde archivos<br>(CSV, Excel, JSON...)</p>
                         <pre><code class="python">
 # Desde un archivo CSV
@@ -296,9 +310,246 @@ df5 = pd.read_json('ruta/al/archivo.json')
                         </code></pre>
                     </div>
                 </div>
+                <p style="text-align: right;"><small>Hay más posibilidades, como a partir de <em>nested
+                            dictionaries</em>.</small></p>
                 <aside class="notes">
                     Los índices pueden tener varios niveles (MultiIndex).
                     Al indicar columns, también se podría cambiar el index, como con Series.
+                    Una vez creado un diccionario, se puede reindexar. En general, nos saltaremos bastante cosas de los
+                    índices.
+                </aside>
+            </section>
+            <section>
+                <h2>Selección de datos</h2>
+                <div class="r-stack">
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;"
+                        class="fragment current-visible">
+                        <div
+                            style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;">
+                            <p style="margin: 0;">Podemos seleccionar columnas específicas a través<br> de su nombre,
+                                con dos posibilidades:
+                            <pre style="margin: 0"><code class="python" >
+columna_nombre = df['nombre']     
+columna_nombre = df.nombre      # Mismo resultado que df['nombre']
+print(columna_nombre)
+# 0    Marcos
+# 1       Eva
+# 2      Xoel
+# Name: nombre, dtype: object
+print(type(columna_nombre))     # class 'pandas.core.series.Series'
+
+                        </code></pre>
+                        </div>
+                        <div style="display: flex; text-align: left; flex-direction: column; gap:2rem;">
+                            <p style="margin: 0">Y también podemos seleccionar varias columnas a la vez:</p>
+                            <pre style="margin: 0"><code class="python" >
+filtrado = df[['nombre', 'edad']]
+print(filtrado)
+#    nombre  edad
+# 0  Marcos    40
+# 1     Eva    35
+# 2    Xoel    23
+
+                    </code></pre>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;" class="fragment">
+                        <div
+                            style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;">
+                            <p style="margin: 0;">Para seleccionar filas y filtrar según una condición, podemos usar la
+                                misma notación que con series:
+                            <pre style="margin: 0"><code class="python" >
+print(df[:2])
+#    nombre  edad  tiene_perro
+# 0  Marcos    40        False
+# 1     Eva    35         True
+
+# "and" y "or" no funcionan, como en NumPy
+filtrado = df[(df['edad'] < 30) | (df['nombre'] == "Marcos")]     
+print(filtrado)
+#    nombre  edad  tiene_perro
+# 0  Marcos    40        False
+# 2    Xoel    23         True
+                        </code></pre>
+                        </div>
+                        <div style="display: flex; text-align: left; flex-direction: column; gap:2rem;">
+                            <p style="margin: 0">Para seleccionar por filas y columnas a la vez, se puede usar
+                                <span class="monospace">loc[]</span>, al que se le deben pasar etiquetas, o
+                                <span class="monospace">iloc[]</span>, al que se le debe pasar la posición de la
+                                fila/columna como un entero.
+                            </p>
+                            <pre style="margin: 0"><code class="python" >
+print(df.loc[:, 'tiene_perro'])     # Todas las filas, columna 'tiene_perro'
+# 0    False
+# 1     True
+# 2     True
+# Name: tiene_perro, dtype: bool
+
+print(df.iloc[1:, 1])               # Filas de 1 en adelante, primera columna
+# 1     Eva
+# 2    Xoel
+# Name: nombre, dtype: object
+
+print(df.iloc[1:, 1][df['edad'] < 28])    # Filtrado después de indexar
+# 2    23
+# Name: edad, dtype: int64
+                    </code></pre>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    También se pueden seleccionar varias filas/columnas individuales e.g. df.iloc[1, [0, 2]]
+                </aside>
+            </section>
+            <section>
+                <h2>Operaciones aritméticas con DataFrames</h2>
+                <p>Muy similares a las de las series, pero alineando los datos tanto por fila como por columna.</p>
+                <pre><code class="python" style="max-height: fit-content;">
+df1 = pd.DataFrame(np.arange(12).reshape((4, 3)), columns=['c1', 'c2', 'c3'], index=['r1', 'r2', 'r3', 'r4'])
+df2 = pd.DataFrame(np.full((4, 4), 100), columns=['c1', 'c2', 'c4', 'c5'], index=['r1', 'r2', 'r4', 'r5'])
+
+print(df1)
+#     c1  c2  c3
+# r1   0   1   2
+# r2   3   4   5
+# r3   6   7   8
+# r4   9  10  11
+
+print(df2)
+#      c1   c2   c4   c5
+# r1  100  100  100  100
+# r2  100  100  100  100
+# r4  100  100  100  100
+# r5  100  100  100  100
+
+print(df1 + df2)
+#        c1     c2  c3  c4  c5
+# r1  100.0  101.0 NaN NaN NaN
+# r2  103.0  104.0 NaN NaN NaN
+# r3    NaN    NaN NaN NaN NaN
+# r4  109.0  110.0 NaN NaN NaN
+# r5    NaN    NaN NaN NaN NaN
+                </code></pre>
+            </section>
+            <section>
+                <h2>Lambdas</h2>
+                <p>También es posible aplicar operaciones en el estilo de la programación funcional.</p>
+                <pre><code class="python" style="max-height: fit-content;">
+
+                </code></pre>
+            </section>
+            <section>
+                <h2>Añadir y borrar columnas y datos</h2>
+            </section>
+            <section style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                    <h2>Limpieza de datos</h2>
+                    <span style="text-align: left;">
+                        En los proyectos de análisis de datos es muy común encontrar datos faltantes (NaNs), errores de
+                        medición,
+                        datos duplicados, etc. Es importante saber limpiarlos de forma adecuada.
+                    </span>
+                </div>
+                <div style="text-align: left;">
+                    <p>Existen varios métodos de utilidad:</p>
+                </div>
+                <div class="r-stack">
+                    <div style="display:flex; flex-direction: column; text-align: left;"
+                        class="fragment current-visible">
+                        <div>
+                            <ul>
+                                <li><span class="monospace">dropna()</span>: Elimina todas las filas y columnas que
+                                    contienen NAs</li>
+                            </ul>
+
+                        </div>
+
+                        <div
+                            style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                            <pre><code class="python">
+    datos = pd.DataFrame([[1., 6.5, 2.], [1., np.nan, np.nan], [np.nan, np.nan, np.nan], [np.nan, 6.5, 3.]])
+    datos_limpios = datos.dropna()  
+    
+    print(datos)
+    #      0    1    2
+    # 0  1.0  6.5  2.0
+    # 1  1.0  NaN  NaN
+    # 2  NaN  NaN  NaN
+    # 3  NaN  6.5  3.0
+    print(datos_limpios)
+    #      0    1    2
+    # 0  1.0  6.5  2.0
+                        </code></pre>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction: column; text-align: left;" class="fragment">
+                        <div>
+                            <ul>
+                                <li><span class="monospace">dropna(how="all")</span>: Elimina solo las filas en las que
+                                    todos los datos son NAs</li>
+                                <li><span class="monospace">dropna(how="all", axis=1)</span>: Elimina solo las columnas
+                                    en las que todos los datos son NAs</li>
+                            </ul>
+
+                        </div>
+
+                        <div
+                            style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                            <pre><code class="python">
+datos = pd.DataFrame([[1., 6.5, 2.], [1., np.nan, np.nan], [np.nan, np.nan, np.nan], [np.nan, 6.5, 3.]])
+datos_limpios = datos.dropna(how="all")  
+
+print(datos)
+#      0    1    2
+# 0  1.0  6.5  2.0
+# 1  1.0  NaN  NaN
+# 2  NaN  NaN  NaN
+# 3  NaN  6.5  3.0
+print(datos_limpios)
+#      0    1    2
+# 0  1.0  6.5  2.0
+# 1  1.0  NaN  NaN
+# 3  NaN  6.5  3.0
+                        </code></pre>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction: column; text-align: left;" class="fragment">
+                        <div>
+                            <p>Si cada serie representa una serie de tiempo, es útil quedarse con </p>
+                            <ul>
+                                <li><span class="monospace">dropna(how="all")</span>: Elimina solo las filas en las que
+                                    todos los datos son NAs</li>
+                                <li><span class="monospace">dropna(how="all", axis=1)</span>: Elimina solo las columnas
+                                    en las que todos los datos son NAs</li>
+                            </ul>
+
+                        </div>
+
+                        <div
+                            style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                            <pre><code class="python">
+datos = pd.DataFrame([[1., 6.5, 2.], [1., np.nan, np.nan], [np.nan, np.nan, np.nan], [np.nan, 6.5, 3.]])
+datos_limpios = datos.dropna(how="all")  
+
+print(datos)
+#      0    1    2
+# 0  1.0  6.5  2.0
+# 1  1.0  NaN  NaN
+# 2  NaN  NaN  NaN
+# 3  NaN  6.5  3.0
+print(datos_limpios)
+#      0    1    2
+# 0  1.0  6.5  2.0
+# 1  1.0  NaN  NaN
+# 3  NaN  6.5  3.0
+                        </code></pre>
+                        </div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    En un proyecto de análisis de datos, el 80% del tiempo suele dedicarse a limpiar y transformar
+                    los datos.
+                    Solo el 20% restante se dedica verdaderamente a analizar los datos (80/20 rule).
                 </aside>
             </section>
             <section>
