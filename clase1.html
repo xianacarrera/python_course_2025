@@ -110,7 +110,7 @@
 					+"&lt language &gt programming" en varios motores de búsqueda (Google, Bing...).</p>
 				<div style="display: flex; gap: 1rem; align-items: center;">
 					<div style="flex: 1;">
-						<img  src="media/1/Tiobeindex.png" alt="Tiobe index">
+						<img src="media/1/Tiobeindex.png" alt="Tiobe index">
 					</div>
 				</div>
 			</section>
@@ -123,7 +123,7 @@
 						<img src="media/1/Tiobeindex.png" alt="Tiobe index">
 					</div>
 					<div style="flex: 1;">
-						<img  src="media/1/Tiobeindex2.png" alt="Tiobe index Python">
+						<img src="media/1/Tiobeindex2.png" alt="Tiobe index Python">
 					</div>
 				</div>
 			</section>
@@ -176,7 +176,8 @@
 							<li>Su desarrollo comienza en 1989, cuando se implementaron las funcionalidades básicas y
 								utilidades importantes como los <em>módulos</em>.</li>
 							<li class="fragment">1994 $\rightarrow$ Python 1.0, con nuevas funcionalidades como
-								<em>funciones lambda</em></li>
+								<em>funciones lambda</em>
+							</li>
 							<li class="fragment">2000 $\rightarrow$ Python 2.0, añadidas las <em>list
 									comprehensions</em>, los assignment operators <span class="monospace">(+=, *=, /=,
 									$\dots$)</span> y el soporte para Unicode.</li>
@@ -206,12 +207,13 @@
 				<p class="fragment">Existen paquetes que solo funcionan en versiones específicas
 					como 3.10 o 3.12, no pasa nada$^{*}$ si se usan esas versiones, ya que siguen siendo bastante
 					recientes.</p>
-				<p class="fragment" style="margin-top: 4rem;"><b>Python3 y Python2 no son compatibles entre sí</b>. 
-						Lo recomendable y más habitual hoy en día es trabajar sobre Python3.</p>
+				<p class="fragment" style="margin-top: 4rem;"><b>Python3 y Python2 no son compatibles entre sí</b>.
+					Lo recomendable y más habitual hoy en día es trabajar sobre Python3.</p>
 			</section>
 			<section>
 				<h2>Características</h2>
-				<pre><code data-line-numbers="1-8|8-13|13-16|16-20|20-23|23-27" class="python" style="max-height: 250px;">
+				<div class="r-stack">
+					<pre style="height: 250px; margin-bottom: 30px;"><code class="python" data-line-numbers>
 	x = "hola"     # x es de tipo string
 	x = 5          # x pasa a ser de tipo entero (int)
 
@@ -219,34 +221,49 @@
 	y = 3 + 5j     # y es de tipo complejo
 	y = True       # y es de tipo booleano
 
+						</code>
+					</pre>
+					<pre style="height: 250px; margin-bottom: 30px;" class="fragment" data-fragment-index="1"><code class="python" data-line-numbers>
 	if x == 5:
 		print("x es igual a 5")
 	else:
 		print("x no es igual a 5")
 
+						</code>
+					</pre>
+					<pre style="height: 250px; margin-bottom: 30px;" class="fragment" data-fragment-index="2"><code class="python" data-line-numbers>
 	if 3 < x and x < 10:
 		print("x está entre 3 y 10")
+
+	print("Buenassss")
+	x = 5; print(x)	
 	
+						</code>
+					</pre>
+					<pre style="height: 250px; margin-bottom: 30px;" class="fragment" data-fragment-index="3"><code class="python" data-line-numbers>
 	mi_lista = [1, 2, 3, 4, 5]
 	if 2 in mi_lista or len(mi_lista) > 5:
 		print("2 está en la lista o la lista tiene más de 5 elementos")
 	
-	print("Buenassss")
-	x = 5; print(x)	
-
+						</code>
+					</pre>
+					<pre style="height: 250px; margin-bottom: 30px;" class="fragment" data-fragment-index="4"><code class="python" data-line-numbers>
 	una_lista = ["hey", 4, 1.2]
 	una_tupla = ("hey", 4, 1.2)       # Inmutable (no se puede modificar)
 	un_diccionario = {"asignatura": "estructuras", "numero de suspensos": "elevado"}
 	un_conjunto = {"a", "a", "b"}     # Mismo resultado que {"a", "b"}
+
 						</code>
 					</pre>
-				<ol style="margin-top: 2rem;">
+				</div>
+				<ol style="margin-top: 40px;">
 					<li>Tipado dinámico y no declarativo</li>
-					<li>Interpretado, no compilado</li>
-					<li>Indentación <b>obligatoria</b> (sangrías) $\rightarrow$ no necesita <span
-							class="monospace">;</span></li>
-					<li>Sintaxis intuitiva con palabras clave en inglés</li>
-					<li>Estructuras de datos integradas y soporte para <span class="monospace">strings</span></li>
+					<li class="fragment" data-fragment-index="1">Interpretado, no compilado</li>
+					<li class="fragment" data-fragment-index="2">Indentación <b>obligatoria</b> (sangrías) $\rightarrow$
+						no necesita <span class="monospace">;</span></li>
+					<li class="fragment" data-fragment-index="3">Sintaxis intuitiva con palabras clave en inglés</li>
+					<li class="fragment" data-fragment-index="4">Estructuras de datos integradas y soporte para <span
+							class="monospace">strings</span></li>
 				</ol>
 			</section>
 			<section>
