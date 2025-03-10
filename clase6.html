@@ -42,10 +42,10 @@
         <div class="slides">
             <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
             <section data-auto-animate>
-                <h1 data-id="titlepandas">Uso de datasets en Pandas</h1>
+                <h1 data-id="titlepandas">Análisis de datos con Pandas</h1>
             </section>
             <section data-auto-animate>
-                <h1 data-id="titlepandas">Uso de datasets en Pandas</h1>
+                <h1 data-id="titlepandas">Análisis de datos con Pandas</h1>
                 <div style="display: flex; gap: 4rem;">
                     <div>
                         <p style="align-content: baseline;">
@@ -279,7 +279,7 @@ print(ciudades + nuevos_nacimientos)
                 <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 0.1rem;">
                     <div style="flex: 1; text-align: center; max-width: 33%;">
                         <p>Desde un diccionario de listas/arrays de NumPy</p>
-                        <pre><code class="python">
+                        <pre><code class="python" data-line-numbers>
 datos = {
     'nombre': ["Marcos", "Eva", "Xoel"],
     'edad': [40, 35, 23],
@@ -298,7 +298,7 @@ print(df)
                     </div>
                     <div style="flex: 1; text-align: center; max-width: 33%;">
                         <p>Desde una lista/array de diccionarios</p>
-                        <pre><code class="python">
+                        <pre><code class="python" data-line-numbers>
 datos2 = [
     {'nombre': "Marcos", 'edad': 40, 
                 'tiene_perro': False},
@@ -317,7 +317,7 @@ print(df2)
                     </div>
                     <div style="flex: 1; text-align: center; max-width: 33%;">
                         <p>Desde archivos<br>(CSV, Excel, JSON...)</p>
-                        <pre><code class="python">
+                        <pre><code class="python" data-line-numbers>
 # Desde un archivo CSV
 df3 = pd.read_csv('ruta/al/archivo.csv', 
     header=0,   # header en la primera línea 
@@ -353,7 +353,7 @@ df5 = pd.read_json('ruta/al/archivo.json')
                             style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;">
                             <p style="margin: 0;">Podemos seleccionar columnas específicas a través<br> de su nombre,
                                 con dos posibilidades:
-                            <pre style="margin: 0"><code class="python" >
+                            <pre style="margin: 0"><code class="python" data-line-numbers>
 columna_nombre = df['nombre']     
 columna_nombre = df.nombre      # Mismo resultado que df['nombre']
 print(columna_nombre)
@@ -367,7 +367,7 @@ print(type(columna_nombre))     # class 'pandas.core.series.Series'
                         </div>
                         <div style="display: flex; text-align: left; flex-direction: column; gap:2rem;">
                             <p style="margin: 0">Y también podemos seleccionar varias columnas a la vez:</p>
-                            <pre style="margin: 0"><code class="python" >
+                            <pre style="margin: 0"><code class="python" data-line-numbers>
 filtrado = df[['nombre', 'edad']]
 print(filtrado)
 #    nombre  edad
@@ -383,7 +383,7 @@ print(filtrado)
                             style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;">
                             <p style="margin: 0;">Para seleccionar filas y filtrar según una condición, podemos usar la
                                 misma notación que con series:
-                            <pre style="margin: 0"><code class="python" >
+                            <pre style="margin: 0"><code class="python" data-line-numbers>
 print(df[:2])
 #    nombre  edad  tiene_perro
 # 0  Marcos    40        False
@@ -403,7 +403,7 @@ print(filtrado)
                                 <span class="monospace">iloc[]</span>, al que se le debe pasar la posición de la
                                 fila/columna como un entero.
                             </p>
-                            <pre style="margin: 0"><code class="python" >
+                            <pre style="margin: 0"><code class="python" data-line-numbers>
 print(df.loc[:, 'tiene_perro'])     # Todas las filas, columna 'tiene_perro'
 # 0    False
 # 1     True
@@ -429,7 +429,7 @@ print(df.iloc[1:, 1][df['edad'] < 28])    # Filtrado después de indexar
             <section>
                 <h2>Operaciones aritméticas con DataFrames</h2>
                 <p>Muy similares a las de las series, pero alineando los datos tanto por fila como por columna.</p>
-                <pre><code class="python" style="max-height: fit-content;">
+                <pre><code class="python" style="max-height: fit-content;" data-line-numbers>
 df1 = pd.DataFrame(np.arange(12).reshape((4, 3)), columns=['c1', 'c2', 'c3'], index=['r1', 'r2', 'r3', 'r4'])
 df2 = pd.DataFrame(np.full((4, 4), 100), columns=['c1', 'c2', 'c4', 'c5'], index=['r1', 'r2', 'r4', 'r5'])
 
@@ -475,12 +475,10 @@ print(df1 + df2)
                         datos duplicados, etc. Es importante saber limpiarlos de forma adecuada.
                     </span>
                 </div>
-                <div style="text-align: left;">
-                    <p>Existen varios métodos de utilidad:</p>
-                </div>
-                <div class="r-stack">
+                <div class="r-stack"">
                     <div style="display:flex; flex-direction: column; text-align: left;"
                         class="fragment current-visible">
+                        <p>Existen varios métodos de utilidad:</p>
                         <div>
                             <ul>
                                 <li><span class="monospace">dropna()</span>: Elimina todas las filas y columnas que
@@ -491,7 +489,7 @@ print(df1 + df2)
 
                         <div
                             style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-                            <pre><code class="python" style="max-height: fit-content;">
+                            <pre><code class="python" style="max-height: fit-content;" data-line-numbers>
     datos = pd.DataFrame([[1., 6.5, 2.], 
                           [1., np.nan, np.nan], 
                           [np.nan, np.nan, np.nan], 
@@ -524,7 +522,7 @@ print(df1 + df2)
 
                         <div
                             style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-                            <pre><code class="python" style="max-height: fit-content;">
+                            <pre><code class="python" style="max-height: fit-content;" data-line-numbers>
 datos = pd.DataFrame([[1., 6.5, 2.], 
                       [1., np.nan, np.nan], 
                       [np.nan, np.nan, np.nan], 
@@ -562,7 +560,7 @@ print(datos_limpios)
 
                         <div
                             style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-                            <pre><code class="python">
+                            <pre><code class="python" data-line-numbers>
 datos = pd.DataFrame([[1., 6.5, 2.], [1., np.nan, np.nan], [np.nan, np.nan, np.nan], [np.nan, 6.5, 3.]])
 datos_limpios = datos.dropna(thresh=2)  
 
@@ -579,7 +577,7 @@ print(datos_limpios)
                         </code></pre>
                         </div>
                     </div>
-                    <div style="display:flex; flex-direction: column; text-align: left;" class="fragment">
+                    <div style="display:flex; flex-direction: column; text-align: left;" class="fragment current-visible">
                         <div>
                             <p>En lugar de eliminar los valores faltantes, podemos optar por rellenar sus posiciones con
                                 un determinado valor.</p>
@@ -592,7 +590,7 @@ print(datos_limpios)
 
                         <div
                             style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-                            <pre><code class="python" style="max-height: fit-content;">
+                            <pre><code class="python" style="max-height: fit-content;" data-line-numbers>
 datos = pd.DataFrame([[1., 6.5, 2.], [1., np.nan, np.nan], [np.nan, np.nan, np.nan], [np.nan, 6.5, 3.]])
 datos_limpios = datos.fillna(0) 
 datos_limpios_2 = datos.fillna(datos.mean())    # También admite otras estructuras de datos
@@ -610,6 +608,76 @@ print(datos_limpios);                        print(datos_limpios_2)
 # 2  0.0  0.0  0.0                             2  1.0  6.5  2.5
 # 3  0.0  6.5  3.0                             3  1.0  6.5  3.0
 
+                        </code></pre>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction: column; text-align: left;" class="fragment current-visible">
+                        <div>
+                            <p>También es importante localizar y eliminar filas duplicadas cuando tiene sentido hacerlo.</p>
+                            <ul>
+                                <li><span class="monospace">duplicated()</span>: Devuelve una serie indicando, para cada fila, si está duplicada o no.</li>
+                                <li><span class="monospace">drop_duplicates()</span>: Elimina las filas duplicadas.</li>
+                                <li>A ambos métodos se les pueden indicar solo columnas concretas.</li>
+                            </ul>
+                        </div>
+
+                        <div
+                            style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                            <pre><code class="python" style="max-height: fit-content;" data-line-numbers>
+df = pd.DataFrame({'c1': ['a'] * 3 + ['b'] * 2,
+                   'c2': [1, 1, 2, 3, 3]})
+
+print(df);                             print(df.duplicated())
+#   c1  c2                             
+# 0  a   1                             0    False
+# 1  a   1                             1     True
+# 2  a   2                             2    False
+# 3  b   3                             3    False
+# 4  b   3                             4     True
+#                                      dtype: bool
+
+print(df.drop_duplicates());           print(df.drop_duplicates().reset_index(drop=True))
+#   c1  c2                                c1  c2 
+# 0  a   1                             0  a   1
+# 2  a   2                             1  a   2
+# 3  b   3                             2  b   3
+
+                        </code></pre>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction: column; text-align: left;" class="fragment">
+                        <div style="font-size: 70%;">
+                            <p>Los <em>outliers</em> pueden deberse a errores de medición o de inserción en la bases de datos. 
+                               En estos casos, es recomendable eliminarlos.</p>
+                            <p>Hay diferentes opciones: eliminarlos, sustituirlos por el máximo/por la media, etc.</p>
+                        </div>
+
+                        <div
+                            style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                            <pre><code class="python" style="max-height: fit-content;" data-line-numbers>
+datos_ph = pd.DataFrame(16 * np.random.rand(1000, 4), columns=["detector1", "detector2", "detector3", "detector4"])
+print(datos_ph.describe())
+#          detector1    detector2    detector3    detector4
+# count  1000.000000  1000.000000  1000.000000  1000.000000
+# mean      8.008337     8.267079     7.916209     8.024089
+# std       4.722665     4.585955     4.644795     4.587050
+# min       0.023579     0.070377     0.020743     0.004057
+# 25%       3.812108     4.474951     3.877351     4.281892
+# 50%       8.007732     8.042149     7.647697     7.886486
+# 75%      12.133669    12.261288    12.005321    11.885338
+# max      15.988374    15.999366    15.986327    15.979152
+
+datos_ph[datos_ph > 14] = 14
+print(datos_ph.describe())
+#          detector1    detector2    detector3    detector4
+# count  1000.000000  1000.000000  1000.000000  1000.000000
+# mean      7.875772     7.881265     7.894457     7.947086
+# std       4.457306     4.422518     4.379599     4.390199
+# min       0.036536     0.026266     0.001390     0.008563
+# 25%       3.836448     4.154702     4.154869     4.094805
+# 50%       8.132162     7.936885     7.928288     7.960573
+# 75%      12.143415    12.058752    11.999224    12.138702
+# max      14.000000    14.000000    14.000000    14.000000
                         </code></pre>
                         </div>
                     </div>
@@ -641,12 +709,13 @@ print(datos_limpios);                        print(datos_limpios_2)
                             <li class="fragment"><span class="monospace">cov()</span> calcula la matriz de covarianzas
                             </li>
                         </ul>
-                        <p class="fragment">Otras librerías, como <span class="monospace">scipy</span>, permiten realizar operaciones más
+                        <p class="fragment">Otras librerías, como <span class="monospace">scipy</span>, permiten
+                            realizar operaciones más
                             avanzadas, como contrastes de hipótesis.</p>
                     </div>
 
                     <div style="flex: 2;">
-                        <pre><code class="python" data-line-numbers style="max-height: fit-content;">
+                        <pre><code class="python" data-line-numbers style="max-height: fit-content;" data-line-numbers>
 df = pd.DataFrame({
     "A": [1, 2, 3, 4, 5],
     "B": [2, 4, 6, 8, 10],
@@ -677,298 +746,148 @@ print(df.corr())
                     </aside>
             </section>
             <section>
-                <p>Un ejemplo sencillo: imaginemos que queremos hacer un programa para calcular las raíces de un
-                    polinomio $\sum_{i=1}^n a_ix^i = 0$. Podríamos modularizar cada parte del programa y organizar el
-                    proyecto como:</p>
-                <pre class="fragment"><code class="python">
-    poly_calc/
-        main.py                 # El programa principal, que importa los módulos necesarios y enseña un menú
-        entrada.py              # Módulo para pedir los coeficientes al usuario
-        metodos_exactos.py      # Módulo con los métodos exactos (para polinomios de grado 1-4)
-        metodos_numericos.py    # Módulo con los métodos aproximados (para polinomios de grado 5+)
-
-                    </code></pre>
-                <div class="fragment">
-                    Ahora imaginémonos que queremos extender el programa a polinomios trigonométricos $\sum_{i=1}^n
-                    a_i\sin(x)^i + b_i\cos(x)^i = 0$. Podríamos añadir un módulo nuevo <span
-                        class="monospace">trig.py</span>. ¿Pero también tenemos que implementar las funciones seno y
-                    coseno? <b>No, podemos importarlas de la librería estándar de Python.</b>
+                <div style="display: flex; gap: 2rem; align-items: flex-start;">
+                    <h2>Combinación de datasets</h2>
+                    <span style="text-align: left;">
+                        En muchas ocasiones, los datos de un proyecto están en archivos o formatos distintos. Para poder
+                        utilizarlos, es conveniente combinarlos en una única estructura de datos.
+                    </span>
                 </div>
-                <pre class="fragment"><code class="pyhton" data-line-numbers>
-        from math import pi, sin, cos
-        print(sin(0), cos(pi/2))
+                <div class="r-stack">
+                    <div style="display:flex; flex-direction: column; text-align: left;"
+                        class="fragment current-visible">
+                        <div>
+                            <ul>
+                                <li><span class="monospace">merge()</span>: Combinación de filas de datasets en base a
+                                    una o más columnas comunes (producto cartesiano).</li>
+                                <li>Por defecto, <span class="monospace">merge()</span> los combina en base a las
+                                    columnas que tienen el mismo nombre.
+                                    Se pueden indicar explícitamente
+                                    con el argumento <span class="monospace">on</span>. <br>Ejemplo: <span
+                                        class="monospace"> pd.merge(df1, df2,
+                                        on=["col_comun_1", "col_comun_2"])</span>
+                                </li>
+                                <li>Si la columna común tiene un nombre distinto en cada dataframe, se pueden
+                                    referenciar por separado:
+                                    <span class="monospace">pd.merge(df_left, df_right, left_on="left_col",
+                                        right_on="right_col")</span>
+                                </li>
+                            </ul>
+                        </div>
 
-                    </code></pre>
-            </section>
-            <section>
-                La sintaxis para importar y exportar módulos en Python es muy sencilla:
-                <pre style="height: 700px;"><code class="python" data-line-numbers="1-16|17-32">
-    # (Asumiendo la estructura de archivos de la diapositiva anterior)
-    # main.py
-    import entrada                                  # Importar un módulo
-    import metodos_exactos as me                    # Importar un módulo con un alias
-    from metodos_numericos import newton_raphson    # Importar una función específica
+                        <div
+                            style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                            <pre><code class="python" style="max-height: fit-content;" data-line-numbers>
+df1 = pd.DataFrame({"frutas": ["manzanas", "platanos", "limones", "uvas", "manzanas"], 
+        "unidades": np.random.randint(1, 10, 5)})     # 5 enteros aleatorios en el intervalo [1, 10)
+df2 = pd.DataFrame({"frutas": ["manzanas", "platanos", "limones", "uvas"],
+        "precio": np.random.random(4) * 10})          # (4 floats aleatorios en el intervalo [0, 1)) * 10
 
-    # Usemos las funciones de los módulos importados
-    pol = entrada.pedir_coeficientes()
+print(pd.merge(df1, df2))          
+#      frutas  unidades    precio
+# 0  manzanas         5  5.630322
+# 1  manzanas         4  5.630322
+# 2  platanos         7  4.570918
+# 3   limones         6  3.348530
+# 4      uvas         8  6.413218
 
-    if len(pol) == 3:
-        me.resolver_grado_3(pol)
-    elif len(pol) > 4:
-        newton_raphson(pol)
-    ...
-
-
-
-    # Los archivos de módulo simplemente definen las funciones
-    # entrada.py
-    def pedir_coeficientes():
-        ...
-    
-    # metodos_exactos.py
-    def resolver_grado_3(pol):
-        ...
-    
-    # metodos_numericos.py
-    def newton_raphson(pol):
-        ...
-    
-                    </code></pre>
-
-            </section>
-            <section
-                style="display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; text-align: left;">
-                <h3>La librería estándar de Python</h3>
-                <p>La instalación de Python cuenta, además de con el intérprete del lenguaje, con una <a
-                        href="https://docs.python.org/3/library/index.html">librería estándar</a> con funcionalidades
-                    esenciales</p>
-                <p>Algunos ejemplos de módulos de la librería estándar son:</p>
-                <div style="display: flex; flex-direction: row; gap:2rem;">
-                    <ul style="text-align: left; flex:1;">
-                        <li><span class="monospace">math</span>: funciones matemáticas</li>
-                        <li><span class="monospace">random</span>: números pseudo-aleatorios y distribuciones</li>
-                        <li><span class="monospace">time</span> y <span class="monospace">datetime</span>: Fecha y hora
-                        </li>
-                        <li><span class="monospace">shutil</span> y <span class="monospace">pathlib</span>: Manejo de
-                            archivos y directorios</li>
-                        <li><span class="monospace">os</span>: funciones para interactuar con el sistema operativo</li>
-                        <li><span class="monospace">re</span>: expresiones regulares</li>
-                        <li><span class="monospace">csv</span>: archivos CSV</li>
-                        $\dots$
-                    </ul>
-                    <div style="flex: 1;">
-                        <img src="media/4/std_lib_usage.webp">
-                        <a
-                            href="https://medium.com/@tobias.talaj/decoding-python-which-standard-library-components-do-you-really-need-to-know-3ae3541bb2be">Un
-                            artículo interesante con las funciones y módulos más usadas de la librería estándar</a>
+# Equivalentes: pd.merge(df1, df2, on="frutas"), pd.merge(df1, df2, left_on="frutas", right_on="frutas")
+                            </code></pre>
+                        </div>
                     </div>
-                </div>
-                <br><br>
-            </section>
-            <section data-auto-animate>
-                <h3>Paquetes</h3>
-                <div>
-                    <p style="font-size: 3rem;">¿Qué hacemos si necesitamos una funcionalidad que no está en la librería
-                        estándar?</p>
-                    <p style="font-size: 3rem;" data-id="paq">🤓Dejamos de ser vagos y desarrollamos código🤓</p>
-                </div>
-            </section>
-            <section data-auto-animate>
-                <h3>Paquetes</h3>
-                <div>
-                    <p style="font-size: 3rem;">¿Qué hacemos si necesitamos una funcionalidad que no está en la librería
-                        estándar?</p>
-                    <p style="font-size: 3rem;" data-id="paq"><s>🤓Dejamos de ser vagos y desarrollamos código🤓</s>
-                        <b>🗿Usamos paquetes🗿</b>
-                    </p>
-                    <ul class="fragment">
-                        <li>En Python, una gran comunidad de desarrolladores ha creado infinidad de paquetes con los que
-                            se pueden construir todo tipo de programas con facilidad, incluso sin ser un experto en la
-                            materia.</li>
-                        <li>Estos paquetes incluyen módulos que podemos importar de la misma forma que los desarrollados
-                            por nosotros.</li>
-                        <li>Los gestores de paquetes facilitan enormemente su instalación, veremos como funcionan <span
-                                class="monospace">pip</span> y <span class="monospace">conda</span></li>
-                    </ul>
-                </div>
-            </section>
-            <!-- SIDE BY SIDE CON CODIGO -->
-            <section>
-                <h2>Gestores de paquetes</h2>
-            </section>
-            <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
-                <h2>pip</h2>
-                <h4><a target="_blank" href="https://pypi.org/project/pip/">https://pypi.org/project/pip/</a></h4>
-                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-                    <div style="flex: 2; text-align: left;">
-                        <ul>
-                            <li class="fragment">Es el gestor por defecto de paquetes de Python</li>
-                            <li class="fragment">Permite instalar, actualizar y manejar dependencias entre paquetes</li>
-                            <li class="fragment">Se pueden guardar configuraciones en archivos <span
-                                    class="monospace">requirements.txt</span>
-                        </ul>
+
+                    <div style="display:flex; flex-direction: column; text-align: left;" class="fragment current-visible">
+                        <div style="font-size: 75%;">
+                            <ul>
+                                <li>¿Qué pasa si alguno de los DataFrames no tiene datos para todos los valores de la
+                                    columna común?</li>
+                                <li>Por defecto, en el resultado de <span class="monospace">merge()</span> solo
+                                    aparecerán aquellos valores que están en ambos DataFrames. Es decir, se hace una
+                                    intersección sobre la columna ("inner join").
+                                </li>
+                                <li>Con el parámetro <span class="monospace">how</span> podemos controlar este
+                                    comportamiento.</li>
+                                <li><span class="monospace">how="outer"</span>: toma la unión de los valores y rellena
+                                    con NaNs.</li>
+                                <li><span class="monospace">how="left"</span>: toma solo los valores de la columna del
+                                    primer DataFrame. Si alguno no aparece
+                                    en el segundo DataFrame, rellena con NaNs. <span
+                                        class="monospace">how="right"</span> es análogo.</li>
+                            </ul>
+                        </div>
+
+                        <div
+                            style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                            <pre><code class="python" style="max-height: fit-content;" data-line-numbers>
+df1 = pd.DataFrame({"frutas": ["manzanas", "platanos", "limones"], 
+        "unidades": np.random.randint(1, 10, 3)})     # 3 enteros aleatorios en el intervalo [1, 10)
+df2 = pd.DataFrame({"frutas": ["manzanas", "platanos", "uvas"],
+        "precio": np.random.random(3) * 10})          # (3 floats aleatorios en el intervalo [0, 1)) * 10
+
+print(pd.merge(df1, df2))          
+#      frutas  unidades    precio
+# 0  manzanas         4  6.482856
+# 1  platanos         1  1.942549
+
+print(pd.merge(df1, df2, how="outer"))
+#       frutas  unidades    precio
+#  0  manzanas       1.0  3.814989
+#  1  platanos       8.0  1.374147
+#  2   limones       9.0       NaN
+#  3      uvas       NaN  7.856911
+                        </code></pre>
+                        </div>
                     </div>
-                    <div style="flex: 3; text-align: left;" class="fragment" data-line-numbers>
-                        <pre><code class="bash">
-    # Estos comandos se ejecutan en una terminal!
-    # NOTA: Si tienes varias versiones de Python instaladas, 
-    # usar python -m pip en vez de pip
-    pip --version         # Comprobar versión instalada
-    
-    # Gestionar paquetes
-    pip install manim # Instalar el paquete manim
-    pip install --upgrade manim # Actualizar el paquete manim
-    pip install --uninstall manim # Desinstalar el paquete manim
+                    <div style="display:flex; flex-direction: column; text-align: left;"
+                        class="fragment">
+                        <div>
+                            <ul>
+                                <li><span class="monospace">concat()</span>: Concatena dos DataFrames a lo largo de las
+                                    filas (axis = 0) o de las columnas (axis=1).</li>
+                                <li>Lo más común es querer descartar los índices originales. Para ello, hay que usar indicar 
+                                    <span class="monospace">ignore_index=True</span> como parámetro.
+                                </li>
+                                <li>Nota: NumPy tiene una función análoga para concatenar arrays.</li>
+                            </ul>
+                        </div>
+
+                        <div
+                            style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                            <pre><code class="python" style="max-height: fit-content;" data-line-numbers>
+df1 = pd.DataFrame({
+        "A": ["A0", "A1", "A2", "A3"],
+        "B": ["B0", "B1", "B2", "B3"]})
+
+df2 = pd.DataFrame({
+        "A": ["A4", "A5", "A6", "A7"],
+        "B": ["B4", "B5", "B6", "B7"]})
+
+print(pd.concat([df1, df2]));                   print(pd.concat([df1, df2], ignore_index=True))
+#      A   B                                          A   B   
+#  0  A0  B0                                      0  A0  B0 
+#  1  A1  B1                                      1  A1  B1 
+#  2  A2  B2                                      2  A2  B2 
+#  3  A3  B3                                      3  A3  B3 
+#  0  A4  B4                                      4  A4  B4 
+#  1  A5  B5                                      5  A5  B5 
+#  2  A6  B6                                      6  A6  B6 
+#  3  A7  B7                                      7  A7  B7 
 
                             </code></pre>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h3>pip</h3>
-                <p>Una tarea importante suele ser compartir nuestra lista de paquetes con otros desarrolladores</p>
-                <div style="display: flex; flex-direction: row; gap: 2rem;">
-                    <div class="fragment" data-fragment-index="1">
-                        <img src="media/4/pip list.png" height="50%">
-                        <p>1. Listamos los paquetes
-                        <div class="monospace">pip list</div>
-                        </p>
-                    </div>
-                    <div style="margin-top: 10rem;" class="fragment" data-fragment-index="2">
-                        $\rightarrow$
-                    </div>
-                    <div class="fragment" data-fragment-index="2">
-                        <img src="media/4/pip freeze.png" height="50%">
-                        <p>2. Guardamos los paquetes
-                        <div class="monospace">pip freeze > requirements.txt</div>
-                        </p>
-                    </div>
-                    <div style="margin-top: 10rem;" class="fragment" data-fragment-index="3">
-                        $\rightarrow$
-                    </div>
-                    <div class="fragment" data-fragment-index="3">
-                        <img src="media/4/pip install.png" height="50%">
-                        <p>3. Instalamos los paquetes
-                        <div class="monospace">pip install -r requirements.txt</div>
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h2>(mini)conda</h2>
-                <p>Similar a <span class="monospace">pip</span>, pero tiene más funcionalidades y es más utilizado con
-                    paquetes matemático/científicos</p>
-                <h4><a target="_blank" href="https://repo.anaconda.com/miniconda/">Descargar instalador</a></h4>
-                <h4><a target="_blank" href="https://anaconda.org/search?q=tensorflow">Buscar paquetes</a></h4>
-                <div style="text-align: left; display:flex; flex-direction: row; gap:2rem;">
-                    <div style="flex: 1;">
-                        <p>Algunas diferencias con pip:</p>
-                        <ul>
-                            <li class="fragment">Los paquetes de conda están pre-compilados, así que su instalación es
-                                más rápida</li>
-                            <li class="fragment">Resuelve dependencias automáticamente: evita tener conflictos entre
-                                versiones</li>
-                            <li class="fragment">Incluye entornos virtuales que facilitan cambiar entre proyectos</li>
-                            <li class="fragment">Existen muchos más paquetes adicionales en <a
-                                    href="https://conda-forge.org/packages"> conda-forge</a></li>
-                        </ul>
-                    </div>
-                    <div style="flex: 1;" class="fragment">
-                        <img src="media/4/conda vs pip.png">
-                    </div>
-                </div>
-            </section>
-            <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
-                <h2>conda</h2>
-                <p>La instalación de paquetes es tan sencilla como con pip:</p>
-                <pre><code class="bash">
-    conda install numpy  # Instalar el paquete numpy
-    conda update numpy   # Actualizar el paquete numpy
-    conda remove numpy   # Desinstalar el paquete numpy
-
-    conda install conda-forge::openai  # Instalar el paquete openai desde conda-forge
-                    </code></pre>
-            </section>
-            <section>
-                <h3>Entornos virtuales</h3>
-                <p>Los entornos virtuales son una forma de aislar los paquetes de Python para que no interfieran entre
-                    sí</p>
-                <p>Esto es útil cuando trabajamos en varios proyectos que requieren versiones diferentes de los mismos
-                    paquetes</p>
-
-                <div style="display: flex; flex-direction: row; gap: 2rem;">
-                    <div style="flex: 2;">
-                        <pre><code class="bash">
-    conda env list   # Ver la lista de entornos
-    conda create -n mi_env python=3.10  # Crear un nuevo entorno
-    conda activate mi_env  # Activar el entorno
-    conda deactivate  # Salir del entorno
-    conda env remove -n mi_env  # Eliminar el entorno
-
-    # Guardar el entorno en un archivo
-    conda env export > env.yml
-
-    # Cargar el entorno desde un archivo
-    conda env create -f env.yml
-                            </code></pre>
-                        <ul>
-                            <li class="fragment" data-fragment-index="1">Se puede mezclar <span
-                                    class="monospace">pip</span> y <span class="monospace">conda</span> en los entornos,
-                                pero no es muy recomendable <span style="font-size: 1rem;">(de todas formas, a veces es
-                                    necesario porque en pip hay más paquetes)</span></li>
-                            <li class="fragment" data-fragment-index="2">No queremos acabar con situaciones como las de
-                                la imagen</li>
-                            <li class="fragment" data-fragment-index="3">Si nos pasa algo así, lo mejor es quemar el
-                                ordenador</li>
-                        </ul>
-                    </div>
-                    <div style="flex: 1" class="fragment" data-fragment-index="2">
-                        <img src="media/4/env_nightmare.jpg">
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h3>Jupyter Notebooks</h3>
-                <p class="fragment">En la siguiente parte de la clase, abriremos <span class="monospace">vscode</span> y
-                    nos pondremos a jugar con paquetes, veremos que podemos hacer con ellos</p>
-                <p class="fragment">Pero primero, hace falta explicar que son los <em>Jupyter Notebooks</em> (esto es
-                    mucho más ligero que lo anterior, we promise)</p>
-            </section>
-            <section>
-                <h4>Uso de notebooks en vscode</h4>
-                <ol>
-                    <div style="display: flex; flex-direction: row; gap: 2rem;">
-                        <div class="fragment" data-fragment-index="1">
-                            <img src="media/4/extensiones.png" height="65%">
-                            <p>1. Instalamos las extensiones de vscode de Jupyter y Python</p>
-                        </div>
-                        <div style="margin-top: 10rem;" class="fragment" data-fragment-index="2">
-                            $\rightarrow$
-                        </div>
-                        <div class="fragment" data-fragment-index="2">
-                            <img src="media/4/ipynb.png">
-                            <p>2. Creamos un nuevo fichero <span class="monospace">.ipynb</span> dónde trabajaremos</p>
-                        </div>
-                        <div style="margin-top: 10rem;" class="fragment" data-fragment-index="3">
-                            $\rightarrow$
-                        </div>
-                        <div class="fragment" data-fragment-index="3">
-                            <img src="media/4/kernel.png">
-                            <p>3. Configuramos el <em>kernel</em> de nuestro nuevo entorno de conda</p>
                         </div>
                     </div>
-                </ol>
+                </div>
+                <aside class="notes">
+                    El manejo de los NaNs es bastante complicado. La operación de merge es compleja. how="inner",
+                    "outer", "left", "right".
+                    Los índices de los DataFrames originales se descartan.
+                    Cuidado con columnas que se llamen igual y que no queramos mergear! (suffixes)
+                    También se puede mergear sobre el índice en lugar de sobre una columna: left_index=True o
+                    right_index=True
+                </aside>
             </section>
             <section>
-                <h3>Descarga de Notebooks</h3>
-                <p>Ahora pasaremos a una clase interactiva, trabajaremos con los siguientes ficheros que podéis
-                    descargar aquí mismo:</p>
-                <div style="border: 2px solid gray; padding: 1rem; border-radius: 10px;">
-                    <p>
-                        <a href="notebooks/notebook_intro.ipynb" download>Introducción a Jupyter Notebook</a>
-                    </p>
-                </div>
+                <h2>Pivot...</h2>
             </section>
         </div>
     </div>
