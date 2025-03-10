@@ -70,9 +70,9 @@
                                     <li class="fragment">Seleccionar y filtrar datos; agregar, modificar y eliminar
                                         filas y columnas a tablas</li>
                                     <li class="fragment">Manejar datos faltantes (NaNs)</li>
+                                    <li class="fragment">Realizar análisis estadísticos</li>
                                     <li class="fragment">Agrupar datos (<span class="monospace">groupby()</span>) y
                                         fusionar o combinar datasets (<span class="monospace">join()</span>)</li>
-                                    <li class="fragment">Realizar análisis estadísticos</li>
                                 </ul>
                             </li>
                         </ul>
@@ -100,6 +100,8 @@
                         ChatGPT.
                     </aside>
             </section>
+            <section data-background-iframe="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf"
+                data-background-interactive data-preload></section>
             <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
                 <h2>Series</h2>
                 <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
@@ -107,20 +109,28 @@
                         <ul>
                             <li>Una Serie es un array 1-dim cuya secuencia de valores está asociada a un <em>índice</em>
                                 de etiquetas.</li>
-                            <li class="fragment">Por defecto, el índice es numérico. Si la Serie tiene longitud $N$, el
+                            <li class="fragment" data-fragment-index="1">Por defecto, el índice es numérico. Si la Serie
+                                tiene longitud $N$, el
                                 índice contendrá los enteros desde $0$ a $N - 1$.</li>
-                            <li class="fragment">El índice nos permite seleccionar uno o varios elementos a través de
+                            <li class="fragment" data-fragment-index="2">El índice nos permite seleccionar uno o varios
+                                elementos a través de
                                 sus etiquetas.</li>
-                            <li class="fragment">¡Operar sobre la Serie a través de funciones de NumPy no cambia el
+                            <li class="fragment" data-fragment-index="3">¡Operar sobre la Serie a través de funciones de
+                                NumPy no cambia el
                                 índice!</li>
-                            <li class="fragment"><span class="monospace">isnull()</span> nos permite comprobar si hay
+                            <li class="fragment" data-fragment-index="4"><span class="monospace">isnull()</span> nos
+                                permite comprobar si hay
                                 datos faltantes.</li>
-                            <li class="fragment">¡Y las operaciones sobre varias series (e.g. sumas) se alinean con
+                            <li class="fragment" data-fragment-index="5">¡Y las operaciones sobre varias series (e.g.
+                                sumas) se alinean con
                                 respecto a los índices!</li>
                         </ul>
                     </div>
-                    <div style="flex: 2; text-align: left;">
-                        <pre><code class="python" data-line-numbers="2-25|17-36|42-58|64-83|71-95" style="max-height: 700px;">
+                    <div style="flex: 2; text-align: left;" class="r-stack">
+                        <pre style="height: 700px;"><code class="python" data-line-numbers>
+
+                        </code></pre>
+                        <pre style="height: 700px;" class="fragment" data-fragment-index="1"><code class="python" data-line-numbers>
 datos = [3, -2, 0, 42]                            
 obj = pd.Series(datos)
 print(obj)
@@ -132,11 +142,17 @@ print(obj)
 
 
 
-
-
-
-
 # Creamos una serie especificanado un índice
+obj2 = pd.Series(datos, index=['a', 'd', 'g', 'w'])
+print(obj2)
+# a     3
+# d    -2
+# g     0
+# w    42
+# dtype: int64
+
+                        </code></pre>
+                        <pre style="height: 700px;" class="fragment" data-fragment-index="2"><code class="python" data-line-numbers>
 obj2 = pd.Series(datos, index=['a', 'd', 'g', 'w'])
 print(obj2)
 # a     3
@@ -156,11 +172,8 @@ print(obj2[['a', 'w']])
 # w    100
 # dtype: int64
 
-
-
-
-
-
+                        </code></pre>
+                        <pre style="height: 700px;" class="fragment" data-fragment-index="3"><code class="python" data-line-numbers>
 # El filtrado y las operaciones mantienen las etiquetas
 print(obj2[obj2 > 70])
 # w    100
@@ -178,18 +191,30 @@ print(np.exp(obj2))
 # w    2.688117e+43
 # dtype: float64
 
-
-
-
-
-
-
+                        </code></pre>
+                        <pre style="height: 700px;" class="fragment" data-fragment-index="4"><code class="python" data-line-numbers>
 # Creamos una serie a partir de un diccionario
 datos_ciudades = {'A Coruña': 249261, 'Lugo': 99482, 
-                  'Ourense': 104891, 'Pontevedra': 83077}
+                    'Ourense': 104891, 'Pontevedra': 83077}
 # Pero damos un índice distinto al del diccionario
 ciudades = pd.Series(datos_ciudades, 
             index=['Santiago', 'Lugo', 'Ourense', 'Vigo'])
+print(ciudades)    
+# Santiago         NaN
+# Lugo         99482.0
+# Ourense     104891.0
+# Vigo             NaN
+# dtype: float64
+
+pd.isnull(ciudades)     # También existe notnull()
+# Santiago     True
+# Lugo        False
+# Ourense     False
+# Vigo         True
+# dtype: bool
+
+                        </code></pre>
+                        <pre style="height: 700px;" class="fragment" data-fragment-index="5"><code class="python" data-line-numbers>
 print(ciudades)    
 # Santiago         NaN
 # Lugo         99482.0
@@ -466,8 +491,11 @@ print(df1 + df2)
 
                         <div
                             style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-                            <pre><code class="python">
-    datos = pd.DataFrame([[1., 6.5, 2.], [1., np.nan, np.nan], [np.nan, np.nan, np.nan], [np.nan, 6.5, 3.]])
+                            <pre><code class="python" style="max-height: fit-content;">
+    datos = pd.DataFrame([[1., 6.5, 2.], 
+                          [1., np.nan, np.nan], 
+                          [np.nan, np.nan, np.nan], 
+                          [np.nan, 6.5, 3.]])
     datos_limpios = datos.dropna()  
     
     print(datos)
@@ -482,7 +510,8 @@ print(df1 + df2)
                         </code></pre>
                         </div>
                     </div>
-                    <div style="display:flex; flex-direction: column; text-align: left;" class="fragment">
+                    <div style="display:flex; flex-direction: column; text-align: left;"
+                        class="fragment current-visible">
                         <div>
                             <ul>
                                 <li><span class="monospace">dropna(how="all")</span>: Elimina solo las filas en las que
@@ -495,8 +524,11 @@ print(df1 + df2)
 
                         <div
                             style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-                            <pre><code class="python">
-datos = pd.DataFrame([[1., 6.5, 2.], [1., np.nan, np.nan], [np.nan, np.nan, np.nan], [np.nan, 6.5, 3.]])
+                            <pre><code class="python" style="max-height: fit-content;">
+datos = pd.DataFrame([[1., 6.5, 2.], 
+                      [1., np.nan, np.nan], 
+                      [np.nan, np.nan, np.nan], 
+                      [np.nan, 6.5, 3.]])
 datos_limpios = datos.dropna(how="all")  
 
 print(datos)
@@ -513,14 +545,17 @@ print(datos_limpios)
                         </code></pre>
                         </div>
                     </div>
-                    <div style="display:flex; flex-direction: column; text-align: left;" class="fragment">
+                    <div style="display:flex; flex-direction: column; text-align: left;"
+                        class="fragment current-visible">
                         <div>
-                            <p>Si cada serie representa una serie de tiempo, es útil quedarse con </p>
+                            <p>Es común usar DataFrames para guardar datos recogidos a lo largo del tiempo. Cada columna
+                                corresponde a los
+                                atributos de interés y cada fila, a los datos recogidos en un instante de tiempo. En tal
+                                caso, se puede elegir
+                                eliminar aquellas filas que no tienen un número de mediciones suficientes.</p>
                             <ul>
-                                <li><span class="monospace">dropna(how="all")</span>: Elimina solo las filas en las que
-                                    todos los datos son NAs</li>
-                                <li><span class="monospace">dropna(how="all", axis=1)</span>: Elimina solo las columnas
-                                    en las que todos los datos son NAs</li>
+                                <li><span class="monospace">dropna(thresh=n)</span>: Elimina las filas que no tienen al
+                                    menos $n$ valores no NAs</li>
                             </ul>
 
                         </div>
@@ -529,7 +564,7 @@ print(datos_limpios)
                             style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
                             <pre><code class="python">
 datos = pd.DataFrame([[1., 6.5, 2.], [1., np.nan, np.nan], [np.nan, np.nan, np.nan], [np.nan, 6.5, 3.]])
-datos_limpios = datos.dropna(how="all")  
+datos_limpios = datos.dropna(thresh=2)  
 
 print(datos)
 #      0    1    2
@@ -540,8 +575,41 @@ print(datos)
 print(datos_limpios)
 #      0    1    2
 # 0  1.0  6.5  2.0
-# 1  1.0  NaN  NaN
 # 3  NaN  6.5  3.0
+                        </code></pre>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction: column; text-align: left;" class="fragment">
+                        <div>
+                            <p>En lugar de eliminar los valores faltantes, podemos optar por rellenar sus posiciones con
+                                un determinado valor.</p>
+                            <ul>
+                                <li><span class="monospace">fillna()</span>: Sustituye los NAs por el valor pasado como
+                                    argumento.</li>
+                            </ul>
+
+                        </div>
+
+                        <div
+                            style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+                            <pre><code class="python" style="max-height: fit-content;">
+datos = pd.DataFrame([[1., 6.5, 2.], [1., np.nan, np.nan], [np.nan, np.nan, np.nan], [np.nan, 6.5, 3.]])
+datos_limpios = datos.fillna(0) 
+datos_limpios_2 = datos.fillna(datos.mean())    # También admite otras estructuras de datos
+
+print(datos)
+#      0    1    2
+# 0  1.0  6.5  2.0
+# 1  1.0  NaN  NaN
+# 2  NaN  NaN  NaN
+# 3  NaN  6.5  3.0
+print(datos_limpios);                        print(datos_limpios_2)
+#      0    1    2                                  0    1    2         
+# 0  1.0  6.5  2.0                             0  1.0  6.5  2.0 
+# 1  1.0  0.0  0.0                             1  1.0  6.5  2.5
+# 2  0.0  0.0  0.0                             2  1.0  6.5  2.5
+# 3  0.0  6.5  3.0                             3  1.0  6.5  3.0
+
                         </code></pre>
                         </div>
                     </div>
@@ -551,6 +619,62 @@ print(datos_limpios)
                     los datos.
                     Solo el 20% restante se dedica verdaderamente a analizar los datos (80/20 rule).
                 </aside>
+            </section>
+            <section style="display: flex; flex-direction: row; align-items: left; gap: 2rem;">
+                <h2>Análisis estadísticos</h2>
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+                    <div style="flex: 2; text-align: left;">
+                        <ul>
+                            <li>Resumen de los datos (media, std, min, max, percentiles): <span
+                                    class="monospace">describe()</span></li>
+                            <li class="fragment">Medidas de centralización: <span class="monospace">mean()</span>, <span
+                                    class="monospace">median()</span>, <span class="monospace">mode()</span></li>
+                            <li class="fragment">Medidas de dispersión: <span class="monospace">std()</span>, <span
+                                    class="monospace">var()</span>, <span class="monospace">mad()</span></li>
+                            <li class="fragment">Medidas de posición relativa: <span
+                                    class="monospace">quantile(q)</span>, <span class="monospace">min()</span>, <span
+                                    class="monospace">max()</span></li>
+                            <li class="fragment">Otras: <span class="monospace">sum()</span>, <span
+                                    class="monospace">count()</span> - cuenta el número de valores no nulos</li>
+                            <li class="fragment"><span class="monospace">corr()</span> calcula la correlación entre
+                                columnas (de Pearson, Spearman o Kendall)</li>
+                            <li class="fragment"><span class="monospace">cov()</span> calcula la matriz de covarianzas
+                            </li>
+                        </ul>
+                        <p class="fragment">Otras librerías, como <span class="monospace">scipy</span>, permiten realizar operaciones más
+                            avanzadas, como contrastes de hipótesis.</p>
+                    </div>
+
+                    <div style="flex: 2;">
+                        <pre><code class="python" data-line-numbers style="max-height: fit-content;">
+df = pd.DataFrame({
+    "A": [1, 2, 3, 4, 5],
+    "B": [2, 4, 6, 8, 10],
+    "C": [np.nan, 3, 8, 6, 7]
+})
+
+print(df.describe())
+#               A          B         C
+# count  5.000000   5.000000  4.000000
+# mean   3.000000   6.000000  6.000000
+# std    1.581139   3.162278  2.160247
+# min    1.000000   2.000000  3.000000
+# 25%    2.000000   4.000000  5.250000
+# 50%    3.000000   6.000000  6.500000
+# 75%    4.000000   8.000000  7.250000
+# max    5.000000  10.000000  8.000000
+
+print(df.corr())   
+#           A         B         C
+# A  1.000000  1.000000  0.597614
+# B  1.000000  1.000000  0.597614
+# C  0.597614  0.597614  1.000000
+
+                        </code></pre>
+                    </div>
+                    <aside class="notes">
+                        Las medidas se pueden calcular en global o sobre columnas específicas.
+                    </aside>
             </section>
             <section>
                 <p>Un ejemplo sencillo: imaginemos que queremos hacer un programa para calcular las raíces de un
