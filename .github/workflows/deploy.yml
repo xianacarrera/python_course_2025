@@ -1,9 +1,9 @@
-name: Deploy
+name: Push to dev
 
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:
   deploy:
@@ -14,5 +14,6 @@ jobs:
 
       - name: Deploy to /var/www/html/curso-python
         run: |
-          rm -rf /var/www/html/curso-python
-          cp -r . /var/www/html/curso-python
+          rm -rf /var/www/html/curso-python/dev
+          mkdir -p /var/www/html/curso-python/dev
+          cp -r ./* /var/www/html/curso-python/dev
