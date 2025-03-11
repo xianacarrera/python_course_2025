@@ -12,7 +12,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Deploy to /var/www/html/curso-python
+      - name: Push dev branch to /var/www/html/curso-python/dev
         run: |
           rm -rf /var/www/html/curso-python/dev
           mkdir -p /var/www/html/curso-python/dev
