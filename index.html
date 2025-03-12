@@ -68,10 +68,10 @@
 							<pre style="height:900px;"><code class="python" id="code-display" data-line-numbers>
 	# Curso de Introducción a Python!
 	# Matemáticas USC, 2025
-	print("Hello, World!")
+	print("Hello world!")
 
-	numero_pi = 3.1415
-	print(numero_pi**2, "es el área de un círculo de radio 1")
+	numero_pi = 3.14159
+	print(2*numero_pi, "es el área de un círculo de radio 1")
 	
 	nombre = input(prompt)
 	print(f"Hola, {nombre}.")
@@ -86,17 +86,16 @@
 	
 	import pandas as pd
 	staff = {
-		"teacher": ["Xiana", "Pablo"],
-		"python_level": [8, 6],
-		"swag": [True, True]
+		"nombre": ["Xiana", "Pablo"],
+		"gatos": [0, 5],
 	}
 
 	import matplotlib.pyplot as plt
 	plt.figure(figsize=(10, 6))
-	plt.plot(staff["teacher"], staff["python_level"])
+	plt.plot(staff["nombre"], staff["gatos"])
 	
 	from sklearn.model_selection import train_test_split
-	train_test_split(staff["teacher"], staff["swag"])
+	train_test_split(staff["teacher"], staff["gatos"])
 							</code></pre>
 						</div>
                     </div>
