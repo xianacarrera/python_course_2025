@@ -1,72 +1,415 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Clase 7</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="common.css">
-		<!-- Solarized theme -->
-		<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
-		<!-- Moon theme -->
-		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+	<title>Clase 7</title>
 
-		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
-	</head>
-	<body data-theme="light">
-        <a href="index.html" class="back-link">Volver</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
-		<div class="reveal">
-            <div class="slides">
-                <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
-                <section>
-                </section>
-            </div>
-        </div>
-        
-        <script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/math/math.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-				katex: {
-					version: 'latest',
-					delimiters: [
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="common.css">
+	<!-- Solarized theme -->
+	<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+	<!-- Moon theme -->
+	<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+
+	<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+</head>
+
+<body data-theme="light">
+	<a href="index.html" class="back-link">Volver</a>
+	<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+		<svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="12" cy="12" r="5"></circle>
+			<line x1="12" y1="1" x2="12" y2="3"></line>
+			<line x1="12" y1="21" x2="12" y2="23"></line>
+			<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+			<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+			<line x1="1" y1="12" x2="3" y2="12"></line>
+			<line x1="21" y1="12" x2="23" y2="12"></line>
+			<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+			<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+		</svg>
+		<svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+		</svg>
+	</button>
+	<div class="reveal">
+		<div class="slides">
+			<section data-auto-animate>
+				<h1>Representación de resultados con matplotlib y seaborn</h1>
+			</section>
+			<section data-auto-animate>
+				<h1>Representación de resultados con matplotlib y seaborn</h1>
+				<ul>
+					<li>Dedicaremos la clase de hoy a estudiar la representación de datos y resultados.</li>
+					<li>En Python, la librería fundamental para producir gráficas en 2D es matplotlib, en la cual se
+						basan otras librerías
+						más avanzadas como seaborn.
+					</li>
+					<li>Con esto completamos la lista de <span class="monospace">imports</span> básicos para un programa
+						de análisis de datos:</li>
+					<pre><code class="python" data-line-numbers>
+							import numpy as np
+							import pandas as pd
+							import matplotlib.pyplot as plt
+
+						</code></pre>
+					<li>Usaremos esta notación a lo largo de todo el código que sigue.</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Ejemplo básico</h2>
+				<div style="display: flex; flex-direction: row; align-items: center;">
+					<div style="flex: 2;">
+						<pre><code class="python" data-line-numbers>
+datos = np.arange(40, 100)    # {40, 41, ..., 99}
+plt.plot(datos)
+plt.show()
+
+						</code></pre>
+					</div>
+					<div style="flex: 2;">
+						<img src="media/7/ejemplo_basico.png" style="height: 500px;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2>Pipeline para plottear una figura</h2>
+				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+					<div style="flex: 2; text-align: left; font-size: 80%;">
+						<ol>
+							<li>Crear el entorno de dibujado: una ventana en la que estará nuestra figura -> <span
+									class="monospace">plt.figure()</span>
+								<br>Opcionalmente, ajustar el tamaño con <span class="monospace">figsize</span>
+								(argumentos en pulgadas)
+							</li>
+							<li class="fragment" data-fragment-index="3">Dibujar la figura usando <span
+									class="monospace">plt.plot()</span> u otra función más especializada
+								<br>Acepta como argumentos dos arrays, que corresponderán a los datos del eje $x$ e $y$,
+								respectivamente.
+								<br>Hay una gran variedad de argumentos opcionales, que permiten controlar:
+								<ul>
+									<li>El estilo de línea: <span class="monospace">linestyle="-"</span> (o "solid"),
+										<span class="monospace">linestyle="--"</span> ("dashed"),
+										<span class="monospace">linestyle=":"</span> ("dotted"), <span
+											class="monospace">linestyle="-."</span> ("dashdot"), <span
+											class="monospace">linestyle=""</span> ("none")
+									</li>
+									<li class="fragment" data-fragment-index="4">El color de la línea: <span
+											class="monospace">color=...</span> Muchas
+										posibilidades para indicar el color: por nombre ("blue", "green"...),
+										abreviatura ("b", "g"...), RGB/RGBA (e.g. (0.1, 0.2, 0.5)),
+										case-insensitive hex ('#0f0f0f'), paleta Tableau ('tab:blue'), paleta xkcd
+										('xkcd:sky blue'), etc.
+									</li>
+									<li class="fragment" data-fragment-index="5">El marcador de los datos de entrada:
+										<span class="monospace">marker="."</span> (punto),
+										<span class="monospace">marker="o"</span> (círculo), <span
+											class="monospace">marker="s"</span> (cuadrado),
+										<span class="monospace">marker="v"</span> (triángulo hacia abajo), <span
+											class="monospace">marker="+"</span> (plus), etc.
+										Lista completa: <a
+											href="https://matplotlib.org/stable/api/markers_api.html">https://matplotlib.org/stable/api/markers_api.html</a>
+									</li>
+									<li class="fragment" data-fragment-index="6">Otros: <span
+											class="monospace">markersize</span>, <span
+											class="monospace">linewidth</span>, etc.</li>
+								</ul>
+							</li>
+							<li class="fragment" data-fragment-index="7">Llamar varias veces a <span
+									class="monospace">plt.plot()</span> permite superponer
+								las representaciones. Para distinguirlas a posteriori, es recomendable darles una
+								etiqueta con <span class="monospace">label</span>.</li>
+						</ol>
+					</div>
+					<div class="r-stack" style="flex: 1; text-align: center;">
+						<pre class="fragment current-visible" data-fragment-index="1"><code class="python" data-line-numbers>
+fig = plt.figure()
+
+					</code></pre>
+						<pre class="fragment current-visible" data-fragment-index="2"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+					</code></pre>
+						<div class="fragment current-visible" data-fragment-index="3"
+							style="display: flex; justify-content: center; flex-direction: column; gap: 1.5em;">
+							<pre style="min-width: 750px;"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+ventas_diarias = [200, 250, 300, 150, 400, 500, 450]
+plt.plot(ventas_diarias, linestyle=':')
+							</code></pre>
+							<img src="media/7/linestyle.png">
+						</div>
+						<div class="fragment current-visible" data-fragment-index="4"
+							style="display: flex; justify-content: center; flex-direction: column; gap: 1.5em;">
+							<pre style="min-width: 750px;"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+ventas_diarias = [200, 250, 300, 150, 400, 500, 450]
+plt.plot(ventas_diarias, linestyle=':', 
+						 color='red')
+							</code></pre>
+							<img src="media/7/color.png">
+						</div>
+						<div class="fragment current-visible" data-fragment-index="5"
+							style="display: flex; justify-content: center; flex-direction: column; gap: 1.5em;">
+							<pre style="min-width: 750px;"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+ventas_diarias = [200, 250, 300, 150, 400, 500, 450]
+plt.plot(ventas_diarias, linestyle=':', 
+						 color='red',
+						 marker='s')
+							</code></pre>
+							<img src="media/7/maker.png">
+						</div>
+						<div class="fragment current-visible" data-fragment-index="6"
+							style="display: flex; justify-content: center; flex-direction: column; gap: 1.5em;">
+							<pre style="min-width: 750px;"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+ventas_diarias = [200, 250, 300, 150, 400, 500, 450]
+plt.plot(ventas_diarias, linestyle=':', linewidth=2, 
+						 color='red',
+						 marker='s', markersize=10)
+							</code></pre>
+							<img src="media/7/linewidth.png">
+						</div>
+						<div class="fragment" data-fragment-index="7"
+							style="display: flex; justify-content: center; flex-direction: column; gap: 0.2em;">
+							<pre style="min-width: 750px;"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+# 100 puntos entre 0 y 10
+x = np.linspace(0, 10, 100)    
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x, y1, label="Seno", 
+		color="blue", linestyle="--")
+plt.plot(x, y2, label="Coseno", 
+		color="red", linestyle="-.")
+							</code></pre>
+							<img src="media/7/sin_cos.png">
+						</div>
+					</div>
+				</div>
+			</section>
+			<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+				<h2>Pipeline para plottear una figura</h2>
+				<div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 2rem;">
+					<div style="flex: 1; text-align: left;">
+						<div>
+							<ol start="4">
+								<li class="fragment" data-fragment-index="1">Poner nombre a los ejes</li>
+								<li class="fragment" data-fragment-index="2">Explicitar los límites de los ejes</li>
+								<li class="fragment" data-fragment-index="3">Poner un título</li>
+								<li class="fragment" data-fragment-index="4">Añadir una leyenda</li>
+								<li class="fragment" data-fragment-index="5">Añadir una cuadrícula</li>
+								<li class="fragment" data-fragment-index="6">Mostrar la figura</li>
+
+								COLORMAPS
+							</ol>
+						</div>
+						<div class="r-stack">
+							<img class="fragment current-visible" data-fragment-index="1" src="media/7/ejes.png">
+							<img class="fragment current-visible" data-fragment-index="2" src="media/7/lims.png">
+							<img class="fragment current-visible" data-fragment-index="3" src="media/7/title.png">
+							<img class="fragment current-visible" data-fragment-index="4" src="media/7/legend.png">
+							<img class="fragment" data-fragment-index="5" src="media/7/final.png">
+						</div>
+					</div>
+					<div class="r-stack">
+						<pre style="min-width: 1000px; height: 800px;" class="fragment"
+							data-fragment-index="1"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x, y1, label="Seno", color="blue", linestyle="--")
+plt.plot(x, y2, label="Coseno", color="red", linestyle="-.")
+
+plt.xlabel("Eje x")
+plt.ylabel("Eje y")
+
+							</code></pre>
+						<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="2"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x, y1, label="Seno", color="blue", linestyle="--")
+plt.plot(x, y2, label="Coseno", color="red", linestyle="-.")
+
+plt.xlabel("Eje x")
+plt.ylabel("Eje y")
+plt.xlim(0, 8)
+plt.ylim(-2, 2)
+
+							</code></pre>
+					<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="3"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x, y1, label="Seno", color="blue", linestyle="--")
+plt.plot(x, y2, label="Coseno", color="red", linestyle="-.")
+
+plt.xlabel("Eje x")
+plt.ylabel("Eje y")
+plt.xlim(0, 8)
+plt.ylim(-2, 2)
+
+plt.title("Funciones seno y coseno", fontsize=20)
+								
+					</code></pre>
+					<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="4"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x, y1, label="Seno", color="blue", linestyle="--")
+plt.plot(x, y2, label="Coseno", color="red", linestyle="-.")
+
+plt.xlabel("Eje x")
+plt.ylabel("Eje y")
+plt.xlim(0, 8)
+plt.ylim(-2, 2)
+
+plt.title("Funciones seno y coseno", fontsize=20)
+plt.legend(fontsize=15, loc="upper right")   # loc="best" elige la mejor posición 
+								
+					</code></pre>
+					<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="5"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x, y1, label="Seno", color="blue", linestyle="--")
+plt.plot(x, y2, label="Coseno", color="red", linestyle="-.")
+
+plt.xlabel("Eje x")
+plt.ylabel("Eje y")
+plt.xlim(0, 8)
+plt.ylim(-2, 2)
+
+plt.title("Funciones seno y coseno", fontsize=20)
+plt.legend(fontsize=15, loc="upper right")   
+		# loc="best" elige la mejor posición 
+plt.grid(alpha=0.5)
+								
+					</code></pre>
+					<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="6"><code class="python" data-line-numbers>
+fig = plt.figure(figsize=(8, 6))
+
+x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x, y1, label="Seno", color="blue", linestyle="--")
+plt.plot(x, y2, label="Coseno", color="red", linestyle="-.")
+
+plt.xlabel("Eje x")
+plt.ylabel("Eje y")
+plt.xlim(0, 8)
+plt.ylim(-2, 2)
+
+plt.title("Funciones seno y coseno", fontsize=20)
+plt.legend(fontsize=15, loc="upper right")   
+		# loc="best" elige la mejor posición 
+plt.grid(alpha=0.5)
+
+plt.show()
+								
+					</code></pre>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2>Colores</h2>
+				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+					<div style="flex: 2; text-align: left;">
+						<p>La elección de colores es IMPORTANTE y delicada. Pensad en:</p>
+						<ul>
+							<li>¿Datos secuenciales? ¿Divergentes? ¿Cualitativos?</li>
+							<li>Número de categorías</li>
+							<li>Transparencia</li>
+							<li>Daltonismo</li>
+							<li>etc.</li>
+						</ul>
+						<p>Recomendación: <a href="https://colorbrewer2.org">https://colorbrewer2.org</a> </p>
+					</div>
+					<div style="flex: 2; text-align: center;">
+						<img src="media/7/tipos_colores.png">
+						<p><small><a
+									href="https://medium.com/@oksana.zamyslova/data-visualisation-3d430868bfa5">Fuente</a></small>
+						</p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2>Algunas paletas de colores</h2>
+				<div style="display: flex; flex-direction: row;">
+					<div style="flex: 1;">
+						<p>Colores base</p>
+						<img src="media/7/base_colors.webp">
+					</div>
+					<div style="flex: 1;">
+						<p>Paleta Tableau</p>
+						<img src="media/7/tableau_colors.webp">
+					</div>
+					<div style="flex: 1;">
+						<p>Colores CSS</p>
+						<img src="media/7/css_colors.webp">
+					</div>
+				</div>
+				<p>xkcd color survey: <a href="https://xkcd.com/color/rgb/">https://xkcd.com/color/rgb/</a> </p>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			katex: {
+				version: 'latest',
+				delimiters: [
 					{ left: '$$', right: '$$', display: true },
 					{ left: '$', right: '$', display: false },
 					{ left: '\\(', right: '\\)', display: false },
 					{ left: '\\[', right: '\\]', display: true },
-					],
-					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-				},
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
-			});
-		</script>
-        <script src="theme-toggle.js"></script>
-    </body>
+				],
+				ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+			},
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+		});
+	</script>
+	<script src="theme-toggle.js"></script>
+</body>
+
 </html>
