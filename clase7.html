@@ -226,8 +226,7 @@ plt.plot(x, y2, label="Coseno",
 						</div>
 					</div>
 					<div class="r-stack">
-						<pre style="min-width: 1000px; height: 800px;" class="fragment"
-							data-fragment-index="1"><code class="python" data-line-numbers>
+						<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="1"><code class="python" data-line-numbers>
 fig = plt.figure(figsize=(8, 6))
 
 x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
@@ -257,7 +256,7 @@ plt.xlim(0, 8)
 plt.ylim(-2, 2)
 
 							</code></pre>
-					<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="3"><code class="python" data-line-numbers>
+						<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="3"><code class="python" data-line-numbers>
 fig = plt.figure(figsize=(8, 6))
 
 x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
@@ -275,7 +274,7 @@ plt.ylim(-2, 2)
 plt.title("Funciones seno y coseno", fontsize=20)
 								
 					</code></pre>
-					<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="4"><code class="python" data-line-numbers>
+						<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="4"><code class="python" data-line-numbers>
 fig = plt.figure(figsize=(8, 6))
 
 x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
@@ -294,7 +293,7 @@ plt.title("Funciones seno y coseno", fontsize=20)
 plt.legend(fontsize=15, loc="upper right")   # loc="best" elige la mejor posición 
 								
 					</code></pre>
-					<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="5"><code class="python" data-line-numbers>
+						<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="5"><code class="python" data-line-numbers>
 fig = plt.figure(figsize=(8, 6))
 
 x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
@@ -312,10 +311,10 @@ plt.ylim(-2, 2)
 plt.title("Funciones seno y coseno", fontsize=20)
 plt.legend(fontsize=15, loc="upper right")   
 		# loc="best" elige la mejor posición 
-plt.grid(alpha=0.5)
+plt.grid(True, alpha=0.5)
 								
 					</code></pre>
-					<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="6"><code class="python" data-line-numbers>
+						<pre style="min-width: 1000px; height: 800px;" class="fragment" data-fragment-index="6"><code class="python" data-line-numbers>
 fig = plt.figure(figsize=(8, 6))
 
 x = np.linspace(0, 10, 100)    # 100 puntos entre 0 y 10
@@ -333,7 +332,7 @@ plt.ylim(-2, 2)
 plt.title("Funciones seno y coseno", fontsize=20)
 plt.legend(fontsize=15, loc="upper right")   
 		# loc="best" elige la mejor posición 
-plt.grid(alpha=0.5)
+plt.grid(True, alpha=0.5)
 
 plt.show()
 								
@@ -380,6 +379,127 @@ plt.show()
 					</div>
 				</div>
 				<p>xkcd color survey: <a href="https://xkcd.com/color/rgb/">https://xkcd.com/color/rgb/</a> </p>
+			</section>
+			<section>
+				<h2>Otros tipos de gráficos</h2>
+				<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem;">
+					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
+						<div style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
+							<div style="flex: 1;">
+								<p style="margin: 0;">Barplots<br>
+									<small>Verticales: <span class="monospace">plt.bar()</span><br>
+										Horizontales: <span class="monospace">plt.barh()</span>
+								</p></small>
+							</div>
+							<div style="flex: 1;">
+							<img src="media/7/barplot.png" style="height: 400px;">
+							</div>
+						</div>
+						<pre style="margin: 0; font-size: 50%; width: 800px;"><code class="python" data-line-numbers>
+altura_barras = [60, 10, 15, 50, 45]
+categorias = ('A', 'B', 'C', 'D', 'E')
+
+fig = plt.figure()
+plt.bar(categorias, altura_barras,
+			color='skyblue', alpha=0.5, edgecolor="black")     
+plt.show()
+
+						</code></pre>
+					</div>
+					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
+						<div style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
+							<div style="flex: 1;">
+								<p style="margin: 0;">Grouped barplots
+								</p></small>
+							</div>
+							<div style="flex: 1;">
+							<img src="media/7/grouped_barplot.png" style="height: 400px;">
+							</div>
+						</div>
+						<pre style="margin: 0; font-size: 50%; width: 1200px;"><code class="python" data-line-numbers>
+# DataFrame de 6 filas y 2 columnas con datos aleatorios
+df = pd.DataFrame(np.random.rand(6, 2),
+	index=['one', 'two', 'three', 'four', 'five', 'six'],
+	columns=['A', 'B'])
+
+width = 0.25                  # Ancho de las barras
+x = np.arange(len(df.index))  # Posiciones de las barras
+
+fig = plt.figure(figsize=(8, 6))
+
+plt.bar(x - width/2, df['A'], width, label='A', color=np.array([166,206,227])/255)
+plt.bar(x + width/2, df['B'], width, label='B', color=np.array([178,223,138])/255, hatch='//')
+plt.xticks(x, df.index)  # Añadimos las etiquetas del eje x
+plt.legend(fontsize=20)
+plt.show()
+						</code></pre>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2>Otros tipos de gráficos</h2>
+				<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem;">
+					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
+						<div style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
+							<div style="flex: 1;">
+								<p style="margin: 0;">Histogramas<br>
+									<small>Si el argumento de bins es un entero, define el número de bins.<br>
+									Si es un array, define los límites de los bins.</small><br>
+								</p></small>
+							</div>
+							<div style="flex: 1;">
+							<img src="media/7/hist.png" style="height: 400px;">
+							</div>
+						</div>
+						<pre style="margin: 0; font-size: 50%; width: 800px;"><code class="python" data-line-numbers>
+# 100 muestras de una distribución normal de media 6 y std 1
+notas = np.random.normal(loc=6, scale=1.5, size=100)  
+
+# Crear histograma
+plt.figure(figsize=(8, 5))
+plt.hist(notas, bins=np.arange(0, 11, 1), 
+		color='skyblue', edgecolor='black', alpha=0.75)
+
+plt.xlabel("Nota")
+plt.ylabel("Número de alumnos")
+plt.xticks(np.arange(0, 11, 1))    # Etiquetas del eje x
+plt.axvline(np.mean(grades), color='purple', linestyle='--', 
+		linewidth=2, label="Media")
+plt.legend(fontsize=20, loc="best")
+
+plt.show()
+
+						</code></pre>
+					</div>
+					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
+						<div style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
+							<div style="flex: 1;">
+								<p style="margin: 0;">Grouped barplots
+								</p></small>
+							</div>
+							<div style="flex: 1;">
+							<img src="media/7/grouped_barplot.png" style="height: 400px;">
+							</div>
+						</div>
+						<pre style="margin: 0; font-size: 50%; width: 1200px;"><code class="python" data-line-numbers>
+# DataFrame de 6 filas y 2 columnas con datos aleatorios
+df = pd.DataFrame(np.random.rand(6, 2),
+	index=['one', 'two', 'three', 'four', 'five', 'six'],
+	columns=['A', 'B'])
+
+width = 0.25                  # Ancho de las barras
+x = np.arange(len(df.index))  # Posiciones de las barras
+
+fig = plt.figure(figsize=(8, 6))
+
+plt.bar(x - width/2, df['A'], width, label='A', color=np.array([166,206,227])/255)
+plt.bar(x + width/2, df['B'], width, label='B', color=np.array([178,223,138])/255, hatch='//')
+plt.xticks(x, df.index)  # Añadimos las etiquetas del eje x
+plt.legend(fontsize=20)
+plt.show()
+						</code></pre>
+					</div>
+				</div>
 			</section>
 		</div>
 	</div>
