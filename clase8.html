@@ -37,8 +37,73 @@
 		<div class="reveal">
             <div class="slides">
                 <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
-                <section>
+                <section data-auto-animate>
+					<h1>Scikit-Learn</h1>
                 </section>
+				<section data-auto-animate>
+					<h1>Scikit-Learn</h1>
+					<div>
+						<p>Como último tema del curso, veremos como entrenar algunos modelos básicos de aprendizaje automático usando la librería <em>Scikit-Learn</em></p>
+						<p><b>Disclaimer:</b> no somos expertos en Machine Learning y no tenemos mucho tiempo, así que vamos a quedarnos con lo más básico de esta librería, simplemente queremos dar una base para que podáis aprender más por vuestra cuenta fácilmente.</p>
+					</div>
+                </section>
+				<section data-background-iframe="https://scikit-learn.org/stable/index.html" data-background-interactive data-preload></section>
+				<section>
+					<h3>Aprendizaje Automático con scikit-learn</h3>
+					<p>
+						Scikit-learn es una librería enorme con docenas de algoritmos de Machine Learning. Afortunadamente, el proceso para ejecutarlos sobre un conjunto de datos es muy general!
+					</p>
+					<p>
+						Simplificando masivamente, se suelen seguir estos pasos:
+					</p>
+					<ol>
+						<li class="fragment"><b>Preparación:</b> Importamos los módulos necesarios y leemos los datos</li>
+						<li class="fragment"><b>Selección de características:</b> Elegimos las características más importantes de nuestros datos, scikit-learn facilita algoritmos como <em>PCA</em> para esto.</li>
+						<li class="fragment"><b>Train-test split (aprendizaje supervisado):</b> Dividimos los datos en conjuntos de entrenamiento y prueba <em>(y también validación)</em></li>
+						<li class="fragment"><b>Entrenamiento:</b> Llamamos al método <span class="monospace">.fit()</span> de nuestro <em>Estimator</em> (Estimator $\approx$ Algoritmo de Machine Learning)</li>
+						<li class="fragment"><b>Predición:</b> Llamamos al método <span class="monospace">.predict()</span> del Estimator para realizar las predicciones</li>
+						<li class="fragment"><b>Evaluación y selección de hiper-parámetros:</b> A partir del error obtenido, podemos decidir si el modelo es suficientemente bueno o debemos cambiar los parámetros o el algoritmo (en aprendizaje supervisado, midiendo el error con los datos de prueba, en aprendizaje no supervisado, usando otra métrica)</li>
+						<li class="fragment"><b>Representación de resultados:</b> Usando matplotlib o seaborn, podemos visualizar las predicciones.</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Selección de algoritmos</h3>
+					<p>Saber qué algoritmo escoger en cada paso es complicado, y se escapa de los objetivos de este curso$\dots$</p>
+					<img src="media/8/ml_map.svg" style="height: 700px;">
+					<p class="fragment">En esta clase, veremos algunos ejemplos básicos de regresión (regresión lineal) y clustering (K-Means).</p>
+				</section>
+				<section>
+					<h3>Regresión lineal</h3>
+					<div>
+						Empezaremos por algo sencillo, regresión lineal con <em>least-squares</em> (que probablemente recordéis de los cursos de estadística). Scikit-learn ofrece una implementación en <span class="monospace">LinearRegression()</span>.
+					</div>
+					<div>METER NOTEBOOK Y SEGUIR POR AHÍ??</div>
+					<img src="media/8/linear-regreesion-xkcd.png">
+				</section>
+				<section>
+					<h3>Clustering con k-means</h3>
+					<p>Ahora nos enfrentaremos a otro problema, el <em>clustering</em> o agrupación de datos. Este problema es de aprendizaje <em>no supervisado</em>, ya que no tenemos ninguna <em>variable objetivo</em>. Entre los algoritmos de clustering, <span class="monospace">K-Means</span> es el más conocido.</p>
+					<div style="display:flex; flex-direction: row; gap: 4rem;">
+						<div style="flex: 1;">
+							<p class="fragment" data-fragment-index="1">K-Means es un algoritmo iterativo que clasifica los datos a partir de su distancia a un conjunto de <em>centroides</em>. El algoritmo es el siguiente:</p>
+							<ol>
+								<li class="fragment" data-fragment-index="2"><b>Inicio:</b> se asignan $n$ centroides aleatoriamente sobre el espacio.</li>
+								<li class="fragment" data-fragment-index="3"><b>Asignación:</b> a cada punto le asignamos su centroide más cercano (por ejemplo, usando la distancia euclídea). Formamos así $n$ grupos separados.</li>
+								<li class="fragment" data-fragment-index="4"><b>Recálculo de centroides: </b>si no hemos llegado a cierta tolerancia o número máximo de iteraciones en el error, recalculamos los centroides a partir de la media de los puntos en cada grupo.</li>
+							</ol>
+						</div>
+						<div style="flex: 1;">
+							<img src="media/8/kmeans.png" class="fragment" data-fragment-index="1">
+							<img src="media/8/kmeans 2.jpg" class="fragment" data-fragment-index="4">
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Clustering con k-means</h3>
+					<div>
+						SEGUIR CON NOTEBOOK?
+					</div>
+				</section>
             </div>
         </div>
         
