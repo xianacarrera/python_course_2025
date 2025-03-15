@@ -213,8 +213,6 @@ plt.plot(x, y2, label="Coseno",
 								<li class="fragment" data-fragment-index="4">Añadir una leyenda</li>
 								<li class="fragment" data-fragment-index="5">Añadir una cuadrícula</li>
 								<li class="fragment" data-fragment-index="6">Mostrar la figura</li>
-
-								COLORMAPS
 							</ol>
 						</div>
 						<div class="r-stack">
@@ -340,6 +338,50 @@ plt.show()
 					</div>
 				</div>
 			</section>
+			<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+				<h2>Varios subplots</h2>
+				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+					<div style="flex: 2; text-align: left; font-size: 80%;">
+						<ul>
+							<li>En una figura, podemos crear varios subplots (subgráficas) usando <span
+									class="monospace">plt.subplots()</span> o <span class="monospace">fig.add_subplot()</span></li>
+							<li>Se puede controlar cada subgráfica individualmente a través de su eje <code>ax</code></li>
+							<li>Importante: el nombre de muchas funciones es distinto: <code>ax.set_title()</code> en vez de <code>plt.title()</code>,
+								 <code>ax.set_xlabel()</code> en vez de <code>plt.xlabel()</code>, etc.</li>
+							<li>Si solo tenemos una fila/columna de subplots, el conjunto de ejes es un array. Si hay varias filas y columnas, es una matriz.</li>
+						</ul>
+						<img src="media/7/axes.png" style="height: 500px; object-fit: contain;">
+					</div>
+					<div  style="flex: 2; text-align: left;">
+						<pre style="height: 800px;"><code class="python" data-line-numbers>
+x = np.linspace(-2, 2, 100)      # 100 puntos entre -2 y 2
+
+fig, axs = plt.subplots(2, 2)    # 2 filas, 2 columnas
+axs[0, 0].plot(x, x)
+# LaTeX works guys
+axs[0, 0].set_title('$y=x$')
+axs[0, 1].plot(x, x ** 2, 'tab:orange')
+axs[0, 1].set_title('$y=x^2$')
+axs[1, 0].plot(x, x ** 3, 'tab:green')
+axs[1, 0].set_title('$y=x^3$')
+axs[1, 1].plot(x, x ** 4, 'tab:red')
+axs[1, 1].set_title('$y=x^4$')
+
+for ax in axs.flat:
+	ax.set(xlabel='x', ylabel='y')
+
+# Escondemos las etiquetas del eje x en los plots superiores y las 
+# etiquetas del eje y en los plots de la derecha.
+for ax in axs.flat:
+	ax.label_outer()
+
+fig.suptitle("Funciones polinómicas", fontsize=16)
+plt.show()
+
+						</code></pre>
+					</div>
+				</div>
+			</section>
 			<section>
 				<h2>Colores</h2>
 				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
@@ -381,10 +423,37 @@ plt.show()
 				<p>xkcd color survey: <a href="https://xkcd.com/color/rgb/">https://xkcd.com/color/rgb/</a> </p>
 			</section>
 			<section>
+				<h2>Mapas de colores</h2>
+				<p>Hay funciones de matplotlib distintas de <span class="monospace">plt.plot()</span> que permiten
+					representar otros tipos de gráficos.
+					Algunas tienen un parámetro <span class="monospace">cmap</span> que permite tomar los colores de un
+					mapa de colores, que permite mappear
+					escalares a colores de forma continua. Ejemplos: <code>plt.scatter()</code>,
+					<code>plt.imshow()</code>, etc.
+				<div style="display: flex; flex-direction: row;">
+					<div style="flex: 1;">
+						<img src="media/7/colormap_sequential.webp">
+					</div>
+					<div style="flex: 1;">
+						<img src="media/7/colormap_diverging.webp">
+					</div>
+					<div style="flex: 1;">
+						<img src="media/7/colormap_cyclic.webp">
+					</div>
+					<div style="flex: 1;">
+						<img src="media/7/colormap_qualitative.webp">
+					</div>
+				</div>
+				<p>Más colormaps: <a
+						href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">https://matplotlib.org/stable/users/explain/colors/colormaps.html</a>
+				</p>
+			</section>
+			<section>
 				<h2>Otros tipos de gráficos</h2>
-				<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem;">
+				<div style="display: flex; flex-direction: row; gap: 4rem;">
 					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
-						<div style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
+						<div
+							style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
 							<div style="flex: 1;">
 								<p style="margin: 0;">Barplots<br>
 									<small>Verticales: <span class="monospace">plt.bar()</span><br>
@@ -392,7 +461,7 @@ plt.show()
 								</p></small>
 							</div>
 							<div style="flex: 1;">
-							<img src="media/7/barplot.png" style="height: 400px;">
+								<img src="media/7/barplot.png" style="height: 400px; object-fit: contain;">
 							</div>
 						</div>
 						<pre style="margin: 0; font-size: 50%; width: 800px;"><code class="python" data-line-numbers>
@@ -407,13 +476,14 @@ plt.show()
 						</code></pre>
 					</div>
 					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
-						<div style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
+						<div
+							style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
 							<div style="flex: 1;">
 								<p style="margin: 0;">Grouped barplots
 								</p></small>
 							</div>
 							<div style="flex: 1;">
-							<img src="media/7/grouped_barplot.png" style="height: 400px;">
+								<img src="media/7/grouped_barplot.png" style="height: 400px; object-fit: contain;">
 							</div>
 						</div>
 						<pre style="margin: 0; font-size: 50%; width: 1200px;"><code class="python" data-line-numbers>
@@ -438,20 +508,21 @@ plt.show()
 			</section>
 			<section>
 				<h2>Otros tipos de gráficos</h2>
-				<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem;">
+				<div style="display: flex; flex-direction: row; gap: 4rem;">
 					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
-						<div style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
+						<div
+							style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between; gap: 1rem;">
 							<div style="flex: 1;">
 								<p style="margin: 0;">Histogramas<br>
 									<small>Si el argumento de bins es un entero, define el número de bins.<br>
-									Si es un array, define los límites de los bins.</small><br>
+										Si es un array, define los límites de los bins.</small><br>
 								</p></small>
 							</div>
 							<div style="flex: 1;">
-							<img src="media/7/hist.png" style="height: 400px;">
+								<img src="media/7/hist.png" style="height: 400px; object-fit: contain;">
 							</div>
 						</div>
-						<pre style="margin: 0; font-size: 50%; width: 800px;"><code class="python" data-line-numbers>
+						<pre style="margin: 0; font-size: 50%; width: 900px;"><code class="python" data-line-numbers>
 # 100 muestras de una distribución normal de media 6 y std 1
 notas = np.random.normal(loc=6, scale=1.5, size=100)  
 
@@ -472,34 +543,217 @@ plt.show()
 						</code></pre>
 					</div>
 					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
-						<div style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
+						<div
+							style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
 							<div style="flex: 1;">
-								<p style="margin: 0;">Grouped barplots
+								<p style="margin: 0;">Scatter plot
 								</p></small>
 							</div>
 							<div style="flex: 1;">
-							<img src="media/7/grouped_barplot.png" style="height: 400px;">
+								<img src="media/7/scatter.png" style="height: 400px; object-fit: contain;">
 							</div>
 						</div>
-						<pre style="margin: 0; font-size: 50%; width: 1200px;"><code class="python" data-line-numbers>
-# DataFrame de 6 filas y 2 columnas con datos aleatorios
-df = pd.DataFrame(np.random.rand(6, 2),
-	index=['one', 'two', 'three', 'four', 'five', 'six'],
-	columns=['A', 'B'])
+						<pre style="margin: 0; font-size: 50%; width: 900px;"><code class="python" data-line-numbers>
+n_puntos = 100
+x = np.random.rand(n_puntos) * 10       # Rango [0, 10)
+y = np.random.rand(n_puntos) * 40       # Rango [0, 40)
+tam = np.random.rand(n_puntos) * 200    # Tamaño de los puntos
+colores = np.random.rand(n_puntos)      # Color de los puntos
 
-width = 0.25                  # Ancho de las barras
-x = np.arange(len(df.index))  # Posiciones de las barras
+plt.figure(figsize=(8, 5))
+plt.scatter(x, y, s=tam, c=colores, alpha=0.5, cmap='inferno')
+plt.colorbar()    # Muestra la barra de colores
 
-fig = plt.figure(figsize=(8, 6))
-
-plt.bar(x - width/2, df['A'], width, label='A', color=np.array([166,206,227])/255)
-plt.bar(x + width/2, df['B'], width, label='B', color=np.array([178,223,138])/255, hatch='//')
-plt.xticks(x, df.index)  # Añadimos las etiquetas del eje x
-plt.legend(fontsize=20)
+plt.xlabel("Eje x")
+plt.ylabel("Eje y")
 plt.show()
+
 						</code></pre>
 					</div>
 				</div>
+			</section>
+			<section>
+				<h2>Otros tipos de gráficos</h2>
+				<div style="display: flex; flex-direction: row; gap: 4rem;">
+					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
+						<div
+							style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between; gap: 1rem;">
+							<div style="flex: 1;">
+								<p style="margin: 0;">Gráfico circular
+								</p>
+							</div>
+							<div style="flex: 1;">
+								<img src="media/7/pie_chart.png" style="height: 400px; object-fit: contain;">
+							</div>
+						</div>
+						<pre style="margin: 0; font-size: 50%; width: 900px;"><code class="python" data-line-numbers>
+categorias = ['Menos de 20 años', '21-30 años', '31-40 años', '50+ años']
+porcentajes = [30, 25, 20, 25] 
+colores = ['#ffffd4', '#fed98e', '#fe9929', '#cc4c02']  
+resalte = (0.2, 0, 0, 0)  # Resaltamos la primera categoría
+
+plt.figure(figsize=(7, 7))
+plt.pie(porcentajes, labels=categorias, autopct='%1.1f%%', colors=colores,
+		startangle=0, shadow=True, explode=resalte)
+plt.show()
+
+						</code></pre>
+					</div>
+					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
+						<div
+							style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
+							<div style="flex: 1;">
+								<p style="margin: 0;">Boxplots<br>
+									<small>(¡También hay violinplots!)</small><br>
+								</p></small>
+							</div>
+							<div style="flex: 1;">
+								<img src="media/7/boxplot.png" style="height: 400px; object-fit: contain;">
+							</div>
+						</div>
+						<pre style="margin: 0; font-size: 50%; width: 900px;"><code class="python" data-line-numbers>
+datos = [np.random.normal(loc=media, scale=150.0, size=500) for media in [996, 2576, 2249, 1636]]
+
+plt.figure(figsize=(8, 6))
+plt.boxplot(datos, labels=['Grecia', 'Alemania', 'Francia', 'España'], patch_artist=True,
+				boxprops=dict(facecolor='lightgreen'))
+# patch_artist=True hace que se rellenen las cajas se rellenen con color
+
+plt.xlabel("Países")
+plt.ylabel("Salario medio")
+plt.grid(axis='y', alpha=0.5)
+plt.show()							
+
+						</code></pre>
+					</div>
+
+				</div>
+			</section>
+			<section>
+				<h2>Otros tipos de gráficos</h2>
+				<div style="display: flex; flex-direction: row; gap: 4rem;">
+					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
+						<div
+							style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between; gap: 1rem;">
+							<div style="flex: 1;">
+								<p style="margin: 0;">Contornos
+								</p>
+							</div>
+							<div style="flex: 1;">
+								<img src="media/7/contour.png" style="height: 400px; object-fit: contain;">
+							</div>
+						</div>
+						<pre style="margin: 0; font-size: 50%; width: 900px;"><code class="python" data-line-numbers>
+x = np.linspace(-5, 5, 50)
+y = np.linspace(-5, 5, 50)
+X, Y = np.meshgrid(x, y)  
+# X e Y son matrices 2D que contienen las coordenadas de los puntos
+
+# Definimos la función a plottear
+Z = 2* X**2 + Y**2
+
+plt.figure(figsize=(7, 5))
+contour = plt.contour(X, Y, Z, levels=15, cmap='viridis')
+plt.colorbar(contour)  # Añadimos una barra de colores
+plt.show()
+
+						</code></pre>
+					</div>
+					<div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
+						<div
+							style="display: flex; flex-direction: row;  align-items: center; justify-content: space-between;">
+							<div style="flex: 1;">
+								<p style="margin: 0;">Contornos con relleno<br>
+									<small>Solo hace falta cambiar <code>contour</code> por <code>contourf</code></small><br>
+								</p>
+							</div>
+							<div style="flex: 1;">
+								<img src="media/7/filled_contour.png" style="height: 400px; object-fit: contain;">
+							</div>
+						</div>
+						<pre style="margin: 0; font-size: 50%; width: 900px;"><code class="python" data-line-numbers>
+x = np.linspace(-5, 5, 50)
+y = np.linspace(-5, 5, 50)
+X, Y = np.meshgrid(x, y)  
+# X e Y son matrices 2D que contienen las coordenadas de los puntos
+
+# Definimos la función a plottear
+Z = 2* X**2 + Y**2
+
+plt.figure(figsize=(7, 5))
+contour = plt.contourf(X, Y, Z, levels=15, cmap='viridis')
+plt.colorbar(contour)  # Añadimos una barra de colores
+plt.show()
+
+						</code></pre>
+					</div>
+
+				</div>
+			</section>
+			<section data-auto-animate>
+				<h2>Seaborn</h2>
+			</section>
+			<section data-auto-animate>
+				<h2>Seaborn</h2>
+				<div>
+					<ul>
+						<li>Es una biblioteca de visualización avanzada construida sobre matplotlib.</li>
+						<li>Permite crear gráficos más vistosos y tiene numerosas integraciones con DataFrames de pandas.</li>
+						<li>Es más sencilla de usar que matplotlib, pero más difícil de configurar.</li>
+					</ul>
+				</div>
+			</section>
+			<section data-background-iframe="https://seaborn.pydata.org/examples/index.html"
+			data-background-interactive data-preload></section>
+			<section>
+				<h2>Ejemplo: heatmap sobre matriz de correlaciones</h2>
+				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; align-items: center;">
+					<div style="flex: 3; text-align: left;">
+						<pre><code class="python" data-line-numbers>
+import seaborn as sns
+
+auto_df = sns.load_dataset('mpg')
+df_num = auto_df.select_dtypes('number')
+corr_mat = df_num.corr()
+
+plt.figure(figsize=(8, 6))
+cmap = sns.diverging_palette(500, 10, as_cmap=True)
+sns.heatmap(corr_mat, annot=True, cmap=cmap, fmt=".2f", linewidths=0.5)
+
+plt.title("Heatmap de Correlaciones")
+plt.show()
+
+						</code></pre>
+					</div>
+					<div  style="flex: 2; text-align: left;">
+						<img src="media/7/heatmap.png" style="height: 700px; object-fit: contain;">
+					</div>
+				</div>
+
+			</section>
+			<section>
+				<h2>Ejemplo: pairplot</h2>
+				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; align-items: center;">
+					<div style="flex: 2; text-align: left;">
+						<pre><code class="python" data-line-numbers>
+import seaborn as sns
+sns.set_theme(style="ticks")
+
+iris = sns.load_dataset("iris")
+sns.pairplot(iris, hue="species", 
+				palette="husl", 
+				diag_kind="kde",
+				diag_kws=dict(fill=True), 
+				markers=["o", "s", "D"])
+plt.show()
+
+						</code></pre>
+					</div>
+					<div  style="flex: 3; text-align: left;">
+						<img src="media/7/pairplot.png" style="height: 900px; object-fit: contain;">
+					</div>
+				</div>
+
 			</section>
 		</div>
 	</div>
