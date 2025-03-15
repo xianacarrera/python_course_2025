@@ -1,178 +1,283 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Installfest</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="common.css">
-		<!-- Solarized theme -->
-		<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
-		<!-- Moon theme -->
-		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+	<title>Installfest</title>
 
-		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
-	</head>
-	<body data-theme="light">
-		<a href="index.html" class="back-link">Volver</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<h1>Installfest</h1>
-					<h3>Tutorial de instalación de Python</h3>
-					<div class="fragment" style="display:flex; justify-content: space-around; align-items: center; gap: 4rem;">
-						<div style="flex:1;">
-							<img src="media/0/python-logo.png">
-						</div>
-						<div style="flex:3;">
-							<p>(En concreto, Python 3.13, la versión actual)</p>
-							<p>También configuraremos el editor de texto <span class="monospace">Visual Studio Code</span> en el que trabajaremos</p>
-						</div>
-						<div style="flex:1;">
-							<img src="media/0/vscode.png" style="flex:1; height:8rem;">
-						</div>
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="common.css">
+	<!-- Solarized theme -->
+	<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+	<!-- Moon theme -->
+	<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+
+	<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+</head>
+
+<body data-theme="light">
+	<a href="index.html" class="back-link">Volver</a>
+	<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+		<svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="12" cy="12" r="5"></circle>
+			<line x1="12" y1="1" x2="12" y2="3"></line>
+			<line x1="12" y1="21" x2="12" y2="23"></line>
+			<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+			<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+			<line x1="1" y1="12" x2="3" y2="12"></line>
+			<line x1="21" y1="12" x2="23" y2="12"></line>
+			<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+			<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+		</svg>
+		<svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+		</svg>
+	</button>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Installfest</h1>
+				<h3>Tutorial de instalación de Python</h3>
+				<div class="fragment"
+					style="display:flex; justify-content: space-around; align-items: center; gap: 4rem;">
+					<div style="flex:1;">
+						<img src="media/0/python-logo.png">
 					</div>
-				</section>
-				<section>
-					<h3>Paso 1: Instalar Python</h3>
-					<ol>
-						<li>Descargamos la última versión de Python desde la <a href="https://www.python.org/downloads/">web oficial</a></li>
-						<li><em>También se puede descargar desde la Windows Store. En Windows 11 se abre automáticamente al escribir <span class="monospace">python</span> en la terminal. También recomendamos instalarlo así!</em></li>
-						<li class="fragment" data-fragment-index="2">Instalamos de forma normal. Recomendamos marcar la opción de <b>Añadir python.exe al PATH</b> (así podemos ejecutar python desde consola más fácilmente).</li>
-						<li class="fragment" data-fragment-index="3">Ahora podemos ejecutar Python desde una consola!</li>
-					</ol>
-					<div style="display:flex; gap: 2rem;">
-						<div style="flex:1;">
-							<img src="media/0/python_download.png">
-						</div>
-						<div style="flex:1;" class="fragment" data-fragment-index="2">
-							<img src="media/0/python_install.png">
-						</div>
-						<div style="flex:1;" class="fragment" data-fragment-index="3">
-							<img src="media/0/python_terminal.png">
-						</div>
+					<div style="flex:3;">
+						<p>(En concreto, Python 3.12 o 3.13, las versiones actuales)</p>
+						<p>También configuraremos el editor de texto <span class="monospace">Visual Studio Code</span>
+							en el que trabajaremos</p>
+
+						<p>Estas instrucciones deberían funcionar tanto en portátiles como en PCs de laboratorio sin permisos de administrador!</p>
 					</div>
-				</section>
-				<section>
-					<h3>Paso 2: Instalar Visual Studio Code</h3>
-					<p>Ejecutar Python desde consola esta bien para pruebas pequeñas, pero también necesitaremos un entorno de programación (IDE).</p>
-					<p>vscode es el IDE que recomendamos para Python (y para casi todos los lenguajes)</p>
-					<p class="fragment">Contiene extensiones que hacen muy fácil ejecutar Python y los notebooks interactivos (IPython .ipynb) que veremos más adelante</p>
-					<p class="fragment">Pero por supuesto, <b>podéis usar cualquier otro editor que prefiráis sobre vscode!</b></p>
-				</section>
-				<section>
-					<h3>Paso 2: Instalar Visual Studio Code</h3>
-					<div style="text-align: left; display:flex; flex-direction: row; gap: 2rem; align-items: center; justify-content: space-around;">
-						<ol style="flex: 1;">
-							<li>Descargamos la última versión de Visual Studio Code desde la <a href="https://code.visualstudio.com/">web oficial</a></li>
-							<li class="fragment" data-fragment-index="1">Instalamos de forma normal</li>
-							<li class="fragment" data-fragment-index="2">Abre vscode y ve a la pestaña de extensiones (Ctrl+Shift+X)</li>
-							<li class="fragment" data-fragment-index="2">Busca e instala la extensión <b>Python</b> de Microsoft</li>
+					<div style="flex:1;">
+						<img src="media/0/vscode.png" style="flex:1; height:8rem;">
+					</div>
+				</div>
+			</section>
+<!-- 		<section>
+				<h3>Paso 1: Instalar Python</h3>
+				<h5>Tenemos dos opciones de instalación:</h5>
+				<div style="margin-top: 6rem; display:flex; flex-direction: row; gap: 4rem;" class="fragment">
+					<div style="display:flex; flex-direction: column;">
+						<span><b>1.</b> <a href="#python-vscode">Instalar Python directamente</a></span>
+						<br>
+						<p>Recomendado si traéis vuestro portátil (anaconda es algo lento)</p>
+					</div>
+					<div style="display:flex; flex-direction: column;">
+						<span><b>2.</b> <a href="#anaconda">Instalar Anaconda</a></span>
+						<br>
+						<p>Para PCs del aula, ya que no requiere permisos de administrador</p>
+					</div>
+				</div>
+			</section>
+			<section id="python-vscode">
+				<h2>Opción 1: Instalar Python directamente</h2>
+			</section>
+			<section>
+				<h3>Instalar Python directamente</h3>
+				<ol>
+					<li>Descargamos la última versión de Python desde la <a href="https://www.python.org/downloads/">web
+							oficial</a></li>
+					<li><em>También se puede descargar desde la Windows Store. En Windows 11 se abre automáticamente al
+							escribir <span class="monospace">python</span> en la terminal. También recomendamos
+							instalarlo así!</em></li>
+					<li class="fragment" data-fragment-index="2">Instalamos de forma normal. Recomendamos marcar la
+						opción de <b>Añadir python.exe al PATH</b> (así podemos ejecutar python desde consola más
+						fácilmente).</li>
+					<li class="fragment" data-fragment-index="3">Ahora podemos ejecutar Python desde una consola!</li>
+				</ol>
+				<div style="display:flex; gap: 2rem;">
+					<div style="flex:1;">
+						<img src="media/0/python_download.png">
+					</div>
+					<div style="flex:1;" class="fragment" data-fragment-index="2">
+						<img src="media/0/python_install.png">
+					</div>
+					<div style="flex:1;" class="fragment" data-fragment-index="3">
+						<img src="media/0/python_terminal.png">
+					</div>
+				</div>
+			</section> -->
+
+			<section id="anaconda" data-auto-animate>
+				<h1>Paso 1: Instalar Python</h1>
+			</section>
+			<section id="anaconda" data-auto-animate>
+				<h1>Paso 1: Instalar Python</h1>
+				<p>Se puede instalar Python directamente, pero nosotros usaremos la distribución <img style="vertical-align: middle; height: 1em;" src="media/0/logo_anaconda.svg"><code>miniconda</code><img style="vertical-align: middle; height: 1em;" src="media/0/logo_anaconda.svg">
+					, que incluye tanto el lenguaje como un gestor de paquetes que usaremos más adelante$\dots$</p>
+				<p class="fragment"><b>Instalarlo es sencillo pero hay un par de pasos en el que no tomamos las opciones por defecto, así que recomendamos leer estas diapositivas</b></p>
+			</section>
+			<section>
+				<h3>¿Qué es Anaconda exactamente?</h3>
+				<ul>
+					<li>En esencia, <a href="https://www.anaconda.com/download">Anaconda</a> es un <strong>gestor de paquetes y entornos</strong> para Python (veremos qué significa esto en la clase 4).</li>
+					<li class="fragment"><code><a href="https://www.anaconda.com/docs/getting-started/miniconda/main">miniconda</a></code> es la versión básica que solo incluye el gestor de paquetes y entornos. </li>
+					<li class="fragment">También incluye cientos de paquetes precompilados listos para usar.</li>
+					<li class="fragment"><code>Anaconda Navigator</code> es una versión más completa que añade una <strong>interfaz gráfica</strong> y paquetes adicionales para ciencia de datos. <b>Si queréis, podéis instalarlo en vez de miniconda, pero incluye muchas cosas que no usaremos y es más lento.</b></li>
+					<li class="fragment">Está disponible para Windows, macOS y Linux, <b>y no requiere permisos de administrador para instalarse (ideal para los PCs del aula).</b></li>
+				</ul>
+			</section>
+			<section>
+				<h3>Instalando Python mediante miniconda</h3>
+				<div style="display:flex; flex-direction: row;"> 
+					<div style="flex: 1;">
+						<ol >
+							<li class="fragment" data-fragment-index="1"><a href="https://www.anaconda.com/download">Descargamos el instalador de miniconda</a> para nuestro sistema operativo. <b>Se pude saltar el registro dándole al link pequeño debajo del <span style="color: green;">botón verde.</span></b></li>
+							<li class="fragment" data-fragment-index="2">Seleccionamos instalación para un usuario si estamos en los PCs del aula.</li>
+							<li class="fragment" data-fragment-index="3">En las opciones de instalación, seleccionamos las de la imagen. <b>Importante activar el PATH aunque diga que es no recomendado!</b></li>
 						</ol>
-						<div style="flex:1;" class="fragment" data-fragment-index="1">
-							<img src="media/0/vscode_extensions.png">
-						</div>
 					</div>
-				</section>
-				<section>
-					<h3>Paso 3: Probando que todo funciona...</h3>
-					<p>Para comprobar que todo funciona, vamos a crear un archivo de Python básico (un Hello world)</p>
-					<p>Creamos un archivo <span class="monospace">hello_world.py</span> e introducimos el siguiente programa:</p>
-					<pre><code class="python" data-line-numbers>
+					<div class="r-stack" style="flex: 1;">
+							<img src="media/0/anaconda_1.png" class="fragment" data-fragment-index="1" style="width:600px;">
+							<img src="media/0/anaconda_3.png" class="fragment" data-fragment-index="2" style="width:600px;">
+							<img src="media/0/anaconda_4.png" class="fragment" data-fragment-index="3" style="width:600px;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<h3>Instalando Python mediante miniconda</h3>
+				<p>Vamos a comprobar que todo funcione bien!</p>
+				<div style="display:flex; flex-direction: row; gap: 4rem;">
+					<div style="text-align: left;"> 
+						<p class="fragment" data-fragment-index="1">Abrimos una terminal de <b>powershell</b> o <b>cmd</b> (o cualquier otra terminal si estamos en otro sistema operativo)</p>
+						<p class="fragment" data-fragment-index="2">Escribimos <code>python --version</code> y <code>conda --version</code></p>
+						<p class="fragment" data-fragment-index="2">Si podemos ver la versión correctamente , entonces todo está bien! (Puede que no sea exactamente la de la imagen, pero no pasa nada!)</p>
+						<p class="fragment" data-fragment-index="3">Si escribimos solo <code>python</code>, podemos abrir una terminal interactiva donde empezar a escribir código. La usaremos más adelante! Se cierra escribiendo el comando <code>quit()</code>.</p>
+					</div>
+					<div>
+						<img src="media/0/instalacion_success.png" class="fragment" data-fragment-index="2">
+					</div>
+				</div>
+			</section>
+			<section>
+				<h3>Paso 2: Instalar Visual Studio Code</h3>
+				<p>Ejecutar Python desde consola está bien para pruebas pequeñas, pero también necesitaremos un entorno
+					de programación (IDE).</p>
+				<p>Visual Studio Code (<code>vscode</code>) es el IDE que recomendamos para Python (y para casi todos los lenguajes)</p>
+				<p class="fragment">Contiene extensiones que hacen muy fácil ejecutar Python y los notebooks interactivos (IPython .ipynb) que veremos más adelante</p>
+				<p class="fragment">Pero por supuesto, <b>podéis usar cualquier otro editor que prefiráis sobre vscode!</b></p>
+			</section>
+			<section>
+				<h3>Paso 2: Instalar Visual Studio Code</h3>
+				<div
+					style="text-align: left; display:flex; flex-direction: row; gap: 2rem; align-items: center; justify-content: space-around;">
+					<ol style="flex: 1;">
+						<li class="fragment" data-fragment-index="1">Descargamos la última versión de Visual Studio Code desde la <a
+								href="https://code.visualstudio.com/">web oficial</a></li>
+						<li class="fragment" data-fragment-index="2">Instalamos de forma normal <b>(en modo usuario si
+								estamos en los PCs del aula)</b></li>
+						<li class="fragment" data-fragment-index="3">Abrimos vscode y vamos a la pestaña de extensiones
+							(Ctrl+Shift+X)</li>
+						<li class="fragment" data-fragment-index="3">Buscamos e instalamos la extensión <b>Python</b> de
+							Microsoft</li>
+					</ol>
+					<div style="flex:1;" class="r-stack">
+						<img src="media/0/web_vscode.png" class="fragment" data-fragment-index="1" style="width: 800px;">
+						<img src="media/0/vscode_installer.png" class="fragment" data-fragment-index="2" style="width: 800px;">
+						<img src="media/0/vscode_extensions.png" class="fragment" data-fragment-index="3" style="width: 800px;">
+					</div>
+				</div>
+			</section>
+			<section>
+				<h3>Paso 3: Probando que todo funciona...</h3>
+				<p>Para comprobar que todo funciona, vamos a crear un archivo de Python básico (un Hello world)</p>
+				<p>Creamos un archivo <span class="monospace">hello_world.py</span> e introducimos el siguiente
+					programa:</p>
+				<pre><code class="python" data-line-numbers>
 	print("Bienvenidos a nuestro curso!")
 
 					</code></pre>
-					<p>Para ejecutarlo, podemos hacerlo de dos formas:</p>
-					<div style="text-align: left; display:flex; flex-direction: row; gap: 2rem; align-items: top; justify-content: space-around;">
-						<div style="flex: 1;">
-							<ul>
-								<li class="fragment" data-fragment-index="1">Desde una terminal, ejecutando <span class="monospace">python hello_world.py</span></li>
-								<li class="fragment" data-fragment-index="2">Desde vscode, pulsando <span class="monospace">F5</span> o el botón <em>"Run Python File"</em></li>
-							</ul>
-						</div>
-						<div style="flex: 1;">
-							<img class="fragment" data-fragment-index="1" src="media/0/run_terminal.png">
-							<img class="fragment" data-fragment-index="2" src="media/0/run_vscode.png">
-						</div>
+				<p>Para ejecutarlo, podemos hacerlo de dos formas:</p>
+				<div
+					style="text-align: left; display:flex; flex-direction: row; gap: 2rem; align-items: top; justify-content: space-around;">
+					<div style="flex: 1;">
+						<ul>
+							<li class="fragment" data-fragment-index="1">Desde una terminal, ejecutando <span
+									class="monospace">python hello_world.py</span></li>
+							<li class="fragment" data-fragment-index="2">Desde la interfaz gráfica, pulsando <span
+									class="monospace">F5</span> o el botón <em>"Run Python File"</em></li>
+						</ul>
 					</div>
-				</section>
-				<section>
-					<h3>Paso 3: Probando que todo funciona...</h3>
-					<div style="text-align: left; display:flex; flex-direction: row; gap: 2rem; align-items: center; justify-content: space-around;"> 
-						<div style="flex:1;">
-							<p>Si tenéis un error al ejecutar desde vscode, seguramente sea porque vuestro entorno aún no está configurado</p>
-							<p>Hacerlo es muy sencillo, simplemente tenéis que seguir los pasos que salen (elegir el intérprete o debugger como la versión de Python instalada)</p>
-						</div>
-						<div style="flex:1;">
-							<img src="media/0/error_vscode.png">
-							<img src="media/0/configure_vscode.png">
-						</div>
+					<div style="flex: 1;">
+						<img class="fragment" data-fragment-index="1" src="media/0/run_terminal.png">
+						<img class="fragment" data-fragment-index="2" src="media/0/run_vscode.png">
 					</div>
-					<ul style="font-size: 2rem;" class="fragment">
-						<li>Y un par de comandos muy útiles de vscode: <span class="monospace">Ctrl+ñ</span> abre una terminal, <span class="monospace">Ctrl+Shift+P</span> abre un menu general de comandos.</p>
-						<li>Os recomendamos crear una carpeta para organizar todos los ficheros del curso, ya que haremos algunos ejercicios $\dots$</p>
-						<li>Más adelante, instalaremos un par de cosas más, pero no os preocupéis, esto es suficiente para la primera semana del curso y el resto de instalaciones serán sencillas</p>
-					</ul>
-				</section>
-				<section>
-					<h2>Eso es todo por ahora!</h2>
-					<ul>
-						<li>Python es un lenguaje enorme, así que probablemente podáis encontrar soluciones a casi cualquier problema de instalación en internet o consultando LLMs. <b>¡Pero no dudéis en mandarnos un correo si os hace falta!</b></li>
-						<li>Esta es la <a href="/">web</a> que usaremos a lo largo del curso, espero que os guste el formato!</li>
-						<li class="fragment"><b>DISCLAIMER:</b> Puede que a veces este caída (está en desarrollo y hosteada en un Raspberry Pi, a veces puede caerse la luz, el internet, etc.)</li>
-						<div class="fragment">
-							<small>Esperemos que ciertos compañeros de piso no enciendan el horno y la lavadora a la vez durante alguna de las clases $\dots$</small>
-							<small>De todas formas, toda la web es de código abierto y está subida a <a href="https://github.com/xianacarrera/python_course_2025">GitHub</a>. Hay instrucciones para que podáis ejecutar esta web en local y así podáis verla aunque esté caída!</small>
-						</div>
-					</ul>
 				</div>
-				</section>
-			</div>
+			</section>
+			<section>
+				<h3>Paso 3: Probando que todo funciona...</h3>
+				<div
+					style="text-align: left; display:flex; flex-direction: row; gap: 2rem; align-items: center; justify-content: space-around;">
+					<div style="flex:1;">
+						<p>Si tenéis un error al ejecutar desde vscode, seguramente sea porque vuestro entorno aún no
+							está configurado</p>
+						<p>Hacerlo es muy sencillo, simplemente tenéis que seguir los pasos que salen (elegir el
+							intérprete o debugger como la versión de Python instalada)</p>
+					</div>
+					<div style="flex:1;">
+						<img src="media/0/error_vscode.png">
+						<img src="media/0/configure_vscode.png">
+					</div>
+				</div>
+				<ul style="font-size: 2rem;" class="fragment">
+					<li>Y un par de comandos muy útiles de vscode: <span class="monospace">Ctrl+ñ</span> abre una
+						terminal, <span class="monospace">Ctrl+Shift+P</span> abre un menu general de comandos.</p>
+					<li>Os recomendamos crear una carpeta para organizar todos los ficheros del curso, ya que haremos
+						algunos ejercicios $\dots$</p>
+					<li>Más adelante, instalaremos un par de cosas más, pero no os preocupéis, esto es suficiente para
+						la primera semana del curso y el resto de instalaciones serán sencillas</p>
+				</ul>
+			</section>
+			<section>
+				<h2>Eso es todo por ahora!</h2>
+				<ul>
+					<li>Esta es la <a href="/">web</a> que usaremos a lo largo del curso, espero que os guste el
+						formato!</li>
+					<li class="fragment"><b>DISCLAIMER:</b> Puede que a veces este caída (está en desarrollo y hosteada
+						en un Raspberry Pi, a veces puede caerse la luz, el internet, etc.)</li>
+					<div class="fragment">
+						<small>De todas formas, toda la web es de código abierto y está subida a <a
+								href="https://github.com/xianacarrera/python_course_2025">GitHub</a>. Hay instrucciones
+							para que podáis ejecutar esta web en local y así podáis verla aunque esté caída!</small>
+					</div>
+				</ul>
 		</div>
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/math/math.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-				katex: {
-					version: 'latest',
-					delimiters: [
+		</section>
+	</div>
+	</div>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			katex: {
+				version: 'latest',
+				delimiters: [
 					{ left: '$$', right: '$$', display: true },
 					{ left: '$', right: '$', display: false },
 					{ left: '\\(', right: '\\)', display: false },
 					{ left: '\\[', right: '\\]', display: true },
-					],
-					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-				},
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
-			});
-		</script>
-		<script src="theme-toggle.js"></script>
-	</body>
+				],
+				ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+			},
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+		});
+	</script>
+	<script src="theme-toggle.js"></script>
+</body>
+
 </html>
