@@ -338,7 +338,10 @@ df5=pd.read_json('ruta/al/archivo.json')
                 <p style="text-align: right;"><small>Nota 1: Hay más posibilidades, como a partir de <em>nested
                             dictionaries</em>.<br>
                         Nota 2: Para mostrar un DataFrame, es preferible usar <span class="monospace">df.head(n)</span> a
-                        <span class="monospace">print(df)</span>.</small></p>
+                        <span class="monospace">print(df)</span>.<br>
+                        Nota 3: <code>df.info()</code> es muy útil para comprobar, entre otros, el tipo de datos de cada columna y el número 
+                        de filas y columnas.
+                    </small></p>
                 <aside class="notes">
                     Los índices pueden tener varios niveles (MultiIndex).
                     Al indicar columns, también se podría cambiar el index, como con Series.
@@ -817,7 +820,7 @@ print(datos_ph.describe())
             <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
                 <div style="flex: 2; text-align: left;">
                     <ul>
-                        <li>Resumen de los datos (media, std, min, max, percentiles): <span
+                        <li>Resumen de los datos numéricos (media, std, min, max, percentiles): <span
                                 class="monospace">describe()</span></li>
                         <li class="fragment">Medidas de centralización: <span class="monospace">mean()</span>, <span
                                 class="monospace">median()</span>, <span class="monospace">mode()</span></li>
@@ -1089,7 +1092,7 @@ print(df[["estudiante", "nota"]].groupby("estudiante").mean())
             </div>
         </section>
         <section>
-            <h2>Hora de practicar!</h2>
+            <h2>¡Hora de practicar!</h2>
             <div style="align-items: center; justify-content: center; display:flex; flex-direction: column;">
                 <p style="width: 60%;">Para fijar ideas, exploraremos el <a href="https://www.kaggle.com/datasets/omarhanyy/imdb-top-1000">siguiente dataset</a> conteniendo información de las $1000$ películas de la historia según <a href="">IMDB</a>.</p>
                 <div style="border: 2px solid gray; padding: 1rem; border-radius: 10px; width: 60%;">
