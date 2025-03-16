@@ -35,6 +35,13 @@ body[data-theme="dark"] .back-link:hover {
     background-color: rgb(77.5161290323, 162.8774193548, 222.8838709677);
 }
 
+.hover-link {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-link:hover {
+  transform: scale(1.01);
+}
 
 /* Theme Toggle Button Styles */
 .theme-toggle {
