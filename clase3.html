@@ -26,12 +26,12 @@
             border-collapse: collapse;
         }
     </style>
-	<!-- Favicon Links -->
-	<link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="media/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="192x192" href="media/favicon/android-chrome-192x192.png">
-	<link rel="icon" type="image/png" sizes="512x512" href="media/favicon/android-chrome-512x512.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-touch-icon.png">
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="media/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="media/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="media/favicon/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-touch-icon.png">
 </head>
 
 <body data-theme="light">
@@ -198,7 +198,7 @@ print("mundo!")
                 <p style="text-align: center;">El manejo de excepciones nos permite indicar al programa cómo afrontar un
                     error de manera controlada
                     para que pueda continuar ejecutándose.</p>
-                <div style="text-align: left;" class="fragment">
+                <div style="text-align: left; font-size: 90%;" class="fragment">
                     <p>Los bloques de manejo de excepciones utilizan 4 keywords:</p>
                     <ul style="text-align: left;">
                         <li><span style="font-family:monospace;">try</span>: intenta hacer esto, a ver si no falla
@@ -229,11 +229,6 @@ print("mundo!")
         # Se ejecuta en último lugar, independientemente de si se ha producido un error o no
         pass
                     </code></pre>
-                <p class="fragment">Nota: el orden es importante. try-else-except no es válido.
-                    Quitar los pass y preguntar por qué el código daría un error?
-                    else es útil para lo que dependa de que el bloque de try tenga éxito
-                    else y finally son anecdóticos
-                    Puede haber else sin except, finally sin ... pero todos dependen de try</p>
             </section>
 
             <section>
@@ -396,10 +391,6 @@ print("mundo!")
             archivo.close()
 
                         </code></pre>
-                    TODO: with para input y output a la vez
-                    Nota: no es necesario hacer close en el bloque externo porque el archivo no se ha llegado a abrir
-                    (de
-                    hecho, daría un error)
                 </div>
             </section>
 
@@ -793,27 +784,43 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                 <div style="display: flex; gap: 6rem; flex-direction: row; align-items: center; margin-top: 5rem;">
                     <div style="text-align: left;" class="fragment">
                         <ul>
-                            <li></li>
+                            <li><code>reduce()</code> aplica una función iterativamente a todos los elementos de un
+                                iterable, operando sobre los
+                                sucesivos resultados parciales, y devuelve un único valor.</li>
                         </ul>
                         <pre style="width: 800px;"><code class="python" data-line-numbers>
-    Lorem codium
+    from functools import reduce
+    
+    reduce(function, iterable[, initializer])
+
+
+
+
+
 
                         </code></pre>
                     </div>
 
                     <div style="text-align: left;" class="fragment">
                         <ul>
-                            <li></li>
+                            <li><code>reduce()</code> se suele usar para agregar todos los elementos de un iterable, por
+                                ejemplo, sumándolos.</li>
                         </ul>
                         <pre style="width: 900px;"><code class="python" data-line-numbers>
-    Lorem codium
+    def custom_sumar(a, b):
+        res = a + b
+        print(f"{a} + {b} = {res}")
+        return res
+
+    nums = [1, 2, 3, 4]
+    reduce(custom_sumar, nums)
+    # 1 + 2 = 3
+    # 3 + 3 = 6
+    # 6 + 4 = 10
 
                         </code></pre>
                     </div>
                 </div>
-                <p style="margin-top: 5rem;">
-                    Quizás mejor dejar esto como ejercicios...
-                    Also: TODO ver reduce (hay que importarla)</p>
             </section>
 
             <section>
@@ -906,7 +913,8 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                                     de la clase que modifican al objeto. Su
                                     primer argumento tiene que ser <span class="monospace">self</span>, que representa
                                     el propio objeto.</li>
-                                <li class="fragment" data-fragment-index="3">Para este ejemplo, añadimos también un atributo
+                                <li class="fragment" data-fragment-index="3">Para este ejemplo, añadimos también un
+                                    atributo
                                     adicional de salud que tiene cada persona, <span class="monospace">health</span>. Lo
                                     inicializamos a $100$ en el constructor y modificamos en cada llamada a los métodos.
                                 </li>
@@ -1092,7 +1100,8 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                             a <span class="monospace">Person</span></li>
                         <li>Podemos llamar a los elementos de la <em>superclase</em> con <span
                                 class="monospace">super().&ltmetodo&gt()</span></li>
-                        <li>En el constructor de la subclase, podemos llamar o no al constructor de la superclase (pero es buena práctica hacerlo).</li>
+                        <li>En el constructor de la subclase, podemos llamar o no al constructor de la superclase (pero
+                            es buena práctica hacerlo).</li>
                     </ul>
                     <pre><code class="python" data-line-numbers>
     class Doctor(Person):
@@ -1106,7 +1115,8 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                 </div>
                 <div class="fragment" data-fragment-index="1">
                     <p>Los objetos de subclase pueden acceder y llamar a los métodos de su <em>clase base</em>.
-                        <br>Por ejemplo, un nuevo Doctor podría llamar a <span class="monospace">walk()</span></p>
+                        <br>Por ejemplo, un nuevo Doctor podría llamar a <span class="monospace">walk()</span>
+                    </p>
                     <pre><code class="python" data-line-numbers>
     doc = Doctor("House", 45, "M", "médico de cabecera")
     doc.walk() # House está caminando
@@ -1169,7 +1179,8 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                 </div>
                 <aside class="notes">
                     Si no se usa una subclase de Exception, no se pueden usar features como raise y except.
-                    Usando el concepto de polimorfismo, se pueden recoger excepciones concretas con superclases más generales.
+                    Usando el concepto de polimorfismo, se pueden recoger excepciones concretas con superclases más
+                    generales.
                 </aside>
             </section>
             <section>
