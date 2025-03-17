@@ -1,19 +1,20 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Clase 2</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="common.css">
-		<!-- Solarized theme -->
-		<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
-		<!-- Moon theme -->
-		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
-		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+	<title>Clase 2</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="common.css">
+	<!-- Solarized theme -->
+	<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+	<!-- Moon theme -->
+	<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+	<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
 	<link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="media/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="192x192" href="media/favicon/android-chrome-192x192.png">
@@ -26,64 +27,70 @@
 	<link rel="icon" type="image/png" sizes="512x512" href="media/favicon/android-chrome-512x512.png">
 	<link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-touch-icon.png">
 
-	</head>
-	<body data-theme="light">
-		<a href="index.html" class="back-link">Volver</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-        </button>
-		<div class="reveal">
-			<div class="slides">
-                <section>
-                    <h1 class="r-fit-text">2. Tipos de datos básicos, control de flujo y funciones</h1>
-					<small>Esta va a ser una clase con bastante contenido, so lock in</small>
-                </section>
-				
-				<section style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
-					<h3>En la clase de hoy veremos...</h3>
-					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-					  <div class="fragment" style="flex: 1; text-align: center;">
+</head>
+
+<body data-theme="light">
+	<a href="index.html" class="back-link">Volver</a>
+	<button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+		<svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="12" cy="12" r="5"></circle>
+			<line x1="12" y1="1" x2="12" y2="3"></line>
+			<line x1="12" y1="21" x2="12" y2="23"></line>
+			<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+			<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+			<line x1="1" y1="12" x2="3" y2="12"></line>
+			<line x1="21" y1="12" x2="23" y2="12"></line>
+			<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+			<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+		</svg>
+		<svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+		</svg>
+	</button>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1 class="r-fit-text">2. Tipos de datos básicos, control de flujo y funciones</h1>
+				<small>Esta va a ser una clase con bastante contenido, so lock in</small>
+			</section>
+
+			<section style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+				<h3>En la clase de hoy veremos...</h3>
+				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+					<div class="fragment" style="flex: 1; text-align: center;">
 						<p>¿Qué <b>tipos de variables básicas</b> están disponibles y qué podemos hacer con ellas?</p>
 						<img src="media/2/variables_meme.jpg" alt="Meme 1">
-					  </div>
-					  <div class="fragment" style="flex: 1; text-align: center;">
+					</div>
+					<div class="fragment" style="flex: 1; text-align: center;">
 						<p>¿Cómo organizar el código en <b>funciones</b> y estructuras de <b>control de flujo</b>?</p>
 						<img src="media/2/control_flow.png" alt="Meme 2">
-					  </div>
-					  <div class="fragment" style="flex: 1;  text-align: center;">
-						<p>¿De qué <b>estructuras de datos</b> dispone Python?</p>
-						<img src="media/2/data_struct.png" alt="Meme 3">
-					  </div>
 					</div>
-				</section>
+					<div class="fragment" style="flex: 1;  text-align: center;">
+						<p style="margin-bottom: 80px;">¿De qué <b>estructuras de datos</b> dispone Python?</p>
+						<img src="media/2/data_struct.png" alt="Meme 3">
+					</div>
+				</div>
+			</section>
 
-				<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
-					<h3>Variables en Python</h3>
-					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-						<div style="flex: 2; text-align: left;">
-							<ul>
-								<li>No hace falta declarar variables antes de usarlas, ni especificar su tipo</li>
-								<li><b>Tipado dinámico</b></li>
-								<li>Podemos usar <span class="monospace">type()</span> para ver qué tipo tenemos en cada variable</li>
-								<li>Formato específico: los nombres de variables no pueden contener espacios y no pueden empezar con números ni con <span class="monospace">__</span></li>
-								<li>No hay constantes como tal, el convenio para escribir variables que no deberían cambiar es en mayúsculas</li>
-							</ul>
-						</div>
-						<div  style="flex: 2; text-align: left;">
-							<pre><code class="python" data-line-numbers>
+			<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+				<h3>Variables en Python</h3>
+				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+					<div style="flex: 2; text-align: left;">
+						<ul>
+							<li>No hace falta declarar variables antes de usarlas, ni especificar su tipo</li>
+							<li><b>Tipado dinámico</b></li>
+							<li>Podemos usar <span class="monospace">type()</span> para ver qué tipo tenemos en cada
+								variable</li>
+							<li>Formato específico: los nombres de variables no pueden contener espacios y no pueden
+								empezar con números ni con <span class="monospace">__</span></li>
+							<li>No hay constantes como tal, el convenio para escribir variables que no deberían cambiar
+								es en mayúsculas</li>
+						</ul>
+					</div>
+					<div style="flex: 2; text-align: left;">
+						<pre><code class="python" data-line-numbers>
 	int x = 5	    				# Error!
 	x = 5		    
 	x = "test"						# Podemos cambiar el tipo de x
@@ -98,58 +105,73 @@
 	SPEED_OF_LIGHT = 299_792_458	# Constante
 	
 							</code></pre>
-						</div>
 					</div>
-				</section>
-				<section style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
-					<h3>Tipos de datos numéricos</h3>
-					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-						<div style="flex: 2; text-align: left;">
-							Existen varios tipos:
-							<br>
-							<ul>
-								<div class="fragment">
-									<li>$a \in \mathbb{Z} \rightarrow $ <span style="font-family:monospace;">int</span></li>
-									Al contrario que en otros lenguajes, no hay ningún límite en el tamaño de los enters, pero fuera de $[-2^{63}, 2^{63}]$
-									las operaciones serán mucho más lentas. Para números grandes podemos usar: <span style="font-family:monospace;">x = 10_000_000_000</span>
-								</div>
-								<div class="fragment">
-									<li>$a \in \mathbb{R} \rightarrow $ <span style="font-family:monospace;">float</span></li> 
-									La representación es en punto flotante de doble precisión (números máquina $\neq \mathbb{R}$).
-								</div>
-
-								<div class="fragment">
-									<li>$a \in \mathbb{C} \rightarrow $ <span style="font-family:monospace;">complex</span></li>
-									Se comportan igual que un par de floats, pero podemos usar operaciones de números complejos, Python
-									usa la unidad imaginaria j en vez de i, por ejemplo $a = 3 + 5j$.
-								</div>
-							</ul>
-							<br>
-							<br>
+				</div>
+			</section>
+			<section style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+				<h3>Tipos de datos numéricos</h3>
+				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+					<div style="flex: 2; text-align: left;">
+						Existen varios tipos:
+						<br>
+						<ul>
 							<div class="fragment">
-								Las interacciones entre <span style="font-family:monospace;">int</span> y <span style="font-family:monospace;">float</span> son automáticas, 
-								por ejemplo al sumar un <span style="font-family:monospace;">int</span> y un <span style="font-family:monospace;">float</span> el resultado será un <span style="font-family:monospace;">float</span>.	
+								<li>$a \in \mathbb{Z} \rightarrow $ <span style="font-family:monospace;">int</span></li>
+								Al contrario que en otros lenguajes, no hay ningún límite en el tamaño de los enters,
+								pero fuera de $[-2^{63}, 2^{63}]$
+								las operaciones serán mucho más lentas. Para números grandes podemos usar: <span
+									style="font-family:monospace;">x = 10_000_000_000</span>
+							</div>
+							<div class="fragment">
+								<li>$a \in \mathbb{R} \rightarrow $ <span style="font-family:monospace;">float</span>
+								</li>
+								La representación es en punto flotante de doble precisión (números máquina $\neq
+								\mathbb{R}$).
 							</div>
 
+							<div class="fragment">
+								<li>$a \in \mathbb{C} \rightarrow $ <span style="font-family:monospace;">complex</span>
+								</li>
+								Se comportan igual que un par de floats, pero podemos usar operaciones de números
+								complejos, Python
+								usa la unidad imaginaria j en vez de i, por ejemplo $a = 3 + 5j$.
+							</div>
+						</ul>
+						<br>
+						<br>
+						<div class="fragment">
+							Las interacciones entre <span style="font-family:monospace;">int</span> y <span
+								style="font-family:monospace;">float</span> son automáticas,
+							por ejemplo al sumar un <span style="font-family:monospace;">int</span> y un <span
+								style="font-family:monospace;">float</span> el resultado será un <span
+								style="font-family:monospace;">float</span>.
 						</div>
+
 					</div>
-				</section>
-				
-				<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
-					<h3>Operadores aritméticos</h3>
-					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-						<div style="flex: 2; text-align: left;">
-							<ul>
-								<li><span style="font-family:monospace;">{+, -, *, /}</span> operaciones usuales</li>
-								<li><span style="font-family:monospace;">{//, %}</span> implementan la división entera y el resto</li>
-								<li><span style="font-family:monospace;">**</span> es la exponenciación. También podemos usar la función <span style="font-family:monospace;">pow(x, y)</span></li>
-								<li> Todos estos operadores pueden ser combinados con <span style="font-family:monospace;">==</span> para operar sobre la variable</li>
-							</ul>
-							Las reglas de precedencia entre operadores son las mismas que en matemáticas, pero podemos usar paréntesis para forzar el orden de las operaciones.
-							(Mucha) más información en: <a href="https://docs.python.org/3/reference/expressions.html#operator-precedence" target="_blank">docs.python.org</a>
-						</div>
-						<div  style="flex: 2; text-align: left;">
-							<pre><code class="python" data-line-numbers>
+				</div>
+			</section>
+
+			<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+				<h3>Operadores aritméticos</h3>
+				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+					<div style="flex: 2; text-align: left;">
+						<ul>
+							<li><span style="font-family:monospace;">{+, -, *, /}</span> operaciones usuales</li>
+							<li><span style="font-family:monospace;">{//, %}</span> implementan la división entera y el
+								resto</li>
+							<li><span style="font-family:monospace;">**</span> es la exponenciación. También podemos
+								usar la función <span style="font-family:monospace;">pow(x, y)</span></li>
+							<li> Todos estos operadores pueden ser combinados con <span
+									style="font-family:monospace;">==</span> para operar sobre la variable</li>
+						</ul>
+						Las reglas de precedencia entre operadores son las mismas que en matemáticas, pero podemos usar
+						paréntesis para forzar el orden de las operaciones.
+						(Mucha) más información en: <a
+							href="https://docs.python.org/3/reference/expressions.html#operator-precedence"
+							target="_blank">docs.python.org</a>
+					</div>
+					<div style="flex: 2; text-align: left;">
+						<pre><code class="python" data-line-numbers>
 	x, y, z = 5, 3, 2
 
 	print((x + y) * z / 4)			# 4.0 type(int/int) = float
@@ -163,23 +185,25 @@
 	y = 10**4				# 10000
 
 							</code></pre>
-						</div>
 					</div>
-				</section>
-				
-				<section style="display: flex; flex-direction: column; justify-content: space-between;">
-					<div style="display: flex; gap: 2rem; align-items: flex-start;">
-					  <h2>"Strings"</h2>
-					  <span style="text-align: left;">
-						Una <span class="monospace">string</span> (o cadena) no es más que una secuencia de carácteres, por ejemplo,
+				</div>
+			</section>
+
+			<section style="display: flex; flex-direction: column; justify-content: space-between;">
+				<div style="display: flex; gap: 2rem; align-items: flex-start;">
+					<h2>"Strings"</h2>
+					<span style="text-align: left;">
+						Una <span class="monospace">string</span> (o cadena) no es más que una secuencia de carácteres,
+						por ejemplo,
 						una palabra, frase, o línea de un archivo de texto.
-					  </span>
+					</span>
 
-					</div>
-					<div style="display:flex; flex-direction: column; text-align: left;">
-						<span>Existen varias formas de definir strings:</span>
+				</div>
+				<div style="display:flex; flex-direction: column; text-align: left;">
+					<span>Existen varias formas de definir strings:</span>
 
-						<div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+					<div
+						style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
 						<pre><code class="python" data-line-numbers>
 		x = "Matemáticas " 	# Comillas simples
 		y = 'USC'						# Comillas dobles
@@ -194,53 +218,59 @@
 
 						</code></pre>
 						<img src="/media/2/string_rust_vs_python.png" width="300px">
-						</div>
 					</div>
-				</section>
-				<section>
-					<h3>Strings: slicing</h3>
-					<p style="text-align: left;">
-						Podemos acceder a subcadenas (y a los elementos de muchas otras estructuras de datos) de una string con el operador <span style="font-family:monospace;">[]</span>. 
-						Los índices de strings (y de arrays, listas, ...) están en el rango $[0, len(s)-1]$ <span style="font-size: 1rem;">(Python >> MATLAB)</span>
-					</p>
-					<pre><code class="python" data-line-numbers>
+				</div>
+			</section>
+			<section>
+				<h3>Strings: slicing</h3>
+				<p style="text-align: left;">
+					Podemos acceder a subcadenas (y a los elementos de muchas otras estructuras de datos) de una string
+					con el operador <span style="font-family:monospace;">[]</span>.
+					Los índices de strings (y de arrays, listas, ...) están en el rango $[0, len(s)-1]$ <span
+						style="font-size: 1rem;">(Python >> MATLAB)</span>
+				</p>
+				<pre><code class="python" data-line-numbers>
 	x = "Hola"
 	print(x[0])		# H
 	print(x[1])		# o
 	print(x[0], x[1], x[2], x[3]) 	# H o l a	
 
 					</code></pre>
-					<p style="text-align: left;">También podemos usar [:] para especificar un rango de índices</p>
-					<pre><code class="python" data-line-numbers>
+				<p style="text-align: left;">También podemos usar [:] para especificar un rango de índices</p>
+				<pre><code class="python" data-line-numbers>
 	print(x[1:3])		# ol
 	print(x[:2])		# Ho
 	print(x[2:])		# la
 
 					</code></pre>
-					<p style="text-align: left;">El slicing en Python es muy flexible, podemos usar <b>índices negativos</b> que empiezan a contar desde el final de la string:</p>
-					<pre><code class="python" data-line-numbers>
+				<p style="text-align: left;">El slicing en Python es muy flexible, podemos usar <b>índices negativos</b>
+					que empiezan a contar desde el final de la string:</p>
+				<pre><code class="python" data-line-numbers>
 	x = "índices negativos"
 	print(x[-1])			# s    (último carácter)	
 	print(x[-2:])			# os   (desde el penúltimo hasta el final)
 	print(x[1:-1])		# ndices negativo (desde el segundo hasta el penúltimo)
 
 				</code></pre>
-				</section>
-				
-				<section>
-					<h3>Strings: métodos estándar</h3>
-					<p>La librería estándar de Python provee muchos métodos útiles para trabajar con strings:</p>
-					<img src="media/2/string-methods.jpg" alt="Métodos de strings">
-					<p>
-						Esta imagen ni siquiera está completa, por lo que solo veremos algunos de los métodos más útiles, por supuesto la referencia completa está en: 
-						<a href="https://docs.python.org/3/library/stdtypes.html#string-methods" target="_blank">docs.python.org</a>
-					</p>
-				</section>
-				<section style="height: 100%;">
-					<h3>Strings: métodos estándar</h3>
-					<p>Este es un ejemplo de una de las características por las que Python es más apreciado: los nombres de las funciones son intuitivos y se pueden deducir 
-						comportamiento de la función..</p>
-					<pre><code class="python" data-line-numbers="2-7|9-15|17-24|27-33|35-40">
+			</section>
+
+			<section>
+				<h3>Strings: métodos estándar</h3>
+				<p>La librería estándar de Python provee muchos métodos útiles para trabajar con strings:</p>
+				<img src="media/2/string-methods.jpg" alt="Métodos de strings">
+				<p>
+					Esta imagen ni siquiera está completa, por lo que solo veremos algunos de los métodos más útiles,
+					por supuesto la referencia completa está en:
+					<a href="https://docs.python.org/3/library/stdtypes.html#string-methods"
+						target="_blank">docs.python.org</a>
+				</p>
+			</section>
+			<section style="height: 100%;">
+				<h3>Strings: métodos estándar</h3>
+				<p>Este es un ejemplo de una de las características por las que Python es más apreciado: los nombres de
+					las funciones son intuitivos y se pueden deducir
+					comportamiento de la función..</p>
+				<pre><code class="python" data-line-numbers="2-7|9-15|17-24|27-33|35-40">
 						ada = "ada lovelace"
 						# Métodos para cambiar capitalización
 						print(ada.capitalize())		# Ada lovelace
@@ -282,21 +312,22 @@
 
 					</code></pre>
 
-					<p>Los métodos se pueden encadenar y se ejecutan en el orden en el que se escriben, por ejemplo:</p>
-					<pre><code class="python" data-line-numbers>
+				<p>Los métodos se pueden encadenar y se ejecutan en el orden en el que se escriben, por ejemplo:</p>
+				<pre><code class="python" data-line-numbers>
 	print("   hola   ".strip().capitalize())	# Hola
 
 					</code></pre>
-						
-				</section>
-				<section>
-					<h3>Strings: "fun" facts</h3>
-					<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-						
-						<!-- Escape Characters -->
-						<div style="text-align: left;" class="fragment">
-							<span>Algunos carácteres tienen un significado especial en Python: los podemos escapar con "\":</span>
-							<pre><code class="python" data-line-numbers>
+
+			</section>
+			<section>
+				<h3>Strings: "fun" facts</h3>
+				<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+
+					<!-- Escape Characters -->
+					<div style="text-align: left;" class="fragment">
+						<span>Algunos carácteres tienen un significado especial en Python: los podemos escapar con
+							"\":</span>
+						<pre><code class="python" data-line-numbers>
 	print("instagram\nreels")		# instagram
 															# reels
 	print("value:\t10")        	# value:    10
@@ -304,33 +335,34 @@
 	print("C:\\Users\\pablo")   # C:\Users\pablo
 
 							</code></pre>
-						</div>
-				
-						<!-- Unicode & Emojis -->
-						<div style="text-align: left;" class="fragment">
-							<p>Se pueden usar carácteres de todo tipo en strings!</p>
-							<pre><code class="python" data-line-numbers>
+					</div>
+
+					<!-- Unicode & Emojis -->
+					<div style="text-align: left;" class="fragment">
+						<p>Se pueden usar carácteres de todo tipo en strings!</p>
+						<pre><code class="python" data-line-numbers>
 	epic_string = "🐉 传说中的龙在烈焰中飞翔，守护着远古的宝藏 🔥✨"  
 	print(epic_string)
 
 							</code></pre>
-						</div>
-				
-						<!-- String Operators -->
-						<div style="text-align: left;" class="fragment">
-							<span>Podemos usar los operadores aritméticos <code>+</code> y <code>*</code> con strings:</span>
-							<pre><code class="python" data-line-numbers>
+					</div>
+
+					<!-- String Operators -->
+					<div style="text-align: left;" class="fragment">
+						<span>Podemos usar los operadores aritméticos <code>+</code> y <code>*</code> con
+							strings:</span>
+						<pre><code class="python" data-line-numbers>
 	print("Hola" + " mundo")  # Hola mundo
 	print("Hola" * 3)         # HolaHolaHola
 
 							</code></pre>
-						</div>
-				
-						<!-- String Immutability -->
-						<div style="text-align: left;" class="fragment">
-							Las strings son <b>inmutables</b>!<br> 
-							<small>(Por razones de eficiencia, seguridad, etc.)</small>
-							<pre><code class="python" data-line-numbers>
+					</div>
+
+					<!-- String Immutability -->
+					<div style="text-align: left;" class="fragment">
+						Las strings son <b>inmutables</b>!<br>
+						<small>(Por razones de eficiencia, seguridad, etc.)</small>
+						<pre><code class="python" data-line-numbers>
 	x = "Hola"
 	x[0] = "h"  # Error!
 	
@@ -339,22 +371,24 @@
 	x = x + " mundo"
 
 							</code></pre>
-						</div>
-				
 					</div>
-				</section>
-				
-				<!--TODO: al final de lo demás podemos poner más detalles sobre f-strings-->
-				<section>
-					<h3>f-strings</h3>
-					<ul>
-						<li>Útiles para imprimir tablas de contenido, formatear fecha y hora, etc.</li>
-						<li>¡También hacen más sencillo encontrar bugs!</li>
-						<li>Sintaxis muy sencilla:  <span class="monospace"> <b>  f</b>"texto normal {expresión} ..."</span></li>
-						<li>Muchos indicadores de formato adicionales: <a href="https://fstring.help/cheat/" target="_blank" >cheat sheet</a></li>
-					</ul>
-					<div class="fragment">
-						<pre><code class="python" data-line-numbers>
+
+				</div>
+			</section>
+
+			<!--TODO: al final de lo demás podemos poner más detalles sobre f-strings-->
+			<section>
+				<h3>f-strings</h3>
+				<ul>
+					<li>Útiles para imprimir tablas de contenido, formatear fecha y hora, etc.</li>
+					<li>¡También hacen más sencillo encontrar bugs!</li>
+					<li>Sintaxis muy sencilla: <span class="monospace"> <b> f</b>"texto normal {expresión} ..."</span>
+					</li>
+					<li>Muchos indicadores de formato adicionales: <a href="https://fstring.help/cheat/"
+							target="_blank">cheat sheet</a></li>
+				</ul>
+				<div class="fragment">
+					<pre><code class="python" data-line-numbers>
 	x, y, cheese = 2, 3, "we ❤️ cheese"
 	print(f"La suma de {x} y {y} es {x + y}")
 	print(f"La longitud de la string es {len(cheese)}") 
@@ -370,48 +404,51 @@
 	print(f"{'In Rainbows':&lt;20} {'2007':&lt;10} {'Alternative Rock':&lt;15}") 	# In Rainbows         2007      Alternative Rock     
 
 						</code></pre>
+				</div>
+			</section>
+			<section data-auto-animate>
+				<h2>Un último tipo de datos básico: Booleanos</h2>
+				<p>Los booleanos son un tipo de datos que solo puede tener dos valores: <span
+						class="monospace">True</span> o <span class="monospace">False</span></p>
+				<p>Se usan principalmente en estructuras de control de flujo y en comparaciones</p>
+			</section>
+			<section data-auto-animate>
+				<h2>Un último tipo de datos básico: Booleanos</h2>
+				<p>Los booleanos son un tipo de datos que solo puede tener dos valores: <span
+						class="monospace">True</span> o <span class="monospace">False</span></p>
+				<p>Se usan principalmente en estructuras de control de flujo y en comparaciones</p>
+				<br>
+				<div>
+					<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap:20px;">
+						<div><span class="monospace">a == b</span></div>
+						<div><span class="monospace">a != b</span></div>
+						<div><span class="monospace">a &gt; b</span></div>
+						<div><span class="monospace">a &lt; b</span></div>
+						<div><span class="monospace">a &gt;= b</span></div>
+						<div><span class="monospace">a &lt;= b</span></div>
 					</div>
-				</section>
-				<section data-auto-animate>
-					<h2>Un último tipo de datos básico: Booleanos</h2>
-					<p>Los booleanos son un tipo de datos que solo puede tener dos valores: <span class="monospace">True</span> o <span class="monospace">False</span></p>
-					<p>Se usan principalmente en estructuras de control de flujo y en comparaciones</p>
-				</section>
-				<section data-auto-animate>
-					<h2>Un último tipo de datos básico: Booleanos</h2>
-					<p>Los booleanos son un tipo de datos que solo puede tener dos valores: <span class="monospace">True</span> o <span class="monospace">False</span></p>
-					<p>Se usan principalmente en estructuras de control de flujo y en comparaciones</p>
 					<br>
-					<div>
-						<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap:20px;">
-							<div><span class="monospace">a == b</span></div>
-							<div><span class="monospace">a != b</span></div>
-							<div><span class="monospace">a &gt; b</span></div>
-							<div><span class="monospace">a &lt; b</span></div>
-							<div><span class="monospace">a &gt;= b</span></div>
-							<div><span class="monospace">a &lt;= b</span></div>
-						</div>
-						<br>
-						<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap:20px;" class="fragment">
-							<div><span class="monospace">cond1 and cond2</span></div>
-							<div><span class="monospace">cond1 or cond2</span></div>
-							<div><span class="monospace">not cond</span></div>
-						</div>
-						<br>
-						<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap:20px;" class="fragment">
-							<div><span class="monospace">in</span></div>
-							<div><span class="monospace">not in</span></div>
-							<div><span class="monospace">is</span></div>
-							<div><span class="monospace">is not</span></div>
-						</div>
+					<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap:20px;" class="fragment">
+						<div><span class="monospace">cond1 and cond2</span></div>
+						<div><span class="monospace">cond1 or cond2</span></div>
+						<div><span class="monospace">not cond</span></div>
 					</div>
-				</section>
-				<section>
-					<h3>Booleanos y comparaciones</h3>
-					<p>Por supuesto, podemos comparar strings y otros tipos de datos</p>
-					<p>Para negar un booleano, usamos <span class="monospace">not</span></p>
-					<div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-						<pre><code class="python" data-line-numbers="1-7|9-14|17-23" style="height: 100%;">
+					<br>
+					<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap:20px;" class="fragment">
+						<div><span class="monospace">in</span></div>
+						<div><span class="monospace">not in</span></div>
+						<div><span class="monospace">is</span></div>
+						<div><span class="monospace">is not</span></div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h3>Booleanos y comparaciones</h3>
+				<p>Por supuesto, podemos comparar strings y otros tipos de datos</p>
+				<p>Para negar un booleano, usamos <span class="monospace">not</span></p>
+				<div
+					style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+					<pre><code class="python" data-line-numbers="1-7|9-14|17-23" style="height: 100%;">
 	# Operadores lógicos
 	print(3.14 != 3.1415)			# True
 	print(not True)						# False
@@ -435,24 +472,28 @@
 	print(bool("hola"))				# True
 					
 						</code></pre>
-						<img src="media/2/boolean_troll.webp" width="600px">
-					</div>
-				</section>
-				<section>
-					<h1 >Estructuras de datos</h1>
-				</section>
-				<section>
-					<div style="display: flex; flex-direction: row; gap: 30px; align-items: flex-start;"> 
-						<h2>Listas</h2>
-						<p style="text-align: left; margin: 0;">Las listas son una de las estructuras más simples y flexibles del lenguaje, y actúan de forma similar a los arrays de otros lenguajes: <span class="monospace">lista = [1, "python", [1,3]]</span></p>
-					</div>
-					<div>Son aplicaciones entre los naturales y un conjunto de elementos, $f: \{0, 1, \dots, N-1\} \to X$</div>
-					<ul>
-						<li>Colección de elementos <b>ordenada</b></li>
-						<li>Los elementos pueden ser <b>cualquier</b> cosa (incluso otras listas o estructuras)</li>
-						<li>Se definen con corchetes y se accede a sus elementos de forma similar a los arrays o vectores de otros lenguajes</li>
-					</ul>
-					<pre><code class="python" data-line-numbers>
+					<img src="media/2/boolean_troll.webp" width="600px">
+				</div>
+			</section>
+			<section>
+				<h1>Estructuras de datos</h1>
+			</section>
+			<section>
+				<div style="display: flex; flex-direction: row; gap: 30px; align-items: flex-start;">
+					<h2>Listas</h2>
+					<p style="text-align: left; margin: 0;">Las listas son una de las estructuras más simples y
+						flexibles del lenguaje, y actúan de forma similar a los arrays de otros lenguajes: <span
+							class="monospace">lista = [1, "python", [1,3]]</span></p>
+				</div>
+				<div>Son aplicaciones entre los naturales y un conjunto de elementos, $f: \{0, 1, \dots, N-1\} \to X$
+				</div>
+				<ul>
+					<li>Colección de elementos <b>ordenada</b></li>
+					<li>Los elementos pueden ser <b>cualquier</b> cosa (incluso otras listas o estructuras)</li>
+					<li>Se definen con corchetes y se accede a sus elementos de forma similar a los arrays o vectores de
+						otros lenguajes</li>
+				</ul>
+				<pre><code class="python" data-line-numbers>
 	# Crear una lista
 	lista = [1, 1, 2, 3]
 	# Añadir elementos
@@ -465,13 +506,16 @@
 	print(lista[1:3])	# [1, 2]
 
 				</code></pre>
-				</section>
-				<section>
-					<h3>Listas</h3>
-					<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;" class="fragment">
-							<p style="margin: 0;">Se pueden añadir elementos con <span class="monospace">.append()</span> y <span class="monospace">.insert()</span></p>
-							<pre style="margin: 0"><code class="python" data-line-numbers>
+			</section>
+			<section>
+				<h3>Listas</h3>
+				<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+					<div style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;"
+						class="fragment">
+						<p style="margin: 0;">Se pueden añadir elementos con <span class="monospace">.append()</span> y
+							<span class="monospace">.insert()</span>
+						</p>
+						<pre style="margin: 0"><code class="python" data-line-numbers>
 	# Append añade un elemento al final
 	lista = ["mira", "wassap"]
 	lista.append("bro")		# ["mira", "wassap", "bro"]
@@ -479,25 +523,29 @@
 	lista.insert(1, "ahora")	# ["mira", "ahora", "wassap", "bro"]
 
 							</code></pre>
-							<p style="margin: 0;">Y borrar con <span class="monospace">del</span> y <span class="monospace"> .pop() </span></p>
-							<pre style="margin: 0"><code class="python" data-line-numbers>
+						<p style="margin-top: 40px; margin-bottom: 0; margin-left: 0; margin-right: 0;">Y borrar con
+							<span class="monospace">del</span> y <span class="monospace"> .pop() </span>
+						</p>
+						<pre style="margin: 0"><code class="python" data-line-numbers>
 	lista = ["audi", "bmw", "mercedes"]
 	del lista[1]
 	print(lista)	# ["audi", "mercedes"]
 
 							</code></pre>
-						</div>
-						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem;" class="fragment">
-							<p style="margin: 0">Se pueden inicializar de muchas formas:</p>
-							<pre style="margin: 0"><code class="python" data-line-numbers>
+					</div>
+					<div style="display: flex; text-align: left; flex-direction: column; gap:2rem;" class="fragment">
+						<p style="margin: 0">Se pueden inicializar de muchas formas:</p>
+						<pre style="margin: 0"><code class="python" data-line-numbers>
 	lista = list(1, 2, 3)   # [1, 2, 3]
 	lista = list(range(10)) # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 	lista = list("hola")    # ['h', 'o', 'l', 'a']
 	lista = [0] * 10				# [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 							</code></pre>
-							<p style="margin: 0">Y podemos usar los condicionales <span class="monospace">in</span> y <span class="monospace">not in</span>:</p>
-							<pre style="margin: 0"><code class="python" data-line-numbers>
+						<p style="margin-top: 40px; margin-bottom: 0; margin-left: 0; margin-right: 0;">Y podemos usar
+							los condicionales <span class="monospace">in</span> y <span class="monospace">not in</span>:
+						</p>
+						<pre style="margin: 0"><code class="python" data-line-numbers>
 	frutas = ["manzana", "banana", "cereza", "uva"]
 
 	if "banana" in frutas:
@@ -506,14 +554,14 @@
 	if "kiwi" not in frutas:
 		print("Cáspita! El kiwi no está en la lista de frutas.")
 	
-							</code></pre>			
-						</div>
+							</code></pre>
 					</div>
-				</section>
-				<section>
-					<h3>Listas</h3>
-					<p style="text-align: left;">Por supuesto, podemos ordenar los elementos:</p>
-					<pre><code class="python" data-line-numbers>
+				</div>
+			</section>
+			<section>
+				<h3>Listas</h3>
+				<p style="text-align: left;">Por supuesto, podemos ordenar los elementos:</p>
+				<pre><code class="python" data-line-numbers>
 	lista = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
 	lista.sort() 
 	print(lista) 	# [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
@@ -527,27 +575,30 @@
 	sms.sort()	# Error!
 
 					</code></pre>
-					<br>
-					<p style="text-align: left;">Y también podemos hacer otras operaciones como invertir el orden:</p>
-					<pre><code class="python" data-line-numbers>
+				<br>
+				<p style="text-align: left;">Y también podemos hacer otras operaciones como invertir el orden:</p>
+				<pre><code class="python" data-line-numbers>
 	lista = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
 	lista.reverse()
 	print(lista)	# [5, 3, 5, 6, 2, 9, 5, 1, 4, 1, 3]
 
 					</code></pre>
-				</section>
-				<section>
-					<div style="display: flex; flex-direction: row; gap: 30px; align-items: flex-start;"> 
-						<h2>Tuplas</h2>
-						<p style="text-align: left; margin: 0;">Las tuplas son una estructura curiosa, se comportan de forma similar a las listas pero son <b>inmutables</b>: <span class="monospace">tupla = (1, "python", [1,3])</span></p>
-					</div>
-					<div>Se podría decir que una tupla funciona como un producto cartesiano (inmutable) $X_1 \times X_2 \times \dots \times X_n$.</div>
-					<ul>
-						<li>Se pueden definir con o sin paréntesis</li>
-						<li>Su uso principal: poder declarar varias variables en una sola línea</li>
-						<li>También se usan para poder devolver varias variables en una función (más adelante...)</li>
-					</ul>
-					<pre><code class="python" data-line-numbers>
+			</section>
+			<section>
+				<div style="display: flex; flex-direction: row; gap: 30px; align-items: flex-start;">
+					<h2>Tuplas</h2>
+					<p style="text-align: left; margin: 0;">Las tuplas son una estructura curiosa, se comportan de forma
+						similar a las listas pero son <b>inmutables</b>: <span class="monospace">tupla = (1, "python",
+							[1,3])</span></p>
+				</div>
+				<div>Se podría decir que una tupla funciona como un producto cartesiano (inmutable) $X_1 \times X_2
+					\times \dots \times X_n$.</div>
+				<ul>
+					<li>Se pueden definir con o sin paréntesis</li>
+					<li>Su uso principal: poder declarar varias variables en una sola línea</li>
+					<li>También se usan para poder devolver varias variables en una función (más adelante...)</li>
+				</ul>
+				<pre><code class="python" data-line-numbers>
 	tupla = (1, 1, 2, 3)
 	print(tupla[0])
 	print(tupla[-1])
@@ -561,25 +612,30 @@
 	print(x, y)		# 2 1
 
 					</code></pre>
-				</section>
-				<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
-                    <h2>Sets</h2>
-					<p>Implementa conjuntos de elementos no repetidos sin ordenar (o sea, un conjunto $X$ como los de toda la vida)</p>
-					<p>La sintaxis para declararlos es <span class="monospace">conj = {'a', 1, 'b'}</span></p>
-                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-                        <div style="flex: 2.5; text-align: left;">
-							Sean $A$ y $B$ dos conjuntos (que en Python son <span class="monospace">a, b</span>), entonces tenemos las siguientes operaciones:
-                            <ul>
-                                <li>Unión: $ A \cup B \longleftrightarrow$ <span class="monospace"> a | b</span></li>
-                                <li>Intersección: $ A \cap B \longleftrightarrow$ <span class="monospace"> a & b</span></li>
-                                <li>Diferencia: $ A \setminus B \longleftrightarrow$ <span class="monospace"> a \ b</span></li>
-                                <li>Diferencia simétrica: $ (A \setminus B) \cup (B \setminus A) \longleftrightarrow$ <span class="monospace"> a ^ b</span></li>
-                            </ul>
-							<br>
-							También podemos añadir elementos con <span class="monospace">.add()</span> y borrarlos con <span class="monospace">.remove()</span>. La sintaxis es igual que para listas.
-                        </div>
-                        <div  style="flex: 2; text-align: left;">
-                            <pre><code class="python" data-line-numbers>
+			</section>
+			<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+				<h2>Sets</h2>
+				<p>Implementa conjuntos de elementos no repetidos sin ordenar (o sea, un conjunto $X$ como los de toda
+					la vida)</p>
+				<p>La sintaxis para declararlos es <span class="monospace">conj = {'a', 1, 'b'}</span></p>
+				<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+					<div style="flex: 2.5; text-align: left;">
+						Sean $A$ y $B$ dos conjuntos (que en Python son <span class="monospace">a, b</span>), entonces
+						tenemos las siguientes operaciones:
+						<ul>
+							<li>Unión: $ A \cup B \longleftrightarrow$ <span class="monospace"> a | b</span></li>
+							<li>Intersección: $ A \cap B \longleftrightarrow$ <span class="monospace"> a & b</span></li>
+							<li>Diferencia: $ A \setminus B \longleftrightarrow$ <span class="monospace"> a \ b</span>
+							</li>
+							<li>Diferencia simétrica: $ (A \setminus B) \cup (B \setminus A) \longleftrightarrow$ <span
+									class="monospace"> a ^ b</span></li>
+						</ul>
+						<br>
+						También podemos añadir elementos con <span class="monospace">.add()</span> y borrarlos con <span
+							class="monospace">.remove()</span>. La sintaxis es igual que para listas.
+					</div>
+					<div style="flex: 2; text-align: left;">
+						<pre><code class="python" data-line-numbers>
 	primes = {2, 3, 5, 7, 11}
 	odds = {1, 3, 5, 7, 9, 11}
 	
@@ -589,22 +645,27 @@
 	print(primes ^ odds)		# {1, 2, 9}
 
                             </code></pre>
-                        </div>
-                    </div>
-                </section>
-				<section>
-					<div style="display:flex; flex-direction: column; text-align: left;">
-						<div style="display: flex; align-items: flex-start; gap:2rem;">
-							<h2>Diccionarios</h2>
-							<div style="display: flex; flex-direction: column; align-items: flex-start; align-items: start;">
-								<small>a.k.a. arrays asociativos, HashMaps, ... en otros lenguajes</small>
-								Es una estructura de datos muy útil, que nos permite almacenar pares clave (key) + valor.
-							</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div style="display:flex; flex-direction: column; text-align: left;">
+					<div style="display: flex; align-items: flex-start; gap:2rem;">
+						<h2>Diccionarios</h2>
+						<div
+							style="display: flex; flex-direction: column; align-items: flex-start; align-items: start;">
+							<small>a.k.a. arrays asociativos, HashMaps, ... en otros lenguajes</small>
+							Es una estructura de datos muy útil, que nos permite almacenar pares clave (key) + valor.
 						</div>
-						<p style="margin:0;">Un diccionario $d$ implementa una aplicación (mutable) entre un conjunto de keys $K$ y uno de valores $V$, <br>$d: K \to V$.</p>
-						<p style="margin:0;"> Son mutables, ordenados y no permiten tener varios valores para una misma <em>key</em></p>
-                        <div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-							<pre style="height: 450px;"><code class="python" data-line-numbers style="height: 100%;">
+					</div>
+					<p style="margin:0;">Un diccionario $d$ implementa una aplicación (mutable) entre un conjunto de
+						keys $K$ y uno de valores $V$, <br>$d: K \to V$.</p>
+					<p style="margin:0;"> Son mutables, ordenados y no permiten tener varios valores para una misma
+						<em>key</em>
+					</p>
+					<div
+						style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+						<pre style="height: 450px;"><code class="python" data-line-numbers style="height: 100%;">
 	# Crear un diccionario
 	datos = {"nombre": "Evariste", "apellido": "Galois", "edad": 20}
 
@@ -622,14 +683,15 @@
 	datos.clear()
 
 							</code></pre>
-							<img src="media/2/python-dict2.png" width="600px">
+						<img src="media/2/python-dict2.png" width="600px">
 					</div>
-				</section>
-				<section>
-					<div style="display: flex; flex-direction: column; align-items: left; text-align: left;">
-						<h3>Diccionarios</h3>
-						<p>Es muy común usar diccionarios junto a listas para representar listas de información estructurada:</p>
-						<pre><code class="python" data-line-numbers>
+			</section>
+			<section>
+				<div style="display: flex; flex-direction: column; align-items: left; text-align: left;">
+					<h3>Diccionarios</h3>
+					<p>Es muy común usar diccionarios junto a listas para representar listas de información
+						estructurada:</p>
+					<pre><code class="python" data-line-numbers>
 	# Lista de estudiantes con sus datos
 	estudiantes = [
 		{"nombre": "Pablo", "apellido": "Diaz", "edad": 23},	
@@ -640,8 +702,9 @@
 	print(estudiantes[0]["nombre"]) # Pablo
 
 						</code></pre>
-						<p>O usar diccionarios encadenados para representar estructuras más complejas (siguiendo la misma sintaxis que el formato <a href="https://es.wikipedia.org/wiki/JSON">JSON</a>):
-						<pre><code class="python" data-line-numbers>
+					<p>O usar diccionarios encadenados para representar estructuras más complejas (siguiendo la misma
+						sintaxis que el formato <a href="https://es.wikipedia.org/wiki/JSON">JSON</a>):
+					<pre><code class="python" data-line-numbers>
 	# Estructura de información más complicada
 	lenguajes = {
 		"C++": {"creador": "Bjarne Stroustrup", "año": 1985, "caracteristicas": ["rápido", "complicado"]},
@@ -650,13 +713,15 @@
 	}
 
 						</code></pre>
-						<small>Nota: en la siguiente clase veremos una forma más adecuada de representar datos estructurados, aunque esta representación es muy útil al leer o escribir ficheros</small>
-					</div>
-				</section>
-				<section>
-					<h3>Estructuras de datos</h3>
-					En todas estas estructuras de datos podemos ver si un elemento está dentro o no usando <span class="monospace">in</span> y <span class="monospace">not in</span>.
-					<pre><code class="python" data-line-numbers>
+					<small>Nota: en la siguiente clase veremos una forma más adecuada de representar datos
+						estructurados, aunque esta representación es muy útil al leer o escribir ficheros</small>
+				</div>
+			</section>
+			<section>
+				<h3>Estructuras de datos</h3>
+				En todas estas estructuras de datos podemos ver si un elemento está dentro o no usando <span
+					class="monospace">in</span> y <span class="monospace">not in</span>.
+				<pre><code class="python" data-line-numbers>
 	# Listas
 	lista = [1, 2, 3, 4, 5]
 	print(3 in lista)		# True
@@ -671,14 +736,15 @@
 	print("nombre" in datos)	# True
 
 					</code></pre>
-				</section>
-				<section>
-					<h1>Control de flujo</h1>
-				</section>
-				<section data-auto-animate>
-					<h2>Condicionales</h2>
-					<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span></p>
-					<pre data-id="code-animation"><code class="python" data-line-numbers="2-4">
+			</section>
+			<section>
+				<h1>Control de flujo</h1>
+			</section>
+			<section data-auto-animate>
+				<h2>Condicionales</h2>
+				<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span>
+				</p>
+				<pre data-id="code-animation"><code class="python" data-line-numbers="2-4">
 	tiempo = "lluvia"
 	if tiempo == "lluvia":
 		print("No sé si ir a Supertopo")
@@ -690,11 +756,12 @@
 		print("No sé qué tiempo hace")
 		
 					</code></pre>
-				</section>
-				<section data-auto-animate>
-					<h2>Condicionales</h2>
-					<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span></p>
-					<pre data-id="code-animation"><code class="python" data-line-numbers="2,5-6">
+			</section>
+			<section data-auto-animate>
+				<h2>Condicionales</h2>
+				<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span>
+				</p>
+				<pre data-id="code-animation"><code class="python" data-line-numbers="2,5-6">
 	tiempo = "sol"
 	if tiempo == "lluvia":
 		print("No sé si ir a Supertopo")
@@ -706,11 +773,12 @@
 		print("No sé qué tiempo hace")
 		
 					</code></pre>
-				</section>
-				<section data-auto-animate>
-					<h2>Condicionales</h2>
-					<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span></p>
-					<pre data-id="code-animation"><code class="python" data-line-numbers="2,7-8">
+			</section>
+			<section data-auto-animate>
+				<h2>Condicionales</h2>
+				<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span>
+				</p>
+				<pre data-id="code-animation"><code class="python" data-line-numbers="2,7-8">
 	tiempo = "tormenta"
 	if tiempo == "lluvia":
 		print("No sé si ir a Supertopo")
@@ -722,11 +790,12 @@
 		print("No sé qué tiempo hace")
 		
 					</code></pre>
-				</section>
-				<section data-auto-animate>
-					<h2>Condicionales</h2>
-					<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span></p>
-					<pre data-id="code-animation"><code class="python" data-line-numbers="2,9-10">
+			</section>
+			<section data-auto-animate>
+				<h2>Condicionales</h2>
+				<p>Los condicionales en Python siguen la estructura <span class="monospace">if ... elif ... else</span>
+				</p>
+				<pre data-id="code-animation"><code class="python" data-line-numbers="2,9-10">
 	tiempo = "tornado"
 	if tiempo == "lluvia":
 		print("No sé si ir a Supertopo")
@@ -738,18 +807,20 @@
 		print("No sé qué tiempo hace")
 		
 					</code></pre>
-				</section>
-				<section>
-					<div style="display:flex; flex-direction: column; align-items: flex-start;">
-						<h3>El operador ternario</h3>
-						<ul>
-							<li>En Python podemos simplificar condicionales sencillos usando el operador ternario: <span class="monospace">valor_si_cierto if condicion else valor_si_falso</span>:</li>
-							<li>No suele ser buena idea abusar de ellos para cosas complicadas, ya que dificultan la lectura del programa</li>
-						</ul>
-					</div>
-					<br>
-					<div style="display:flex; flex-direction: row; gap:2rem; align-items: flex-start;">
-						<pre style="flex:1;"><code class="python" data-line-numbers>
+			</section>
+			<section>
+				<div style="display:flex; flex-direction: column; align-items: flex-start;">
+					<h3>El operador ternario</h3>
+					<ul>
+						<li>En Python podemos simplificar condicionales sencillos usando el operador ternario: <span
+								class="monospace">valor_si_cierto if condicion else valor_si_falso</span>:</li>
+						<li>No suele ser buena idea abusar de ellos para cosas complicadas, ya que dificultan la lectura
+							del programa</li>
+					</ul>
+				</div>
+				<br>
+				<div style="display:flex; flex-direction: row; gap:2rem; align-items: flex-start;">
+					<pre style="flex:1;"><code class="python" data-line-numbers>
 	# Sintaxis: valor_si_cierto if condición else valor_si_falso
 	edad = 20
 	print("Puedes beber" if edad >= 18 else "No puedes beber")
@@ -757,42 +828,51 @@
 	print("par" if n % 2 == 0 else "impar")
 
 						</code></pre>
-						<p style="text-align: right; flex:1;">Una aclaración importante: <span class="monospace">=</span> es para asignar un valor a una variable, mientras que <span class="monospace">==</span> es para hacer comparaciones!</p>
-					</div>
-				</section>
-				<section>
-					<h2>Indentación</h2>
-					<p>En Python, la indentación es <b>obligatoria</b> y se usa para delimitar bloques de código. 
-					<pre><code class="python">
+					<p style="text-align: right; flex:1;">Una aclaración importante: <span class="monospace">=</span> es
+						para asignar un valor a una variable, mientras que <span class="monospace">==</span> es para
+						hacer comparaciones!</p>
+				</div>
+			</section>
+			<section>
+				<h2>Indentación</h2>
+				<p>En Python, la indentación es <b>obligatoria</b> y se usa para delimitar bloques de código.
+				<pre><code class="python">
 	if x == 1:
 	print("x es 1")  # Error de indentación
 					</code></pre>
-					<p>Puede parecer una tontería pero el programa no compila si no pones las tabulaciones bien</p>
-					<p>Si esto es buena decisión de diseño o son mejores los <em>curly braces</em> { } es un debate milenario</p>
-					<p>Por supuesto tiene que haber alguna forma de indicar jerarquía entre bloques de códigos una vez introduces condicionales, para evitar ambigüedad (problema del <a href="https://en.wikipedia.org/wiki/Dangling_else">dangling else</a>)</p>
-					<pre><code class="python">
+				<p>Puede parecer una tontería pero el programa no compila si no pones las tabulaciones bien</p>
+				<p>Si esto es buena decisión de diseño o son mejores los <em>curly braces</em> { } es un debate
+					milenario</p>
+				<p>Por supuesto tiene que haber alguna forma de indicar jerarquía entre bloques de códigos una vez
+					introduces condicionales, para evitar ambigüedad (problema del <a
+						href="https://en.wikipedia.org/wiki/Dangling_else">dangling else</a>)</p>
+				<pre><code class="python">
 	if x > 0:
 	if y > 0:
 	print("both positive")
 	else:
 	print("at least one non-positive") # de cuál if es este else?
 					</code></pre>
-				</section>
-				<section>
-					<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
-						<h2>Bucles</h2>
-						<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-							<div style="flex: 2; text-align: left;">
-								<ul>
-									<li>En Python existen dos tipos de bucles: <span class="monospace">for</span> y <span class="monospace">while</span></li>
-									<li><b>Los búcles <span class="monospace">for</span> funcionan distinto a otros lenguajes, solo iteran sobre estructuras de datos</b></li>
-									<li>Con la estructura <span class="monospace">range(start, end, skip)</span> podemos implementar bucles for como los de otros lenguajes</li>
-									<li>Podemos usar <span class="monospace">break</span> para salir de un bucle</li>
-									<li>Podemos usar <span class="monospace">continue</span> para saltar a la siguiente iteración</li>
-								</ul>
-							</div>
-							<div  style="flex: 2; text-align: left;">
-								<pre><code class="python" data-line-numbers="1-10|13-19">
+			</section>
+			<section>
+				<section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+					<h2>Bucles</h2>
+					<div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+						<div style="flex: 2; text-align: left;">
+							<ul>
+								<li>En Python existen dos tipos de bucles: <span class="monospace">for</span> y <span
+										class="monospace">while</span></li>
+								<li><b>Los búcles <span class="monospace">for</span> funcionan distinto a otros
+										lenguajes, solo iteran sobre estructuras de datos</b></li>
+								<li>Con la estructura <span class="monospace">range(start, end, skip)</span> podemos
+									implementar bucles for como los de otros lenguajes</li>
+								<li>Podemos usar <span class="monospace">break</span> para salir de un bucle</li>
+								<li>Podemos usar <span class="monospace">continue</span> para saltar a la siguiente
+									iteración</li>
+							</ul>
+						</div>
+						<div style="flex: 2; text-align: left;">
+							<pre><code class="python" data-line-numbers="1-10|13-19">
 	# Bucles sobre una lista
 	frutas = ["manzana", "platano", "naranja", "limón", "kiwi"]
 	for fruta in frutas:
@@ -812,17 +892,19 @@
 		print(i)
 	
 								</code></pre>
-							</div>
 						</div>
-					</section>
+					</div>
 				</section>
+			</section>
 
-				<section>
-					<h3>Bucles for</h3>
-					<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;" class="fragment">
-							<p style="margin: 0;">Hay 2 formas de iterar sobre listas, depende de si necesitamos los índices o no:</p>
-							<pre style="margin: 0"><code class="python" data-line-numbers>
+			<section>
+				<h3>Bucles for</h3>
+				<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+					<div style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;"
+						class="fragment">
+						<p style="margin: 0;">Hay 2 formas de iterar sobre listas, depende de si necesitamos los índices
+							o no:</p>
+						<pre style="margin: 0"><code class="python" data-line-numbers>
 	cats = ["sebastian", "supreme cat", "frozone"]
 	for cat in cats:
 		print(f"{cat.title()} es mi gato favorito")
@@ -832,12 +914,14 @@
 		print(f"{cat.title()} es el gato número {i+1}")
 
 							</code></pre>
-						</div>
-						<div style="display: flex; text-align: left; flex-direction: column; gap:2rem;" class="fragment">
-							<p style="margin: 0">También podemos iterar sobre otras estructuras de datos</p>
-							<pre style="margin: 0"><code class="python" data-line-numbers="1-11|17-22">
+					</div>
+					<div style="display: flex; text-align: left; flex-direction: column; gap:2rem;" class="fragment">
+						<p style="margin: 0;">También podemos iterar sobre otras estructuras de datos</p>
+						<pre style="margin: 0; min-height: 600px;"><code class="python" data-line-numbers="1-13|17-21">
 	# Sobre diccionarios
-	datos = {"nombre": "Evariste", "apellido": "Galois", "edad": 20}
+	datos = {"nombre": "Evariste", 
+			 "apellido": "Galois", 
+			 "edad": 20}
 	for key, value in datos.items():
 		print(f"{key}: {value}")
 	
@@ -849,8 +933,6 @@
 	
 
 
-
-
 	# Sobre sets
 	primes = {2, 3, 5, 7, 11}
 	for i, p in enumerate(primes):
@@ -858,17 +940,19 @@
 	
 							</code></pre>
 						</code></pre>
-						</div>
 					</div>
-				</section>
-				<section style="display: flex; flex-direction: column; justify-content: space-between;">
-                    <div style="display: flex; gap: 2rem; align-items: flex-start;">
-                        <h2>Bucles while</h2>
-						<p style="margin:0">Los bucles <span class="monospace">while</span> se ejecutan mientras una condición sea verdadera</p>
-                    </div>
-                    <div style="display:flex; flex-direction: column; text-align: left;">
-                        <div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
-							<pre><code class="python" data-line-numbers>
+				</div>
+			</section>
+			<section style="display: flex; flex-direction: column; justify-content: space-between;">
+				<div style="display: flex; gap: 2rem; align-items: flex-start;">
+					<h2>Bucles while</h2>
+					<p style="margin:0">Los bucles <span class="monospace">while</span> se ejecutan mientras una
+						condición sea verdadera</p>
+				</div>
+				<div style="display:flex; flex-direction: column; text-align: left;">
+					<div
+						style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+						<pre><code class="python" data-line-numbers>
 		# Bucle infinito
 		while True:
 			pass # La palabra "pass" se usa para indicar no hacer nada, pero manteniendo la indentación de Python
@@ -880,22 +964,176 @@
 			x += 1           
 		    
 							</code></pre>
-                        	<img src="media/2/infinite_loops.jpg" width="450px">
-                        </div>
-                    </div>
-                </section>
-				<section>
-					<h1>Funciones</h1>
-				</section>
-				<section>
-					<div style="display:flex; flex-direction: column; gap: 6rem;">
-						<div style="display:flex; justify-content: baseline; gap: 2rem;">
-							<div style="flex: 1;">
-								<h2>Funciones</h2>
-								<p>Las funciones en Python son bloques de código reutilizables que se invocan con cierto número de argumentos y devuelven un valor</p>
-							</div>
-							<div style="flex: 1;">
-								<pre><code class="python" data-line-numbers="">
+						<img src="media/2/infinite_loops.jpg" width="450px">
+					</div>
+				</div>
+			</section>
+			<section style="display: flex; flex-direction: column; justify-content: space-between;">
+				<div style="display: flex; gap: 2rem; align-items: flex-start;">
+					<h2>List comprehensions</h2>
+					<span style="text-align: left;">
+						Una manera muy útil de crear listas es usando <em>list comprehensions</em>, en las que se itera
+						sobre una secuencia existente y se aplica una función y/o un filtro a cada elemento de la
+						secuencia.
+					</span>
+				</div>
+				<div style="display:flex; flex-direction: column; text-align: left;">
+					<span>Sintaxis básica:</span>
+
+					<div class="fragment"
+						style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+						<pre><code>
+    mi_lista = [expresion for elemento in iterable if condición]
+                        </code></pre>
+					</div>
+
+					<div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;" class="fragment">
+							<pre><code class="python" data-line-numbers>
+	# Crear una lista de cuadrados de números del 0 al 9
+	cuadrados = []
+	for n in range(10):
+		cuadrados.append(n**2)
+	print(cuadrados) # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+	# Crear una lista de números pares del 0 al 9
+	pares = []
+	for n in range(10):
+		if n % 2 == 0:
+			pares.append(n)
+	print(pares) # [0, 2, 4, 6, 8]
+
+	</code></pre>
+							<pre><code class="python" data-line-numbers>
+	# Crear una lista de cuadrados de números del 0 al 9
+	cuadrados = [n**2 for n in range(10)]
+	print(cuadrados) # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+	# Crear una lista de números pares del 0 al 9
+	pares = [n for n in range(10) if x % 2 == 0]
+	print(pares) # [0, 2, 4, 6, 8]
+
+
+
+
+
+
+		</code></pre>
+					</div>
+				</div>
+			</section>
+			<section style="display: flex; flex-direction: column; justify-content: space-between;">
+				<div style="display: flex; gap: 2rem; align-items: flex-start;">
+					<h2>List comprehensions</h2>
+					<span style="text-align: left;">
+						Una manera muy útil de crear listas es usando <em>list comprehensions</em>, en las que se itera
+						sobre una secuencia existente y se aplica una función y/o un filtro a cada elemento de la
+						secuencia.
+					</span>
+				</div>
+				<div style="display:flex; flex-direction: column; text-align: left;">
+					<span>Sintaxis básica:</span>
+
+					<div
+						style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+						<pre><code>
+    mi_lista = [expresion for elemento in iterable if condición]
+                        </code></pre>
+					</div>
+
+					<div
+						style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+						<pre><code class="python" data-line-numbers>
+	bebidas = ["agua", "café", "té", "coca cola"]
+	nuevas_bebidas = []
+	for bebida in bebidas:
+		if bebida != "agua":
+			nuevas_bebidas.append(bebida)
+		else:
+			nuevas_bebidas.append("agua con gas")
+	print(nuevas_bebidas) 
+	# ['agua con gas', 'café', 'té', 'coca cola']	
+
+
+	</code></pre>
+						<pre><code class="python" data-line-numbers>
+	bebidas = ["agua", "café", "té", "coca cola"]
+	nuevas_bebidas = ["agua con gas" if bebida == "agua" 
+						else bebida for bebida in bebidas]
+	print(nuevas_bebidas)
+	# ['agua con gas', 'café', 'té', 'coca cola']
+
+
+
+
+
+
+		</code></pre>
+					</div>
+
+				</div>
+			</section>
+			<section style="display: flex; flex-direction: column; justify-content: space-between;">
+				<div style="display: flex; gap: 2rem; align-items: flex-start;">
+					<h2>List comprehensions</h2>
+					<span style="text-align: left;">
+						Una manera muy útil de crear listas es usando <em>list comprehensions</em>, en las que se itera
+						sobre una secuencia existente y se aplica una función y/o un filtro a cada elemento de la
+						secuencia.
+					</span>
+				</div>
+				<div style="display:flex; flex-direction: column; text-align: left;">
+					<span>Sintaxis básica:</span>
+
+					<div
+						style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+						<pre><code>
+    mi_lista = [expresion for elemento in iterable if condición]
+                        </code></pre>
+					</div>
+
+					<div
+						style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;">
+						<pre><code class="python" data-line-numbers>
+	duplas = []
+	for x in range(10):
+		for y in range(10):
+			duplas.append((x, y))
+	print(duplas) # [(0, 0), (0, 1), (0, 2), ... , (9, 8), (9, 9)]
+
+
+
+
+
+	</code></pre>
+						<pre><code class="python" data-line-numbers>
+	duplas = [(x, y) for x in range(10) for y in range(10)]
+	print(duplas) # [(0, 0), (0, 1), (0, 2), ... , (9, 8), (9, 9)]
+
+	
+
+
+
+
+		
+
+		</code></pre>
+					</div>
+
+				</div>
+			</section>
+			<section>
+				<h1>Funciones</h1>
+			</section>
+			<section>
+				<div style="display:flex; flex-direction: column; gap: 6rem;">
+					<div style="display:flex; justify-content: baseline; gap: 2rem;">
+						<div style="flex: 1;">
+							<h2>Funciones</h2>
+							<p>Las funciones en Python son bloques de código reutilizables que se invocan con cierto
+								número de argumentos y devuelven un valor</p>
+						</div>
+						<div style="flex: 1;">
+							<pre><code class="python" data-line-numbers="">
 	# Definición
 	def nombre_funcion(argumento1, argumento2, ...):
 		# Código de la función...
@@ -904,11 +1142,11 @@
 	# Invocación
 	valor = nombre_funcion(valor1, valor2)
 								</code></pre>
-							</div>
 						</div>
-						<div style="display: flex; justify-content: baseline; gap: 2rem;">
-							<div class="r-stack" style="flex: 1;">
-								<pre class="fragment" data-fragment-index="1"><code class="python" data-line-numbers="">
+					</div>
+					<div style="display: flex; justify-content: baseline; gap: 2rem;">
+						<div class="r-stack" style="flex: 1;">
+							<pre class="fragment" data-fragment-index="1"><code class="python" data-line-numbers="">
 	def imprimir_norma_L_vector(x, y, z, L):
 		norm = (x**L + y**L + z**L)**(1/L)
 		print(f"La {L}-norma del vector ({x}, {y}, {z}) es {norm}")
@@ -923,7 +1161,7 @@
 
 
 								</code></pre>
-								<pre class="fragment" data-fragment-index="2"><code class="python" data-line-numbers="">
+							<pre class="fragment" data-fragment-index="2"><code class="python" data-line-numbers="">
 	def factorial(x):
 		fact = 1
 		for i in range(1, x + 1):
@@ -938,7 +1176,7 @@
 	print(coef_combinatorio(5, 2)) # 10
 									
 								</code></pre>
-								<pre class="fragment" data-fragment-index="4"><code class="python" data-line-numbers="">
+							<pre class="fragment" data-fragment-index="4"><code class="python" data-line-numbers="">
 	def volumen_cilindro(altura, radio):
 		return 3.14159 * radio**2 * altura
 	
@@ -953,26 +1191,37 @@
 
 
 								</code></pre>
-							</div>
-							<div style="flex: 1;">
-								<ul>
-									<li class="fragment" data-fragment-index="1">El propósito principal de una función es <b>reutilizar código ya hecho</b>.</li>
-									<li class="fragment" data-fragment-index="2">Podemos tener funciones de cualquier tamaño, pero es recomendable que no sean demasiado largas, y crear programas a partir de la composición de funciones pequeñas.</li>
-									<li class="fragment" data-fragment-index="3">Al contrario que en otros lenguajes de programación, no hace falta especificar el tipo de los argumentos ni el del valor de retorno</li>
-									<li class="fragment" data-fragment-index="4">Podemos concretar el argumento que pasamos usando <span class="monospace">fun(arg="value")</span>. <b>Esto sobreescribe el orden por defecto!</b></li>
-								</ul>
-							</div>
+						</div>
+						<div style="flex: 1;">
+							<ul>
+								<li class="fragment" data-fragment-index="1">El propósito principal de una función es
+									<b>reutilizar código ya hecho</b>.
+								</li>
+								<li class="fragment" data-fragment-index="2">Podemos tener funciones de cualquier
+									tamaño, pero es recomendable que no sean demasiado largas, y crear programas a
+									partir de la composición de funciones pequeñas.</li>
+								<li class="fragment" data-fragment-index="3">Al contrario que en otros lenguajes de
+									programación, no hace falta especificar el tipo de los argumentos ni el del valor de
+									retorno</li>
+								<li class="fragment" data-fragment-index="4">Podemos concretar el argumento que pasamos
+									usando <span class="monospace">fun(arg="value")</span>. <b>Esto sobreescribe el
+										orden por defecto!</b></li>
+							</ul>
 						</div>
 					</div>
-				</section>
-				<section>
-					<h3>Argumentos con valor por defecto</h3>
-					<p>Al declarar una función, podemos asignar valores por defecto a los argumentos, de forma que si no se pasan, se usen esos valores. Sin embargo, debemos tener en cuenta lo siguiente:</p>
-					<ul>
-						<li data-fragment-index="1">Deben escribirse siempre tras todos los argumentos sin valor por defecto</li>
-						<li data-fragment-index="2">Usar objetos mutables (como listas) como valor por defecto no es buena idea, ya que se comparten a lo largo de varias llamadas</li>
-					</ul>
-					<pre><code class="python" data-line-numbers>
+				</div>
+			</section>
+			<section>
+				<h3>Argumentos con valor por defecto</h3>
+				<p>Al declarar una función, podemos asignar valores por defecto a los argumentos, de forma que si no se
+					pasan, se usen esos valores. Sin embargo, debemos tener en cuenta lo siguiente:</p>
+				<ul>
+					<li data-fragment-index="1">Deben escribirse siempre tras todos los argumentos sin valor por defecto
+					</li>
+					<li data-fragment-index="2">Usar objetos mutables (como listas) como valor por defecto no es buena
+						idea, ya que se comparten a lo largo de varias llamadas</li>
+				</ul>
+				<pre><code class="python" data-line-numbers>
 	def saludar(nombre, saludo="Hola"):
 		print(f"{saludo}, {nombre}!")
 	
@@ -987,20 +1236,27 @@
 	print(append_to_list(2))	# [1, 2] (!!!)
 
 					</code></pre>
-				</section>
-				<section>
-					<h3>Argumentos variables</h3>
-					<div>
-						<p style="flex:1;">
-							Existen dos formas de pasar un número variable de argumentos a una función:
-							<ul>
-								<li><b>Argumentos posicionales</b>: se pasan con un asterisco <span class="monospace">*</span> y se recogen en una tupla. Normalmente, se denotan como <span class="monospace">*args</span></li>
-								<li><b>Argumentos clave-valor o de diccionario</b>: se pasan con dos asteriscos <span class="monospace">**</span> y se recogen en un diccionario. Normalmente, se denotan como <span class="monospace">**kwargs</span></li>
-								<li>Es recomendable poner <span class="monospace">*args</span> al final de la lista de argumentos. Si no lo hacemos, solo podemos pasar el resto de argumentos mediante <span class="monospace">nombre=valor</span>.</li>
-							</ul>
-						</p>
-						<p style="flex: 1;">
-							<pre><code class="python" data-line-numbers>
+			</section>
+			<section>
+				<h3>Argumentos variables</h3>
+				<div>
+					<p style="flex:1;">
+						Existen dos formas de pasar un número variable de argumentos a una función:
+					<ul>
+						<li><b>Argumentos posicionales</b>: se pasan con un asterisco <span class="monospace">*</span> y
+							se recogen en una tupla. Normalmente, se denotan como <span class="monospace">*args</span>
+						</li>
+						<li><b>Argumentos clave-valor o de diccionario</b>: se pasan con dos asteriscos <span
+								class="monospace">**</span> y se recogen en un diccionario. Normalmente, se denotan como
+							<span class="monospace">**kwargs</span>
+						</li>
+						<li>Es recomendable poner <span class="monospace">*args</span> al final de la lista de
+							argumentos. Si no lo hacemos, solo podemos pasar el resto de argumentos mediante <span
+								class="monospace">nombre=valor</span>.</li>
+					</ul>
+					</p>
+					<p style="flex: 1;">
+					<pre><code class="python" data-line-numbers>
 	def variable_arguments(*args, **kwargs):
 		# Extraemos los argumentos de esta forma
 		for arg in args:
@@ -1012,58 +1268,66 @@
 	variable_arguments(1, 2, 3, nombre="Pablo", edad=23)
 
 							</code></pre>
-						</p>
-					</div>
-				</section>
-				<section data-transition="convex" data-transition-speed="slow">
-					<h2>Ejercicios (we are sorry)</h2>
-					<ol>
-						<li>Usa <em>f-strings</em> para imprimir el siguiente diccionario con el formato dado:</li>
-						<pre><code class="python" data-line-numbers="">
+					</p>
+				</div>
+			</section>
+			<section data-transition="convex" data-transition-speed="slow">
+				<h2>Ejercicios (we are sorry)</h2>
+				<ol>
+					<li>Usa <em>f-strings</em> para imprimir el siguiente diccionario con el formato dado:</li>
+					<pre><code class="python" data-line-numbers="">
 	estudiante = {"nombre": "Lucía", "edad": 21, "carrera": "Matemáticas", "promedio": 8.75}
 	# IMPRIMIR COMO: Lucía tiene 21 años, estudia Matemáticas y tiene un promedio de 8.75.
 
 						</code></pre>
-						<li>Crea un diccionario que contenga la asignación $n \to n^2$ para los $100$ primeros números naturales. Encuentra la suma de los cuadrados de los $100$ primeros números naturales usando este diccionario.</li>
-						<li>Imprime la <a href="https://es.wikipedia.org/wiki/Conjetura_de_Collatz"><em>Secuencia de Collatz</em></a> para el número $n=127$.</li>
-						<li>Encuentra si el número $n = 53239$ es primo, para ello, puedes usar un bucle y ver si es divisible para alguno de los números $\left[2, \dots, \sqrt{n}\right]$.</li>
-						<li>Crea una lista cuyos elementos sean el conjunto $P_{10001}$ de todos los números primos entre $2$ y $10001$ e imprimela.</li>
-						<li>Dadas 2 matrices cuadradas $A, B \in \mathcal{M}(n\times n)$, implementa la multiplicación de matrices usando 3 bucles anidados. Puedes comprobar si funciona usando las siguientes matrices:</li>
-						<pre><code class="python" data-line-numbers>
+					<li>Crea un diccionario que contenga la asignación $n \to n^2$ para los $100$ primeros números
+						naturales. Encuentra la suma de los cuadrados de los $100$ primeros números naturales usando
+						este diccionario.</li>
+					<li>Imprime la <a href="https://es.wikipedia.org/wiki/Conjetura_de_Collatz"><em>Secuencia de
+								Collatz</em></a> para el número $n=127$.</li>
+					<li>Encuentra si el número $n = 53239$ es primo, para ello, puedes usar un bucle y ver si es
+						divisible para alguno de los números $\left[2, \dots, \sqrt{n}\right]$.</li>
+					<li>Crea una lista cuyos elementos sean el conjunto $P_{10001}$ de todos los números primos entre
+						$2$ y $10001$ e imprimela.</li>
+					<li>Dadas 2 matrices cuadradas $A, B \in \mathcal{M}(n\times n)$, implementa la multiplicación de
+						matrices usando 3 bucles anidados. Puedes comprobar si funciona usando las siguientes matrices:
+					</li>
+					<pre><code class="python" data-line-numbers>
 	A = [[1, 2], [3, 4]]
 	B = [[5, 6], [7, 8]]
 	# Deberías obtener [[19, 22], [43, 50]]
 
 						</code></pre>
-					</ol>
-				</section>
-			</div>
+				</ol>
+			</section>
 		</div>
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/math/math.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-				katex: {
-					version: 'latest',
-					delimiters: [
+	</div>
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			katex: {
+				version: 'latest',
+				delimiters: [
 					{ left: '$$', right: '$$', display: true },
 					{ left: '$', right: '$', display: false },
 					{ left: '\\(', right: '\\)', display: false },
 					{ left: '\\[', right: '\\]', display: true },
-					],
-					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-				},
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
-			});
-		</script>
-		<script src="theme-toggle.js"></script>
-	</body>
+				],
+				ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+			},
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+		});
+	</script>
+	<script src="theme-toggle.js"></script>
+</body>
+
 </html>
