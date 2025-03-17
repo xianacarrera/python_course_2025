@@ -83,8 +83,8 @@
 							<li><b>Tipado dinámico</b></li>
 							<li>Podemos usar <span class="monospace">type()</span> para ver qué tipo tenemos en cada
 								variable</li>
-							<li>Formato específico: los nombres de variables no pueden contener espacios y no pueden
-								empezar con números ni con <span class="monospace">__</span></li>
+							<li>Formato específico: los nombres de variables no pueden contener espacios. Los únicos caracteres 
+								permitidos son los alfanuméricos (A-z, 0-9) y el guión bajo (_)</li>
 							<li>No hay constantes como tal, el convenio para escribir variables que no deberían cambiar
 								es en mayúsculas</li>
 						</ul>
@@ -987,8 +987,9 @@
                         </code></pre>
 					</div>
 
-					<div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;" class="fragment">
-							<pre><code class="python" data-line-numbers>
+					<div style="display: flex; flex-direction: row; align-items: flex-start; margin-top: 2rem; gap:2rem; justify-content: space-between;"
+						class="fragment">
+						<pre><code class="python" data-line-numbers>
 	# Crear una lista de cuadrados de números del 0 al 9
 	cuadrados = []
 	for n in range(10):
@@ -1003,7 +1004,7 @@
 	print(pares) # [0, 2, 4, 6, 8]
 
 	</code></pre>
-							<pre><code class="python" data-line-numbers>
+						<pre><code class="python" data-line-numbers>
 	# Crear una lista de cuadrados de números del 0 al 9
 	cuadrados = [n**2 for n in range(10)]
 	print(cuadrados) # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
