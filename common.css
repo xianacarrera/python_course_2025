@@ -42,7 +42,10 @@ body[data-theme="dark"] .back-link:hover {
 .hover-link:hover {
   transform: scale(1.01);
 }
-
+.disabled-link {
+  opacity: 0.4;
+  cursor: default;
+}
 /* Theme Toggle Button Styles */
 .theme-toggle {
     position: fixed;
