@@ -83,7 +83,8 @@
 							<li><b>Tipado dinámico</b></li>
 							<li>Podemos usar <span class="monospace">type()</span> para ver qué tipo tenemos en cada
 								variable</li>
-							<li>Formato específico: los nombres de variables no pueden contener espacios. Los únicos caracteres 
+							<li>Formato específico: los nombres de variables no pueden contener espacios. Los únicos
+								caracteres
 								permitidos son los alfanuméricos (A-z, 0-9) y el guión bajo (_)</li>
 							<li>No hay constantes como tal, el convenio para escribir variables que no deberían cambiar
 								es en mayúsculas</li>
@@ -913,6 +914,9 @@
 
 							</code></pre>
 					</div>
+					<aside class="notes">enumerate devuelve una lista de tuplas de la forma [(0, elem1), (1, elem2),
+						...]. se puede usar list(enumerate(lista)) para verlo. También se puede modificar el paraémtro
+						start </aside>
 					<div style="display: flex; text-align: left; flex-direction: column; gap:2rem;" class="fragment">
 						<p style="margin: 0;">También podemos iterar sobre otras estructuras de datos</p>
 						<pre style="margin: 0; min-height: 600px;"><code class="python" data-line-numbers="1-13|17-21">
@@ -965,6 +969,9 @@
 						<img src="media/2/infinite_loops.jpg" width="450px">
 					</div>
 				</div>
+				<aside class="notes">
+					hablar también de bucles anidados, y de que break solo sale del bucle más interno
+				</aside>
 			</section>
 			<section style="display: flex; flex-direction: column; justify-content: space-between;">
 				<div style="display: flex; gap: 2rem; align-items: flex-start;">
@@ -1235,6 +1242,9 @@
 	print(append_to_list(2))	# [1, 2] (!!!)
 
 					</code></pre>
+				<aside class="notes">las strins son safe por el tema de que son inmutables. principalmente, los
+					argumentos con valor por defecto sirven para simplificar funciones que normalmente toman los mismos
+					valores, de esa forma, podemos hacer funciones más flexibles sin hacer la sintaxis demasiado engorrosa</aside>
 			</section>
 			<section>
 				<h3>Argumentos variables</h3>
@@ -1269,6 +1279,7 @@
 							</code></pre>
 					</p>
 				</div>
+				<aside class="notes">kwargs siempre debe ir luego de args</aside>
 			</section>
 			<section data-transition="convex" data-transition-speed="slow">
 				<h2>Ejercicios (we are sorry)</h2>
