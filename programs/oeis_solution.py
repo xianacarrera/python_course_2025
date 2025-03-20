@@ -4,12 +4,12 @@ def leer_dataset_oeis(ruta_archivo):
         lineas = archivo.readlines()  # Leemos todas las líneas a la vez
     
     for linea in lineas:
-        linea = linea.strip()
-        # El primer split es sobre el espacio que hay entre el título y la secuencia
-        partes = linea.split()
-        id_secuencia_actual = partes[0]
         try:
-            lista_numeros = partes[1].split(",")[1:-1]  # Ignorar primera y última coma
+            linea = linea.strip()
+            # El primer split es sobre el espacio que hay entre el título y la secuencia
+            partes = linea.split()
+            id_secuencia_actual = partes[0]
+            lista_numeros = partes[1].split(",")[1:-1]  # Ignorar primera y última coma            
             numeros_secuencia = list(map(int, lista_numeros))
             secuencias[id_secuencia_actual] = numeros_secuencia
         except Exception as e:
@@ -44,12 +44,7 @@ def calcular_estadisticas(secuencias):
 
 
 def guardar_estadisticas(ruta_salida, totales, promedios, maximos):
-    with open(ruta_salida, 'w') as archivo:
-        archivo.write(f"Se han leído {len(secuencias)} secuencias del dataset\n\n")
-        
-        # Hallamos algunas estadísticas para el dataset
-        totales, promedios, maximos = calcular_estadisticas(secuencias)
-        
+    with open(ruta_salida, 'w') as archivo:        
         for i in range(len(totales)):
             seq_max, valor_max = maximos[i]
             archivo.write(
