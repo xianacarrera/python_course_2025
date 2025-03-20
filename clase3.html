@@ -512,7 +512,21 @@ print("mundo!")
                 <em><a href="https://stackoverflow.com/questions/6648493/how-to-open-a-file-for-both-reading-and-writing"
                         target="_blank">Más info</a></em>
             </section>
-
+            <section>
+                <h3>Repaso escritura y lectura de archivos: Dataset <a href="https://oeis.org/wiki/Main_Page" target="_blank">OEIS</a>
+                </h3>
+                <div style="display:flex">
+                    <ol style="flex: 1;">
+                        <li class="fragment" data-fragment-index="1">Descargar el archivo <a href="https://oeis.org/stripped.gz">stripped.gz</a>, que contiene una versión básica de las secuencias de números enteros del OEIS. También hace falta descomprimirlo.</li>
+                        <li class="fragment" data-fragment-index="2">Eliminar las 4 primeras filas con comentarios (para simplificar la lectura).</li>
+                        <li class="fragment">Crear un nuevo archivo <code>oeis.py</code> en el que leeremos este dataset y realizaremos un par de operaciones con él.</li>
+                    </ol>
+                    <div style="flex: 1;" class="fragment" data-fragment-index="1">
+                        <img src="media/3/oeis.png">
+                    </div>
+                </div>
+                <small class="fragment" data-fragment-index="2">Si no podéis descargar/descomprimir el dataset desde el enlace de arriba, lo podéis <a href="data/dataset_oeis.txt" download>descargar directamente</a>, con las filas ya eliminadas, desde nuestra web.</small>
+            </section>
             <section>
                 <h1>Funciones lambda </h1>
                 <img src="media/3/lambdas.jpg" alt="Lambdas meme" style="margin-top: 5rem; width:60%;">
@@ -929,9 +943,9 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                     <div style="flex: 1;" class="r-stack">
                         <pre style="height: 800px;">
                             <code class="python" data-line-numbers>
-    class Person:
-        def __init__(self):
-            pass
+class Person:
+    def __init__(self):
+        pass
     
 
 
@@ -961,16 +975,16 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                             </code></pre>
                         <pre style="height: 800px;" class="fragment" data-fragment-index="1">
                                 <code class="python" data-line-numbers>
-    class Person:
-        def __init__(self, name, age, gender, occupation):
-            self.name = name
-            self.age = age
-            self.gender = gender
-            self.occupation = occupation
-    
-    # Ya podemos crear objetos de la clase Persona
-    marta = Person("Marta", 20, "F", "estudiante")
-    artai = Person("Artai", 23, "NB", "dibujante")
+class Person:
+    def __init__(self, name, age, gender, occupation):
+        self.name = name
+        self.age = age
+        self.gender = gender
+        self.occupation = occupation
+
+# Ya podemos crear objetos de la clase Persona
+marta = Person("Marta", 20, "F", "estudiante")
+artai = Person("Artai", 23, "NB", "dibujante")
 
 
 
@@ -993,27 +1007,27 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                                 </code></pre>
                         <pre style="height: 800px;" class="fragment" data-fragment-index="2">
                                     <code class="python" data-line-numbers>
-    class Person:
-        def __init__(self, name, age, gender, occupation):
-            self.name = name
-            self.age = age
-            self.gender = gender
-            self.occupation = occupation
+class Person:
+    def __init__(self, name, age, gender, occupation):
+        self.name = name
+        self.age = age
+        self.gender = gender
+        self.occupation = occupation
 
-        def walk(self):
-            print(f"{self.name} está caminando")
+    def walk(self):
+        print(f"{self.name} está caminando")
+    
+    def eat(self, comida):
+        print(f"{self.name} está comiendo {comida}")
         
-        def eat(self, comida):
-            print(f"{self.name} está comiendo {comida}")
-            
-        def sleep(self):
-            print("No hace nada...")
-        
-        def work():
-            print("Qué currante")
+    def sleep(self):
+        print("No hace nada...")
+    
+    def work():
+        print("Qué currante")
 
-    marta = Person("Marta", 20, "F", "estudiante")
-    artai = Person("Artai", 23, "NB", "dibujante")
+marta = Person("Marta", 20, "F", "estudiante")
+artai = Person("Artai", 23, "NB", "dibujante")
 
 
 
@@ -1025,32 +1039,32 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                                     </code></pre>
                         <pre style="height: 800px;" class="fragment" data-fragment-index="3">
                                         <code class="python" data-line-numbers>
-    class Person:
-        def __init__(self, name, age, gender, occupation):
-            self.name = name
-            self.age = age
-            self.gender = gender
-            self.occupation = occupation
-            self.health = 100 # Salud inicial
+class Person:
+    def __init__(self, name, age, gender, occupation):
+        self.name = name
+        self.age = age
+        self.gender = gender
+        self.occupation = occupation
+        self.health = 100 # Salud inicial
+
+    def walk(self):
+        print(f"{self.name} está caminando")
+        self.health += 5 # Caminar es bueno para la salud
     
-        def walk(self):
-            print(f"{self.name} está caminando")
-            self.health += 5 # Caminar es bueno para la salud
+    def eat(self, comida):
+        print(f"{self.name} está comiendo {comida}")
+        self.health += 10 # Recuperamos fuerzas
         
-        def eat(self, comida):
-            print(f"{self.name} está comiendo {comida}")
-            self.health += 10 # Recuperamos fuerzas
-            
-        def sleep(self):
-            print("No hace nada...")
-            self.health += 20 # A mimir zzzzz
-        
-        def work():
-            print("Qué currante")
-            self.health -= 10 # El trabajo es duro
+    def sleep(self):
+        print("No hace nada...")
+        self.health += 20 # A mimir zzzzz
     
-    marta = Person("Marta", 20, "F", "estudiante")
-    artai = Person("Artai", 23, "NB", "dibujante")
+    def work():
+        print("Qué currante")
+        self.health -= 10 # El trabajo es duro
+
+marta = Person("Marta", 20, "F", "estudiante")
+artai = Person("Artai", 23, "NB", "dibujante")
     
 
 
@@ -1074,17 +1088,17 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                             class="monospace">self</span></p>
                 </div>
                 <pre><code class="python" data-line-numbers>
-    marta = Person("Marta", 20, "F", "estudiante")
-    artai = Person("Artai", 23, "NB", "dibujante")
+marta = Person("Marta", 20, "F", "estudiante")
+artai = Person("Artai", 23, "NB", "dibujante")
 
-    marta.walk()         # Marta está caminando	
-    marta.eat("pizza")   # Marta está comiendo pizza
+marta.walk()         # Marta está caminando	
+marta.eat("pizza")   # Marta está comiendo pizza
 
-    # Podemos también acceder e imprimir los valores del objeto
-    print(marta.name)   # Marta
-    print(marta.health) # 115
-    marta.work()        # Qué currante
-    print(marta.health) # 105
+# Podemos también acceder e imprimir los valores del objeto
+print(marta.name)   # Marta
+print(marta.health) # 115
+marta.work()        # Qué currante
+print(marta.health) # 105
 
                 </code></pre>
             </section>
@@ -1104,12 +1118,12 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                             es buena práctica hacerlo).</li>
                     </ul>
                     <pre><code class="python" data-line-numbers>
-    class Doctor(Person):
-        def __init__(self, name, age, gender, specialty):
-            # Buena práctica: El constructor original de Person cubre campos comúnes
-            super().__init__(name, age, "M", "doctor")
-            # Ahora añadimos el resto del estado inicial
-            self.specialty = specialty
+class Doctor(Person):
+    def __init__(self, name, age, gender, specialty):
+        # Buena práctica: El constructor original de Person cubre campos comúnes
+        super().__init__(name, age, "M", "doctor")
+        # Ahora añadimos el resto del estado inicial
+        self.specialty = specialty
 
                     </code></pre>
                 </div>
@@ -1118,8 +1132,8 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                         <br>Por ejemplo, un nuevo Doctor podría llamar a <span class="monospace">walk()</span>
                     </p>
                     <pre><code class="python" data-line-numbers>
-    doc = Doctor("House", 45, "M", "médico de cabecera")
-    doc.walk() # House está caminando
+doc = Doctor("House", 45, "M", "médico de cabecera")
+doc.walk() # House está caminando
 
                     </code></pre>
                 </div>
@@ -1136,9 +1150,9 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                     <p>Por ejemplo, si queremos que un Doctor camine de forma diferente a una Persona normal, podemos
                         hacerlo así:</p>
                     <pre><code class="python" data-line-numbers>
-    class Doctor(Person):
-        def walk(self):
-            print(f"{self.name} está caminando... pero con bata")
+class Doctor(Person):
+    def walk(self):
+        print(f"{self.name} está caminando... pero con bata")
                     </code></pre>
                     <p class="fragment"><b>Más avanzado:</b> Esto lleva al concepto de polimorfismo. Las clases que
                         sobreescriben métodos se pueden comportar como instancias de su superclase, hasta que llaman a
@@ -1156,24 +1170,24 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                         <li>Son útiles para manejar errores específicos de nuestra aplicación</li>
                     </ul>
                     <pre><code class="python" data-line-numbers>
-    class UXAError(Exception):
-        def __init__(self, message = "Tu matrícula es incorrecta"):
-            super().__init__(message)
+class UXAError(Exception):
+    def __init__(self, message = "Tu matrícula es incorrecta"):
+        super().__init__(message)
 
                     </code></pre>
                 </div>
                 <div class="fragment">
                     <p>Uso de la excepción personalizada en código:</p>
                     <pre><code class="python" data-line-numbers>
-    def matricularse_usc(str_matricula):
-        if str_matricula == "No quiero estudiar":
-            raise UXAError()
-        return str_matricula + " aceptada"
+def matricularse_usc(str_matricula):
+    if str_matricula == "No quiero estudiar":
+        raise UXAError()
+    return str_matricula + " aceptada"
     
-    try:
-        resultado = matricularse_usc("No quiero estudiar")
-    except UXAErrror as error:
-        print(f"Error al matricularse en la USC: {error}")
+try:
+    resultado = matricularse_usc("No quiero estudiar")
+except UXAErrror as error:
+    print(f"Error al matricularse en la USC: {error}")
     
                     </code></pre>
                 </div>
@@ -1190,14 +1204,14 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                         <p>Podemos implementar el método <span class="monospace">__str__(self)</span> para modificar
                             como se imprime un objeto de una clase</p>
                         <pre><code class="python" data-line-numbers>
-    class Person:
-        def __str__(self):
-            return f"{self.name} es un {self.occupation} de {self.age}"
-                        f"años y género {self.gender}"
-    
-    # Ahora podemos imprimir más fácilmente un objeto Person
-    marta = Person("Marta", 20, "F", "estudiante")
-    print(marta) # Marta es un estudiante de 20 años y género F
+class Person:
+    def __str__(self):
+        return f"{self.name} es un {self.occupation} de {self.age}"
+                    f"años y género {self.gender}"
+
+# Ahora podemos imprimir más fácilmente un objeto Person
+marta = Person("Marta", 20, "F", "estudiante")
+print(marta) # Marta es un estudiante de 20 años y género F
     
                         </code></pre>
                     </div>
@@ -1206,17 +1220,17 @@ lambda nombre, apellido: f"{nombre.title()} {apellidos.title()}"
                                 class="monospace">__em__</span> para reimplementar la igualdad entre dos objetos de la
                             misma clase, <span class="monospace">__add__</span> para la suma, $\dots$</p>
                         <pre><code class="python" data-line-numbers>
-    class Vector:
-        def __init__(self, x, y):
-            self.x = x
-            self.y = y
-        def __add__(self, other):
-            return Vector(self.x + other.x, self.y + other.y)
-        def __str__(self):
-            return f"({self.x}, {self.y})"
-    v1 = Vector(1, 2)
-    v2 = Vector(3, 4)
-    print(v1 + v2) # (4, 6)
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+v1 = Vector(1, 2)
+v2 = Vector(3, 4)
+print(v1 + v2) # (4, 6)
                         </code></pre>
                     </div>
                     <div class="fragment">

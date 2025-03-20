@@ -1,0 +1,2 @@
+estudiante = {"nombre": "Lucía", "edad": 21, "carrera": "Matemáticas", "promedio": 8.75}
+print(f"{estudiante["nombre"]} tiene {estudiante["edad"]} años, estudia {estudiante["carrera"]} y tiene un promedio de {estudiante["promedio"]}")
