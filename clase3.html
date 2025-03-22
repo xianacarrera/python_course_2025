@@ -519,13 +519,18 @@ print("mundo!")
                     <ol style="flex: 1;">
                         <li class="fragment" data-fragment-index="1">Descargar el archivo <a href="https://oeis.org/stripped.gz">stripped.gz</a>, que contiene una versión básica de las secuencias de números enteros del OEIS. También hace falta descomprimirlo.</li>
                         <li class="fragment" data-fragment-index="2">Eliminar las 4 primeras filas con comentarios (para simplificar la lectura).</li>
-                        <li class="fragment">Crear un nuevo archivo <code>oeis.py</code> en el que leeremos este dataset y realizaremos un par de operaciones con él.</li>
+                        <li class="fragment" data-fragment-index="3">Crear un nuevo archivo <code>oeis.py</code> en el que leeremos este dataset y realizaremos un par de operaciones con él.</li>
                     </ol>
                     <div style="flex: 1;" class="fragment" data-fragment-index="1">
                         <img src="media/3/oeis.png">
                     </div>
                 </div>
                 <small class="fragment" data-fragment-index="2">Si no podéis descargar/descomprimir el dataset desde el enlace de arriba, lo podéis <a href="data/dataset_oeis.txt" download>descargar directamente</a>, con las filas ya eliminadas, desde nuestra web.</small>
+                <div style="border: 2px solid gray; padding: 1rem; border-radius: 10px;" class="fragment" data-fragment-index="4">
+                    <p>
+                        <a href="programs/oeis_solution.py" download>Solución ejercicio dataset OEIS</a>
+                    </p>
+                </div>
             </section>
             <section>
                 <h1>Funciones lambda </h1>
@@ -1245,6 +1250,15 @@ print(v1 + v2) # (4, 6)
                             los operadores. Por ejemplo <span class="monospace">v1 + v2</span> es lo mismo que <span
                                 class="monospace">v1.__add__(v2)</span></p>
                     </div>
+                </div>
+            </section>
+            <section>
+                <h3>Ejemplo de OOP hecho en clase</h3>
+                <p>¡Os subimos el ejemplo que hicimos al final de esta clase!</p>
+                <div style="border: 2px solid gray; padding: 1rem; border-radius: 10px;">
+                    <p>
+                        <a href="programs/ejemplo_clases.py" download>Ejemplo de OOP: Jerarquía de vehículos</a>
+                    </p>
                 </div>
             </section>
         </div>
