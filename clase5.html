@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Clase 5</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="common.css">
+  <!-- Solarized theme -->
+  <link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+  <!-- Moon theme -->
+  <link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+    integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+	<!-- Favicon Links -->
+	<link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="media/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="media/favicon/android-chrome-192x192.png">
+	<link rel="icon" type="image/png" sizes="512x512" href="media/favicon/android-chrome-512x512.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-touch-icon.png">
+</head>
+
+<body data-theme="light">
+  <a href="index.html" class="back-link">Volver</a>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+  <div class="reveal">
+    <div class="slides">
+      <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
+      <section data-auto-animate>
+        <h1 data-id="titlenumpy">Introducción a NumPy</h1>
+      </section>
+      <section data-auto-animate>
+        <h1 data-id="titlenumpy"><u>Introducción</u> a NumPy</h1>
+        <div style="display: flex; gap: 4rem;">
+          <div>
+            <p style="align-content: baseline;">
+            <ul>
+              <li style="margin-bottom: 10px;">NumPy (Numerical Python) es uno de los paquetes más importantes para la
+                computación numérica.</li>
+              <li style="margin-bottom: 10px;" class="fragment">La mayoría de librerías científicas utilizan sus objetos
+                como <em>lingua
+                  franca</em> para el
+                intercambio de datos.</li>
+              <li style="margin-bottom: 20px;" class="fragment">Algunas de sus principales características son:
+                <ul>
+                  <li class="fragment"><b><span class="monospace">ndarray</span></b>: un array multidimensional que
+                    permite realizar
+                    operaciones aritméticas y de <i>broadcasting</i> de forma eficiente</li>
+                  <li class="fragment"><b>Operaciones vectorizadas</b></li>
+                  <li class="fragment">Funcionalidades para el <b>álgebra lineal</b>, la <b>generación de números
+                      (pseudo)aleatorios</b>,
+                    <b>transformadas de Fourier</b>, etc.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p class="fragment">Pocas veces es necesario usar NumPy directamente; veremos solo las características más
+              importantes que
+              ofrece.</p>
+          </div>
+          <div class="fragment">
+            <p style="align-content: baseline;">
+            <ul>
+              <li>Documentación completa <a href="https://numpy.org/doc/stable/">aquí</a></li>
+              <li>La página oficial también incluye muchos tutoriales de alta calidad (en inglés):
+                <ul style="margin-top: 20px;">
+                  <li><a href="https://numpy.org/doc/stable/user/absolute_beginners.html">Absolute basics for
+                      beginners</a>
+                  </li>
+                  <li><a href="https://numpy.org/doc/stable/user/basics.html">NumPy fundamentals</a></li>
+                  <li><a href="https://numpy.org/doc/stable/user/howtos_index.html">NumPy how-tos</a></li>
+                  <li><a href="https://numpy.org/numpy-tutorials/">NumPy tutorials (más basados en proyectos)</a></li>
+                </ul>
+                <p><small>(Las imágenes usadas en estas diapositivas están principalmente sacadas de estos
+                    tutoriales)</small></p>
+              </li>
+            </ul>
+          </div>
+          <aside class="notes">
+            NumPy es útil porque está diseñado para ser eficiente al trabajar sobre grandes arrays de datos.
+            Principalmente, esto es gracias a la forma de almacenar los datos (chuncks continuos de memoria) que permite
+            usar algoritmos escritos en C directamente.
+          </aside>
+      </section>
+      <section>
+        <h2>Qué es numpy?</h2>
+        <div style="display: flex; flex-direction: row;">
+          <div style="flex: 1;">
+            <img src="media/5/numpylogo.png" style="vertical-align: middle;">
+          </div>
+          <div style="flex: 2; text-align: left;">
+            <p>Ya hemos hablado de las listas <span class="monospace">lista = [1, "python",
+                [1,3]]</span>, que son colecciones lineales de elementos</p>
+            <p>También podemos crear matrices como listas anidadas:<br> <span class="monospace"> M =
+                [[0,1], [1,0]]</span> $\;\Longleftrightarrow \; M = \begin{pmatrix}0 \;1 \\ 1 \;0 \end{pmatrix}$</p>
+            <p>Las listas son muy flexibles al admitir formas irregulares y tipos de datos heterogéneos, pero <b>esta
+                flexibilidad tiene un gran coste en eficiencia.</b></p>
+          </div>
+        </div>
+        <div class="fragment">
+          <p>Para remediar estos problemas, NumPy nos da una estructura de datos llamada <em>array n-dimensional
+              (ndarray)</em></p>
+          <div style="display: flex;">
+            <div style="flex: 1; text-align: right; font-size: 2rem;">$\rightarrow$ NumPy está escrito en C y usa
+              librerías de álgebra lineal de alto rendimiento como BLAS y LAPACK, lo cuál hace que los <span
+                class="monospace">ndarrays</span> sean órdenes de magnitudes más rápidos que las listas</div>
+            <div style="flex: 1;"><img src="media/5/numpy-arch.png" height="300px"></div>
+          </div>
+        </div>
+      </section>
+      <section style="display: flex; flex-direction: column; align-items: left; gap: 2rem;">
+        <h2>ndarrays</h2>
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
+          <div style="flex: 2; text-align: left;">
+            <ul>
+              <li>Tienen un tamaño fijo, que se indica en su creación</li>
+              <li>Todos sus elementos deben ser del <b>mismo tipo</b> (normalmente numéricos)</li>
+              <li>Se pueden indexar de muchas formas, y NumPy provee cientos de operaciones <b>vectorizadas</b> sobre
+                ellos</li>
+              <li>Son similares a los vectores de R y de MATLAB, aunque hay ciertas diferencias</li>
+            </ul>
+          </div>
+          <div style="flex: 2; text-align: left;">
+            <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.arange(16).reshape(4,4)
+print(a)  # array([[ 0,  1,  2,  3],
+          #        [ 4,  5,  6,  7],
+          #        [ 8,  9, 10, 11],
+          #        [12, 13, 14, 15]])
+
+print(a.ndim)   # 2
+print(a.shape)  # (4, 4)
+print(a.size)   # 16
+print(a.dtype)  # int64
+
+                </code></pre>
+          </div>
+        </div>
+        <div class="fragment">
+          <div style="margin:1rem; padding:1rem; border: 2px solid; border-radius:10px;">Hay 4 atributos fundamentales
+            que describen la estructura del ndarray</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div><span class="monospace">ndarray.ndim</span><br> Número de dimensiones</div>
+            <div><span class="monospace">ndarray.shape</span><br>Número de elementos en cada dimensión (tupla)</div>
+            <div><span class="monospace">ndarray.size</span><br>Número total de elementos</div>
+            <div><span class="monospace">ndarray.dtype</span><br>El tipo de dato de los elementos</div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h3>Atributos fundamentales: ejemplos</h3>
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+          <div style="display: flex; gap: 1rem; align-items: center;" class="fragment visible" data-fragment-index="0">
+            <div style="flex: 1;">
+              <p><span class="monospace">ndarray.ndim</span></p>
+              <pre><code class="python" data-line-numbers style="max-height: 700px;">
+data1 = [1., 0.3, 2, 4, -2]
+arr1 = np.array(data1)
+
+data2 = [[1, 2, 3, 4], [5, 6, 7, 8]]
+arr2 = np.array(data2)
+
+print(arr1.ndim)     # 1
+print(arr2.ndim)     # 2
+
+print(arr1.shape)    # (5,)
+print(arr2.shape)    # (2, 4)
+
+print(arr1.size)     # 5
+print(arr2.size)     # 8
+
+print(arr1.dtype)    # float64 
+print(arr2.dtype)    # int32
+
+                </code></pre>
+            </div>
+            <div style="flex: 2;">
+              <p>Resumen de tipos de datos en NumPy</p>
+              <table class="pure-table pure-table-bordered" style="margin-bottom: 10px; padding-bottom: 10px;">
+                <thead style="background-color: antiquewhite;">
+                  <th>dtype</th>
+                  <th>Variantes</th>
+                  <th>Descripción</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>int</td>
+                    <td>int8, int16, int32, int64</td>
+                    <td>Enteros con signo</td>
+                  </tr>
+                  <tr>
+                    <td>-</td>
+                    <td>uint8, uint16, uint32, uint64</td>
+                    <td>Enteros sin signo (i.e., no negativos)</td>
+                  </tr>
+                  <tr>
+                    <td>bool</td>
+                    <td>-</td>
+                    <td>Booleanos (True/False)</td>
+                  </tr>
+                  <tr>
+                    <td>float</td>
+                    <td>float16, float32, float64, float128</td>
+                    <td>Números de punto flotante.</td>
+                  </tr>
+                  <tr>
+                    <td>complex</td>
+                    <td>complex64, complex128, complex256</td>
+                    <td>Números complejos en punto flotante.</td>
+                  </tr>
+                  <tr>
+                    <td>string_</td>
+                    <td>-</td>
+                    <td>Cadenas de caracteres de hasta 1 byte</td>
+                  </tr>
+                  <tr>
+                    <td>object</td>
+                    <td>-</td>
+                    <td>Cualquier objeto de Python</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <aside class="notes">
+            Las abreviaturas (int, float...) son aliases
+            int normalmente es int32 o int64
+            float es float64
+            complex es normalmente complex128
+          </aside>
+      </section>
+      <section>
+        <div>
+          <h3>ndarray: orden de los ejes</h3>
+          <p>Al haber varias dimensiones, tenemos que tener en cuenta el orden de acceso e impresión de elementos. Para
+            arrays en 2 dimensiones, el primer eje <span>axis = 0</span> son las filas, y el segundo <span>axis =
+              1</span> las columnas</p>
+          <pre><code class="python" data-line-numbers>
+  a = np.array([[2., 3., 5.],
+                [7., 8., 9.]])
+
+  # El primer eje es de tamaño 2 y el segundo de tamaño 3:
+  print(np.shape(a))   # (2, 3)
+
+        </code></pre>
+          <p>Para $n > 2$, ya no se pueden visualizar los ndarrays como matrices, pero podemos seguir consultando el
+            tamaño de cada eje con <span class="monospace">np.shape</span>.</p>
+          <img src="media/5/anatomy_array.png">
+      </section>
+      <section data-auto-animate>
+        <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around; gap: 2rem;">
+          <div>
+            <h3>Creación de arrays</h3>
+            <p>Hay muchos mecanismos de creación de arrays n-dimensionales</p>
+          </div>
+          <div style="text-align: left;">
+            <p>A partir de otras estructuras (listas y tuplas)</p>
+            <pre><code class="python" data-line-numbers>
+    import numpy as np
+    
+    mi_lista = [1, 2, 3]
+
+    # Se puede especificar el tipo de dato
+    a = np.array(mi_lista, dtype=np.string_)
+    # y cambiarlo
+    b = a.astype(float)   # array([1., 2., 3.]) 
+
+    # Shape (2, 2, 2), dtype 'int32'
+    a3D = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+
+                </code></pre>
+          </div>
+        </div>
+      </section>
+      <section data-auto-animate>
+        <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around; gap: 2rem;">
+          <div>
+            <h3>Creación de arrays</h3>
+            <p>Hay muchos mecanismos de creación de arrays n-dimensionales</p>
+          </div>
+          <div style="text-align: left;">
+            <p>Utilizando <span class="monospace">np.arrange</span> y <span class="monospace">np.linspace</span> para
+              crear listas de rangos separados</p>
+            <li><span class="monospace">np.arrange(start, stop, step)</span> crea un array del tipo $[start, start+step,
+              start+2step, \dots]$.</li>
+            <li>Si step es decimal, es mejor usar <span class="monospace">np.linspace(start, stop, num)</span>, que crea
+              una rejilla regular con $num$ puntos en total.</li>
+            <pre><code class="python" data-line-numbers>
+  import numpy as np
+
+  # Crear un array de 0 a 10, con salto de 2
+  a = np.arange(0, 10, 2)    # array([0, 2, 4, 6, 8])
+
+  # Crear un array de 0 a pi, con 10000 elementos
+  b = np.linspace(0, np.pi, 10000) # array([0.00000000e+00, 3.14190684e-04, 6.28381369e-04, ...,
+                                  #        3.14096427e+00, 3.14127846e+00, 3.14159265e+00])
+              </code></pre>
+          </div>
+        </div>
+      </section>
+      <section data-auto-animate>
+        <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around; gap: 2rem;">
+          <div>
+            <h3>Creación de arrays</h3>
+            <p>Hay muchos mecanismos de creación de arrays n-dimensionales</p>
+          </div>
+          <div style="text-align: left;">
+            <p>Mediante funciones de creación:</p>
+            <li><span class="monospace">np.zeros()</span> y <span class="monospace">np.ones()</span> para arrays de 0s y
+              1s</li>
+            <li><span class="monospace">np.full()</span> para el mismo elemento en todas las posiciones</li>
+            <li><span class="monospace">np.eye()</span> o <span class="monospace">np.identity()</span> para la matriz
+              identidad</li>
+            <li><span class="monospace">np.random()</span> para datos aleatorios</li>
+            <pre><code class="python" data-line-numbers style="max-height: fit-content;">
+  import numpy as np
+
+  # Matriz 3x3 con 0 en todas las posiciones
+  zeros = np.zeros((3, 3))
+  
+  # Matriz 2x4 con 1 en todas las posiciones
+  ones = np.ones((2, 4))
+
+  # Matrix 2x2 con valor infinito en todas las posiciones
+  mat_inf = np.full((2, 2), np.inf)
+  
+  # Matriz identidad de 4x4
+  id = np.eye(4)
+  
+  # Matriz 2x3 con valores aleatorios en [0,1)
+  rand_arr = np.random.rand(2, 3)
+
+      </code></pre>
+          </div>
+      </section>
+      <section data-auto-animate>
+        <div style="height:100%; display: flex; flex-direction: column; justify-content: space-around; gap: 2rem;">
+          <div>
+            <h3>Creación de arrays</h3>
+            <p>Hay muchos mecanismos de creación de arrays n-dimensionales</p>
+          </div>
+          <div style="text-align: left;">
+            <li>Juntando varios arrays a través de uno de los ejes</li>
+            <pre><code class="python" data-line-numbers>
+import numpy as np
+
+a = np.array([[1, 2], [3, 4]])
+b = np.array([[5, 6], [7, 8]])
+
+# Usando vstack (equivalente a np.concatenate con axis=0)
+vstacked = np.vstack((a, b))  # array([[1, 2],
+                              #        [3, 4],
+                              #        [5, 6],
+                              #        [7, 8]])
+
+# Usando hstack (equivalente a np.concatenate con axis=1)
+hstacked = np.hstack((a, b)) # array([[1, 2, 5, 6],
+                             #        [3, 4, 7, 8]])
+        </code></pre>
+          </div>
+          <p>Ya hemos visto varias formas de crear arrays, pero también es importante saber que (casi) todas las
+            operaciones que explicaremos más adelante también crean arrays nuevos.</p>
+          <small style="max-width: 800px; text-align: left;">Hay alguna otra forma más de crear arrays, por ejemplo a
+            partir de ficheros. En la siguiente clase leeremos ficheros con Pandas, así que nos saltamos esto de
+            momento, consultar: <a href="https://numpy.org/doc/stable/user/basics.creation.html">Array Creation
+              guide</a></small>
+        </div>
+      </section>
+      <section>
+        <h3>Indexación y slicing</h3>
+        <p>En un array de NumPy, el indexado es parecido al de una lista normal de Python, pero en varias dimensiones
+        </p>
+        <div style="display:flex; gap: 1rem;">
+          <div style="flex: 1;">
+            <pre><code class="python" data-line-numbers>
+a = np.array([[1, 2], [3, 4], [5, 6]])
+# Elementos específicos
+print(a[0, 0])  # 1
+print(a[1, 2])  # 4
+
+# Segunda fila
+print(a[1])     # [3, 4]
+# Segunda columna
+print(a[:, 1])  # [2, 4, 6]
+
+# Slicing en varias dimensiones
+# : indica todos los elementos en el respectivo eje
+print(a[1:, 1:])  # [[4]
+                  #  [6]]
+
+        </code></pre>
+          </div>
+          <div style="flex: 1;">
+            <img src="media/5/2d_index.png">
+          </div>
+        </div>
+      </section>
+      <section>
+        <h3>Indexación y slicing</h3>
+        <p>También podemos indexar a partir de otros arrays</p>
+        <pre><code class="python" data-line-numbers>
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+# Filas 2 y 1
+b = np.array([1, 0])
+print(a[b]) # array([[4, 5, 6],
+            #        [1, 2, 3]])
+
+# Todas las filas, y luego columnas 1 y 2
+c = np.array([1,2])
+print(a[:, c]) # array([[2, 3],
+               #        [5, 6],
+               #        [8, 9]])
+    </code></pre>
+        O a partir de arrays de booleanos, <b>muy útil</b> para implementar filtros
+        <pre><code class="python" data-line-numbers>
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(a[a > 5]) # array([6, 7, 8, 9])
+    </code></pre>
+      </section>
+      <section>
+        <h3>Reshaping</h3>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <p style="font-size: 120%;">Con <span class="monospace">arr.reshape()</span> podemos cambiar la forma de un
+            array</p>
+          <div class="fragment">
+            <p>
+              Por ejemplo podemos pasar de un array $6 \times 2$ a uno $3 \times 4$:
+            </p>
+            <pre style="max-width: 1000px; max-height:200px;"><code class="python" data-line-numbers>
+import numpy as np
+a = np.arange(12).reshape(6, 2)
+print(a.shape)  # (6, 2)
+b = a.reshape(3, 4)
+print(b.shape)  # (3, 4)
+
+        </code></pre>
+          </div>
+          <div class="fragment">
+            <p>
+              Pro tip: Si no sabemos el tamaño de una de las dimensiones, podemos hacer que NumPy la calcule
+              inmediatamente poniendo $-1$ en ella.
+            </p>
+            <pre style="max-width: 1000px; max-height:200px;"><code class="python" data-line-numbers>
+import numpy as np
+a = np.arrange(15000)
+b = a.reshape(-1, 3, 1000)
+print(b.shape)  # (5, 3, 1000)
+
+        </code></pre>
+          </div>
+      </section>
+      <section>
+        <h3>Reshaping</h3>
+        <div style="display: flex; gap: 1rem;">
+          <div>
+            <p>Con <span class="monospace">np.ravel</span> podemos linealizar un array y con <span
+                class="monospace">arr.T</span> hallar la traspuesta de una matriz!</p>
+            <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.array([[1, 2], [3, 4]])
+print(a.ravel())  # array([1, 2, 3, 4])
+print(a.T)        # array([[1, 3],
+                  #        [2, 4]])
+
+        </code></pre>
+          </div>
+          <div>
+            <p>También podemos añadir nuevos ejes con <span class="monospace">np.newaxis</span> o <span
+                class="monospace">np.expand_dims</span></p>
+            <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.array([1, 2, 3])
+print(a[:, np.newaxis])  # array([[1],
+                         #        [2],
+                         #        [3]])
+
+        </code></pre>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2></h2>
+      </section>
+      <section>
+        <h2>Operaciones sobre arrays</h2>
+        <ul>
+          <li class="fragment">Las operaciones sobre arrays de NumPy son <em>vectorizadas</em>, es decir, se ejecutan
+            sobre todo el array sin necesidad de usar bucles explícitos en Python.</li>
+          <li class="fragment">Esto no solo hace más conciso el código, sino que reduce el tiempo de ejecución gracias a
+            la implementación interna de NumPy <a
+              href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data">(ya que los procesadores modernos
+              pueden ejecutar muchas operaciones a la vez)</a></li>
+        </ul>
+        <div class="fragment" style="margin-top: 2rem;">
+          <p>De esta forma, podemos aplicar operaciones básicas simplemente como:</p>
+          <div style="display:flex; gap: 1rem; flex-direction: row;">
+            <div style="flex:1;">
+              <pre><code class="python" data-line-numbers>
+import numpy as np
+data = np.array([1, 2])
+ones = np.ones(2, dtype=int)
+
+# Operaciones aritméticas vectorizadas
+print(data + ones)  # array([2, 3])
+print(data - ones)  # array([0, 1])
+print(data * data)  # array([1, 4])
+print(data / data)  # array([1, 1])
+
+# NO HACER ESTO
+for i in range(len(data)):
+    data[i] += 1
+
+          </code></pre>
+            </div>
+            <div style="flex: 1; display:flex; flex-direction: column;">
+              <img src="media/5/operators1.png">
+              <img src="media/5/operators2.png">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Operaciones sobre arrays</h2>
+        <div style="display: flex; gap: 1rem;">
+          <div style="flex: 1;">
+            <p style="font-size: 120%;">Además de operar sobre 2 arrays, podemos <em>agregar</em> los elementos de uno
+              mediante operadores como la suma, el máximo o el mínimo, entre muchos otros.</p>
+            <img src="media/5/agg.png">
+            <p style="font-size: 120%;">En vez de ejecutar esto sobre todo un array, podemos reducir en cada eje</p>
+            <img src="media/5/agg_axis.png">
+          </div>
+          <div style="flex: 1;" data-line-numbers="1-5|7-9">
+            <pre><code class="python" data-line-numbers>
+import numpy as np
+data = np.array([[1, 2], [3, 4]])
+print(data.sum())  # 10
+print(data.max())  # 4
+
+
+print(data.sum(axis=0))  # array([4, 6])
+print(data.max(axis=1))  # array([2, 4])
+        </code></pre>
+            <div class="fragment">
+              <hr style="margin-top: 2rem;">
+              <p>También es importante el <em>broadcasting</em>, que permite operar un array grande con otro pequeño
+                (incluso con un escalar) "copiando" el pequeño varias veces a lo largo de un eje.</p>
+              <pre><code class="python" data-line-numbers>
+import numpy as np
+a = np.array([1, 1, 1])
+print(a + 5)    # array([6, 6, 6])
+
+b = np.array([[1, 2, 3], [4, 5, 6]])
+print(b + a)    # array([[2, 3, 4],
+                #        [5, 6, 7]])
+
+print(1 / (2 * a))    # array([0.5, 0.5, 0.5])
+
+          </code></pre>
+              <img src="media/5/broadcasting.png">
+              <p style="font-size: 80%;">Existen algunas normas sobre cuando podemos hacer esto, se pueden consultar <a
+                  href="https://numpy.org/doc/stable/user/basics.broadcasting.html">aquí</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Operaciones sobre arrays</h2>
+        <p>Algunas otras cosas que podemos hacer sobre arrays:</p>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+          <div class="fragment">
+            <p>Comparaciones <br><small>(se usa mucho para indexar)</small></p>
+            <pre><code class="python" data-line-numbers>
+a = np.array([1, 2, 3])
+b = np.array([3, 2, 1])
+print(a == b)  # array([False,  True, False])
+
+print(a > b)   # array([False, False,  True])
+
+        </code></pre>
+          </div>
+          <div class="fragment">
+            <p>Ordenar<br><small>(También existe np.argsort para obtener los índices de ordenamiento)</small></p>
+            <pre><code class="python" data-line-numbers>
+a = np.array([3, 1, 2])
+print(np.sort(a))  # array([1, 2, 3])
+
+        </code></pre>
+          </div>
+          <div class="fragment">
+            <p>Funciones universales <small>(es decir, otras funciones matemáticas que ya vienen implementadas)</small>
+            </p>
+            <pre><code class="python" data-line-numbers>
+a = np.array([1, 2, 3])
+print(np.exp(a))  # array([ 2.718,  7.389, 20.085])
+print(np.sqrt(a)) # array([1.000, 1.414, 1.732])
+print(np.mean(a)) # 2.0
+
+        </code></pre>
+          </div>
+          <div class="fragment">
+            <p>Producto de matrices <small>(la función preferida de los que tienen que hacer boletines de
+                álgebra)</small></p>
+            <pre><code class="python" data-line-numbers>
+a = np.array([[1, 2], [3, 4]])
+b = np.array([[5, 6], [7, 8]])
+print(a @ b)  # array([[19, 22],
+              #        [43, 50]])
+
+# También se pueden usar np.dot(a, b) o a.dot(b)
+        </code></pre>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Operaciones sobre arrays</h2>
+        <p>Algunas otras cosas que podemos hacer sobre arrays:</p>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+          <div class="fragment">
+            <p>Operaciones estadísticas <br><small>(sobre todo el array o por filas/columnas)</small>
+            </p>
+            <pre><code class="python" data-line-numbers>
+a = np.array([[1, 2, 3], [4, 5, 6]])
+print(np.max(a))       # 6
+print(np.argmax(a))    # 5 
+# np.unravel_index(np.argmax(a), a.shape) --> (1, 2)
+print(np.sum(a))       # 21
+print(a.mean(axis=1))  # [2., 5.]
+print(a.sum(axis=0))   # [5, 7, 9]
+print(np.std(a))       # 1.7078...
+        </code></pre>
+          </div>
+          <div class="fragment">
+            <p>Operaciones booleanas y expresiones lógicas<small>(muy similares a las de Pandas)</small></p>
+            <pre><code class="python" data-line-numbers>
+bools = np.array([False, False, True, False])
+bools.any()   # True
+bools.all()   # False
+
+# Nota: "and" y "or" no funcionan sobre arrays booleanos
+# Hay que usar & y |
+nums = np.array([2, 4, 8, 3, 7])
+cond = (nums == 2) | (nums >= 7)  
+# cond: [True, False, True, False, True]
+
+# Versión NumPy de la list comprehension 
+# [x if cond else y for elem in array]
+nums2 = np.where(nums > 4, "si", "no")     
+# nums2: ['no', 'no', 'si', 'no', 'si']
+            </code></pre>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Operaciones sobre arrays</h2>
+        <p>Además de las operaciones básicas, NumPy nos proporciona cientos de funciones matemáticas que aplicar sobre
+          arrays. Algunas de ellas están en paquetes separados, por ejemplo:</p>
+        <ul class="fragment">
+          <hr>
+          <li><span class="monospace ">numpy.linalg</span>. Incluye funciones para álgebra lineal. Incluye resolución de
+            sistemas lineales, cálculo de autovalores, descomposiciones SVD, de Cholesky, etc. (ANM in a
+            box).</li>
+          <li><span class="random">numpy.random</span>. Incluye funciones para crear arrays aleatorios que sigan
+            ciertas distribuciones estadísticas (e.g. binomial, normal, beta, chisquare, gamma) hacer permutaciones, etc.</li>
+          <li><span class="monospace">numpy.fft</span>. Contiene funciones para calcular transformadas de Fourier en
+            varias dimensiones.</li>
+          <hr>
+        </ul>
+        <p class="fragment">También existe la librería <a href="https://scipy.org/">SciPy</a>, que no cubriremos en este
+          curso, pero expande NumPy incorporando muchas más funciones de computación científica.</p>
+      </section>
+      <section>
+        <h2>Vista vs Copia</h2>
+        <p><small><em>a.k.a. piedras con las que tropezaréis más de una y más de dos veces</em></small></p>
+
+        <p>Al <b>copiar</b> un objeto, obtenemos un nuevo objeto idéntico al original, pero independiente. 
+          Si hacemos cambios sobre la copia, el original permanece inalterado.</p>
+        <p>Una <b>vista</b> de un objeto ofrece una nueva <em>representación</em> de sus datos, pero no los copia. 
+            Por tanto, si se opera sobre la vista, también cambiará el objeto original.</p>
+        <p>Algunas operaciones de NumPy, como las operaciones de indexado o <span class="monospace">reshape()</span>, devuelven vistas. 
+          Otras, como <span class="monospace">astype()</span>, devuelven copias.</p>
+          <pre><code class="python" data-line-numbers>
+arr = np.array([1, 2, 3, 4])
+
+vista = arr.reshape((2, 2))
+vista[0, 0] = -1 
+
+print(arr[0])     # -1
+
+arr[1:] = 10
+print(vista)      # [[-1 10]
+                  #  [10 10]]
+
+copia = arr.astype(float)
+copia[0] = 5.0
+print(arr[0])     # -1
+
+            </code></pre>
+          <aside class="notes">
+            Relevante tanto a nivel de eficiencia como a nivel de lógica de los programas.
+          </aside>
+          </section>
+      <section>
+        <h2>En resumen...</h2>
+        <ul>
+          <li class="fragment">NumPy es una librería fundamental para el cálculo numérico en Python.</li>
+          <li class="fragment">Los <em>ndarrays</em> son más eficientes que las listas de Python.</li>
+          <li class="fragment">Los <em>ndarrays</em> tienen operaciones vectorizadas rápidas, que además simplifican
+            código <br><small style="position:relative; left: 1050px;">(o lo complican, depende como las uses)</small>
+          </li>
+          <li class="fragment">Hay muchas librerías que usan NumPy para implementar todo tipo de estructuras a partir de
+            <span class="monospace">ndarray</span><br><small style="position:relative; left:1170px;"> (por ejemplo
+              Pandas, que veremos en la siguiente clase!)</small>
+          </li>
+          <li class="fragment" style="font-size: 110%;"><em>Puede que sea extremadamente aburrido aprender NumPy, pero
+              también es extremadamente útil.</em></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/math/math.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+      hash: true,
+      katex: {
+        version: 'latest',
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true },
+        ],
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      },
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX]
+    });
+  </script>
+  <script src="theme-toggle.js"></script>
+</body>
+
+</html>

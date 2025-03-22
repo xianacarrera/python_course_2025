@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Clase 8</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="common.css">
+		<!-- Solarized theme -->
+		<link id="light-theme" rel="stylesheet" href="dist/theme/solarized.css">
+		<!-- Moon theme -->
+		<link id="dark-theme" rel="stylesheet" href="dist/theme/moon.css" disabled>
+
+		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+		<!-- Favicon Links -->
+		<link rel="icon" type="image/png" sizes="16x16" href="media/favicon/favicon-16x16.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="media/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="media/favicon/android-chrome-192x192.png">
+		<link rel="icon" type="image/png" sizes="512x512" href="media/favicon/android-chrome-512x512.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="media/favicon/apple-touch-icon.png">
+	</head>
+	<body data-theme="light">
+        <a href="index.html" class="back-link">Volver</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+		<div class="reveal">
+            <div class="slides">
+                <!--TEXTO IZQUIERDA - CÓDIGO DERECHA -->
+                <section data-auto-animate>
+					<h1>Machine Learning con Scikit-Learn</h1>
+                </section>
+				<section data-auto-animate>
+					<h1>Machine Learning con Scikit-Learn</h1>
+					<div>
+						<p>Como último tema del curso, veremos como entrenar algunos modelos básicos de aprendizaje automático usando la librería <em>Scikit-Learn</em></p>
+						<p><b>Disclaimer:</b> Vamos a quedarnos con lo más básico de esta librería, simplemente queremos dar una base para que podáis aprender más por vuestra cuenta fácilmente.</p>
+					</div>
+                </section>
+				<section data-background-iframe="https://scikit-learn.org/stable/index.html" data-background-interactive data-preload></section>
+				<section>
+					<h3>Aprendizaje Automático con scikit-learn</h3>
+					<p>
+						Scikit-learn es una librería enorme con docenas de algoritmos de Machine Learning. Afortunadamente, el proceso para ejecutarlos sobre un conjunto de datos es muy general
+					</p>
+					<p>
+						Simplificando masivamente, se suelen seguir estos pasos:
+					</p>
+					<ol>
+						<li class="fragment"><b>Preparación:</b> Importamos los módulos necesarios y leemos los datos</li>
+						<li class="fragment"><b>Selección de características:</b> Elegimos las características más importantes de nuestros datos, scikit-learn facilita algoritmos como <em>PCA</em> para esto.</li>
+						<li class="fragment"><b>Train-test split (aprendizaje supervisado):</b> Dividimos los datos en conjuntos de entrenamiento y prueba <em>(y también validación)</em></li>
+						<li class="fragment"><b>Entrenamiento:</b> Llamamos al método <span class="monospace">.fit()</span> de nuestro <em>Estimator</em> (Estimator $\approx$ Algoritmo de Machine Learning)</li>
+						<li class="fragment"><b>Predición:</b> Llamamos al método <span class="monospace">.predict()</span> del Estimator para realizar las predicciones</li>
+						<li class="fragment"><b>Evaluación y selección de hiper-parámetros:</b> A partir del error obtenido, podemos decidir si el modelo es suficientemente bueno o debemos cambiar los parámetros o el algoritmo (en aprendizaje supervisado, midiendo el error con los datos de prueba, en aprendizaje no supervisado, usando otra métrica)</li>
+						<li class="fragment"><b>Representación de resultados:</b> Usando matplotlib o seaborn, podemos visualizar las predicciones.</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Selección de algoritmos</h3>
+					<p>Saber qué algoritmo escoger en cada paso es complicado, y se escapa de los objetivos de este curso$\dots$</p>
+					<img src="media/8/ml_map.svg" style="height: 700px;">
+					<p class="fragment">En esta clase, veremos algunos ejemplos básicos de regresión (regresión lineal) y clustering (K-Means).</p>
+				</section>
+				<section>
+					<h3>Regresión lineal</h3>
+					<div style="display:flex; flex-direction: column; gap: 2rem; align-items: center; justify-content: center;">
+						<div style="display:flex; flex-direction: row; justify-content: space-between;">
+							<div style="flex: 2; text-align: left;">
+								<p>Buscamos encontrar la relación entre la variable <em>objetivo o dependiente</em> y una o más variables explicativas o <en>independientes</en></p>
+								<p class="fragment" data-fragment-index="1">
+									Veremos el método más sencillo, <em>regresión lineal con least-squares</em> (que probablemente recordéis de los cursos de estadística). Scikit-Learn ofrece una implementación en la clase <span class="monospace"><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html" target="_blank">LinearRegression()</a></span>.
+								</p>
+							</div>
+							<div style="flex: 1;" class="fragment" data-fragment-index="2">
+								<img src="media/8/linear-regreesion-xkcd.png">
+							</div>
+						</div>
+						<div style="border: 2px solid gray; padding: 1rem; border-radius: 10px; width: 60%;" class="fragment" data-fragment-index="2">
+							<p>
+								<a href="notebooks/linear_regression.ipynb" download>Notebook - Regresión linear con Scikit-Learn</a>
+							</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Clustering con k-means</h3>
+					<p>Ahora nos enfrentaremos a otro problema, el <em>clustering</em> o agrupación de datos. Este problema es de aprendizaje <em>no supervisado</em>, ya que no tenemos ninguna <em>variable objetivo</em>. Entre los algoritmos de clustering, <span class="monospace">K-Means</span> es el más conocido.</p>
+					<div style="display:flex; flex-direction: row; gap: 4rem;">
+						<div style="flex: 1;">
+							<p class="fragment" data-fragment-index="1">K-Means es un algoritmo iterativo que clasifica los datos a partir de su distancia a un conjunto de <em>centroides</em>. El algoritmo es el siguiente:</p>
+							<ol>
+								<li class="fragment" data-fragment-index="2"><b>Inicio:</b> se asignan $n$ centroides aleatoriamente sobre el espacio.</li>
+								<li class="fragment" data-fragment-index="3"><b>Asignación:</b> a cada punto le asignamos su centroide más cercano (por ejemplo, usando la distancia euclídea). Formamos así $n$ grupos separados.</li>
+								<li class="fragment" data-fragment-index="4"><b>Recálculo de centroides: </b>si no hemos llegado a cierta tolerancia o número máximo de iteraciones en el error, recalculamos los centroides a partir de la media de los puntos en cada grupo.</li>
+							</ol>
+						</div>
+						<div style="flex: 1;">
+							<img src="media/8/kmeans.png" class="fragment" data-fragment-index="1">
+							<img src="media/8/kmeans 2.jpg" class="fragment" data-fragment-index="4">
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Más sobre clustering</h3>
+					<p>Formalmente, dado un conjunto $(x_1, x_2, \dots, x_n) \subset \mathbb{R}^d$ y un $k \in \mathbb{N}, k \leq n$, en el problema de <em>clustering</em> queremos encontrar una familia de conjuntos $S = \{S_1, S_2, \dots, S_k\}$ tales que todo $x_i$ está en algún $S_j$ y se minimiza la suma de los cuadrados dentro de cada grupo (WCSS):
+					$$ \argmin_S \sum_{i=1}^k \sum_{x_j \in S_i} \left\lVert x_j - \mu_i \right\rVert,$$
+					donde $\mu_i$ es el centroide de $S_i$, 
+					$$ \mu_i = \frac{1}{|S_i|} \sum_{x \in S_i} x.$$
+					</p>
+					<p class="fragment">K-Means es un algoritmo que aproxima este problema</p>
+					<aside class="notes">Hablar de la dependencia con la inicialización, como podemos llegar a soluciones subóptimas si elegimos mal los centros iniciales y que hay métodos más robustos (pero más lentos, por lo que kmeans se sigue usando en datasets grandes)</aside>
+				</section>
+				<section>
+					<h3>Clustering con k-means</h3>
+					<div style="display:flex; align-items: center; justify-content: center;">
+						<div style="border: 2px solid gray; padding: 1rem; border-radius: 10px; width: 60%;">
+							<p>
+								<a href="notebooks/k_means_clustering.ipynb" download>Notebook - Clustering con k-means</a>
+							</p>
+						</div>
+					</div>
+				</section>
+            </div>
+        </div>
+        
+        <script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				katex: {
+					version: 'latest',
+					delimiters: [
+					{ left: '$$', right: '$$', display: true },
+					{ left: '$', right: '$', display: false },
+					{ left: '\\(', right: '\\)', display: false },
+					{ left: '\\[', right: '\\]', display: true },
+					],
+					ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+				},
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+		</script>
+        <script src="theme-toggle.js"></script>
+    </body>
+</html>
