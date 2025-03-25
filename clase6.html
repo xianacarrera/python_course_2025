@@ -357,14 +357,12 @@ df5=pd.read_json('ruta/al/archivo.json')
             </section>
             <section>
                 <h2>Selección de datos</h2>
-                <div class="r-stack">
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;"
-                        class="fragment current-visible">
-                        <div
-                            style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;">
-                            <p style="margin: 0;">Podemos seleccionar columnas específicas a través<br> de su nombre,
-                                con dos posibilidades:
-                            <pre style="margin: 0"><code class="python" data-line-numbers>
+                <div style="display: flex;  gap: 2rem;">
+                    <div
+                        style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;">
+                        <p>Podemos seleccionar columnas específicas a través<br> de su nombre,
+                            con dos posibilidades:
+                        <pre><code class="python" data-line-numbers>
 columna_nombre = df['nombre']     
 columna_nombre = df.nombre      # Mismo resultado que df['nombre']
 print(columna_nombre)
@@ -374,11 +372,11 @@ print(columna_nombre)
 # Name: nombre, dtype: object
 print(type(columna_nombre))     # class 'pandas.core.series.Series'
 
-                        </code></pre>
-                        </div>
-                        <div style="display: flex; text-align: left; flex-direction: column; gap:2rem;">
-                            <p style="margin: 0">Y también podemos seleccionar varias columnas a la vez:</p>
-                            <pre style="margin: 0"><code class="python" data-line-numbers>
+                    </code></pre>
+                    </div>
+                    <div style="flex: 1; display: flex; text-align: left; flex-direction: column; gap:2rem;">
+                        <p>Y también podemos seleccionar varias columnas a la vez:</p>
+                        <pre><code class="python" data-line-numbers>
 filtrado = df[['nombre', 'edad']]
 print(filtrado)
 #    nombre  edad
@@ -386,15 +384,17 @@ print(filtrado)
 # 1     Eva    35
 # 2    Xoel    23
 
-                    </code></pre>
-                        </div>
+                </code></pre>
                     </div>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;" class="fragment">
-                        <div
-                            style="display: flex; text-align: left; flex-direction: column; gap:2rem; align-items: flex-start;">
-                            <p style="margin: 0;">Para seleccionar filas y filtrar según una condición, podemos usar la
+                </div>
+            </section>
+            <section>
+                <h2>Selección de datos</h2>
+                <div style="display: flex;">
+                    <div style="flex: 1;">
+                            <p>Para seleccionar filas y filtrar según una condición, podemos usar la
                                 misma notación que con series:
-                            <pre style="margin: 0"><code class="python" data-line-numbers>
+                            <pre><code class="python" data-line-numbers>
 print(df[:2])
 #    nombre  edad  tiene_perro
 # 0  Marcos    40        False
@@ -408,13 +408,17 @@ print(filtrado)
 # 2    Xoel    23         True
                         </code></pre>
                         </div>
-                        <div style="display: flex; text-align: left; flex-direction: column; gap:2rem;">
-                            <p style="margin: 0">Para seleccionar por filas y columnas a la vez, se puede usar
+                    </div>
+            </section>
+            <section>
+                <h2>Selección de datos</h2>
+                        <div style="flex: 1;  text-align: left; ">
+                            <p>Para seleccionar por filas y columnas a la vez, se puede usar
                                 <span class="monospace">loc[]</span>, al que se le deben pasar etiquetas, o
                                 <span class="monospace">iloc[]</span>, al que se le debe pasar la posición de la
                                 fila/columna como un entero.
                             </p>
-                            <pre style="margin: 0"><code class="python" data-line-numbers>
+                            <pre><code class="python" data-line-numbers>
 print(df.loc[:, 'tiene_perro'])     # Todas las filas, columna 'tiene_perro'
 # 0    False
 # 1     True
@@ -430,9 +434,7 @@ print(df.iloc[1:, 1][df['edad'] < 28])    # Filtrado después de indexar
 # 2    23
 # Name: edad, dtype: int64
                     </code></pre>
-                        </div>
                     </div>
-                </div>
                 <aside class="notes">
                     También se pueden seleccionar varias filas/columnas individuales e.g. df.iloc[1, [0, 2]]
                 </aside>
