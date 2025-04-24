@@ -55,3 +55,9 @@ npm start
 ```
 Esto iniciará un servidor local donde podrás acceder a las diapositivas a través de `http://localhost:8000/`.
 
+
+## Uso y distribución
+Este código puede ser utilizado, modificado y redistribuido libremente. 
+
+Se solicita amablemente que se cite a sus autores: Xiana Carrera y Pablo Díaz Viñambres.
+
